@@ -156,6 +156,18 @@ body {
   border-color: var(--c-surface);
 }
 
+/* ===== Theme-toggle icon visibility =====
+ * Both <Ic.moon> and <Ic.sun> are always rendered in the topbar — pure CSS
+ * decides which is visible based on [data-theme] on <html>. The inline script
+ * in app/layout.tsx sets data-theme BEFORE paint, so the correct icon is
+ * visible on first frame regardless of SSR/client/bfcache state.
+ * Default rules (no [data-theme] yet, e.g. between SSR HTML parse and inline
+ * script) treat the doc as light: moon visible, sun hidden. */
+.theme-icon-light { display: inline-flex; }
+.theme-icon-dark  { display: none; }
+[data-theme="dark"] .theme-icon-light { display: none; }
+[data-theme="dark"] .theme-icon-dark  { display: inline-flex; }
+
 /* ===== Brand mark — "allm²eta" ===== *
  * The squared notation is the load-bearing visual gesture of the brand:
  * meta² = the operating system layer that orchestrates other meta-systems.

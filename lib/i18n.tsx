@@ -67,7 +67,6 @@ type Ctx = {
   theme: "light" | "dark";
   setTheme: (t: "light" | "dark") => void;
   toggleTheme: () => void;
-  mounted: boolean;
 };
 
 const LangContext = React.createContext<Ctx>({
@@ -78,7 +77,6 @@ const LangContext = React.createContext<Ctx>({
   theme: "light",
   setTheme: () => {},
   toggleTheme: () => {},
-  mounted: false,
 });
 
 // Read by lazy useState init; matches what the inline script in app/layout.tsx
@@ -95,7 +93,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // DOM on first paint — eliminates the empty-deps→[theme]-effect race that
   // would otherwise clobber data-theme back to "light" for one frame.
   const [theme, setThemeState] = React.useState<"light" | "dark">(readInitialTheme);
-  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     // One-time language restore (theme already restored via lazy init).
@@ -105,7 +102,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const n = (typeof navigator !== "undefined" ? navigator.language : "zh").toLowerCase();
       setLangState(n.startsWith("zh") ? "zh" : "en");
     }
-    setMounted(true);
   }, []);
 
   React.useEffect(() => {
@@ -140,7 +136,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <LangContext.Provider
-      value={{ lang, t, setLang, toggleLang, theme, setTheme, toggleTheme, mounted }}
+      value={{ lang, t, setLang, toggleLang, theme, setTheme, toggleTheme }}
     >
       {children}
     </LangContext.Provider>
