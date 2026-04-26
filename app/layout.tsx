@@ -11,6 +11,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh" suppressHydrationWarning>
       <head>
+        {/* Sync data-theme from localStorage before paint to prevent FOUC and
+            keep DOM in sync with React state on first hydration. Runs before
+            React mounts; AppProvider's lazy useState reads window.__initialTheme. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('allmeta:theme');var v=(t==='dark'||t==='light')?t:'light';document.documentElement.setAttribute('data-theme',v);window.__initialTheme=v;}catch(e){document.documentElement.setAttribute('data-theme','light');window.__initialTheme='light';}})();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

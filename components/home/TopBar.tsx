@@ -5,10 +5,7 @@ import { Ic } from "@/components/shared/Ic";
 import BrandMark from "./BrandMark";
 
 export default function TopBar() {
-  const { lang, setLang, theme, setTheme, t } = useApp();
-
-  const toggleLang = () => setLang(lang === "zh" ? "en" : "zh");
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const { lang, theme, t, toggleLang, toggleTheme, mounted } = useApp();
 
   return (
     <header
@@ -42,7 +39,16 @@ export default function TopBar() {
           aria-label={t("topbar_theme")}
           className="inline-flex items-center justify-center h-7 w-7 rounded-md text-ink-2 hover:text-ink-1 hover:bg-panel transition-colors"
         >
-          {theme === "light" ? <Ic.moon /> : <Ic.sun />}
+          {/* Render an empty 14×14 placeholder until mounted so the SSR HTML
+              matches the first client paint regardless of stored theme.
+              Without this, the icon flickers from moon→sun (or vice versa)
+              on first hydration when the user's stored theme differs from
+              the SSR default. */}
+          {mounted ? (
+            theme === "light" ? <Ic.moon /> : <Ic.sun />
+          ) : (
+            <span style={{ width: 14, height: 14, display: "inline-block" }} />
+          )}
         </button>
       </div>
     </header>

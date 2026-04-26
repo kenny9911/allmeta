@@ -63,31 +63,49 @@ type Ctx = {
   lang: Lang;
   t: (k: string) => string;
   setLang: (l: Lang) => void;
+  toggleLang: () => void;
   theme: "light" | "dark";
   setTheme: (t: "light" | "dark") => void;
+  toggleTheme: () => void;
+  mounted: boolean;
 };
 
 const LangContext = React.createContext<Ctx>({
   lang: "zh",
   t: (k) => k,
   setLang: () => {},
+  toggleLang: () => {},
   theme: "light",
   setTheme: () => {},
+  toggleTheme: () => {},
+  mounted: false,
 });
+
+// Read by lazy useState init; matches what the inline script in app/layout.tsx
+// wrote to <html data-theme>. Falls back to "light" on SSR / before script runs.
+function readInitialTheme(): "light" | "dark" {
+  if (typeof window === "undefined") return "light";
+  const w = window as unknown as { __initialTheme?: string };
+  return w.__initialTheme === "dark" ? "dark" : "light";
+}
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = React.useState<Lang>("zh");
-  const [theme, setThemeState] = React.useState<"light" | "dark">("light");
+  // Lazy init from the inline-script variable so the React state matches the
+  // DOM on first paint — eliminates the empty-deps→[theme]-effect race that
+  // would otherwise clobber data-theme back to "light" for one frame.
+  const [theme, setThemeState] = React.useState<"light" | "dark">(readInitialTheme);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    // One-time language restore (theme already restored via lazy init).
     const storedLang = (typeof window !== "undefined" ? localStorage.getItem("allmeta:lang") : null) as Lang | null;
     if (storedLang === "zh" || storedLang === "en") setLangState(storedLang);
     else {
       const n = (typeof navigator !== "undefined" ? navigator.language : "zh").toLowerCase();
       setLangState(n.startsWith("zh") ? "zh" : "en");
     }
-    const storedTheme = typeof window !== "undefined" ? localStorage.getItem("allmeta:theme") : null;
-    if (storedTheme === "light" || storedTheme === "dark") setThemeState(storedTheme);
+    setMounted(true);
   }, []);
 
   React.useEffect(() => {
@@ -109,8 +127,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const setLang = React.useCallback((l: Lang) => setLangState(l), []);
   const setTheme = React.useCallback((tt: "light" | "dark") => setThemeState(tt), []);
 
+  // Functional updates — immune to stale closures from rapid clicks or from
+  // clicks that fire during the same render in which theme/lang changed.
+  const toggleLang = React.useCallback(
+    () => setLangState((prev) => (prev === "zh" ? "en" : "zh")),
+    []
+  );
+  const toggleTheme = React.useCallback(
+    () => setThemeState((prev) => (prev === "light" ? "dark" : "light")),
+    []
+  );
+
   return (
-    <LangContext.Provider value={{ lang, t, setLang, theme, setTheme }}>
+    <LangContext.Provider
+      value={{ lang, t, setLang, toggleLang, theme, setTheme, toggleTheme, mounted }}
+    >
       {children}
     </LangContext.Provider>
   );
