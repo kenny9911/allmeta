@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 theme bridge ───────────────────────────────────────── *
+ * `inline` keeps Tailwind utilities pointing at runtime CSS variables
+ * (so [data-theme="dark"] flips instantly without a rebuild).
+ * Token values themselves live in :root / [data-theme="dark"] below.
+ * ─────────────────────────────────────────────────────────────────────── */
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-panel: var(--c-panel);
+  --color-raised: var(--c-raised);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+
+  --color-ink-1: var(--c-ink-1);
+  --color-ink-2: var(--c-ink-2);
+  --color-ink-3: var(--c-ink-3);
+  --color-ink-4: var(--c-ink-4);
+
+  --color-accent: var(--c-accent);
+  --color-accent-2: var(--c-accent-2);
+  --color-accent-bg: var(--c-accent-bg);
+  --color-accent-line: var(--c-accent-line);
+
+  --color-ok: var(--c-ok);
+  --color-ok-bg: var(--c-ok-bg);
+  --color-warn: var(--c-warn);
+  --color-warn-bg: var(--c-warn-bg);
+  --color-err: var(--c-err);
+  --color-err-bg: var(--c-err-bg);
+  --color-info: var(--c-info);
+  --color-info-bg: var(--c-info-bg);
+
+  --font-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-sh-1: var(--sh-1);
+  --shadow-sh-2: var(--sh-2);
+  --shadow-sh-3: var(--sh-3);
+}
+
+/* ===== allm²eta — shared design tokens (inherited from Agentic Operator) ===== */
+:root {
+  /* neutrals (cool) */
+  --c-bg: oklch(0.99 0.004 255);
+  --c-surface: #ffffff;
+  --c-panel: oklch(0.985 0.004 255);
+  --c-raised: oklch(0.975 0.004 255);
+  --c-line: oklch(0.92 0.006 255);
+  --c-line-strong: oklch(0.86 0.008 255);
+  --c-ink-1: oklch(0.22 0.015 260);
+  --c-ink-2: oklch(0.42 0.012 260);
+  --c-ink-3: oklch(0.58 0.010 260);
+  --c-ink-4: oklch(0.72 0.008 260);
+
+  /* accents */
+  --c-accent: oklch(0.56 0.14 255);
+  --c-accent-2: oklch(0.66 0.11 255);
+  --c-accent-bg: oklch(0.96 0.03 255);
+  --c-accent-line: oklch(0.88 0.06 255);
+
+  /* semantic */
+  --c-ok: oklch(0.62 0.13 155);
+  --c-ok-bg: oklch(0.96 0.04 155);
+  --c-warn: oklch(0.74 0.15 75);
+  --c-warn-bg: oklch(0.96 0.06 80);
+  --c-err: oklch(0.58 0.19 25);
+  --c-err-bg: oklch(0.96 0.05 25);
+  --c-info: oklch(0.60 0.10 230);
+  --c-info-bg: oklch(0.96 0.03 230);
+
+  /* typography */
+  --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* radii */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+
+  /* shadow */
+  --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
+  --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
+}
+
+[data-theme="dark"] {
+  --c-bg: oklch(0.17 0.012 260);
+  --c-surface: oklch(0.20 0.014 260);
+  --c-panel: oklch(0.235 0.014 260);
+  --c-raised: oklch(0.265 0.014 260);
+  --c-line: oklch(0.30 0.014 260);
+  --c-line-strong: oklch(0.40 0.014 260);
+
+  --c-ink-1: oklch(0.96 0.006 260);
+  --c-ink-2: oklch(0.82 0.010 260);
+  --c-ink-3: oklch(0.66 0.012 260);
+  --c-ink-4: oklch(0.50 0.012 260);
+
+  --c-accent: oklch(0.74 0.14 255);
+  --c-accent-2: oklch(0.66 0.11 255);
+  --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
+  --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
+
+  --c-ok: oklch(0.78 0.13 155);
+  --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
+  --c-warn: oklch(0.82 0.15 80);
+  --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
+  --c-err: oklch(0.74 0.17 25);
+  --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+  --c-info: oklch(0.78 0.10 230);
+  --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
+
+  --sh-1: 0 1px 0 rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --sh-2: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.50);
+  --sh-3: 0 12px 40px -12px rgba(0, 0, 0, 0.70);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: var(--f-sans);
+  color: var(--c-ink-1);
+  background: var(--c-bg);
+  font-feature-settings: "cv11", "ss01", "ss03";
+  -webkit-font-smoothing: antialiased;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.anim-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===== scrollbars ===== */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: oklch(0.88 0.008 260);
+  border-radius: 10px;
+  border: 2px solid var(--c-surface);
+}
+*::-webkit-scrollbar-track { background: transparent; }
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.014 260);
+  border-color: var(--c-surface);
+}
+
+/* ===== Brand mark — "allm²eta" ===== *
+ * The squared notation is the load-bearing visual gesture of the brand:
+ * meta² = the operating system layer that orchestrates other meta-systems.
+ * The accent-colored superscript is the only colored element in the mark.
+ * ─────────────────────────────────────────────────────────────────────── */
+.brand-mark {
+  font-family: var(--f-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--c-ink-1);
+  white-space: nowrap;
+}
+.brand-mark sup {
+  font-size: 0.55em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--c-accent);
+  font-weight: 600;
+  margin: 0 0.04em 0 0.01em;
+  letter-spacing: 0;
+}
+
+/* ===== Helpers ===== */
+.mono { font-family: var(--f-mono); }
+.muted { color: var(--c-ink-3); }
+.hint {
+  font-size: 10.5px;
+  color: var(--c-ink-4);
+  font-family: var(--f-mono);
+  letter-spacing: 0.02em;
+}
+.tabular-nums { font-feature-settings: "tnum", "lnum"; }
+
+/* ===== Background — gradient mesh + dot grid layered behind hero ===== */
+.bg-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 28%, var(--c-accent-bg), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 18% 78%, color-mix(in oklab, var(--c-accent) 8%, transparent), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 82% 78%, color-mix(in oklab, var(--c-accent-2) 8%, transparent), transparent 70%);
+}
+.bg-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--c-line-strong) 0.8px, transparent 0.8px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, black 30%, transparent 75%);
+}
+
+/* Subtle product card lift on hover */
+.product-card {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  position: relative;
+}
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--c-accent);
+  border-top-left-radius: var(--r-lg);
+  border-top-right-radius: var(--r-lg);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.product-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-line-strong);
+  box-shadow: var(--sh-2);
+}
+.product-card:hover::before { opacity: 1; }
+.product-card:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
