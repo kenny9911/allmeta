@@ -18,6 +18,23 @@
   --color-ink-3: var(--c-ink-3);
   --color-ink-4: var(--c-ink-4);
 
+  --color-lime: var(--c-lime);
+  --color-lime-bg: var(--c-lime-bg);
+  --color-lime-line: var(--c-lime-line);
+
+  --color-violet: var(--c-violet);
+  --color-violet-bg: var(--c-violet-bg);
+  --color-violet-line: var(--c-violet-line);
+
+  --color-amber: var(--c-amber);
+  --color-amber-bg: var(--c-amber-bg);
+
+  --color-cyan: var(--c-cyan);
+  --color-cyan-bg: var(--c-cyan-bg);
+
+  --color-coral: var(--c-coral);
+  --color-coral-bg: var(--c-coral-bg);
+
   --color-accent: var(--c-accent);
   --color-accent-2: var(--c-accent-2);
   --color-accent-bg: var(--c-accent-bg);
@@ -32,21 +49,135 @@
   --color-info: var(--c-info);
   --color-info-bg: var(--c-info-bg);
 
-  --font-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-sans: "Geist", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", "Noto Sans SC", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Songti SC", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;
+  --radius-xl: 14px;
 
   --shadow-sh-1: var(--sh-1);
   --shadow-sh-2: var(--sh-2);
   --shadow-sh-3: var(--sh-3);
+  --shadow-glow-lime: var(--sh-glow-lime);
+  --shadow-glow-violet: var(--sh-glow-violet);
 }
 
-/* ===== allm²eta — shared design tokens (inherited from Agentic Operator) ===== */
+/* ===== DARK (default) — allmeta Agentic OS canvas ===== *
+ * The PDF aesthetic: deep navy near-black, with electric accents.
+ * Designed to look like an operating console / deck slide. */
 :root {
-  /* neutrals (cool) */
+  --c-bg: oklch(0.155 0.018 260);
+  --c-surface: oklch(0.195 0.018 260);
+  --c-panel: oklch(0.225 0.018 260);
+  --c-raised: oklch(0.27 0.020 260);
+  --c-line: oklch(0.32 0.020 260);
+  --c-line-strong: oklch(0.42 0.022 260);
+
+  --c-ink-1: oklch(0.98 0.005 260);
+  --c-ink-2: oklch(0.82 0.010 260);
+  --c-ink-3: oklch(0.64 0.012 260);
+  --c-ink-4: oklch(0.48 0.012 260);
+
+  /* ── Primary accents ── *
+   * lime: electric chartreuse — the "live system" / declarative accent
+   * violet: plasma magenta-purple — the AI / cognition accent             */
+  --c-lime: oklch(0.92 0.22 130);
+  --c-lime-bg: color-mix(in oklab, oklch(0.92 0.22 130) 14%, transparent);
+  --c-lime-line: color-mix(in oklab, oklch(0.92 0.22 130) 45%, transparent);
+
+  --c-violet: oklch(0.70 0.26 305);
+  --c-violet-bg: color-mix(in oklab, oklch(0.70 0.26 305) 16%, transparent);
+  --c-violet-line: color-mix(in oklab, oklch(0.70 0.26 305) 45%, transparent);
+
+  /* ── Secondary accents (from the PDF palette) ── */
+  --c-amber: oklch(0.86 0.17 85);
+  --c-amber-bg: color-mix(in oklab, oklch(0.86 0.17 85) 14%, transparent);
+
+  --c-cyan: oklch(0.82 0.14 195);
+  --c-cyan-bg: color-mix(in oklab, oklch(0.82 0.14 195) 14%, transparent);
+
+  --c-coral: oklch(0.72 0.20 25);
+  --c-coral-bg: color-mix(in oklab, oklch(0.72 0.20 25) 14%, transparent);
+
+  /* compat tokens (lime is the new primary) */
+  --c-accent: oklch(0.92 0.22 130);
+  --c-accent-2: oklch(0.70 0.26 305);
+  --c-accent-bg: color-mix(in oklab, oklch(0.92 0.22 130) 14%, transparent);
+  --c-accent-line: color-mix(in oklab, oklch(0.92 0.22 130) 40%, transparent);
+
+  --c-ok: oklch(0.82 0.18 145);
+  --c-ok-bg: color-mix(in oklab, oklch(0.82 0.18 145) 14%, transparent);
+  --c-warn: oklch(0.86 0.17 85);
+  --c-warn-bg: color-mix(in oklab, oklch(0.86 0.17 85) 14%, transparent);
+  --c-err: oklch(0.72 0.20 25);
+  --c-err-bg: color-mix(in oklab, oklch(0.72 0.20 25) 14%, transparent);
+  --c-info: oklch(0.78 0.14 240);
+  --c-info-bg: color-mix(in oklab, oklch(0.78 0.14 240) 14%, transparent);
+
+  --f-sans: "Geist", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --f-display: "Geist", "Noto Sans SC", system-ui, sans-serif;
+  --f-serif: "Instrument Serif", "Songti SC", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+
+  --sh-1: 0 1px 0 rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --sh-2: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.50);
+  --sh-3: 0 12px 40px -12px rgba(0, 0, 0, 0.70);
+  --sh-glow-lime: 0 0 0 1px color-mix(in oklab, var(--c-lime) 35%, transparent),
+                  0 0 40px -6px color-mix(in oklab, var(--c-lime) 50%, transparent);
+  --sh-glow-violet: 0 0 0 1px color-mix(in oklab, var(--c-violet) 35%, transparent),
+                    0 0 40px -6px color-mix(in oklab, var(--c-violet) 50%, transparent);
+}
+
+/* Dark is the canonical canvas — explicit attribute keeps it identical. */
+[data-theme="dark"] {
+  --c-bg: oklch(0.155 0.018 260);
+  --c-surface: oklch(0.195 0.018 260);
+  --c-panel: oklch(0.225 0.018 260);
+  --c-raised: oklch(0.27 0.020 260);
+  --c-line: oklch(0.32 0.020 260);
+  --c-line-strong: oklch(0.42 0.022 260);
+
+  --c-ink-1: oklch(0.98 0.005 260);
+  --c-ink-2: oklch(0.82 0.010 260);
+  --c-ink-3: oklch(0.64 0.012 260);
+  --c-ink-4: oklch(0.48 0.012 260);
+
+  --c-lime: oklch(0.92 0.22 130);
+  --c-lime-bg: color-mix(in oklab, oklch(0.92 0.22 130) 14%, transparent);
+  --c-lime-line: color-mix(in oklab, oklch(0.92 0.22 130) 45%, transparent);
+
+  --c-violet: oklch(0.70 0.26 305);
+  --c-violet-bg: color-mix(in oklab, oklch(0.70 0.26 305) 16%, transparent);
+  --c-violet-line: color-mix(in oklab, oklch(0.70 0.26 305) 45%, transparent);
+
+  --c-amber: oklch(0.86 0.17 85);
+  --c-amber-bg: color-mix(in oklab, oklch(0.86 0.17 85) 14%, transparent);
+  --c-cyan: oklch(0.82 0.14 195);
+  --c-cyan-bg: color-mix(in oklab, oklch(0.82 0.14 195) 14%, transparent);
+  --c-coral: oklch(0.72 0.20 25);
+  --c-coral-bg: color-mix(in oklab, oklch(0.72 0.20 25) 14%, transparent);
+
+  --c-accent: oklch(0.92 0.22 130);
+  --c-accent-2: oklch(0.70 0.26 305);
+  --c-accent-bg: color-mix(in oklab, oklch(0.92 0.22 130) 14%, transparent);
+  --c-accent-line: color-mix(in oklab, oklch(0.92 0.22 130) 40%, transparent);
+
+  --sh-1: 0 1px 0 rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --sh-2: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.50);
+  --sh-3: 0 12px 40px -12px rgba(0, 0, 0, 0.70);
+}
+
+/* Light mode — kept readable, accents desaturated slightly for contrast. */
+[data-theme="light"] {
   --c-bg: oklch(0.99 0.004 255);
   --c-surface: #ffffff;
   --c-panel: oklch(0.985 0.004 255);
@@ -58,196 +189,751 @@
   --c-ink-3: oklch(0.58 0.010 260);
   --c-ink-4: oklch(0.72 0.008 260);
 
-  /* accents */
-  --c-accent: oklch(0.56 0.14 255);
-  --c-accent-2: oklch(0.66 0.11 255);
-  --c-accent-bg: oklch(0.96 0.03 255);
-  --c-accent-line: oklch(0.88 0.06 255);
+  --c-lime: oklch(0.66 0.22 130);
+  --c-lime-bg: oklch(0.96 0.10 130);
+  --c-lime-line: oklch(0.78 0.18 130);
 
-  /* semantic */
-  --c-ok: oklch(0.62 0.13 155);
-  --c-ok-bg: oklch(0.96 0.04 155);
-  --c-warn: oklch(0.74 0.15 75);
-  --c-warn-bg: oklch(0.96 0.06 80);
-  --c-err: oklch(0.58 0.19 25);
-  --c-err-bg: oklch(0.96 0.05 25);
-  --c-info: oklch(0.60 0.10 230);
-  --c-info-bg: oklch(0.96 0.03 230);
+  --c-violet: oklch(0.52 0.26 305);
+  --c-violet-bg: oklch(0.96 0.07 305);
+  --c-violet-line: oklch(0.78 0.18 305);
 
-  /* typography */
-  --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --c-amber: oklch(0.68 0.17 85);
+  --c-amber-bg: oklch(0.96 0.08 85);
+  --c-cyan: oklch(0.58 0.14 195);
+  --c-cyan-bg: oklch(0.96 0.06 195);
+  --c-coral: oklch(0.58 0.20 25);
+  --c-coral-bg: oklch(0.96 0.05 25);
 
-  /* radii */
-  --r-sm: 4px;
-  --r-md: 6px;
-  --r-lg: 10px;
+  --c-accent: oklch(0.52 0.26 305);
+  --c-accent-2: oklch(0.66 0.22 130);
+  --c-accent-bg: oklch(0.96 0.07 305);
+  --c-accent-line: oklch(0.80 0.14 305);
 
-  /* shadow */
   --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
   --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
   --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
-}
-
-[data-theme="dark"] {
-  --c-bg: oklch(0.17 0.012 260);
-  --c-surface: oklch(0.20 0.014 260);
-  --c-panel: oklch(0.235 0.014 260);
-  --c-raised: oklch(0.265 0.014 260);
-  --c-line: oklch(0.30 0.014 260);
-  --c-line-strong: oklch(0.40 0.014 260);
-
-  --c-ink-1: oklch(0.96 0.006 260);
-  --c-ink-2: oklch(0.82 0.010 260);
-  --c-ink-3: oklch(0.66 0.012 260);
-  --c-ink-4: oklch(0.50 0.012 260);
-
-  --c-accent: oklch(0.74 0.14 255);
-  --c-accent-2: oklch(0.66 0.11 255);
-  --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
-  --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
-
-  --c-ok: oklch(0.78 0.13 155);
-  --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
-  --c-warn: oklch(0.82 0.15 80);
-  --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
-  --c-err: oklch(0.74 0.17 25);
-  --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
-  --c-info: oklch(0.78 0.10 230);
-  --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
-
-  --sh-1: 0 1px 0 rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.30);
-  --sh-2: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.50);
-  --sh-3: 0 12px 40px -12px rgba(0, 0, 0, 0.70);
+  --sh-glow-lime: 0 0 0 1px color-mix(in oklab, var(--c-lime) 35%, transparent),
+                  0 0 40px -6px color-mix(in oklab, var(--c-lime) 50%, transparent);
+  --sh-glow-violet: 0 0 0 1px color-mix(in oklab, var(--c-violet) 35%, transparent),
+                    0 0 40px -6px color-mix(in oklab, var(--c-violet) 50%, transparent);
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; }
+html, body { margin: 0; padding: 0; min-height: 100%; }
 body {
   font-family: var(--f-sans);
   color: var(--c-ink-1);
   background: var(--c-bg);
-  font-feature-settings: "cv11", "ss01", "ss03";
   -webkit-font-smoothing: antialiased;
-  font-size: 13px;
-  line-height: 1.4;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
 }
 
+/* ===== Display typography ===== *
+ * Chunky geometric headlines — the deck aesthetic. */
+.f-display { font-family: var(--f-display); letter-spacing: -0.02em; }
+.f-mono { font-family: var(--f-mono); }
+.muted { color: var(--c-ink-3); }
+.hint {
+  font-size: 10.5px;
+  color: var(--c-ink-4);
+  font-family: var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tabular-nums { font-feature-settings: "tnum", "lnum"; }
+
+/* Italic accents — the deck uses italic Inter for English subtitles. */
+.italic-en { font-style: italic; font-family: var(--f-sans); }
+
+/* ===== Animations ===== */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }
 }
+.anim-pulse { animation: pulse 2s ease-in-out infinite; }
 
-.anim-pulse {
-  animation: pulse 2s ease-in-out infinite;
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.06); filter: brightness(1.15); }
+}
+@keyframes orb-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orb-glow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.9; }
 }
 
-/* ===== scrollbars ===== */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes drift-x {
+  0%, 100% { transform: translateX(-2%); }
+  50%      { transform: translateX(2%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== AI Orb ===== *
+ * A multi-layer glowing orb — replaces the simple pulse dot.
+ * Stacked radial gradients + slow rotation + breathing scale.
+ * Use <span class="ai-orb [orb-md|orb-lg|orb-xl]" />.                  */
+.ai-orb {
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 35% 30%, oklch(0.99 0.05 130) 0%, oklch(0.92 0.22 130) 28%, transparent 60%),
+    radial-gradient(circle at 70% 70%, oklch(0.70 0.26 305) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, oklch(0.30 0.10 280) 0%, oklch(0.15 0.020 260) 80%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--c-lime) 50%, transparent),
+    0 0 24px 2px color-mix(in oklab, var(--c-lime) 35%, transparent),
+    0 0 60px 8px color-mix(in oklab, var(--c-violet) 25%, transparent),
+    inset 0 0 12px 0 color-mix(in oklab, oklch(0.99 0 0) 25%, transparent);
+  animation: orb-breathe 3.6s ease-in-out infinite;
+}
+.ai-orb::before, .ai-orb::after {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+.ai-orb::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in oklab, var(--c-lime) 70%, transparent) 60deg,
+    transparent 120deg,
+    color-mix(in oklab, var(--c-violet) 65%, transparent) 240deg,
+    transparent 300deg
+  );
+  filter: blur(14px);
+  opacity: 0.55;
+  animation: orb-rotate 12s linear infinite, orb-glow 4.2s ease-in-out infinite;
+}
+.ai-orb::after {
+  background: radial-gradient(circle at 50% 50%, transparent 35%, color-mix(in oklab, var(--c-lime) 18%, transparent) 50%, transparent 70%);
+  animation: orb-rotate 24s linear infinite reverse;
+  opacity: 0.6;
+}
+.orb-sm { width: 14px; height: 14px; }
+.orb-md { width: 22px; height: 22px; }
+.orb-lg { width: 80px; height: 80px; }
+.orb-xl { width: 140px; height: 140px; }
+.orb-2xl { width: 220px; height: 220px; }
+
+/* ===== Scrollbars ===== */
 *::-webkit-scrollbar { width: 10px; height: 10px; }
 *::-webkit-scrollbar-thumb {
-  background: oklch(0.88 0.008 260);
+  background: oklch(0.35 0.014 260);
   border-radius: 10px;
-  border: 2px solid var(--c-surface);
+  border: 2px solid var(--c-bg);
 }
 *::-webkit-scrollbar-track { background: transparent; }
-
-[data-theme="dark"] *::-webkit-scrollbar-thumb {
-  background: oklch(0.35 0.014 260);
+[data-theme="light"] *::-webkit-scrollbar-thumb {
+  background: oklch(0.88 0.008 260);
   border-color: var(--c-surface);
 }
 
-/* ===== Theme-toggle icon visibility =====
- * Both <Ic.moon> and <Ic.sun> are always rendered in the topbar — pure CSS
- * decides which is visible based on [data-theme] on <html>. The inline script
- * in app/layout.tsx sets data-theme BEFORE paint, so the correct icon is
- * visible on first frame regardless of SSR/client/bfcache state.
- * Default rules (no [data-theme] yet, e.g. between SSR HTML parse and inline
- * script) treat the doc as light: moon visible, sun hidden. */
+/* ===== Theme-toggle icon visibility ===== */
 .theme-icon-light { display: inline-flex; }
 .theme-icon-dark  { display: none; }
 [data-theme="dark"] .theme-icon-light { display: none; }
 [data-theme="dark"] .theme-icon-dark  { display: inline-flex; }
 
 /* ===== Brand mark — "allm²eta" ===== *
- * The squared notation is the load-bearing visual gesture of the brand:
- * meta² = the operating system layer that orchestrates other meta-systems.
- * The accent-colored superscript is the only colored element in the mark.
- * ─────────────────────────────────────────────────────────────────────── */
+ * Image-based with theme-aware blend. */
 .brand-mark {
-  font-family: var(--f-sans);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--c-ink-1);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
   white-space: nowrap;
+  color: var(--c-ink-1);
 }
-.brand-mark sup {
+.brand-mark-img {
+  height: 1em;
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.brand-mark-img-light { display: none; mix-blend-mode: multiply; }
+.brand-mark-img-dark  { display: block; mix-blend-mode: screen; }
+[data-theme="light"] .brand-mark-img-light { display: block; }
+[data-theme="light"] .brand-mark-img-dark  { display: none; }
+
+/* The ² superscript on a text-based brand mark variant */
+.brand-mark-text {
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  color: var(--c-ink-1);
+  display: inline-flex;
+  align-items: baseline;
+}
+.brand-mark-text sup {
   font-size: 0.55em;
   vertical-align: super;
   line-height: 0;
-  color: var(--c-accent);
-  font-weight: 600;
-  margin: 0 0.04em 0 0.01em;
-  letter-spacing: 0;
+  color: var(--c-lime);
+  margin: 0 0.04em;
+  text-shadow: 0 0 18px color-mix(in oklab, var(--c-lime) 60%, transparent);
 }
 
-/* ===== Helpers ===== */
-.mono { font-family: var(--f-mono); }
-.muted { color: var(--c-ink-3); }
-.hint {
-  font-size: 10.5px;
-  color: var(--c-ink-4);
-  font-family: var(--f-mono);
-  letter-spacing: 0.02em;
-}
-.tabular-nums { font-feature-settings: "tnum", "lnum"; }
-
-/* ===== Background — gradient mesh + dot grid layered behind hero ===== */
+/* ===== Backgrounds — depth layers ===== */
 .bg-mesh {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 28%, var(--c-accent-bg), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 18% 78%, color-mix(in oklab, var(--c-accent) 8%, transparent), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 82% 78%, color-mix(in oklab, var(--c-accent-2) 8%, transparent), transparent 70%);
+    radial-gradient(ellipse 60% 45% at 50% 25%, color-mix(in oklab, var(--c-violet) 18%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 14% 80%, color-mix(in oklab, var(--c-lime) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 30% at 85% 70%, color-mix(in oklab, var(--c-violet) 10%, transparent), transparent 70%);
 }
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--c-ink-4) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--c-ink-4) 14%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 30%, transparent 85%);
+  opacity: 0.55;
+}
+
 .bg-dots {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(var(--c-line-strong) 0.8px, transparent 0.8px);
+  background-image: radial-gradient(color-mix(in oklab, var(--c-ink-4) 35%, transparent) 0.8px, transparent 0.8px);
   background-size: 22px 22px;
-  background-position: 0 0;
-  opacity: 0.35;
+  opacity: 0.4;
   mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, black 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, black 30%, transparent 75%);
 }
 
-/* Subtle product card lift on hover */
-.product-card {
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-  position: relative;
-}
-.product-card::before {
-  content: "";
+.bg-noise {
   position: absolute;
-  top: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Subtle scan line over the hero — operating-console feel. */
+.scan-line {
+  position: absolute;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--c-accent);
-  border-top-left-radius: var(--r-lg);
-  border-top-right-radius: var(--r-lg);
-  opacity: 0;
-  transition: opacity 200ms ease;
+  height: 140px;
+  background: linear-gradient(to bottom,
+    transparent,
+    color-mix(in oklab, var(--c-lime) 4%, transparent),
+    transparent
+  );
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
 }
-.product-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--c-line-strong);
+
+/* ===== Card surfaces ===== */
+.panel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
+}
+.panel-raised {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--c-surface) 100%, transparent),
+    color-mix(in oklab, var(--c-surface) 92%, transparent)
+  );
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
   box-shadow: var(--sh-2);
 }
-.product-card:hover::before { opacity: 1; }
-.product-card:focus-visible {
-  outline: 2px solid var(--c-accent);
+.panel-top-lime  { box-shadow: inset 0 2px 0 0 var(--c-lime); }
+.panel-top-violet { box-shadow: inset 0 2px 0 0 var(--c-violet); }
+.panel-top-amber { box-shadow: inset 0 2px 0 0 var(--c-amber); }
+.panel-top-cyan  { box-shadow: inset 0 2px 0 0 var(--c-cyan); }
+.panel-top-coral { box-shadow: inset 0 2px 0 0 var(--c-coral); }
+
+/* Card lift on hover */
+.card-hover {
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 240ms ease,
+              border-color 240ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-line-strong);
+  box-shadow: var(--sh-3);
+}
+.card-hover:focus-visible {
+  outline: 2px solid var(--c-lime);
   outline-offset: 2px;
 }
+
+/* ===== Gradient text — lime → violet ===== */
+.text-gradient {
+  background: linear-gradient(120deg, var(--c-lime), var(--c-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ===== Pill / chip / inline highlight ===== */
+.chip-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--c-lime-line);
+  background: var(--c-lime-bg);
+  color: var(--c-lime);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.chip-violet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--c-violet-line);
+  background: var(--c-violet-bg);
+  color: var(--c-violet);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hl-lime  { color: var(--c-lime); }
+.hl-violet { color: var(--c-violet); }
+.hl-amber { color: var(--c-amber); }
+.hl-cyan  { color: var(--c-cyan); }
+.hl-coral { color: var(--c-coral); }
+
+/* underline-glow used inline in the deck (yellow underline + italic) */
+.hl-mark {
+  background: linear-gradient(180deg, transparent 60%, color-mix(in oklab, var(--c-lime) 30%, transparent) 60%, color-mix(in oklab, var(--c-lime) 30%, transparent) 90%, transparent 90%);
+  padding: 0 2px;
+}
+
+/* ===== CTA buttons ===== */
+.btn-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--c-lime);
+  color: oklch(0.20 0.020 260);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
+  border: 1px solid var(--c-lime);
+  transition: transform 160ms ease, box-shadow 200ms ease, filter 160ms ease;
+  box-shadow: var(--sh-glow-lime);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-lime:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px var(--c-lime),
+              0 0 60px -4px color-mix(in oklab, var(--c-lime) 70%, transparent);
+}
+.btn-violet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--c-violet);
+  color: oklch(0.98 0 0);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 13.5px;
+  border: 1px solid var(--c-violet);
+  transition: transform 160ms ease, filter 160ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-violet:hover { transform: translateY(-1px); filter: brightness(1.10); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--c-ink-1);
+  border: 1px solid var(--c-line-strong);
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 13.5px;
+  transition: background 160ms ease, border-color 160ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  background: var(--c-panel);
+  border-color: var(--c-ink-3);
+}
+
+/* Compact CTA for nav */
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: var(--c-lime);
+  color: oklch(0.20 0.020 260);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 12px;
+  border: 1px solid var(--c-lime);
+  transition: filter 160ms ease, transform 160ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-nav:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+/* ===== Section label — "ACT 0X / OPENING" deck style ===== */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+}
+.section-label::before {
+  content: "";
+  width: 22px;
+  height: 4px;
+  background: var(--c-lime);
+  border-radius: 1px;
+}
+
+/* Heavy title — the chunky deck headline */
+.h-chunky {
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--c-ink-1);
+}
+.h-display-lg { font-size: clamp(48px, 7vw, 88px); }
+.h-display-md { font-size: clamp(34px, 4.5vw, 56px); }
+.h-display-sm { font-size: clamp(26px, 3.2vw, 38px); }
+
+/* Italic English subtitle from the deck */
+.h-italic {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--c-ink-3);
+}
+
+/* Smooth focus rings everywhere */
+:focus-visible { outline: 2px solid var(--c-lime); outline-offset: 2px; border-radius: 4px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ai-orb, .ai-orb::before, .ai-orb::after,
+  .anim-pulse, .scan-line, .marquee-track { animation: none !important; }
+}
+
+/* ============================================================
+ * EDITORIAL OPERATOR — v2 utilities
+ * Magazine rhythm for the new homepage. Coexists with v1 deck
+ * utilities above; product pages keep the deck classes for now.
+ * ============================================================ */
+
+.f-serif { font-family: var(--f-serif); }
+
+/* Editorial italic display — the signature gesture */
+.h-edito {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  color: var(--c-ink-1);
+}
+
+/* Sans display for non-italic headlines */
+.h-sans {
+  font-family: var(--f-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  color: var(--c-ink-1);
+}
+
+/* Tight eyebrow — replaces the loud ACT 0X labels */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+}
+.eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--c-ink-3);
+}
+
+/* Magazine-grade horizontal rule */
+.rule-thin { border-top: 1px solid var(--c-line); }
+.rule-strong { border-top: 1px solid var(--c-ink-4); }
+
+/* Generous editorial container */
+.edito-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 40px;
+}
+@media (max-width: 720px) {
+  .edito-container { padding-inline: 22px; }
+}
+
+/* Subtle warm parchment section — used to break dark monotony */
+.parchment {
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--c-bg) 96%, oklch(0.88 0.04 75) 4%),
+      color-mix(in oklab, var(--c-bg) 100%, transparent)
+    ),
+    var(--c-bg);
+}
+
+/* Hairline panel — softer than the v1 .panel */
+.hairline {
+  background: color-mix(in oklab, var(--c-surface) 80%, transparent);
+  border: 1px solid color-mix(in oklab, var(--c-ink-4) 18%, transparent);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+[data-theme="light"] .hairline {
+  background: color-mix(in oklab, var(--c-surface) 92%, transparent);
+}
+
+/* Glow ring used on product mockups */
+.glow-ring {
+  position: relative;
+}
+.glow-ring::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--c-lime) 50%, transparent),
+    color-mix(in oklab, var(--c-violet) 35%, transparent) 50%,
+    transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Marquee for the partner strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 64px;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+/* Scroll-reveal — used by IntersectionObserver wrapper */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 800ms cubic-bezier(0.16, 0.84, 0.32, 1),
+              transform 900ms cubic-bezier(0.16, 0.84, 0.32, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal[data-delay="1"] { transition-delay: 80ms; }
+.reveal[data-delay="2"] { transition-delay: 160ms; }
+.reveal[data-delay="3"] { transition-delay: 240ms; }
+.reveal[data-delay="4"] { transition-delay: 320ms; }
+
+/* Editorial link — animated underline */
+.link-edito {
+  position: relative;
+  color: var(--c-ink-1);
+  text-decoration: none;
+  font-family: var(--f-sans);
+  font-weight: 500;
+}
+.link-edito::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(0.35);
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-edito:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Editorial CTA — flat, refined, no glow */
+.btn-edito {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--c-lime);
+  color: oklch(0.16 0.020 260);
+  font-family: var(--f-sans);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
+  border: 1px solid var(--c-lime);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 200ms ease;
+}
+.btn-edito:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 12px 30px -10px color-mix(in oklab, var(--c-lime) 50%, transparent); }
+.btn-edito .arr { transition: transform 200ms ease; }
+.btn-edito:hover .arr { transform: translateX(3px); }
+
+.btn-edito-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-ink-1);
+  border: 1px solid color-mix(in oklab, var(--c-ink-2) 35%, transparent);
+  font-family: var(--f-sans);
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.btn-edito-ghost:hover {
+  background: color-mix(in oklab, var(--c-ink-1) 6%, transparent);
+  border-color: var(--c-ink-2);
+}
+
+/* Annotation line — used on the live-ops dashboard mockup */
+.annotation-line {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.annotation-line::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, var(--c-lime), color-mix(in oklab, var(--c-lime) 0%, transparent));
+  height: 1px;
+  width: 100%;
+}
+.annotation-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--c-lime);
+  box-shadow: 0 0 12px var(--c-lime);
+}
+
+/* Soft auroral background — for hero / closing */
+.aurora {
+  position: absolute;
+  inset: -10% -5%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 35% at 20% 30%, color-mix(in oklab, var(--c-violet) 25%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 30% at 80% 70%, color-mix(in oklab, var(--c-lime) 18%, transparent), transparent 75%),
+    radial-gradient(ellipse 30% 25% at 50% 90%, color-mix(in oklab, var(--c-cyan) 14%, transparent), transparent 75%);
+  filter: blur(40px) saturate(1.1);
+  opacity: 0.85;
+  animation: drift-x 24s ease-in-out infinite;
+}
+
+/* Generic terminal-window chrome (used on product mockups) */
+.term-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid color-mix(in oklab, var(--c-ink-4) 18%, transparent);
+  background: color-mix(in oklab, var(--c-bg) 55%, transparent);
+}
+.term-chrome > span:nth-child(-n+3) {
+  width: 10px; height: 10px; border-radius: 999px;
+  background: color-mix(in oklab, var(--c-ink-3) 40%, transparent);
+}
+
+/* Vertical text */
+.v-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 10.5px;
+  color: var(--c-ink-4);
+}
+

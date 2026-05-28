@@ -1,0 +1,1884 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>雅砻江战略研讨 · 总集 + ISV 投屏稿 · 2026-05-23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-bg: oklch(0.99 0.004 255);
+    --c-surface: #ffffff;
+    --c-panel: oklch(0.985 0.004 255);
+    --c-raised: oklch(0.975 0.004 255);
+    --c-line: oklch(0.92 0.006 255);
+    --c-line-strong: oklch(0.86 0.008 255);
+    --c-ink-1: oklch(0.22 0.015 260);
+    --c-ink-2: oklch(0.42 0.012 260);
+    --c-ink-3: oklch(0.58 0.010 260);
+    --c-ink-4: oklch(0.72 0.008 260);
+    --c-accent: oklch(0.56 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: oklch(0.96 0.03 255);
+    --c-accent-line: oklch(0.88 0.06 255);
+    --c-ok: oklch(0.62 0.13 155);
+    --c-ok-bg: oklch(0.96 0.04 155);
+    --c-warn: oklch(0.74 0.15 75);
+    --c-warn-bg: oklch(0.96 0.06 80);
+    --c-err: oklch(0.58 0.19 25);
+    --c-err-bg: oklch(0.96 0.05 25);
+    --c-info: oklch(0.60 0.10 230);
+    --c-info-bg: oklch(0.96 0.03 230);
+    /* ISV 四层 token */
+    --c-isv-algo: oklch(0.55 0.18 295);
+    --c-isv-data: oklch(0.55 0.14 150);
+    --c-isv-sys:  oklch(0.62 0.14 50);
+    --c-isv-inf:  oklch(0.55 0.12 200);
+    --c-isv-algo-bg: oklch(0.96 0.04 295);
+    --c-isv-data-bg: oklch(0.96 0.04 150);
+    --c-isv-sys-bg:  oklch(0.97 0.04 50);
+    --c-isv-inf-bg:  oklch(0.96 0.03 200);
+    --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
+    --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
+  }
+  [data-theme="dark"] {
+    --c-bg: oklch(0.17 0.012 260);
+    --c-surface: oklch(0.20 0.014 260);
+    --c-panel: oklch(0.235 0.014 260);
+    --c-raised: oklch(0.265 0.014 260);
+    --c-line: oklch(0.30 0.014 260);
+    --c-line-strong: oklch(0.40 0.014 260);
+    --c-ink-1: oklch(0.96 0.006 260);
+    --c-ink-2: oklch(0.82 0.010 260);
+    --c-ink-3: oklch(0.66 0.012 260);
+    --c-ink-4: oklch(0.50 0.012 260);
+    --c-accent: oklch(0.74 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
+    --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
+    --c-ok: oklch(0.78 0.13 155);
+    --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
+    --c-warn: oklch(0.82 0.15 80);
+    --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
+    --c-err: oklch(0.74 0.17 25);
+    --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+    --c-info: oklch(0.78 0.10 230);
+    --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
+    --c-isv-algo: oklch(0.76 0.16 295);
+    --c-isv-data: oklch(0.74 0.14 150);
+    --c-isv-sys:  oklch(0.78 0.14 50);
+    --c-isv-inf:  oklch(0.74 0.12 200);
+    --c-isv-algo-bg: color-mix(in oklab, oklch(0.76 0.16 295) 14%, transparent);
+    --c-isv-data-bg: color-mix(in oklab, oklch(0.74 0.14 150) 14%, transparent);
+    --c-isv-sys-bg:  color-mix(in oklab, oklch(0.78 0.14 50)  14%, transparent);
+    --c-isv-inf-bg:  color-mix(in oklab, oklch(0.74 0.12 200) 14%, transparent);
+    --sh-1: 0 1px 0 rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.30);
+    --sh-2: 0 1px 2px rgba(0,0,0,0.35), 0 8px 20px -8px rgba(0,0,0,0.50);
+    --sh-3: 0 12px 40px -12px rgba(0,0,0,0.70);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--f-sans);
+    color: var(--c-ink-1);
+    background: var(--c-bg);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mono { font-family: var(--f-mono); }
+  .hint {
+    font-size: 11px;
+    color: var(--c-ink-4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .brand-mark {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--c-ink-1);
+    white-space: nowrap;
+  }
+  .brand-mark sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    line-height: 0;
+    color: var(--c-accent);
+    font-weight: 600;
+    margin: 0 0.04em 0 0.01em;
+  }
+
+  /* ─── topbar ───────────────────────────────────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 56px;
+    background: color-mix(in oklab, var(--c-surface) 92%, transparent);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--c-line);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+  }
+  .topbar .brand { font-size: 18px; }
+  .topbar .meta {
+    color: var(--c-ink-3);
+    font-size: 12px;
+    border-left: 1px solid var(--c-line);
+    padding-left: 16px;
+  }
+  .topbar nav {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .topbar nav a {
+    font-size: 12.5px;
+    color: var(--c-ink-2);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+    font-weight: 500;
+  }
+  .topbar nav a:hover {
+    background: var(--c-accent-bg);
+    border-color: var(--c-accent-line);
+    color: var(--c-ink-1);
+  }
+  .theme-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    color: var(--c-ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .theme-btn:hover { background: var(--c-accent-bg); border-color: var(--c-accent-line); }
+  .theme-icon-light { display: inline-flex; }
+  .theme-icon-dark { display: none; }
+  [data-theme="dark"] .theme-icon-light { display: none; }
+  [data-theme="dark"] .theme-icon-dark { display: inline-flex; }
+
+  /* ─── section ──────────────────────────────────────────────────────── */
+  section.figure {
+    min-height: calc(100vh - 56px);
+    padding: 56px 48px 72px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--c-line);
+  }
+  section.figure header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  section.figure header .tag {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-accent);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    padding: 4px 8px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+  }
+  section.figure header h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--c-ink-1);
+  }
+  section.figure header .subtitle {
+    margin-left: auto;
+    color: var(--c-ink-3);
+    font-size: 13px;
+  }
+
+  /* ─── shared component ──────────────────────────────────────────── */
+  .component {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 8px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 5px;
+    font-size: 11.5px;
+    color: var(--c-ink-1);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .component .ic {
+    flex: none;
+    width: 14px; height: 14px;
+    color: var(--region-color, var(--c-accent));
+  }
+  .component .label { flex: 1; min-width: 0; }
+  .component-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--c-ink-3);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  /* ─── footer ───────────────────────────────────────────────────────── */
+  footer.bottom {
+    padding: 32px 48px;
+    color: var(--c-ink-4);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--f-mono);
+  }
+
+  /* ═════ Figure 1: 总集图谱 (hub + ISV layers + stakeholders) ═════ */
+  .hub-frame {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 12px;
+    padding: 28px 26px;
+    box-shadow: var(--sh-2);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  /* Row 1: 4 ISV layer cards (algo, data, sys, infra) */
+  .isv-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .isv-layer {
+    border: 2px solid var(--layer-color, var(--c-line));
+    border-radius: 10px;
+    background: color-mix(in oklab, var(--layer-color) 4%, var(--c-surface));
+    padding: 14px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+  }
+  [data-theme="dark"] .isv-layer {
+    background: color-mix(in oklab, var(--layer-color) 12%, var(--c-surface));
+  }
+  .isv-layer .layer-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid color-mix(in oklab, var(--layer-color) 30%, var(--c-line));
+  }
+  .isv-layer .layer-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--layer-color);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .isv-layer h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .isv-layer .layer-role {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    font-family: var(--f-mono);
+    margin-left: auto;
+  }
+  .isv-layer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .isv-layer li {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    padding: 4px 8px;
+    background: var(--c-surface);
+    border: 1px solid color-mix(in oklab, var(--layer-color) 18%, var(--c-line));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.35;
+  }
+  .isv-layer li .ic { width: 13px; height: 13px; color: var(--layer-color); flex: none; }
+  .isv-layer li strong { color: var(--c-ink-1); font-weight: 600; }
+  .isv-layer.algo  { --layer-color: var(--c-isv-algo); }
+  .isv-layer.data  { --layer-color: var(--c-isv-data); }
+  .isv-layer.sys   { --layer-color: var(--c-isv-sys); }
+  .isv-layer.infra { --layer-color: var(--c-isv-inf); }
+
+  /* Down arrows pointing to OS */
+  .arrows-down {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: -12px 0 -8px;
+  }
+  .arrows-down .ad {
+    text-align: center;
+    color: var(--c-accent);
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .arrows-down .ad-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--c-ink-4);
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Row 2: allmeta OS center */
+  .os-center {
+    background: var(--c-accent-bg);
+    border: 2px solid var(--c-accent);
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: var(--sh-2);
+  }
+  .os-center .os-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--c-accent-line);
+    margin-bottom: 14px;
+  }
+  .os-center .os-badge {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 8px;
+    background: var(--c-accent);
+    color: white;
+    border-radius: 4px;
+  }
+  [data-theme="dark"] .os-center .os-badge { color: var(--c-bg); }
+  .os-center h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .os-center .os-tail {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--c-accent);
+    font-style: italic;
+    font-family: var(--f-mono);
+  }
+  .os-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .os-pillar {
+    background: var(--c-surface);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .os-pillar h5 {
+    margin: 0 0 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--c-accent);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .os-pillar h5 .ic { width: 14px; height: 14px; color: var(--c-accent); }
+  .os-pillar .os-pillar-sub {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    margin-bottom: 6px;
+  }
+  .os-pillar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .os-pillar li {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .os-pillar li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+
+  /* Row 3: stakeholders (合约对手 / 战略协同 / 监管) */
+  .stakeholder-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 12px;
+  }
+  .stakeholder {
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-left: 4px solid var(--st-color, var(--c-accent));
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .stakeholder .st-role {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--st-color);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .stakeholder .st-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .stakeholder .st-desc {
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    line-height: 1.5;
+  }
+  .stakeholder.st-client { --st-color: var(--c-err); }
+  .stakeholder.st-partner { --st-color: var(--c-accent); }
+  .stakeholder.st-regulator { --st-color: var(--c-warn); }
+
+  /* Key claim banner */
+  .key-claim {
+    margin-top: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(90deg, var(--c-accent-bg) 0%, var(--c-panel) 100%);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .key-claim .kc-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    color: white;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  [data-theme="dark"] .key-claim .kc-icon { color: var(--c-bg); }
+  .key-claim .kc-body {
+    flex: 1;
+    font-size: 13.5px;
+    color: var(--c-ink-1);
+    line-height: 1.55;
+  }
+  .key-claim .kc-body strong { color: var(--c-accent); font-weight: 700; }
+  .key-claim .kc-body em {
+    font-style: normal;
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    color: var(--c-ink-3);
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 1280px) {
+    .isv-row, .arrows-down { grid-template-columns: repeat(2, 1fr); }
+    .os-pillars { grid-template-columns: 1fr; }
+    .stakeholder-row { grid-template-columns: 1fr; }
+  }
+
+  /* ═════ Figure 2: ISV 三维切分矩阵 ═════ */
+  .isv-matrix-wrap {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .isv-matrix {
+    display: grid;
+    grid-template-columns: 200px 110px 1.2fr 1.1fr 1fr 110px;
+    background: var(--c-surface);
+    width: 100%;
+  }
+  .isv-matrix .mcell {
+    padding: 12px 14px;
+    border-right: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--c-ink-2);
+  }
+  .isv-matrix .mcell:nth-child(6n) { border-right: none; }
+  .isv-matrix .mhead {
+    background: var(--c-panel);
+    font-weight: 700;
+    color: var(--c-ink-1);
+    font-size: 11.5px;
+    padding: 10px 14px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .isv-matrix .isv-name {
+    font-weight: 700;
+    color: var(--c-ink-1);
+    font-size: 13px;
+    background: var(--c-panel);
+  }
+  .isv-matrix .isv-name .isv-sub {
+    display: block;
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-weight: 500;
+    font-family: var(--f-mono);
+    margin-top: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .isv-matrix .layer-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: color-mix(in oklab, var(--layer-color) 12%, var(--c-surface));
+    color: var(--layer-color);
+    border: 1px solid color-mix(in oklab, var(--layer-color) 40%, var(--c-line));
+    white-space: nowrap;
+  }
+  .isv-matrix .layer-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--layer-color);
+  }
+  .isv-matrix .layer-tag.algo  { --layer-color: var(--c-isv-algo); }
+  .isv-matrix .layer-tag.data  { --layer-color: var(--c-isv-data); }
+  .isv-matrix .layer-tag.sys   { --layer-color: var(--c-isv-sys); }
+  .isv-matrix .layer-tag.infra { --layer-color: var(--c-isv-inf); }
+  .isv-matrix .mcell .iface {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--c-accent);
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin: 1px 3px 1px 0;
+    letter-spacing: 0.01em;
+  }
+  .isv-matrix .mcell strong { color: var(--c-ink-1); font-weight: 600; }
+  .isv-matrix .mcell .note {
+    display: block;
+    font-size: 10.5px;
+    color: var(--c-ink-4);
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .isv-matrix .risk-tag {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .isv-matrix .risk-tag.r-allmeta { background: var(--c-err-bg); color: var(--c-err); border: 1px solid color-mix(in oklab, var(--c-err) 30%, var(--c-line)); }
+  .isv-matrix .risk-tag.r-shared  { background: var(--c-warn-bg); color: var(--c-warn); border: 1px solid color-mix(in oklab, var(--c-warn) 30%, var(--c-line)); }
+  .isv-matrix .risk-tag.r-isv     { background: var(--c-ok-bg); color: var(--c-ok); border: 1px solid color-mix(in oklab, var(--c-ok) 30%, var(--c-line)); }
+
+  .matrix-footnote {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-left: 4px solid var(--c-accent);
+    border-radius: 8px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .matrix-footnote .fn-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    font-weight: 700;
+    flex: none;
+    padding: 3px 8px;
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+    background: var(--c-accent-bg);
+  }
+  .matrix-footnote .fn-body {
+    flex: 1;
+    font-size: 13px;
+    color: var(--c-ink-2);
+    line-height: 1.55;
+  }
+  .matrix-footnote .fn-body strong { color: var(--c-ink-1); font-weight: 700; }
+
+  @media (max-width: 1400px) {
+    .isv-matrix { grid-template-columns: 170px 95px 1.2fr 1.1fr 1fr 100px; }
+    .isv-matrix .mcell { font-size: 11.5px; padding: 10px 12px; }
+  }
+  @media (max-width: 1100px) {
+    .isv-matrix { grid-template-columns: 1fr; }
+    .isv-matrix .mcell { border-right: none; }
+    .isv-matrix .mhead { display: none; }
+  }
+
+  /* ═════ Figure 3: 总集 9 动作 ═════ */
+  .phases-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .phase-block {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-left: 4px solid var(--ph-color, var(--c-accent));
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .phase-block .ph-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid color-mix(in oklab, var(--ph-color) 25%, var(--c-line));
+  }
+  .phase-block .ph-num {
+    font-family: var(--f-mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ph-color);
+    letter-spacing: -0.02em;
+  }
+  .phase-block h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .phase-block .ph-owner {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--ph-color);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    background: color-mix(in oklab, var(--ph-color) 8%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--ph-color) 30%, var(--c-line));
+    border-radius: 4px;
+  }
+  .phase-block .ph-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .action-card {
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .action-card .ac-num {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ph-color);
+    letter-spacing: 0.04em;
+  }
+  .action-card h4 {
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .action-card .ac-body {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    line-height: 1.5;
+  }
+  .action-card .ac-body strong { color: var(--c-ink-1); font-weight: 600; }
+  .action-card .ac-tag {
+    margin-top: auto;
+    align-self: flex-start;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--c-ink-3);
+    padding: 2px 7px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+  .phase-block.pre  { --ph-color: var(--c-warn); }
+  .phase-block.land { --ph-color: var(--c-accent); }
+  .phase-block.post { --ph-color: var(--c-ok); }
+
+  @media (max-width: 1100px) {
+    .phase-block .ph-actions { grid-template-columns: 1fr; }
+  }
+
+  /* ═════ Figure 4: ISV 钩子 · 两条时间线 ═════ */
+  .dual-timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .tl-col {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-top: 3px solid var(--tl-color, var(--c-accent));
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .tl-col .tl-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid color-mix(in oklab, var(--tl-color) 25%, var(--c-line));
+    margin-bottom: 14px;
+  }
+  .tl-col .tl-badge {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tl-color);
+    font-weight: 700;
+    padding: 3px 8px;
+    background: color-mix(in oklab, var(--tl-color) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--tl-color) 35%, var(--c-line));
+    border-radius: 4px;
+  }
+  .tl-col h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .tl-col .tl-tail {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    font-family: var(--f-mono);
+  }
+  .tl-steps {
+    position: relative;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .tl-steps::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: color-mix(in oklab, var(--tl-color) 50%, var(--c-line));
+    border-radius: 1px;
+  }
+  .tl-step {
+    position: relative;
+  }
+  .tl-step::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--c-surface);
+    border: 3px solid var(--tl-color);
+    box-shadow: 0 0 0 3px var(--c-bg);
+  }
+  .tl-step .tl-when {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--tl-color);
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .tl-step h4 {
+    margin: 0 0 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .tl-step .tl-isv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 6px 0;
+  }
+  .tl-step .tl-isv .isv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: color-mix(in oklab, var(--chip-color) 10%, var(--c-surface));
+    color: var(--chip-color);
+    border: 1px solid color-mix(in oklab, var(--chip-color) 35%, var(--c-line));
+  }
+  .tl-step .tl-isv .isv-chip::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--chip-color);
+  }
+  .tl-step .tl-isv .isv-chip.algo  { --chip-color: var(--c-isv-algo); }
+  .tl-step .tl-isv .isv-chip.data  { --chip-color: var(--c-isv-data); }
+  .tl-step .tl-isv .isv-chip.sys   { --chip-color: var(--c-isv-sys); }
+  .tl-step .tl-isv .isv-chip.infra { --chip-color: var(--c-isv-inf); }
+  .tl-step .tl-isv .isv-chip.self  { --chip-color: var(--c-accent); }
+  .tl-step .tl-desc {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    line-height: 1.5;
+  }
+  .tl-step .tl-desc strong { color: var(--c-ink-1); font-weight: 600; }
+  .tl-col.proj { --tl-color: var(--c-accent); }
+  .tl-col.run  { --tl-color: var(--c-isv-data); }
+
+  .dual-claim {
+    margin-top: 14px;
+    padding: 14px 20px;
+    background: var(--c-panel);
+    border: 1px dashed var(--c-accent-line);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--c-ink-2);
+  }
+  .dual-claim strong { color: var(--c-accent); font-weight: 700; }
+  .dual-claim em { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  @media (max-width: 1100px) {
+    .dual-timeline { grid-template-columns: 1fr; }
+  }
+
+  /* ═════ Figure 5: 5/22 → 6/26 ISV 动作清单 (gantt) ═════ */
+  .gantt-wrap {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .gantt {
+    display: grid;
+    grid-template-columns: 200px repeat(5, 1fr);
+    background: var(--c-surface);
+  }
+  .gantt .gcell {
+    padding: 11px 13px;
+    border-right: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--c-ink-2);
+    min-height: 60px;
+  }
+  .gantt .gcell:nth-child(6n) { border-right: none; }
+  .gantt .ghead {
+    background: var(--c-panel);
+    font-weight: 700;
+    color: var(--c-ink-1);
+    font-size: 11px;
+    padding: 10px 13px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    min-height: 0;
+  }
+  .gantt .ghead .week-num {
+    color: var(--c-accent);
+    font-size: 14px;
+    margin-right: 6px;
+    font-weight: 700;
+  }
+  .gantt .ghead .week-date {
+    display: block;
+    font-size: 10px;
+    color: var(--c-ink-3);
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+  .gantt .ghead.demo {
+    background: var(--c-ok-bg);
+    color: var(--c-ok);
+    border-left: 3px solid var(--c-ok);
+  }
+  .gantt .ghead.demo .week-num { color: var(--c-ok); }
+  .gantt .ghead.now {
+    background: var(--c-warn-bg);
+    border-left: 3px solid var(--c-warn);
+  }
+  .gantt .ghead.now .week-num { color: var(--c-warn); }
+  .gantt .isv-cell {
+    background: var(--c-panel);
+    font-weight: 700;
+    color: var(--c-ink-1);
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+  }
+  .gantt .isv-cell .isv-layer-tag {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    align-self: flex-start;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: color-mix(in oklab, var(--row-color) 12%, var(--c-surface));
+    color: var(--row-color);
+    border: 1px solid color-mix(in oklab, var(--row-color) 40%, var(--c-line));
+  }
+  .gantt .isv-cell.algo  { --row-color: var(--c-isv-algo); }
+  .gantt .isv-cell.data  { --row-color: var(--c-isv-data); }
+  .gantt .isv-cell.sys   { --row-color: var(--c-isv-sys); }
+  .gantt .isv-cell.infra { --row-color: var(--c-isv-inf); }
+  .gantt .action {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-left: 3px solid var(--act-color, var(--c-accent));
+    border-radius: 5px;
+    padding: 6px 9px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: var(--c-ink-1);
+    line-height: 1.4;
+  }
+  .gantt .action:last-child { margin-bottom: 0; }
+  .gantt .action .owner {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--act-color);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+  }
+  .gantt .action.kenny { --act-color: var(--c-err); }
+  .gantt .action.ds    { --act-color: var(--c-warn); }
+  .gantt .action.app   { --act-color: var(--c-accent); }
+  .gantt .action.scene { --act-color: var(--c-isv-data); }
+  .gantt .action.pod   { --act-color: var(--c-isv-algo); }
+  .gantt .action.critical {
+    background: var(--c-warn-bg);
+    border-color: var(--c-warn);
+    border-left-color: var(--c-warn);
+    color: var(--c-warn);
+    font-weight: 700;
+  }
+  .gantt .action.critical .owner { color: var(--c-warn); }
+  .gantt .action.demo {
+    background: var(--c-ok-bg);
+    border-color: var(--c-ok);
+    border-left-color: var(--c-ok);
+    color: var(--c-ok);
+    font-weight: 700;
+  }
+  .gantt .action.demo .owner { color: var(--c-ok); }
+
+  .gantt-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 12px 18px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    align-items: center;
+  }
+  .gantt-legend .leg-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .gantt-legend .leg-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--c-ink-2);
+  }
+  .gantt-legend .leg-item .leg-dot {
+    width: 11px; height: 11px;
+    border-radius: 3px;
+    border: 1px solid;
+  }
+  .gantt-legend .leg-item.kenny .leg-dot { background: var(--c-err-bg); border-color: var(--c-err); }
+  .gantt-legend .leg-item.ds .leg-dot    { background: var(--c-warn-bg); border-color: var(--c-warn); }
+  .gantt-legend .leg-item.app .leg-dot   { background: var(--c-accent-bg); border-color: var(--c-accent); }
+  .gantt-legend .leg-item.scene .leg-dot { background: color-mix(in oklab, var(--c-isv-data) 12%, var(--c-surface)); border-color: var(--c-isv-data); }
+  .gantt-legend .leg-item.pod .leg-dot   { background: color-mix(in oklab, var(--c-isv-algo) 12%, var(--c-surface)); border-color: var(--c-isv-algo); }
+
+  @media (max-width: 1400px) {
+    .gantt { grid-template-columns: 170px repeat(5, 1fr); }
+    .gantt .gcell { font-size: 11px; padding: 9px 11px; }
+    .gantt .action { font-size: 10.5px; padding: 5px 8px; }
+  }
+  @media (max-width: 1100px) {
+    .gantt { grid-template-columns: 1fr; }
+    .gantt .gcell { border-right: none; }
+    .gantt .ghead { border-left: none !important; }
+  }
+
+  /* ─── print ────────────────────────────────────────────────────────── */
+  @media print {
+    .topbar { display: none; }
+    section.figure { page-break-after: always; min-height: auto; border-bottom: none; }
+    body { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-cloud-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><path d="M8 19v2"/><path d="M12 19v2"/><path d="M16 19v2"/></symbol>
+    <symbol id="ic-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+    <symbol id="ic-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M12.59 19.41A2 2 0 1 0 14 16H2"/><path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/></symbol>
+    <symbol id="ic-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></symbol>
+    <symbol id="ic-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><line x1="17" y1="18" x2="18" y2="18"/><line x1="12" y1="18" x2="13" y2="18"/><line x1="7" y1="18" x2="8" y2="18"/></symbol>
+    <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
+    <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01M9 18h.01M15 18h.01"/></symbol>
+    <symbol id="ic-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></symbol>
+    <symbol id="ic-graph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="11" y2="16.5"/><line x1="16.5" y1="7.5" x2="13" y2="16.5"/><line x1="8" y1="6" x2="16" y2="6"/></symbol>
+    <symbol id="ic-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+    <symbol id="ic-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h4a2 2 0 0 1 2 2v4"/></symbol>
+    <symbol id="ic-api" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
+    <symbol id="ic-event" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="ic-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></symbol>
+    <symbol id="ic-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="ic-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <span class="brand-mark brand">allm<sup>2</sup>eta</span>
+  <span class="meta">雅砻江战略研讨 · 总集 + ISV 投屏稿 · 2026-05-23</span>
+  <nav>
+    <a href="#fig1">① 总集图谱</a>
+    <a href="#fig2">② ISV 切分矩阵</a>
+    <a href="#fig3">③ 总集 9 动作</a>
+    <a href="#fig4">④ ISV 钩子 · 两条时间线</a>
+    <a href="#fig5">⑤ 5/22 → 6/26 动作清单</a>
+  </nav>
+  <button class="theme-btn" id="themeToggle" aria-label="toggle theme">
+    <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<!-- ═══ Figure 1: 总集图谱 ════════════════════════════════════════════ -->
+<section class="figure" id="fig1">
+  <header>
+    <span class="tag">六 · 1</span>
+    <h1>总集图谱 · allmeta 编排 4 类 ISV</h1>
+    <span class="subtitle">编排权在我们 · 不在模型 / 数据 / 系统厂商</span>
+  </header>
+
+  <div class="hub-frame">
+
+    <!-- Row 1: 4 ISV layer cards -->
+    <div class="isv-row">
+      <div class="isv-layer algo">
+        <div class="layer-head">
+          <span class="layer-num">L1</span>
+          <h4>算法 / 模型层</h4>
+          <span class="layer-role">输出预测给 Agent</span>
+        </div>
+        <ul>
+          <li><svg class="ic"><use href="#ic-cloud-rain"/></svg><strong>华为盘古气象大模型</strong></li>
+          <li><svg class="ic"><use href="#ic-droplet"/></svg>水文 / 来水专家模型</li>
+          <li><svg class="ic"><use href="#ic-wind"/></svg>风光功率预测算法</li>
+          <li><svg class="ic"><use href="#ic-target"/></svg>多目标优化求解器</li>
+        </ul>
+      </div>
+
+      <div class="isv-layer data">
+        <div class="layer-head">
+          <span class="layer-num">L2</span>
+          <h4>数据源层</h4>
+          <span class="layer-role">提供时序 / 事件流</span>
+        </div>
+        <ul>
+          <li><svg class="ic"><use href="#ic-factory"/></svg><strong>SCADA</strong> (实时运行)</li>
+          <li><svg class="ic"><use href="#ic-cloud"/></svg>气象局 (实测 + 数值预报)</li>
+          <li><svg class="ic"><use href="#ic-zap"/></svg>上级电网 (数据侧)</li>
+          <li><svg class="ic"><use href="#ic-droplet"/></svg>流域水情 / 水文站</li>
+        </ul>
+      </div>
+
+      <div class="isv-layer sys">
+        <div class="layer-head">
+          <span class="layer-num">L3</span>
+          <h4>业务系统层</h4>
+          <span class="layer-role">承接动作执行</span>
+        </div>
+        <ul>
+          <li><svg class="ic"><use href="#ic-building"/></svg><strong>华为 Meta ERP / ECore</strong></li>
+          <li><svg class="ic"><use href="#ic-zap"/></svg>上级电网调度执行</li>
+          <li><svg class="ic"><use href="#ic-wrench"/></svg>检修 / 备品备件系统</li>
+          <li><svg class="ic"><use href="#ic-shield"/></svg>安全监控 / 报警系统</li>
+        </ul>
+      </div>
+
+      <div class="isv-layer infra">
+        <div class="layer-head">
+          <span class="layer-num">L4</span>
+          <h4>基础设施层</h4>
+          <span class="layer-role">底座 · 算力 · 存储</span>
+        </div>
+        <ul>
+          <li><svg class="ic"><use href="#ic-graph"/></svg><strong>Neo4j Graph Engine</strong></li>
+          <li><svg class="ic"><use href="#ic-server"/></svg>中联金灯塔 (股东背景)</li>
+          <li><svg class="ic"><use href="#ic-cloud"/></svg>华为云 / 私有部署机柜</li>
+          <li><svg class="ic"><use href="#ic-cpu"/></svg>私有大模型底座</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Arrows pointing in -->
+    <div class="arrows-down">
+      <div class="ad">↓<span class="ad-label">Tool / API</span></div>
+      <div class="ad">↓<span class="ad-label">Data Connector</span></div>
+      <div class="ad">↓<span class="ad-label">Event / Action</span></div>
+      <div class="ad">↓<span class="ad-label">Runtime / Storage</span></div>
+    </div>
+
+    <!-- Row 2: allmeta OS center -->
+    <div class="os-center">
+      <div class="os-head">
+        <span class="os-badge">allmeta OS · 总集</span>
+        <h3>allm<sup style="font-size:0.55em;vertical-align:super;line-height:0;color:var(--c-accent);font-weight:600;">2</sup>eta 持有的 3 件事 · 即"编排权"</h3>
+        <span class="os-tail">凡 ISV 接入必走 Ontology</span>
+      </div>
+      <div class="os-pillars">
+        <div class="os-pillar">
+          <h5><svg class="ic"><use href="#ic-graph"/></svg>Ontology + 语义底座</h5>
+          <div class="os-pillar-sub">Foundation + 雅砻江运行域 + 事件类型</div>
+          <ul>
+            <li>ISV 数据形态 → Schema 映射</li>
+            <li>事件类型 / 规则 / 行动定义</li>
+            <li>跨域语义复用 (RAAS / ECAS / YLJ)</li>
+          </ul>
+        </div>
+        <div class="os-pillar">
+          <h5><svg class="ic"><use href="#ic-workflow"/></svg>Agentic Operator</h5>
+          <div class="os-pillar-sub">Event Manager · Orchestrator · Worker</div>
+          <ul>
+            <li>事件驱动 · 可重放 · 可审计</li>
+            <li>ISV 算法 / 数据通过 Tool Use 调用</li>
+            <li>Human-in-loop · Reflection · Approval</li>
+          </ul>
+        </div>
+        <div class="os-pillar">
+          <h5><svg class="ic"><use href="#ic-network"/></svg>Generation Layer</h5>
+          <div class="os-pillar-sub">PromptGen · AgentGen</div>
+          <ul>
+            <li>Ontology → Prompt / Agent 蓝图自动生成</li>
+            <li>ISV 能力包装成 Worker 配方</li>
+            <li>沉淀进 Worker Library (跨客户复用)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: stakeholders -->
+    <div class="stakeholder-row">
+      <div class="stakeholder st-client">
+        <div class="st-role">合约对手</div>
+        <div class="st-name">雅砻江流域水电开发</div>
+        <div class="st-desc">主合约 + <strong style="color:var(--c-err);">效益对赌</strong>由 allmeta 持总盘。我们对客户负全责，向下分摊给 ISV。</div>
+      </div>
+      <div class="stakeholder st-partner">
+        <div class="st-role">战略协同</div>
+        <div class="st-name">华为</div>
+        <div class="st-desc">既是 ISV (盘古 / Meta ERP)，也是渠道 / 政治账户。<strong style="color:var(--c-accent);">协同但不让位编排权</strong>。</div>
+      </div>
+      <div class="stakeholder st-regulator">
+        <div class="st-role">监管 / 上级</div>
+        <div class="st-name">国调 / 网调 / 省调 · 安监</div>
+        <div class="st-desc">合规边界制定者。Ontology + 审计链是<strong style="color:var(--c-warn);">合规交卷工具</strong>。</div>
+      </div>
+    </div>
+
+    <!-- Key claim -->
+    <div class="key-claim">
+      <span class="kc-icon">!</span>
+      <div class="kc-body">
+        <strong>"总集"不是商务称谓，是架构事实。</strong>
+        allmeta 持有 Ontology + Event Manager + AgentGen 这三件事 —— 这是 ISV 拿不走、客户也复制不出来的编排权。模型厂、数据厂、ERP 厂只是被编排的能力供给方。
+        <em>反向证明：把这三件事让出去，剩下的就是一个被华为白嫖的咨询团队。</em>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ Figure 2: ISV 三维切分矩阵 ════════════════════════════════════ -->
+<section class="figure" id="fig2">
+  <header>
+    <span class="tag">六 · 2</span>
+    <h1>ISV 切分矩阵 · 接入合约 + 商业模式 + 对赌</h1>
+    <span class="subtitle">7 家 ISV · 5 个维度 · 商业条款一律「待商定」</span>
+  </header>
+
+  <div class="isv-matrix-wrap">
+    <div class="isv-matrix">
+      <!-- header row -->
+      <div class="mcell mhead">ISV</div>
+      <div class="mcell mhead">能力层</div>
+      <div class="mcell mhead">接入合约 (技术)</div>
+      <div class="mcell mhead">商业模式</div>
+      <div class="mcell mhead">对赌切分</div>
+      <div class="mcell mhead">风险归属</div>
+
+      <!-- 1. 华为盘古气象 -->
+      <div class="mcell isv-name">华为盘古气象大模型<span class="isv-sub">气象预测 Agent 调用</span></div>
+      <div class="mcell"><span class="layer-tag algo">L1 算法</span></div>
+      <div class="mcell">
+        <span class="iface">Tool API</span><span class="iface">推理 endpoint</span>
+        <span class="note">封装为 Worker 内的 Tool · Agent 通过 Ontology 中的"气象预测"行动调用</span>
+      </div>
+      <div class="mcell"><strong>Token 计费</strong> + 一次性接入费<span class="note">推理调用次数计费 · 待商定单价</span></div>
+      <div class="mcell"><strong>ISV 独立对赌</strong><span class="note">Eval Metric: 短临 / 中期预测精度。盘古不达标 → 调用降级到备选模型</span></div>
+      <div class="mcell"><span class="risk-tag r-isv">ISV</span></div>
+
+      <!-- 2. 华为 Meta ERP / ECore -->
+      <div class="mcell isv-name">华为 Meta ERP / ECore<span class="isv-sub">业务系统接入 · 调度执行下发</span></div>
+      <div class="mcell"><span class="layer-tag sys">L3 业务系统</span></div>
+      <div class="mcell">
+        <span class="iface">Data Connector</span><span class="iface">Event Type</span>
+        <span class="note">主数据 / 审批同步走 Connector · 调度执行下发走 Event (PlanApproved → 执行 Worker)</span>
+      </div>
+      <div class="mcell"><strong>一次性集成费</strong> + 持续运营费<span class="note">华为侧报价 · 与渠道商务并行谈</span></div>
+      <div class="mcell"><strong>ISV 共担</strong><span class="note">ERP 写入失败 / 执行下发延迟 → 算入对赌扣分 · 比例待商定</span></div>
+      <div class="mcell"><span class="risk-tag r-shared">共担</span></div>
+
+      <!-- 3. SCADA -->
+      <div class="mcell isv-name">SCADA 主厂<span class="isv-sub">具体厂名 review 时填入</span></div>
+      <div class="mcell"><span class="layer-tag data">L2 数据源</span></div>
+      <div class="mcell">
+        <span class="iface">OPC-UA</span><span class="iface">Modbus</span><span class="iface">Data Connector</span>
+        <span class="note">实时时序进时序库 · 报警事件走 Event Manager · OT 网络隔离需 SI 配合</span>
+      </div>
+      <div class="mcell"><strong>数据接入费</strong> + 现场实施费<span class="note">现有 SCADA 不动 · 加只读旁路</span></div>
+      <div class="mcell"><strong>allmeta 兜底</strong><span class="note">SCADA 数据质量是输入端事实 · Agent 设备健康度模块独立校验</span></div>
+      <div class="mcell"><span class="risk-tag r-allmeta">allmeta</span></div>
+
+      <!-- 4. 上级电网调度 -->
+      <div class="mcell isv-name">上级电网调度系统<span class="isv-sub">国调 / 网调 / 省调</span></div>
+      <div class="mcell"><span class="layer-tag sys">L3 业务系统</span></div>
+      <div class="mcell">
+        <span class="iface">行业标准协议</span><span class="iface">Event Type</span>
+        <span class="note">考核口径 + 调度令双向接口 · 协议合规由客户 + 监管联审</span>
+      </div>
+      <div class="mcell"><strong>不收费</strong> (合规接入)<span class="note">客户既有接口 · allmeta 复用 · 不构成商业关系</span></div>
+      <div class="mcell"><strong>客户内部账</strong><span class="note">电网考核结果直接进效益账 · 是对赌结算的输入而非分摊对象</span></div>
+      <div class="mcell"><span class="risk-tag r-allmeta">allmeta</span></div>
+
+      <!-- 5. 检修 / 备品备件 -->
+      <div class="mcell isv-name">检修 / 备品备件系统<span class="isv-sub">设备健康度 Agent 输入</span></div>
+      <div class="mcell"><span class="layer-tag sys">L3 业务系统</span></div>
+      <div class="mcell">
+        <span class="iface">Data Connector</span><span class="iface">REST API</span>
+        <span class="note">检修窗口 + 备件库存进 Ontology · 影响可用容量边界</span>
+      </div>
+      <div class="mcell"><strong>一次性集成费</strong><span class="note">客户既有系统 · 集成商承接</span></div>
+      <div class="mcell"><strong>ISV 共担</strong><span class="note">数据不实导致容量误判 → 集成商按 SLA 承担</span></div>
+      <div class="mcell"><span class="risk-tag r-shared">共担</span></div>
+
+      <!-- 6. Neo4j -->
+      <div class="mcell isv-name">Neo4j Graph Engine<span class="isv-sub">Ontology + 事件类型存储</span></div>
+      <div class="mcell"><span class="layer-tag infra">L4 基础设施</span></div>
+      <div class="mcell">
+        <span class="iface">allmeta Ontology API</span>
+        <span class="note">Neo4j 是 allmeta 自有选型 · ISV 角色等同"被采购的引擎"</span>
+      </div>
+      <div class="mcell"><strong>License 费</strong> (按节点)<span class="note">allmeta 转售或客户直采 · 待选择</span></div>
+      <div class="mcell"><strong>allmeta 兜底</strong><span class="note">引擎不稳是 allmeta 选型责任 · 不可向客户解释</span></div>
+      <div class="mcell"><span class="risk-tag r-allmeta">allmeta</span></div>
+
+      <!-- 7. 信创算力/云 -->
+      <div class="mcell isv-name">信创算力 / 云<span class="isv-sub">中联金灯塔 / 华为云 / 私有机柜</span></div>
+      <div class="mcell"><span class="layer-tag infra">L4 基础设施</span></div>
+      <div class="mcell">
+        <span class="iface">IaaS / PaaS</span><span class="iface">私有部署</span>
+        <span class="note">分推理算力 (大模型 token) · 训练算力 (Reflection 校准) · 业务算力 (Agent runtime)</span>
+      </div>
+      <div class="mcell"><strong>算力费</strong> · 月度结算<span class="note">中联金灯塔 = 雅砻江股东背景 · 优先级</span></div>
+      <div class="mcell"><strong>客户内部账</strong><span class="note">底座选型常常先于商务谈 · 不进入对赌池</span></div>
+      <div class="mcell"><span class="risk-tag r-allmeta">allmeta</span></div>
+    </div>
+  </div>
+
+  <div class="matrix-footnote">
+    <span class="fn-tag">对赌算法</span>
+    <div class="fn-body">
+      <strong>allmeta 持总盘对赌，Ontology + Eval Metric 把分摊算法工程化。</strong>
+      每个 ISV 的 Agent 都有独立 Eval Metric (盘古的预测精度、SCADA 的数据完整率、ERP 的写入成功率)，
+      Reflection Agent 每周把实绩归因到各 Agent · 进入对赌结算。"ISV 拖后腿"不再是定性指控，是可量化的扣分项。
+    </div>
+  </div>
+
+  <div class="matrix-footnote" style="border-left-color: var(--c-warn);">
+    <span class="fn-tag" style="color: var(--c-warn); border-color: color-mix(in oklab, var(--c-warn) 40%, var(--c-line)); background: var(--c-warn-bg);">政治备注</span>
+    <div class="fn-body">
+      <strong>底座选型 ≠ 纯技术决策。</strong>
+      L4 信创/云这一行尤其敏感：中联金灯塔是雅砻江股东背景，华为云是战略协同 ISV，私有机柜是合规底线。
+      Pod 在内部对齐时要把"谁先谁后"作为 DS 项 (不是技术项) 处理 —— <strong>Kenny 在场，DS 主导，技术只列约束</strong>。
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Figure 3: 总集 9 动作 ═══════════════════════════════════════════ -->
+<section class="figure" id="fig3">
+  <header>
+    <span class="tag">六 · 3</span>
+    <h1>总集 9 动作 · 入场前 / 落地中 / 交付 + 持续运营</h1>
+    <span class="subtitle">作为总集 allmeta 的标准动作 · 每动作有主负责角色</span>
+  </header>
+
+  <div class="phases-frame">
+
+    <!-- Phase 1: 入场前 -->
+    <div class="phase-block pre">
+      <div class="ph-head">
+        <span class="ph-num">阶段一</span>
+        <h3>入场前 · 把架势摆好</h3>
+        <span class="ph-owner">DS + Kenny 主导</span>
+      </div>
+      <div class="ph-actions">
+        <div class="action-card">
+          <div class="ac-num">动作 1</div>
+          <h4>ISV 圈定 + 卡位识别</h4>
+          <div class="ac-body">画清楚 <strong>4 层 7 家 ISV</strong>，标出谁是必要 / 谁可替代 / 谁是华为政治账户。识错卡位 → 进场就被边缘化。</div>
+          <span class="ac-tag">DS / Kenny</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 2</div>
+          <h4>"Ontology 即合约接口"原则入主合约</h4>
+          <div class="ac-body">主合约里写明：<strong>凡 ISV 接入必走 Ontology / Event Manager / Tool API 三种之一</strong>。这一条决定了 allmeta 是总集还是分包商。</div>
+          <span class="ac-tag">DS / 法务</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 3</div>
+          <h4>对赌总盘 + ISV 风险预分配</h4>
+          <div class="ac-body">把 ISV 切分矩阵（Figure 2）作为主合约附件。<strong>哪些是 ISV 独立对赌、哪些共担、哪些 allmeta 兜底</strong>，签约前都得有共识。</div>
+          <span class="ac-tag">DS / 财务</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2: 落地中 -->
+    <div class="phase-block land">
+      <div class="ph-head">
+        <span class="ph-num">阶段二</span>
+        <h3>落地中 · Pod + ISV 共同作战</h3>
+        <span class="ph-owner">Pod 全员 · App FDE / 场景 FDE 执行</span>
+      </div>
+      <div class="ph-actions">
+        <div class="action-card">
+          <div class="ac-num">动作 4</div>
+          <h4>ISV 技术接入 · 三选一</h4>
+          <div class="ac-body">Event 契约 / Tool API / Schema 注册 —— ISV 必须落进这三种合约形态。<strong>不走标准合约 = 接入被拒</strong>。</div>
+          <span class="ac-tag">App FDE</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 5</div>
+          <h4>业务梳理时 ISV 必到场</h4>
+          <div class="ac-body">三步法第一步「业务梳理」<strong>不到场的 ISV 不签梳理纪要</strong>。后期甩锅"我们不知道"在合约层就堵死。</div>
+          <span class="ac-tag">场景 FDE / 业务本体</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 6</div>
+          <h4>E2E Test Run 必含 ISV 真实路径</h4>
+          <div class="ac-body">6/26 demo 之前的 dry run <strong>不允许 mock 任何 ISV</strong>。Mock 通过的不算通过 —— 真实路径上线后才暴露的问题就是事故。</div>
+          <span class="ac-tag">Pod 全员</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3: 交付 + 持续运营 -->
+    <div class="phase-block post">
+      <div class="ph-head">
+        <span class="ph-num">阶段三</span>
+        <h3>交付 + 持续运营 · 沉淀回平台</h3>
+        <span class="ph-owner">Pod + COE 共建</span>
+      </div>
+      <div class="ph-actions">
+        <div class="action-card">
+          <div class="ac-num">动作 7</div>
+          <h4>ISV Eval Metric 上看板</h4>
+          <div class="ac-body">每个 ISV 的 Eval Metric（盘古预测精度 / SCADA 数据完整率 / ERP 写入成功率）<strong>每周复盘上墙</strong>。看板进客户值班室。</div>
+          <span class="ac-tag">App FDE / 客户</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 8</div>
+          <h4>复盘结果回写对赌结算</h4>
+          <div class="ac-body">Reflection Agent 的归因结论 <strong>直接进入分成结算口径</strong>。ISV 贡献量化、扣分量化 —— "做得好"和"做得差"都有钱跟着走。</div>
+          <span class="ac-tag">DS / 财务 / COE</span>
+        </div>
+        <div class="action-card">
+          <div class="ac-num">动作 9</div>
+          <h4>ISV 接入沉淀进平台</h4>
+          <div class="ac-body">ISV Worker / 接入 Connector / 事件类型 <strong>回流到 Worker Library + Foundation Ontology</strong>。下个客户 (大渡河 / 金沙江) 复用，复用率即护城河。</div>
+          <span class="ac-tag">COE · 双产品组</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ Figure 4: ISV 钩子 · 两条时间线 ══════════════════════════════ -->
+<section class="figure" id="fig4">
+  <header>
+    <span class="tag">六 · 4</span>
+    <h1>ISV 钩子 · 项目期 + 运行期 两条时间线</h1>
+    <span class="subtitle">项目期 ISV 进 Ontology · 运行期 ISV 被 Event 调度</span>
+  </header>
+
+  <div class="dual-timeline">
+
+    <!-- Left: project timeline (三步法) -->
+    <div class="tl-col proj">
+      <div class="tl-head">
+        <span class="tl-badge">项目期 · 一次性建设</span>
+        <h3>三步法 · ISV 在哪一步进场</h3>
+        <span class="tl-tail">业务梳理 → Ontology → AgentGen</span>
+      </div>
+      <div class="tl-steps">
+        <div class="tl-step">
+          <div class="tl-when">步骤 1 · 业务梳理</div>
+          <h4>ISV 数据 / API / SLA 对齐</h4>
+          <div class="tl-isv">
+            <span class="isv-chip data">SCADA 厂</span>
+            <span class="isv-chip sys">ERP / ECore</span>
+            <span class="isv-chip data">气象局</span>
+            <span class="isv-chip sys">检修系统</span>
+          </div>
+          <div class="tl-desc"><strong>不到场的 ISV 不签梳理纪要。</strong>必须把数据形态、API 节奏、SLA 写入梳理输出，作为后续 Ontology 映射的源契约。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">步骤 2 · Ontology 构建</div>
+          <h4>ISV 数据形态映射到 Schema</h4>
+          <div class="tl-isv">
+            <span class="isv-chip infra">Neo4j (落地)</span>
+            <span class="isv-chip data">SCADA 时序 → 实体属性</span>
+            <span class="isv-chip sys">ERP 主数据 → 关系</span>
+            <span class="isv-chip algo">盘古输出 → 事件</span>
+          </div>
+          <div class="tl-desc">ISV 不需要懂 Ontology，但必须接受："你的数据 / 事件在 Ontology 里长成什么样"<strong>由 allmeta 定义</strong>，ISV 配合 Connector / Tool 包装。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">步骤 3 · AgentGen</div>
+          <h4>Worker 调 ISV 的 Tool / API</h4>
+          <div class="tl-isv">
+            <span class="isv-chip algo">盘古 → 气象预测 Worker</span>
+            <span class="isv-chip data">SCADA → 设备健康 Worker</span>
+            <span class="isv-chip sys">ERP → 调度执行 Worker</span>
+          </div>
+          <div class="tl-desc">AgentGen 自动生成的 Worker 蓝图把 ISV 能力包装成 Tool / Tool 注册即 ISV 的<strong>入场凭证</strong>。注册过 = 接入合约成立。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: runtime timeline (72h) -->
+    <div class="tl-col run">
+      <div class="tl-head">
+        <span class="tl-badge">运行期 · 每日循环</span>
+        <h3>72h 调度 · ISV 在哪个窗口被调用</h3>
+        <span class="tl-tail">T-72h → T-0 · 见 prep · 三.2 · 5.2</span>
+      </div>
+      <div class="tl-steps">
+        <div class="tl-step">
+          <div class="tl-when">T-72h · 中期预测窗口</div>
+          <h4>盘古气象 → 气象预测 Agent</h4>
+          <div class="tl-isv">
+            <span class="isv-chip algo">华为盘古气象</span>
+            <span class="isv-chip data">气象局实测订正</span>
+          </div>
+          <div class="tl-desc">通过 Tool 调用盘古推理 endpoint · 输出降雨/风速/辐照预测 · 发 <strong>ForecastUpdated</strong> 事件。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">T-48h · 容量刷新窗口</div>
+          <h4>SCADA + 检修系统 → 设备健康 Agent</h4>
+          <div class="tl-isv">
+            <span class="isv-chip data">SCADA 实时</span>
+            <span class="isv-chip sys">检修系统</span>
+          </div>
+          <div class="tl-desc">机组可用容量 + 检修窗口 · 时序数据走 Data Connector · 发 <strong>CapabilityRefreshed</strong> 事件。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">T-24h · 候选方案窗口</div>
+          <h4>水文模型 + 风光算法 → 调度候选</h4>
+          <div class="tl-isv">
+            <span class="isv-chip algo">水文专家模型</span>
+            <span class="isv-chip algo">风光功率预测</span>
+          </div>
+          <div class="tl-desc">多档发电曲线 + 风光出力曲线 · 含弃水弃风评估 · 发 <strong>PlanCandidatesReady</strong> 事件。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">T-12h · 顶层优化</div>
+          <h4>多目标求解器 → 智慧运行总编排</h4>
+          <div class="tl-isv">
+            <span class="isv-chip algo">多目标优化求解器</span>
+            <span class="isv-chip self">allmeta 自研编排</span>
+          </div>
+          <div class="tl-desc">求解器可外采 (ISV) 或内嵌 · 编排逻辑由 allmeta 持有 · 发 <strong>PlanProposed</strong> 事件。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">T-6h · 调度长 Human-in-loop</div>
+          <h4>应急预案库 + 调度长确认</h4>
+          <div class="tl-isv">
+            <span class="isv-chip self">应急预案 (内部)</span>
+            <span class="isv-chip self">Human-in-loop</span>
+          </div>
+          <div class="tl-desc">关键节点 · 无 ISV 参与 · allmeta + 客户双签 · 发 <strong>PlanApproved</strong> 事件。</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-when">T-0 · 执行 + 闭环</div>
+          <h4>调度令下发上级电网 + 写 ERP</h4>
+          <div class="tl-isv">
+            <span class="isv-chip sys">上级电网调度</span>
+            <span class="isv-chip sys">ERP / ECore</span>
+          </div>
+          <div class="tl-desc">调度令通过行业协议下发 · 效益记账写 ERP · 发 <strong>PlanExecuted</strong> 事件 · 进入对赌结算。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dual-claim">
+    <strong>项目期 ISV 进入 Ontology，运行期 ISV 被 Event 调度。</strong>
+    两个钩子，<em>同一套接入合约</em> —— 这就是为什么"凡接入必走 Ontology"在主合约里是非谈不可的一条。
+  </div>
+</section>
+
+<!-- ═══ Figure 5: 5/22 → 6/26 ISV 动作清单 ═════════════════════════ -->
+<section class="figure" id="fig5">
+  <header>
+    <span class="tag">六 · 5</span>
+    <h1>5/22 → 6/26 · ISV 动作甘特</h1>
+    <span class="subtitle">7 家 ISV × 5 周 · 每动作必有 owner · 6/26 = V0.1 demo · 7 月签约</span>
+  </header>
+
+  <div class="gantt-wrap">
+    <div class="gantt">
+      <!-- header row -->
+      <div class="gcell ghead">ISV / 周</div>
+      <div class="gcell ghead now"><span class="week-num">W1</span>本周 (当前)<span class="week-date">5/23 - 5/29</span></div>
+      <div class="gcell ghead"><span class="week-num">W2</span>对齐<span class="week-date">5/30 - 6/5</span></div>
+      <div class="gcell ghead"><span class="week-num">W3</span>首通<span class="week-date">6/6 - 6/12</span></div>
+      <div class="gcell ghead"><span class="week-num">W4</span>串通<span class="week-date">6/13 - 6/19</span></div>
+      <div class="gcell ghead demo"><span class="week-num">W5</span>Dry run + Demo<span class="week-date">6/20 - 6/26</span></div>
+
+      <!-- Row: 华为盘古 -->
+      <div class="gcell isv-cell algo">
+        华为盘古气象
+        <span class="isv-layer-tag">L1 算法</span>
+      </div>
+      <div class="gcell">
+        <div class="action kenny critical">API 资质 + 试调用申请<span class="owner">Kenny · 华为对接</span></div>
+        <div class="action app">推理 endpoint 抓取格式样本<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">Worker Tool 封装 PoC<span class="owner">App FDE</span></div>
+        <div class="action scene">"短临 vs 中期"调用策略<span class="owner">场景 FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">真实推理 → 流域级订正<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">精度 Eval Metric 上看板<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">T-72h 链路真实走通<span class="owner">Pod 全员</span></div>
+      </div>
+
+      <!-- Row: 华为 Meta ERP / ECore -->
+      <div class="gcell isv-cell sys">
+        华为 Meta ERP / ECore
+        <span class="isv-layer-tag">L3 业务</span>
+      </div>
+      <div class="gcell">
+        <div class="action kenny">华为对接人 + 节奏确认<span class="owner">Kenny · 渠道</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">主数据 Connector PoC<span class="owner">App FDE</span></div>
+        <div class="action scene">调度令 → ERP 事件契约<span class="owner">场景 FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">PlanApproved → ERP 写入<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">效益记账 round-trip 测试<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">T-0 落账演示<span class="owner">Pod 全员</span></div>
+      </div>
+
+      <!-- Row: SCADA -->
+      <div class="gcell isv-cell data">
+        SCADA 主厂
+        <span class="isv-layer-tag">L2 数据</span>
+      </div>
+      <div class="gcell">
+        <div class="action ds critical">SCADA 厂名 + 接口形态确认<span class="owner">DS</span></div>
+        <div class="action app">模拟数据样本拿到<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">OPC-UA / Modbus 旁路 PoC<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">时序入库 + 设备健康 Worker<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">检修联动 + 容量刷新<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">T-48h 真实数据 + 容量演示<span class="owner">Pod 全员</span></div>
+      </div>
+
+      <!-- Row: 上级电网 -->
+      <div class="gcell isv-cell sys">
+        上级电网调度
+        <span class="isv-layer-tag">L3 业务</span>
+      </div>
+      <div class="gcell">
+        <div class="action ds">现有接口资料 + 协议版本<span class="owner">DS · 客户</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action scene">考核口径 → Event 映射<span class="owner">场景 FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">调度令下发 mock 通道<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">真实下发授权 (demo 范围)<span class="owner">App FDE · DS</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">T-0 调度令下发演示<span class="owner">Pod 全员</span></div>
+      </div>
+
+      <!-- Row: 检修 / 备品 -->
+      <div class="gcell isv-cell sys">
+        检修 / 备品备件
+        <span class="isv-layer-tag">L3 业务</span>
+      </div>
+      <div class="gcell">
+        <div class="action ds">检修系统现状 + 集成商对接<span class="owner">DS</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">REST API + 字段映射<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action scene">检修窗口 → 可用容量逻辑<span class="owner">场景 FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">联调 · 容量边界刷新<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">检修对容量影响演示<span class="owner">Pod 全员</span></div>
+      </div>
+
+      <!-- Row: Neo4j -->
+      <div class="gcell isv-cell infra">
+        Neo4j
+        <span class="isv-layer-tag">L4 基础</span>
+      </div>
+      <div class="gcell">
+        <div class="action pod">已就绪 · Ontology Builder 入库<span class="owner">COE 已交付</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action scene">雅砻江运行域 Schema review<span class="owner">业务/本体</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action scene">事件类型注册 + 查询性能<span class="owner">业务/本体</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">真实数据写入压测<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">Ontology 持久化稳定<span class="owner">App FDE</span></div>
+      </div>
+
+      <!-- Row: 信创算力/云 -->
+      <div class="gcell isv-cell infra">
+        信创算力 / 云
+        <span class="isv-layer-tag">L4 基础</span>
+      </div>
+      <div class="gcell">
+        <div class="action kenny critical">中联金灯塔 vs 华为云 vs 私有 · 政治决定<span class="owner">Kenny · DS</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action ds">底座选定 · 部署形态合同<span class="owner">DS · 法务</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">环境就绪 · 镜像 + 网络<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action app">压测 + 稳定性<span class="owner">App FDE</span></div>
+      </div>
+      <div class="gcell">
+        <div class="action demo">Demo 环境从底座上端到端跑通<span class="owner">Pod 全员</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gantt-legend">
+    <span class="leg-label">Owner 图例</span>
+    <span class="leg-item kenny"><span class="leg-dot"></span>Kenny · 公司层 / 总集牵头</span>
+    <span class="leg-item ds"><span class="leg-dot"></span>DS · 客户决策 + 商务</span>
+    <span class="leg-item app"><span class="leg-dot"></span>App FDE · 端到端工程</span>
+    <span class="leg-item scene"><span class="leg-dot"></span>场景 FDE · 现场 + 设计</span>
+    <span class="leg-item pod"><span class="leg-dot"></span>Pod 全员 / COE</span>
+  </div>
+
+  <div class="matrix-footnote" style="margin-top: 18px; border-left-color: var(--c-err);">
+    <span class="fn-tag" style="color: var(--c-err); border-color: color-mix(in oklab, var(--c-err) 40%, var(--c-line)); background: var(--c-err-bg);">本周 (W1) 卡点</span>
+    <div class="fn-body">
+      W1 标红的 3 个动作是<strong>本周不解决就推不到 W2</strong>的：
+      <strong>① 盘古 API 资质 (Kenny)</strong> ·
+      <strong>② SCADA 厂名锁定 (DS)</strong> ·
+      <strong>③ 信创/云底座选型 (Kenny + DS)</strong>。
+      其中第 ③ 项是政治决定不是技术决定 —— 不能让 App FDE / 场景 FDE 推动，必须 Kenny 出面。
+    </div>
+  </div>
+</section>
+
+<footer class="bottom">
+  <span class="brand-mark">allm<sup>2</sup>eta</span>
+  <span>总集不是商务称谓 · 是架构事实 · 对赌总盘由 allmeta 持，Ontology + Eval Metric 把分摊算法工程化</span>
+  <span>2026-05-23 · 总集 + ISV 投屏稿</span>
+</footer>
+
+<script>
+  // theme — set before paint via inline init
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('allmeta-prep:theme'); } catch (e) {}
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('allmeta-prep:theme', next); } catch (e) {}
+  });
+</script>
+</body>
+</html>

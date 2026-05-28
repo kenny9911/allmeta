@@ -1,0 +1,2889 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>雅砻江战略研讨 · 三.1 + 三.2 投屏稿 · 2026-05-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-bg: oklch(0.99 0.004 255);
+    --c-surface: #ffffff;
+    --c-panel: oklch(0.985 0.004 255);
+    --c-raised: oklch(0.975 0.004 255);
+    --c-line: oklch(0.92 0.006 255);
+    --c-line-strong: oklch(0.86 0.008 255);
+    --c-ink-1: oklch(0.22 0.015 260);
+    --c-ink-2: oklch(0.42 0.012 260);
+    --c-ink-3: oklch(0.58 0.010 260);
+    --c-ink-4: oklch(0.72 0.008 260);
+    --c-accent: oklch(0.56 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: oklch(0.96 0.03 255);
+    --c-accent-line: oklch(0.88 0.06 255);
+    --c-ok: oklch(0.62 0.13 155);
+    --c-ok-bg: oklch(0.96 0.04 155);
+    --c-warn: oklch(0.74 0.15 75);
+    --c-warn-bg: oklch(0.96 0.06 80);
+    --c-err: oklch(0.58 0.19 25);
+    --c-err-bg: oklch(0.96 0.05 25);
+    --c-info: oklch(0.60 0.10 230);
+    --c-info-bg: oklch(0.96 0.03 230);
+    --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
+    --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
+  }
+  [data-theme="dark"] {
+    --c-bg: oklch(0.17 0.012 260);
+    --c-surface: oklch(0.20 0.014 260);
+    --c-panel: oklch(0.235 0.014 260);
+    --c-raised: oklch(0.265 0.014 260);
+    --c-line: oklch(0.30 0.014 260);
+    --c-line-strong: oklch(0.40 0.014 260);
+    --c-ink-1: oklch(0.96 0.006 260);
+    --c-ink-2: oklch(0.82 0.010 260);
+    --c-ink-3: oklch(0.66 0.012 260);
+    --c-ink-4: oklch(0.50 0.012 260);
+    --c-accent: oklch(0.74 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
+    --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
+    --c-ok: oklch(0.78 0.13 155);
+    --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
+    --c-warn: oklch(0.82 0.15 80);
+    --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
+    --c-err: oklch(0.74 0.17 25);
+    --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+    --c-info: oklch(0.78 0.10 230);
+    --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
+    --sh-1: 0 1px 0 rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.30);
+    --sh-2: 0 1px 2px rgba(0,0,0,0.35), 0 8px 20px -8px rgba(0,0,0,0.50);
+    --sh-3: 0 12px 40px -12px rgba(0,0,0,0.70);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--f-sans);
+    color: var(--c-ink-1);
+    background: var(--c-bg);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mono { font-family: var(--f-mono); }
+  .hint {
+    font-size: 11px;
+    color: var(--c-ink-4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .brand-mark {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--c-ink-1);
+    white-space: nowrap;
+  }
+  .brand-mark sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    line-height: 0;
+    color: var(--c-accent);
+    font-weight: 600;
+    margin: 0 0.04em 0 0.01em;
+  }
+
+  /* ─── topbar ───────────────────────────────────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 56px;
+    background: color-mix(in oklab, var(--c-surface) 92%, transparent);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--c-line);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+  }
+  .topbar .brand { font-size: 18px; }
+  .topbar .meta {
+    color: var(--c-ink-3);
+    font-size: 12px;
+    border-left: 1px solid var(--c-line);
+    padding-left: 16px;
+  }
+  .topbar nav {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .topbar nav a {
+    font-size: 12.5px;
+    color: var(--c-ink-2);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+    font-weight: 500;
+  }
+  .topbar nav a:hover {
+    background: var(--c-accent-bg);
+    border-color: var(--c-accent-line);
+    color: var(--c-ink-1);
+  }
+  .theme-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    color: var(--c-ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .theme-btn:hover { background: var(--c-accent-bg); border-color: var(--c-accent-line); }
+  .theme-icon-light { display: inline-flex; }
+  .theme-icon-dark { display: none; }
+  [data-theme="dark"] .theme-icon-light { display: none; }
+  [data-theme="dark"] .theme-icon-dark { display: inline-flex; }
+
+  /* ─── section ──────────────────────────────────────────────────────── */
+  section.figure {
+    min-height: calc(100vh - 56px);
+    padding: 56px 48px 72px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--c-line);
+  }
+  section.figure header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  section.figure header .tag {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-accent);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    padding: 4px 8px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+  }
+  section.figure header h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--c-ink-1);
+  }
+  section.figure header .subtitle {
+    margin-left: auto;
+    color: var(--c-ink-3);
+    font-size: 13px;
+  }
+
+  /* ─── figure 1: isomorphism table ──────────────────────────────────── */
+  .iso-table {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr 1fr;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .iso-table .cell {
+    padding: 18px 20px;
+    border-right: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--c-ink-2);
+  }
+  .iso-table .cell:nth-child(4n) { border-right: none; }
+  .iso-table .row-bottom .cell { border-bottom: none; }
+  .iso-table .head {
+    background: var(--c-panel);
+    font-weight: 600;
+    color: var(--c-ink-1);
+    font-size: 13px;
+    padding: 14px 20px;
+  }
+  .iso-table .layer {
+    background: var(--c-panel);
+    font-family: var(--f-mono);
+    font-weight: 600;
+    color: var(--c-ink-2);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  .iso-table .layer .layer-num {
+    color: var(--c-accent);
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 8px;
+    vertical-align: -1px;
+  }
+  .iso-table .layer .layer-sub {
+    display: block;
+    font-family: var(--f-sans);
+    font-size: 11px;
+    color: var(--c-ink-4);
+    font-weight: 400;
+    margin-top: 4px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .iso-table .shared {
+    grid-column: 2 / 5;
+    background: var(--c-accent-bg);
+    border-right: none;
+    color: var(--c-ink-1);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+  }
+  .iso-table .shared::before,
+  .iso-table .shared::after {
+    content: "";
+    flex: 0 0 32px;
+    height: 1px;
+    background: var(--c-accent);
+  }
+  .iso-table .shared .shared-text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    color: var(--c-accent);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .iso-table .shared .shared-text strong {
+    font-family: var(--f-sans);
+    font-size: 14px;
+    letter-spacing: 0;
+    color: var(--c-ink-1);
+  }
+  .iso-table .cell strong {
+    color: var(--c-ink-1);
+    font-weight: 600;
+  }
+  .iso-table .cell .sub-list {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .iso-table .cell .sub-list li {
+    font-size: 12.5px;
+    color: var(--c-ink-3);
+    padding: 2px 0;
+    font-family: var(--f-mono);
+  }
+  .reuse-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  .reuse-100 { background: var(--c-ok-bg); color: var(--c-ok); }
+  .reuse-40 { background: var(--c-info-bg); color: var(--c-info); }
+  .reuse-20 { background: var(--c-warn-bg); color: var(--c-warn); }
+
+  /* boundary quadrants */
+  .boundary {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .boundary .q {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .boundary .q .q-title {
+    font-size: 11.5px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--c-ink-3);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .boundary .q .q-title::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex: none;
+  }
+  .boundary .q.q-full .q-title { color: var(--c-ok); }
+  .boundary .q.q-full .q-title::before { background: var(--c-ok); }
+  .boundary .q.q-recipe .q-title { color: var(--c-info); }
+  .boundary .q.q-recipe .q-title::before { background: var(--c-info); }
+  .boundary .q.q-domain .q-title { color: var(--c-warn); }
+  .boundary .q.q-domain .q-title::before { background: var(--c-warn); }
+  .boundary .q.q-out .q-title { color: var(--c-ink-4); }
+  .boundary .q.q-out .q-title::before { background: var(--c-ink-4); }
+  .boundary .q .q-body {
+    color: var(--c-ink-2);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .boundary .q .q-body strong { color: var(--c-ink-1); font-weight: 600; }
+
+  /* ─── figure 2: 72h timeline ───────────────────────────────────────── */
+  .timeline {
+    display: grid;
+    grid-template-columns: 140px 1fr 280px;
+    gap: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 154px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--c-accent) 0%, var(--c-accent) 50%, var(--c-accent-line) 100%);
+    border-radius: 1px;
+  }
+  .phase {
+    display: contents;
+  }
+  .phase .when {
+    padding: 22px 20px 22px 0;
+    text-align: right;
+    border-bottom: 1px dashed var(--c-line);
+  }
+  .phase .when .t {
+    font-family: var(--f-mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .phase .when .t-label {
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    margin-top: 4px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.04em;
+  }
+  .phase .agents {
+    padding: 22px 28px 22px 40px;
+    border-bottom: 1px dashed var(--c-line);
+    position: relative;
+  }
+  .phase .agents::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 32px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--c-surface);
+    border: 3px solid var(--c-accent);
+    box-shadow: 0 0 0 4px var(--c-bg);
+  }
+  .phase.last .agents::before { background: var(--c-accent); }
+  .phase .agents .agent-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .phase .agents .agent {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c-ink-1);
+  }
+  .phase .agents .agent.orchestrator {
+    background: var(--c-accent-bg);
+    border-color: var(--c-accent-line);
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+  .phase .agents .agent.human {
+    background: var(--c-warn-bg);
+    border-color: color-mix(in oklab, var(--c-warn) 30%, var(--c-line));
+    color: var(--c-warn);
+    font-weight: 600;
+  }
+  .phase .agents .agent-out {
+    font-size: 12.5px;
+    color: var(--c-ink-3);
+    margin-left: 4px;
+    line-height: 1.5;
+  }
+  .phase .agents .agent-out strong { color: var(--c-ink-2); font-weight: 500; }
+  .phase .event {
+    padding: 22px 0 22px 24px;
+    border-bottom: 1px dashed var(--c-line);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .phase .event .event-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 999px;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--c-accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .phase .event .event-chip::before {
+    content: "→";
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+  .phase .event .event-note {
+    font-size: 12px;
+    color: var(--c-ink-4);
+    line-height: 1.5;
+    font-family: var(--f-mono);
+    letter-spacing: 0.01em;
+  }
+  .phase.last .when, .phase.last .agents, .phase.last .event {
+    border-bottom: none;
+  }
+
+  /* qa hooks */
+  .qa-hooks {
+    margin-top: 32px;
+    padding: 22px 26px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+  }
+  .qa-hooks h3 {
+    margin: 0 0 14px;
+    font-size: 13px;
+    color: var(--c-ink-3);
+    font-weight: 600;
+    font-family: var(--f-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .qa-hooks ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+  }
+  .qa-hooks li {
+    font-size: 13px;
+    color: var(--c-ink-2);
+    line-height: 1.55;
+    padding-left: 18px;
+    position: relative;
+  }
+  .qa-hooks li::before {
+    content: "Q";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-accent);
+    font-weight: 700;
+    background: var(--c-accent-bg);
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .qa-hooks li strong { color: var(--c-ink-1); font-weight: 600; }
+  .qa-hooks li .answer {
+    display: block;
+    color: var(--c-ink-3);
+    font-size: 12.5px;
+    margin-top: 3px;
+  }
+
+  /* ─── figure 3: V0.1 roadmap ───────────────────────────────────────── */
+  .roadmap {
+    margin-top: 24px;
+    padding: 48px 24px 24px;
+    position: relative;
+  }
+  .roadmap .track {
+    position: absolute;
+    left: 56px;
+    right: 56px;
+    top: 80px;
+    height: 2px;
+    background: var(--c-line-strong);
+    border-radius: 1px;
+  }
+  .roadmap .track-done {
+    position: absolute;
+    left: 56px;
+    width: 0;
+    top: 80px;
+    height: 2px;
+    background: var(--c-accent);
+    border-radius: 1px;
+  }
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    position: relative;
+  }
+  .milestone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    text-align: center;
+  }
+  .milestone .node {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--c-surface);
+    border: 3px solid var(--c-line-strong);
+    box-shadow: 0 0 0 4px var(--c-bg);
+    z-index: 2;
+    transition: all 200ms ease;
+  }
+  .milestone.active .node {
+    border-color: var(--c-accent);
+    background: var(--c-accent);
+  }
+  .milestone.critical .node {
+    border-color: var(--c-warn);
+    background: var(--c-warn);
+    width: 24px;
+    height: 24px;
+    top: 68px;
+  }
+  .milestone.signing .node {
+    border-color: var(--c-ok);
+    background: var(--c-ok);
+  }
+  .milestone .date {
+    font-family: var(--f-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .milestone .date-rel {
+    font-size: 10.5px;
+    font-family: var(--f-mono);
+    color: var(--c-ink-4);
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+  }
+  .milestone .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+    margin-bottom: 6px;
+    min-height: 42px;
+    line-height: 1.4;
+  }
+  .milestone.critical .title { color: var(--c-warn); }
+  .milestone.signing .title { color: var(--c-ok); }
+  .milestone .owner {
+    font-size: 11px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .milestone .badge {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    color: var(--c-warn);
+    background: var(--c-warn-bg);
+    border: 1px solid color-mix(in oklab, var(--c-warn) 30%, var(--c-line));
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* support commitments */
+  .commitments {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .commitments .col h3 {
+    font-size: 12px;
+    color: var(--c-ink-3);
+    font-weight: 600;
+    font-family: var(--f-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .commitments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .commitments li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--c-ink-2);
+  }
+  .commitments li .k {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--c-accent);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .commitments li .v strong { color: var(--c-ink-1); font-weight: 600; }
+
+  /* ─── footer ───────────────────────────────────────────────────────── */
+  footer.bottom {
+    padding: 32px 48px;
+    color: var(--c-ink-4);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--f-mono);
+  }
+
+  /* ─── figure 4: YLJAS system architecture ─────────────────────────── */
+  .arch-section {
+    padding: 48px 28px 64px;
+    background: linear-gradient(180deg, var(--c-bg) 0%, color-mix(in oklab, var(--c-panel) 60%, var(--c-bg)) 100%);
+  }
+  .arch-frame {
+    max-width: 1480px;
+    margin: 0 auto;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 14px;
+    padding: 28px 26px;
+    box-shadow: var(--sh-2);
+  }
+  .arch-title-bar {
+    text-align: center;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .arch-title-bar h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.015em;
+    margin: 0 0 6px;
+  }
+  .arch-title-bar h2 .accent { color: var(--c-accent); }
+  .arch-title-bar .arch-sub {
+    font-size: 13px;
+    color: var(--c-ink-3);
+    font-style: italic;
+  }
+
+  .arch {
+    --c-r1: oklch(0.50 0.03 260);
+    --c-r2: oklch(0.56 0.14 255);
+    --c-r3: oklch(0.55 0.18 295);
+    --c-r4: oklch(0.55 0.14 150);
+    --c-r5: oklch(0.62 0.14 50);
+    --c-r6: oklch(0.55 0.12 200);
+    --c-r7: oklch(0.60 0.13 35);
+    display: grid;
+    grid-template-columns: 180px 28px 1fr 28px 160px 28px 1.3fr 28px 220px;
+    gap: 0;
+    align-items: stretch;
+  }
+  [data-theme="dark"] .arch {
+    --c-r1: oklch(0.70 0.03 260);
+    --c-r2: oklch(0.74 0.14 255);
+    --c-r3: oklch(0.74 0.16 295);
+    --c-r4: oklch(0.72 0.14 150);
+    --c-r5: oklch(0.76 0.14 50);
+    --c-r6: oklch(0.74 0.12 200);
+    --c-r7: oklch(0.74 0.14 35);
+  }
+
+  .region {
+    border: 2px solid var(--region-color, var(--c-line));
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--region-color) 4%, var(--c-surface));
+  }
+  [data-theme="dark"] .region {
+    background: color-mix(in oklab, var(--region-color) 10%, var(--c-surface));
+  }
+  .region-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 10px 12px;
+    background: color-mix(in oklab, var(--region-color) 10%, var(--c-surface));
+    border-bottom: 1px solid color-mix(in oklab, var(--region-color) 25%, var(--c-line));
+  }
+  [data-theme="dark"] .region-head {
+    background: color-mix(in oklab, var(--region-color) 18%, var(--c-surface));
+  }
+  .region-num {
+    flex: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--region-color);
+    color: white;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  [data-theme="dark"] .region-num { color: var(--c-bg); }
+  .region-title-wrap { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .region-title {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--c-ink-1);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .region-sub {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+  }
+  .region-body {
+    padding: 10px 11px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  .component {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 8px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 5px;
+    font-size: 11.5px;
+    color: var(--c-ink-1);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .component .ic {
+    flex: none;
+    width: 14px; height: 14px;
+    color: var(--region-color, var(--c-accent));
+  }
+  .component .label { flex: 1; min-width: 0; }
+  .component-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--c-ink-3);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 1px;
+    letter-spacing: 0;
+  }
+
+  .region.r1 { --region-color: var(--c-r1); grid-column: 1; grid-row: 1; }
+  .region.r2 { --region-color: var(--c-r2); grid-column: 3; grid-row: 1; }
+  .region.r3 { --region-color: var(--c-r3); grid-column: 5; grid-row: 1; }
+  .region.r4 { --region-color: var(--c-r4); grid-column: 7; grid-row: 1; }
+  .region.r5 { --region-color: var(--c-r5); grid-column: 3 / span 5; grid-row: 3; }
+  .region.r6 { --region-color: var(--c-r6); grid-column: 3 / span 5; grid-row: 5; }
+  .region.r7 { --region-color: var(--c-r7); grid-column: 9; grid-row: 1; }
+
+  .arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--c-ink-3);
+    padding: 0 2px;
+  }
+  .arrow .arrow-icon {
+    font-size: 20px;
+    color: var(--c-accent);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .arrow .arrow-label {
+    font-size: 9.5px;
+    color: var(--c-ink-4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .arrow.a1-2 { grid-column: 2; grid-row: 1; }
+  .arrow.a2-3 { grid-column: 4; grid-row: 1; }
+  .arrow.a3-4 { grid-column: 6; grid-row: 1; }
+  .arrow.a4-7 { grid-column: 8; grid-row: 1; }
+
+  .arrow-v {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--c-ink-3);
+    padding: 6px 0 8px;
+    grid-row: 2;
+  }
+  .arrow-v .arrow-icon {
+    font-size: 16px;
+    color: var(--c-accent);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .arrow-v .arrow-label {
+    font-size: 10px;
+    color: var(--c-ink-4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .arrow-v.av-2-5 { grid-column: 3; }
+  .arrow-v.av-3-5 { grid-column: 5; }
+  .arrow-v.av-4-5 { grid-column: 7; }
+  .arrow-v.av-5-6 { grid-column: 3 / span 5; grid-row: 4; padding: 6px 0; }
+
+  .agent-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+  .agent-cols .col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .agent-cols .col-label {
+    font-size: 9.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-weight: 700;
+  }
+  .region.r4 .component.orch {
+    background: color-mix(in oklab, var(--c-r4) 12%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--c-r4) 50%, var(--c-line));
+    font-weight: 600;
+  }
+
+  .ontology-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .ontology-domain {
+    background: var(--c-surface);
+    border: 1px solid color-mix(in oklab, var(--c-r5) 30%, var(--c-line));
+    border-radius: 6px;
+    padding: 9px 10px;
+  }
+  .ontology-domain h4 {
+    font-size: 11px;
+    color: var(--c-r5);
+    margin: 0 0 6px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ontology-domain h4 .ic { width: 13px; height: 13px; color: var(--c-r5); }
+  .ontology-entities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .entity {
+    font-size: 10.5px;
+    font-family: var(--f-mono);
+    color: var(--c-ink-2);
+    background: color-mix(in oklab, var(--c-r5) 8%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--c-r5) 25%, var(--c-line));
+    border-radius: 4px;
+    padding: 2px 6px;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
+  .data-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .arch-principles {
+    max-width: 1480px;
+    margin: 24px auto 0;
+    padding: 14px 18px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 10px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .arch-principles .star {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    color: white;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .arch-principles .principles-content { flex: 1; min-width: 0; }
+  .arch-principles h4 {
+    font-size: 11px;
+    margin: 0 0 8px;
+    color: var(--c-accent);
+    font-family: var(--f-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .arch-principles ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 28px;
+  }
+  .arch-principles li {
+    font-size: 12px;
+    color: var(--c-ink-2);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 12px;
+  }
+  .arch-principles li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--c-accent);
+    font-size: 9px;
+  }
+  .arch-principles li strong { color: var(--c-ink-1); font-weight: 600; }
+
+  .use-cases-bottom {
+    max-width: 1480px;
+    margin: 28px auto 0;
+  }
+  .uc-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .uc-label::before,
+  .uc-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--c-line);
+  }
+  .cases-flow {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+  }
+  .case {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    padding: 14px 10px 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .case .case-num {
+    position: absolute;
+    top: -11px;
+    left: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    color: white;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--sh-1);
+  }
+  [data-theme="dark"] .case .case-num { color: var(--c-bg); }
+  .case .case-title {
+    font-size: 12px;
+    color: var(--c-ink-1);
+    font-weight: 600;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+  .case .case-desc {
+    font-size: 10px;
+    color: var(--c-ink-3);
+    line-height: 1.4;
+    font-family: var(--f-mono);
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 1400px) {
+    .arch {
+      grid-template-columns: 160px 22px 1fr 22px 140px 22px 1.3fr 22px 190px;
+    }
+    .arch-frame { padding: 20px 16px; }
+    .component { font-size: 11px; padding: 4px 7px; }
+    .arch-principles ul { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 1100px) {
+    .arch { font-size: 10.5px; }
+    .arch-frame { padding: 14px 10px; }
+    .component { font-size: 10.5px; padding: 4px 6px; gap: 6px; }
+    .component .ic { width: 12px; height: 12px; }
+    .region-title { font-size: 12.5px; }
+    .arrow .arrow-icon { font-size: 16px; }
+    .arrow .arrow-label { display: none; }
+    .cases-flow { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ─── figure 5: org collaboration ──────────────────────────────────── */
+  .org-section { padding: 48px 32px 56px; }
+  .org-frame { max-width: 1480px; margin: 0 auto; }
+
+  .org-block-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .org-block-head .block-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+    color: var(--c-ink-3);
+  }
+  .org-block-head h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .org-block-head .block-tail {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+  }
+
+  /* COE */
+  .coe-block {
+    background: var(--c-accent-bg);
+    border: 2px solid var(--c-accent-line);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .coe-block .org-block-head { border-bottom-color: var(--c-accent-line); }
+  .coe-block .org-block-head .block-tag { color: var(--c-accent); border-color: var(--c-accent-line); }
+  .coe-roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .coe-role {
+    background: var(--c-surface);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .coe-role h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .coe-role h4::before {
+    content: "◆";
+    color: var(--c-accent);
+    font-size: 13px;
+  }
+  .role-count {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    background: color-mix(in oklab, var(--role-color, var(--c-accent)) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--role-color, var(--c-accent)) 40%, var(--c-line));
+    color: var(--role-color, var(--c-accent));
+    vertical-align: 2px;
+    white-space: nowrap;
+  }
+  [data-theme="dark"] .role-count {
+    background: color-mix(in oklab, var(--role-color, var(--c-accent)) 18%, transparent);
+  }
+  .coe-role .role-sub {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    margin: 2px 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--c-line);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .coe-role ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .coe-role li {
+    font-size: 12px;
+    color: var(--c-ink-2);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .coe-role li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--c-accent);
+    font-size: 10px;
+  }
+  .coe-role li strong { color: var(--c-ink-1); font-weight: 600; }
+
+  /* Flow band */
+  .flow-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .flow-arrow-card {
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .flow-arrow-card.down {
+    background: color-mix(in oklab, var(--c-accent) 6%, var(--c-surface));
+    border: 1px dashed var(--c-accent-line);
+  }
+  .flow-arrow-card.up {
+    background: color-mix(in oklab, var(--c-ok) 6%, var(--c-surface));
+    border: 1px dashed color-mix(in oklab, var(--c-ok) 45%, var(--c-line));
+  }
+  .flow-arrow-card .flow-icon {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    flex: none;
+  }
+  .flow-arrow-card.down .flow-icon { color: var(--c-accent); }
+  .flow-arrow-card.up .flow-icon { color: var(--c-ok); }
+  .flow-arrow-card .flow-content { flex: 1; min-width: 0; }
+  .flow-arrow-card h4 {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-family: var(--f-mono);
+    color: var(--c-ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .flow-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .flow-pills .pill {
+    display: inline-block;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--c-ink-1);
+  }
+
+  /* Pods */
+  .pod-block {
+    background: color-mix(in oklab, var(--c-ok) 4%, var(--c-surface));
+    border: 2px solid color-mix(in oklab, var(--c-ok) 35%, var(--c-line));
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .pod-block .org-block-head { border-bottom-color: color-mix(in oklab, var(--c-ok) 25%, var(--c-line)); }
+  .pod-block .org-block-head .block-tag { color: var(--c-ok); border-color: color-mix(in oklab, var(--c-ok) 30%, var(--c-line)); }
+
+  .pod-spotlight {
+    background: var(--c-surface);
+    border: 2px solid var(--c-warn);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--sh-1);
+  }
+  .pod-spotlight .pod-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid color-mix(in oklab, var(--c-warn) 30%, var(--c-line));
+    flex-wrap: wrap;
+  }
+  .star-badge {
+    background: var(--c-warn);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  [data-theme="dark"] .star-badge { color: var(--c-bg); }
+  .pod-spotlight .pod-head h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+  }
+  .pod-meta {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .pod-roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .role {
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-top: 3px solid var(--role-color, var(--c-accent));
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  .role h5 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--role-color, var(--c-ink-1));
+    letter-spacing: -0.01em;
+  }
+  .role .role-full {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+    margin: 1px 0 8px;
+  }
+  .role .role-tagline {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    font-style: italic;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    background: color-mix(in oklab, var(--role-color) 6%, var(--c-surface));
+    border-left: 2px solid var(--role-color);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.5;
+  }
+  .role ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  .role li {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    padding-left: 13px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .role li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: var(--role-color, var(--c-accent));
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .role li strong { color: var(--c-ink-1); font-weight: 600; }
+  .role.role-ds { --role-color: oklch(0.55 0.16 25); }
+  .role.role-fde { --role-color: oklch(0.56 0.14 255); }
+  .role.role-ont { --role-color: oklch(0.55 0.14 150); }
+  [data-theme="dark"] .role.role-ds { --role-color: oklch(0.78 0.17 25); }
+  [data-theme="dark"] .role.role-fde { --role-color: oklch(0.78 0.14 255); }
+  [data-theme="dark"] .role.role-ont { --role-color: oklch(0.78 0.14 150); }
+
+  .other-pods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pod-mini {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .pod-mini h5 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .pod-mini .stage {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .pod-mini .stage.in-prod { background: var(--c-ok-bg); color: var(--c-ok); }
+  .pod-mini .stage.planned { background: var(--c-info-bg); color: var(--c-info); }
+  .pod-mini .pod-mini-meta {
+    font-size: 11px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    margin-bottom: 6px;
+  }
+  .pod-mini .pod-mini-reuse {
+    font-size: 11px;
+    color: var(--c-ink-2);
+    padding-top: 6px;
+    border-top: 1px dashed var(--c-line);
+    line-height: 1.5;
+  }
+
+  /* Flywheel */
+  .flywheel {
+    max-width: 1480px;
+    margin: 28px auto 0;
+    padding: 16px 22px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+  }
+  .flywheel-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .flywheel-head h4 {
+    margin: 0;
+    font-size: 11.5px;
+    font-family: var(--f-mono);
+    color: var(--c-ink-2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .flywheel-head .fw-tag {
+    font-size: 12px;
+    color: var(--c-ink-3);
+    font-style: italic;
+  }
+  .flywheel-bar {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  .fw-stage {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .fw-stage .fw-domain {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .fw-stage .fw-stat {
+    font-family: var(--f-mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--c-accent);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .fw-stage .fw-label {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .fw-stage.fw-current { border-color: var(--c-warn); border-width: 2px; }
+  .fw-stage.fw-current .fw-stat { color: var(--c-warn); }
+  .fw-stage.fw-future { border-color: var(--c-ok); border-style: dashed; border-width: 2px; }
+  .fw-stage.fw-future .fw-stat { color: var(--c-ok); }
+  .fw-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-accent);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  /* methodology banner */
+  .methodology-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(90deg, var(--c-panel) 0%, var(--c-accent-bg) 100%);
+    border: 1px dashed var(--c-accent-line);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .methodology-banner .meth-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 8px;
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+    background: var(--c-surface);
+    color: var(--c-accent);
+    flex: none;
+  }
+  .methodology-banner .meth-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  .methodology-banner .meth-step {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--c-ink-2);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 6px;
+    padding: 5px 10px;
+  }
+  .methodology-banner .meth-step.core {
+    border-color: var(--c-accent);
+    background: var(--c-accent-bg);
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+  .methodology-banner .meth-arrow {
+    color: var(--c-accent);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* 4-column pod layout */
+  .pod-roles.four-cols {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 9px;
+  }
+  .pod-roles.four-cols .role { padding: 11px 12px; }
+  .pod-roles.four-cols .role h5 { font-size: 15.5px; }
+  .pod-roles.four-cols .role li { font-size: 11px; line-height: 1.4; }
+  .pod-roles.four-cols .role .role-tagline { font-size: 11px; padding: 7px 9px; }
+
+  /* Domain FDE color */
+  .role.role-domain { --role-color: oklch(0.50 0.10 195); }
+  [data-theme="dark"] .role.role-domain { --role-color: oklch(0.76 0.12 195); }
+
+  @media (max-width: 1400px) {
+    .pod-roles.four-cols { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 1280px) {
+    .pod-roles, .coe-roles { grid-template-columns: 1fr; }
+    .pod-roles.four-cols { grid-template-columns: 1fr 1fr; }
+    .flow-band { grid-template-columns: 1fr; }
+    .methodology-banner { padding: 10px 14px; }
+  }
+  @media (max-width: 820px) {
+    .pod-roles.four-cols { grid-template-columns: 1fr; }
+  }
+
+  /* ─── system view (figure 3) ───────────────────────────────────────── */
+  .system-view {
+    margin-top: 36px;
+    padding: 22px 26px 24px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 12px;
+  }
+  .system-view-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .system-view-head h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .system-view-head .sv-meta {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .system-pipeline {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  .sys-component {
+    background: var(--c-surface);
+    border: 2px solid var(--sys-color, var(--c-line-strong));
+    border-radius: 10px;
+    padding: 14px 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sys-head {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid color-mix(in oklab, var(--sys-color) 25%, var(--c-line));
+  }
+  .sys-component h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .sys-sub {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+  .sys-component ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  .sys-component li {
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.45;
+    font-family: var(--f-mono);
+  }
+  .sys-component li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    color: var(--sys-color);
+    font-weight: 700;
+  }
+  .sys-step-tag {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--c-line);
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .sys-step-tag strong {
+    color: var(--sys-color);
+    font-weight: 700;
+  }
+  .sys-step-tag .role-mini {
+    color: var(--c-ink-2);
+  }
+  .sys-component.customer { --sys-color: oklch(0.50 0.03 260); }
+  .sys-component.ontology { --sys-color: oklch(0.62 0.14 50); }
+  .sys-component.generation { --sys-color: oklch(0.55 0.18 295); }
+  .sys-component.operator { --sys-color: oklch(0.55 0.14 150); }
+  .sys-component.server { --sys-color: oklch(0.56 0.14 255); }
+  [data-theme="dark"] .sys-component.customer { --sys-color: oklch(0.70 0.03 260); }
+  [data-theme="dark"] .sys-component.ontology { --sys-color: oklch(0.76 0.14 50); }
+  [data-theme="dark"] .sys-component.generation { --sys-color: oklch(0.74 0.16 295); }
+  [data-theme="dark"] .sys-component.operator { --sys-color: oklch(0.72 0.14 150); }
+  [data-theme="dark"] .sys-component.server { --sys-color: oklch(0.74 0.14 255); }
+  .sys-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .sys-arrow-icon {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--c-accent);
+  }
+  .sys-arrow-label {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--c-ink-4);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+  }
+  @media (max-width: 1280px) {
+    .system-pipeline {
+      grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+    }
+    .sys-component li { font-size: 10.5px; }
+    .sys-arrow-icon { font-size: 18px; }
+    .sys-arrow-label { display: none; }
+  }
+  @media (max-width: 980px) {
+    .system-pipeline {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .sys-arrow { padding: 4px 0; flex-direction: row; }
+    .sys-arrow-icon { transform: rotate(90deg); }
+  }
+
+  /* ─── print ────────────────────────────────────────────────────────── */
+  @media print {
+    .topbar { display: none; }
+    section.figure { page-break-after: always; min-height: auto; border-bottom: none; }
+    body { font-size: 11px; }
+  }
+
+  @media (max-width: 1280px) {
+    .iso-table { grid-template-columns: 180px 1fr 1fr 1fr; }
+    .boundary { grid-template-columns: repeat(2, 1fr); }
+    .roadmap-grid { grid-template-columns: repeat(6, 1fr); }
+    .milestone .title { font-size: 12.5px; }
+    .milestone .date { font-size: 13px; }
+    .commitments { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="ic-siren" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1z"/></symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+    <symbol id="ic-api" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
+    <symbol id="ic-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h4a2 2 0 0 1 2 2v4"/></symbol>
+    <symbol id="ic-cloud-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><path d="M8 19v2"/><path d="M12 19v2"/><path d="M16 19v2"/></symbol>
+    <symbol id="ic-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></symbol>
+    <symbol id="ic-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+    <symbol id="ic-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></symbol>
+    <symbol id="ic-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+    <symbol id="ic-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+    <symbol id="ic-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M12.59 19.41A2 2 0 1 0 14 16H2"/><path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/></symbol>
+    <symbol id="ic-heart-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+    <symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="m22 2-11 11"/></symbol>
+    <symbol id="ic-graph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="11" y2="16.5"/><line x1="16.5" y1="7.5" x2="13" y2="16.5"/><line x1="8" y1="6" x2="16" y2="6"/></symbol>
+    <symbol id="ic-event" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></symbol>
+    <symbol id="ic-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></symbol>
+    <symbol id="ic-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2z"/></symbol>
+    <symbol id="ic-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="ic-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><line x1="17" y1="18" x2="18" y2="18"/><line x1="12" y1="18" x2="13" y2="18"/><line x1="7" y1="18" x2="8" y2="18"/></symbol>
+    <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
+    <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01M9 18h.01M15 18h.01"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <span class="brand-mark brand">allm<sup>2</sup>eta</span>
+  <span class="meta">雅砻江战略研讨 · 三.1 + 三.2 投屏稿 · 2026-05-22</span>
+  <nav>
+    <a href="#fig1">① 同构对照</a>
+    <a href="#fig2">② 汛期 72h 协同</a>
+    <a href="#fig3">③ V0.1 路线图</a>
+    <a href="#fig4">④ YLJAS 架构</a>
+    <a href="#fig5">⑤ 组织协同</a>
+  </nav>
+  <button class="theme-btn" id="themeToggle" aria-label="toggle theme">
+    <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<!-- ═══ Figure 1: Isomorphism Table ═══════════════════════════════════ -->
+<section class="figure" id="fig1">
+  <header>
+    <span class="tag">三.1</span>
+    <h1>三领域同构对照 · 一套架构、三种 Ontology</h1>
+    <span class="subtitle">证明 allmeta 是 OS 而非模板复用</span>
+  </header>
+
+  <div class="iso-table">
+    <!-- header row -->
+    <div class="cell head">分层</div>
+    <div class="cell head">ECAS · 费控</div>
+    <div class="cell head">RAAS · 招聘</div>
+    <div class="cell head">雅砻江 · 水风光</div>
+
+    <!-- Layer 6 -->
+    <div class="cell layer">
+      <span class="layer-num">6</span>应用层
+      <span class="layer-sub">Application</span>
+    </div>
+    <div class="cell">
+      <strong>报销 / 审批 / 财务门户</strong>
+      <ul class="sub-list">
+        <li>报销门户</li>
+        <li>经理审批门户</li>
+        <li>财务管理控制台</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>招聘官 + GoHire / RoboHire</strong>
+      <ul class="sub-list">
+        <li>候选人端</li>
+        <li>招聘官前端</li>
+        <li>客户前端</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>调度运行门户 / 应急指挥</strong>
+      <ul class="sub-list">
+        <li>调度运行门户</li>
+        <li>应急指挥台</li>
+        <li>风光协同看板</li>
+      </ul>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="cell layer">
+      <span class="layer-num">5</span>Agentic Operator
+      <span class="layer-sub">Orchestrator + Workers</span>
+    </div>
+    <div class="cell">
+      <strong>Expense Process Orchestrator</strong>
+      <ul class="sub-list">
+        <li>OCR / 数据抽取</li>
+        <li>政策校验</li>
+        <li>反欺诈</li>
+        <li>审批推荐</li>
+        <li>ERP Sync</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>需求澄清 · JD 生成 双 Orch</strong>
+      <ul class="sub-list">
+        <li>简历解析 / 匹配</li>
+        <li>面试邀约 / AI 面试</li>
+        <li>评估 / 推荐</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>智慧运行总编排 + 多 Agent 协同</strong>
+      <ul class="sub-list">
+        <li>气象预测</li>
+        <li>水电调度优化</li>
+        <li>风光协同消纳</li>
+        <li>应急响应 / 设备健康</li>
+      </ul>
+    </div>
+
+    <!-- Layer 4: SHARED -->
+    <div class="cell layer">
+      <span class="layer-num">4</span>Generation
+      <span class="layer-sub">PromptGen · AgentGen</span>
+    </div>
+    <div class="cell shared">
+      <span class="shared-text">SAME · <strong>同一套生成层 · 由 Ontology 自动生成 Prompt 与 Agent 逻辑</strong> · SAME</span>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="cell layer">
+      <span class="layer-num">3</span>Ontology
+      <span class="layer-sub">Semantic Backbone</span>
+    </div>
+    <div class="cell">
+      <strong>报销域</strong>
+      <ul class="sub-list">
+        <li>报销单 / 凭据 / 规则</li>
+        <li>审批流 / 事件</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>招聘域</strong>
+      <ul class="sub-list">
+        <li>岗位 / 候选人 / 流程</li>
+        <li>评估 / 推荐 / 事件</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <strong>水风光运行域</strong>
+      <ul class="sub-list">
+        <li>机组 / 水库 / 来水 / 气象</li>
+        <li>电网 / 上下游 / 检修 / 应急</li>
+      </ul>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="cell layer">
+      <span class="layer-num">2</span>数据集成
+      <span class="layer-sub">Data Integration</span>
+    </div>
+    <div class="cell">
+      ECore / 现有报销系统
+      <ul class="sub-list">
+        <li>主数据 · 审批同步</li>
+        <li>ERP posting</li>
+      </ul>
+    </div>
+    <div class="cell">
+      HR / ATS / 简历库
+      <ul class="sub-list">
+        <li>客户系统对接</li>
+        <li>外部资源接入</li>
+      </ul>
+    </div>
+    <div class="cell">
+      SCADA / 气象 / 电网 / 检修
+      <ul class="sub-list">
+        <li>OT 实时时序</li>
+        <li>气象短临 + 中期</li>
+      </ul>
+    </div>
+
+    <!-- Layer 1 reuse summary -->
+    <div class="cell layer row-bottom">
+      <span class="layer-num">∑</span>复用画像
+      <span class="layer-sub">Reuse Profile</span>
+    </div>
+    <div class="cell row-bottom">
+      架构 <span class="reuse-badge reuse-100">100%</span>
+      <ul class="sub-list">
+        <li>Worker 配方 —— (起点)</li>
+        <li>Foundation Ontology 共享</li>
+      </ul>
+    </div>
+    <div class="cell row-bottom">
+      架构 <span class="reuse-badge reuse-100">100%</span>
+      <ul class="sub-list">
+        <li>Worker 配方 <strong>~40%</strong>（匹配 / 推荐通用）</li>
+        <li>Foundation Ontology 共享</li>
+      </ul>
+    </div>
+    <div class="cell row-bottom">
+      架构 <span class="reuse-badge reuse-100">100%</span>
+      <ul class="sub-list">
+        <li>Worker 配方 <strong>~20%</strong>（时序 / 异常检测）</li>
+        <li>V0.1 demo ≤ 2 人月</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- boundary quadrants -->
+  <div class="boundary">
+    <div class="q q-full">
+      <div class="q-title">完全复用</div>
+      <div class="q-body">
+        <strong>Layer 4 生成层</strong> · <strong>Layer 5 Runtime 能力</strong>（事件驱动 · 状态机 · Tool Use · Human-in-loop · 审计 · Reflection）
+      </div>
+    </div>
+    <div class="q q-recipe">
+      <div class="q-title">配方复用</div>
+      <div class="q-body">
+        Worker Agent 模板 —— <strong>OCR · 政策校验 · 推荐 · 异常检测 · 时序预测</strong> 等横向能力，加领域知识即可复用
+      </div>
+    </div>
+    <div class="q q-domain">
+      <div class="q-title">领域专属</div>
+      <div class="q-body">
+        Ontology 内容 · 领域特定 Worker（如<strong>水电调度优化</strong>）· Layer 2 数据连接器
+      </div>
+    </div>
+    <div class="q q-out">
+      <div class="q-title">不在 OS 内</div>
+      <div class="q-body">
+        业务规则的具体取值（报销额度 / JD / 调度策略参数）—— 这些是<strong>客户配置</strong>，不是产品
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Figure 2: 72h Timeline ════════════════════════════════════════ -->
+<section class="figure" id="fig2">
+  <header>
+    <span class="tag">三.2 · 5.2</span>
+    <h1>汛期前 72 小时 · 水风光联合调度多智能体协同</h1>
+    <span class="subtitle">事件驱动 · 多 Agent 并行 · Human-in-loop · 可重放</span>
+  </header>
+
+  <div class="timeline">
+
+    <div class="phase">
+      <div class="when">
+        <div class="t">T-72h</div>
+        <div class="t-label">中期预测窗口</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent">气象预测 Agent</span>
+        </div>
+        <div class="agent-out">中期降雨 / 风速 / 辐照度预测 · 流域 + 风光场站全覆盖</div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">ForecastUpdated</span>
+          <div class="event-note" style="margin-top:6px">触发下游容量与来水刷新</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">
+        <div class="t">T-48h</div>
+        <div class="t-label">容量刷新窗口</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent">设备健康度 Agent</span>
+          <span class="agent">水库来水 Agent</span>
+        </div>
+        <div class="agent-out">机组可用容量 · 检修窗口 · 流域来水曲线（含不确定性带）</div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">CapabilityRefreshed</span>
+          <div class="event-note" style="margin-top:6px">为调度候选方案提供边界</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">
+        <div class="t">T-24h</div>
+        <div class="t-label">候选方案窗口</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent">水电调度 Agent</span>
+          <span class="agent">风光协同 Agent</span>
+        </div>
+        <div class="agent-out">候选发电曲线（多档） · 候选风光出力曲线（含弃水弃风评估）</div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">PlanCandidatesReady</span>
+          <div class="event-note" style="margin-top:6px">N 套候选送顶层 Orchestrator</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">
+        <div class="t">T-12h</div>
+        <div class="t-label">顶层优化窗口</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent orchestrator">⚡ 智慧运行总编排</span>
+        </div>
+        <div class="agent-out">多目标优化 · <strong>发电效益 × 弃水弃风 × 电网考核 × 安全约束</strong></div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">PlanProposed</span>
+          <div class="event-note" style="margin-top:6px">推送应急压力测试 + 调度长审阅</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">
+        <div class="t">T-6h</div>
+        <div class="t-label">压力测试 + 人工确认</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent">应急响应 Agent</span>
+          <span class="agent human">⊙ Human-in-loop · 调度长</span>
+        </div>
+        <div class="agent-out">极端情景压力测试（特枯/暴增/弃风）· 调度长确认或微调</div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">PlanApproved</span>
+          <div class="event-note" style="margin-top:6px">下发执行 · 锁定审计链</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase last">
+      <div class="when">
+        <div class="t">T-0</div>
+        <div class="t-label">执行 + 闭环复盘</div>
+      </div>
+      <div class="agents">
+        <div class="agent-row">
+          <span class="agent">执行下发</span>
+          <span class="agent">Reflection Agent</span>
+        </div>
+        <div class="agent-out">实际 vs. 预测偏差归因 · 校准每个 Agent 的 Evaluation Metric · 反馈下一轮预测</div>
+      </div>
+      <div class="event">
+        <div>
+          <span class="event-chip">PlanExecuted</span>
+          <div class="event-note" style="margin-top:6px">效益记账 · 进入分成结算口径</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="qa-hooks">
+    <h3>这张图直接回答 4 道题</h3>
+    <ul>
+      <li><strong>Agent 之间怎么编排？</strong><span class="answer">事件驱动（Event Manager），不是函数调用栈，不是写死的工作流，不是写死的 prompts —— Agent 之间的沟通由 Events 触发来完成，可独立运行 / 部署 / 升级 / 迭代</span></li>
+      <li><strong>为什么不一个大 Agent 全包？</strong><span class="answer">可解释 + 可审计 + 各 Agent 独立训练优化；大 Agent 出错难定位、难合规</span></li>
+      <li><strong>出错怎么办？</strong><span class="answer">每个事件可重放 · Human-in-loop 在关键节点强制介入 · 全链路审计</span></li>
+      <li><strong>AI 准不准谁负责？</strong><span class="answer">每个 Agent 有独立 Evaluation Metric · Reflection Agent 持续校准 · 进入对赌合约结算</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ Figure 3: V0.1 Roadmap ═══════════════════════════════════════ -->
+<section class="figure" id="fig3">
+  <header>
+    <span class="tag">三.2 · 5.5</span>
+    <h1>V0.1 demo · 6 步流程</h1>
+    <span class="subtitle">DS 选场景 → FDE 梳理 → FDE 建本体 → Product FDE 部署 → E2E 测试 → 交付 · 6/26 客户演示 · 7 月签约</span>
+  </header>
+
+  <div class="roadmap">
+    <div class="track"></div>
+    <div class="track-done" id="trackDone"></div>
+
+    <div class="roadmap-grid">
+      <div class="milestone active">
+        <div class="node"></div>
+        <div class="date">Step 1</div>
+        <div class="date-rel">DS</div>
+        <div class="badge">命门</div>
+        <div class="title">确认痛点 · 场景<br/>价值 · 优先级</div>
+        <div class="owner">与客户共定</div>
+      </div>
+
+      <div class="milestone">
+        <div class="node"></div>
+        <div class="date">Step 2</div>
+        <div class="date-rel">FDE</div>
+        <div class="title">梳理业务场景<br/>Agent pilot · 数据 + 依赖</div>
+        <div class="owner">场景 FDE</div>
+      </div>
+
+      <div class="milestone">
+        <div class="node"></div>
+        <div class="date">Step 3</div>
+        <div class="date-rel">FDE</div>
+        <div class="title">业务数据 → Ontology<br/>Ontology 校验</div>
+        <div class="owner">业务/本体 · Builder 支持</div>
+      </div>
+
+      <div class="milestone">
+        <div class="node"></div>
+        <div class="date">Step 4</div>
+        <div class="date-rel">Product FDE</div>
+        <div class="title">创建 Agents<br/>部署到 Operator</div>
+        <div class="owner">AgentGen + PromptGen</div>
+      </div>
+
+      <div class="milestone">
+        <div class="node"></div>
+        <div class="date">Step 5</div>
+        <div class="date-rel">Pod 全员</div>
+        <div class="title">End-to-end<br/>Test Run</div>
+        <div class="owner">Agentic Operator</div>
+      </div>
+
+      <div class="milestone signing">
+        <div class="node"></div>
+        <div class="date">Step 6</div>
+        <div class="date-rel">交付</div>
+        <div class="badge">DRI</div>
+        <div class="title">V0.1 demo 交付</div>
+        <div class="owner">6/26 客户演示</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System View · 6 步如何对应三层架构 -->
+  <div class="system-view">
+    <div class="system-view-head">
+      <h3>V0.1 demo · 系统视图（六步如何穿过三层架构）</h3>
+      <span class="sv-meta">客户业务 → 本体 → 生成 → 运行 → 产品</span>
+    </div>
+
+    <div class="system-pipeline">
+
+      <div class="sys-component customer">
+        <div class="sys-head">
+          <h4>客户业务 + 数据</h4>
+          <div class="sys-sub">业务现状 · 痛点 · 系统</div>
+        </div>
+        <ul>
+          <li>调度 / 应急 / 检修 / 风光</li>
+          <li>SCADA · 气象 · 电网</li>
+          <li>痛点 · 场景 · 价值</li>
+        </ul>
+        <div class="sys-step-tag">
+          <strong>Step 1</strong> <span class="role-mini">DS · 选场景</span><br/>
+          <strong>Step 2</strong> <span class="role-mini">FDE · pilot + 依赖</span>
+        </div>
+      </div>
+
+      <div class="sys-arrow">
+        <span class="sys-arrow-icon">→</span>
+        <span class="sys-arrow-label">业务理解</span>
+      </div>
+
+      <div class="sys-component ontology">
+        <div class="sys-head">
+          <h4>allmeta Ontology</h4>
+          <div class="sys-sub">语义底座 · Ontology Builders 工具</div>
+        </div>
+        <ul>
+          <li>Domain 本体 (机组 / 水库 / ...)</li>
+          <li>业务流程本体</li>
+          <li>Entities · Relations</li>
+          <li>Events · Rules · Actions</li>
+        </ul>
+        <div class="sys-step-tag">
+          <strong>Step 3</strong> <span class="role-mini">FDE + Ontology Builder 支持<br/>业务数据 → 本体 + 校验</span>
+        </div>
+      </div>
+
+      <div class="sys-arrow">
+        <span class="sys-arrow-icon">→</span>
+        <span class="sys-arrow-label">本体 / 行动</span>
+      </div>
+
+      <div class="sys-component generation">
+        <div class="sys-head">
+          <h4>Generation Layer</h4>
+          <div class="sys-sub">本体 → Agents 自动生成</div>
+        </div>
+        <ul>
+          <li>PromptGen → Prompts</li>
+          <li>AgentGen → Agent 蓝图</li>
+          <li>Workflow + Code 生成</li>
+          <li>Tool 绑定 · 验证</li>
+        </ul>
+        <div class="sys-step-tag">
+          <strong>Step 4</strong> <span class="role-mini">Product FDE<br/>创建 Agents + 部署 Operator</span>
+        </div>
+      </div>
+
+      <div class="sys-arrow">
+        <span class="sys-arrow-icon">→</span>
+        <span class="sys-arrow-label">Agents</span>
+      </div>
+
+      <div class="sys-component operator">
+        <div class="sys-head">
+          <h4>Agentic Operator</h4>
+          <div class="sys-sub">多 Agent 运行时</div>
+        </div>
+        <ul>
+          <li>Orchestrator + Worker</li>
+          <li>Event Manager · 状态机</li>
+          <li>Tool Use · Human-in-loop</li>
+          <li>Reflection · Approval · 审计</li>
+        </ul>
+        <div class="sys-step-tag">
+          <strong>Step 5</strong> <span class="role-mini">Pod 全员<br/>End-to-end Test Run</span>
+        </div>
+      </div>
+
+      <div class="sys-arrow">
+        <span class="sys-arrow-icon">→</span>
+        <span class="sys-arrow-label">运行时</span>
+      </div>
+
+      <div class="sys-component server">
+        <div class="sys-head">
+          <h4>YLJ Server</h4>
+          <div class="sys-sub">YLJ Agentic System · 客户面</div>
+        </div>
+        <ul>
+          <li>业务场景 Agents</li>
+          <li>系统对接 + 数据对接</li>
+          <li>前端门户（调度 / 应急 / 风光）</li>
+        </ul>
+        <div class="sys-step-tag">
+          <strong>Step 6</strong> <span class="role-mini">交付<br/>6/26 客户演示</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ Figure 4: YLJAS System Architecture ═════════════════════════ -->
+<section class="figure arch-section" id="fig4">
+  <header>
+    <span class="tag">三.2 · 顶层</span>
+    <h1>YLJAS 系统架构 · 同构于 ECAS / RAAS</h1>
+    <span class="subtitle">仅 Ontology + Worker 配方为领域专属 · 其余共享</span>
+  </header>
+
+  <div class="arch-frame">
+    <div class="arch-title-bar">
+      <h2><span class="accent">allmeta</span> &amp; YLJAS System Architecture</h2>
+      <div class="arch-sub">AI-First End-to-End Hydro · Wind · Solar · Storage Smart Operation Management</div>
+    </div>
+
+    <div class="arch">
+      <!-- Region 1: Users & Channels -->
+      <div class="region r1">
+        <div class="region-head">
+          <span class="region-num">1</span>
+          <div class="region-title-wrap">
+            <div class="region-title">Users &amp; Channels</div>
+            <div class="region-sub">用户与渠道</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="component"><svg class="ic"><use href="#ic-user"/></svg><span class="label">调度运行人员</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-wrench"/></svg><span class="label">检修班组</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-siren"/></svg><span class="label">应急指挥</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-shield"/></svg><span class="label">监管 / 上级电网</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-monitor"/></svg><span class="label">调度运行门户</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-monitor"/></svg><span class="label">应急指挥台</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-monitor"/></svg><span class="label">风光协同看板</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-monitor"/></svg><span class="label">检修工单门户</span></div>
+        </div>
+      </div>
+
+      <div class="arrow a1-2">
+        <span class="arrow-icon">→</span>
+        <span class="arrow-label">用户调用<br/>YLJAS API</span>
+      </div>
+
+      <!-- Region 2: YLJ Server (YLJ Agentic System) -->
+      <div class="region r2">
+        <div class="region-head">
+          <span class="region-num">2</span>
+          <div class="region-title-wrap">
+            <div class="region-title">YLJ Server <span style="font-weight:400;font-size:0.85em;color:var(--c-ink-3);">(YLJ Agentic System)</span></div>
+            <div class="region-sub">AI-First Smart Operation Management</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="component"><svg class="ic"><use href="#ic-api"/></svg><span class="label"><strong>YLJAS API Server</strong><span class="component-sub">REST 统一入口 · frontend + 外部系统</span></span></div>
+          <div class="component"><svg class="ic"><use href="#ic-workflow"/></svg><span class="label">智慧运行编排服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-cloud-rain"/></svg><span class="label">气象数据服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-zap"/></svg><span class="label">多目标优化服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-siren"/></svg><span class="label">应急响应服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-wrench"/></svg><span class="label">检修排程服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-link"/></svg><span class="label">集成服务</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-shield"/></svg><span class="label">审计 / 合规</span></div>
+        </div>
+      </div>
+
+      <div class="arrow a2-3">
+        <span class="arrow-icon">→</span>
+        <span class="arrow-label">publish events /<br/>invoke agents</span>
+      </div>
+
+      <!-- Region 3: Event Manager -->
+      <div class="region r3">
+        <div class="region-head">
+          <span class="region-num">3</span>
+          <div class="region-title-wrap">
+            <div class="region-title">Event Manager</div>
+            <div class="region-sub">事件驱动运行时</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="component"><svg class="ic"><use href="#ic-workflow"/></svg><span class="label">Event Orchestration</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-bell"/></svg><span class="label">Subscriptions / Triggers</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-refresh"/></svg><span class="label">Monitoring / Retries</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-shield"/></svg><span class="label">Event Control</span></div>
+        </div>
+      </div>
+
+      <div class="arrow a3-4">
+        <span class="arrow-icon">↔</span>
+        <span class="arrow-label">trigger /<br/>completion emit</span>
+      </div>
+
+      <!-- Region 4: Agentic Operator -->
+      <div class="region r4">
+        <div class="region-head">
+          <span class="region-num">4</span>
+          <div class="region-title-wrap">
+            <div class="region-title">Agentic Operator</div>
+            <div class="region-sub">distributed multi-agent runtime</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="agent-cols">
+            <div class="col">
+              <div class="col-label">A) Orchestrator</div>
+              <div class="component orch"><svg class="ic"><use href="#ic-network"/></svg><span class="label">智慧运行 总编排</span></div>
+              <div class="component orch"><svg class="ic"><use href="#ic-network"/></svg><span class="label">应急响应 编排</span></div>
+            </div>
+            <div class="col">
+              <div class="col-label">B) Workers</div>
+              <div class="component"><svg class="ic"><use href="#ic-cloud-rain"/></svg><span class="label">气象预测</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-droplet"/></svg><span class="label">水库来水</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-zap"/></svg><span class="label">水电调度优化</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-wind"/></svg><span class="label">风光协同消纳</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-siren"/></svg><span class="label">应急响应</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-heart-pulse"/></svg><span class="label">设备健康度</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-refresh"/></svg><span class="label">Reflection / 复盘</span></div>
+              <div class="component"><svg class="ic"><use href="#ic-send"/></svg><span class="label">调度执行</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow a4-7">
+        <span class="arrow-icon">↔</span>
+        <span class="arrow-label">tool use /<br/>integration</span>
+      </div>
+
+      <!-- Region 7: External Systems -->
+      <div class="region r7">
+        <div class="region-head">
+          <span class="region-num">7</span>
+          <div class="region-title-wrap">
+            <div class="region-title">External Systems</div>
+            <div class="region-sub">外部 / OT 系统</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="component"><svg class="ic"><use href="#ic-factory"/></svg><span class="label">SCADA 实时运行</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-cloud"/></svg><span class="label">气象局 / 华为盘古</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-zap"/></svg><span class="label">上级电网调度</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-wrench"/></svg><span class="label">检修 / 备品备件</span></div>
+          <div class="component"><svg class="ic"><use href="#ic-building"/></svg><span class="label">ECore · 华为 Meta ERP</span></div>
+        </div>
+      </div>
+
+      <!-- Vertical arrows row 1 → row 3 (Ontology) -->
+      <div class="arrow-v av-2-5">
+        <span class="arrow-icon">↓</span>
+        <span class="arrow-label">read / write ontology</span>
+      </div>
+      <div class="arrow-v av-3-5">
+        <span class="arrow-icon">↕</span>
+        <span class="arrow-label">event types</span>
+      </div>
+      <div class="arrow-v av-4-5">
+        <span class="arrow-icon">↓</span>
+        <span class="arrow-label">ontology context · 上下文喂 Agent</span>
+      </div>
+
+      <!-- Region 5: allmeta Ontology -->
+      <div class="region r5">
+        <div class="region-head">
+          <span class="region-num">5</span>
+          <div class="region-title-wrap">
+            <div class="region-title">allmeta Data &amp; Ontology Platform</div>
+            <div class="region-sub">语义底座 · 唯一的领域专属层</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="component"><svg class="ic"><use href="#ic-api"/></svg><span class="label"><strong>allmeta Ontology API</strong><span class="component-sub">统一语义入口 · 跨业务复用</span></span></div>
+          <div class="ontology-layout">
+            <div class="ontology-domain">
+              <h4><svg class="ic"><use href="#ic-graph"/></svg> 雅砻江运行域 Ontology</h4>
+              <div class="ontology-entities">
+                <span class="entity">机组</span>
+                <span class="entity">水库</span>
+                <span class="entity">来水</span>
+                <span class="entity">气象</span>
+                <span class="entity">电网</span>
+                <span class="entity">上下游</span>
+                <span class="entity">检修</span>
+                <span class="entity">应急</span>
+                <span class="entity">调度令</span>
+                <span class="entity">效益账</span>
+              </div>
+            </div>
+            <div class="ontology-domain">
+              <h4><svg class="ic"><use href="#ic-event"/></svg> Event Types · Rules · Actions · States</h4>
+              <div class="ontology-entities">
+                <span class="entity">ForecastUpdated</span>
+                <span class="entity">CapabilityRefreshed</span>
+                <span class="entity">PlanCandidatesReady</span>
+                <span class="entity">PlanProposed</span>
+                <span class="entity">PlanApproved</span>
+                <span class="entity">PlanExecuted</span>
+                <span class="entity">EmergencyTriggered</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-v av-5-6">
+        <span class="arrow-icon">↓</span>
+        <span class="arrow-label">ontology 元数据 / 事件类型 落 Graph · 业务数据 / 时序 / 文件 走 Data Services</span>
+      </div>
+
+      <!-- Region 6: Data Services -->
+      <div class="region r6">
+        <div class="region-head">
+          <span class="region-num">6</span>
+          <div class="region-title-wrap">
+            <div class="region-title">Data Services</div>
+            <div class="region-sub">Unified Data API · syndication</div>
+          </div>
+        </div>
+        <div class="region-body">
+          <div class="data-layout">
+            <div class="component"><svg class="ic"><use href="#ic-graph"/></svg><span class="label">Graph Engine<span class="component-sub">Neo4j</span></span></div>
+            <div class="component"><svg class="ic"><use href="#ic-clock"/></svg><span class="label">时序数据库<span class="component-sub">SCADA · 气象 · 出力</span></span></div>
+            <div class="component"><svg class="ic"><use href="#ic-db"/></svg><span class="label">PostgreSQL<span class="component-sub">业务关系数据</span></span></div>
+            <div class="component"><svg class="ic"><use href="#ic-folder"/></svg><span class="label">MinIO<span class="component-sub">报表 · 图像 · 文件</span></span></div>
+            <div class="component"><svg class="ic"><use href="#ic-bar-chart"/></svg><span class="label">Aggregation<span class="component-sub">syndication API</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Principles -->
+  <div class="arch-principles">
+    <span class="star">★</span>
+    <div class="principles-content">
+      <h4>Core Principles · 与 ECAS / RAAS 同源</h4>
+      <ul>
+        <li>所有前端调用 <strong>YLJAS API</strong> · 不直接打数据库或外部系统</li>
+        <li>所有 Agent 由 <strong>Event Manager 触发</strong> · 事件驱动 · 可重放 · 可审计</li>
+        <li>Ontology &amp; 事件类型由 <strong>Graph Engine 持有</strong> · 业务 / 时序 / 文件走 Data Services</li>
+        <li><strong>Orchestrator 与 Worker 独立运行</strong> · 横向扩展 · 关键节点 Human-in-loop</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Use Cases -->
+  <div class="use-cases-bottom">
+    <div class="uc-label">Representative Agentic Use Cases · 典型场景</div>
+    <div class="cases-flow">
+      <div class="case">
+        <span class="case-num">1</span>
+        <div class="case-title">短临 + 中期气象预测</div>
+        <div class="case-desc">0–6h · 24–168h<br/>盘古 + 流域微气象</div>
+      </div>
+      <div class="case">
+        <span class="case-num">2</span>
+        <div class="case-title">来水预测 + 不确定性</div>
+        <div class="case-desc">分位数 / 集合预报<br/>水库 / 流域多尺度</div>
+      </div>
+      <div class="case">
+        <span class="case-num">3</span>
+        <div class="case-title">设备健康 + 检修排程</div>
+        <div class="case-desc">机组诊断 · 检修窗口<br/>影响可用容量</div>
+      </div>
+      <div class="case">
+        <span class="case-num">4</span>
+        <div class="case-title">水电调度候选</div>
+        <div class="case-desc">多档发电曲线<br/>含上下游联调</div>
+      </div>
+      <div class="case">
+        <span class="case-num">5</span>
+        <div class="case-title">风光协同消纳</div>
+        <div class="case-desc">出力 + 弃风弃光评估<br/>调节容量协同</div>
+      </div>
+      <div class="case">
+        <span class="case-num">6</span>
+        <div class="case-title">多目标联合调度</div>
+        <div class="case-desc">效益 × 弃水 × 考核 × 安全<br/>Human-in-loop</div>
+      </div>
+      <div class="case">
+        <span class="case-num">7</span>
+        <div class="case-title">应急响应</div>
+        <div class="case-desc">汛期 / 特枯 / 暴增<br/>预案 + 决策</div>
+      </div>
+      <div class="case">
+        <span class="case-num">8</span>
+        <div class="case-title">闭环复盘 + 校准</div>
+        <div class="case-desc">实绩 vs 预测归因<br/>反馈各 Agent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Figure 5: Org Collaboration ═════════════════════════════════ -->
+<section class="figure org-section" id="fig5">
+  <header>
+    <span class="tag">三.1 · 5.4 / 三.2 · 5.5</span>
+    <h1>三层架构落地 · COE 守平台 · 前线 Pod 啃场景</h1>
+    <span class="subtitle">方法论核心 = 业务梳理 + Ontology 构建 → Agent 生成 → 部署到 Operator 运行</span>
+  </header>
+
+  <div class="org-frame">
+
+    <!-- Methodology Banner -->
+    <div class="methodology-banner">
+      <span class="meth-label">三层架构方法论</span>
+      <div class="meth-flow">
+        <span class="meth-step core">业务梳理</span>
+        <span class="meth-arrow">→</span>
+        <span class="meth-step core">Ontology 构建</span>
+        <span class="meth-arrow">→</span>
+        <span class="meth-step">Agent 生成 · PromptGen + AgentGen</span>
+        <span class="meth-arrow">→</span>
+        <span class="meth-step">部署到 Agentic Operator 运行</span>
+      </div>
+    </div>
+
+    <!-- COE Block -->
+    <div class="coe-block">
+      <div class="org-block-head">
+        <span class="block-tag">公司层</span>
+        <h3>COE · allmeta 核心产品研发</h3>
+        <span class="block-tail">守 Ontology + Agentic Operator · 供给工具与平台 · 跨域沉淀</span>
+      </div>
+      <div class="coe-roles">
+        <div class="coe-role">
+          <h4>allmeta Ontology <span class="role-count">COE + 2 人</span></h4>
+          <div class="role-sub">语义底座 · Ontology Builders 工具平台</div>
+          <ul>
+            <li><strong>Graph Engine + Ontology API</strong> · Neo4j · 跨域 namespace</li>
+            <li><strong>Foundation Ontology</strong> · 跨域核心实体（人 / 组织 / 事件 / 审批）</li>
+            <li><strong>Ontology Builders 工具</strong> · 结构化（schema / relations）+ 自然语言（LLM 辅助）</li>
+            <li><strong>PromptGen</strong> · Ontology → System Prompt / Task Prompt / Tool Instruction</li>
+            <li><strong>AI 梳理 ontology 三步法手册 + 内训</strong> · 业务梳理 → 实体 / 关系 → 事件 / 规则</li>
+            <li><strong>跨域沉淀</strong> · 接收前线本体增量 · 提炼跨域共性回 Foundation</li>
+          </ul>
+        </div>
+        <div class="coe-role">
+          <h4>Agentic Operator <span class="role-count">COE + 2 人</span></h4>
+          <div class="role-sub">Agent 运行时 · AgentGen 工具链</div>
+          <ul>
+            <li><strong>Orchestrator + Worker Runtime</strong> · 多 Agent 并行 · 横向扩展</li>
+            <li><strong>Event Manager</strong> · 事件总线 · 状态机 · 重放 · 审计</li>
+            <li><strong>AgentGen</strong> · Ontology 上的本体 / 规则 / 行动 → Agent 蓝图 / 工作流 / 代码</li>
+            <li><strong>Runtime 能力</strong> · Tool Use · Human-in-loop · Reflection · Approval</li>
+            <li><strong>Worker Library</strong> · 接收前线沉淀的可复用 Worker 配方</li>
+            <li><strong>非功能</strong> · 性能 · 可用性 · 安全 · 多租户</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow Band -->
+    <div class="flow-band">
+      <div class="flow-arrow-card down">
+        <div class="flow-icon">↓</div>
+        <div class="flow-content">
+          <h4>下行 · COE → 前线 · 工具与平台</h4>
+          <div class="flow-pills">
+            <span class="pill">Ontology Builders 工具</span>
+            <span class="pill">PromptGen / AgentGen</span>
+            <span class="pill">Foundation Ontology</span>
+            <span class="pill">Worker Library</span>
+            <span class="pill">Agentic Operator Runtime</span>
+            <span class="pill">三步法手册</span>
+          </div>
+        </div>
+      </div>
+      <div class="flow-arrow-card up">
+        <div class="flow-icon">↑</div>
+        <div class="flow-content">
+          <h4>上行 · 前线 → COE · 沉淀回核心产品</h4>
+          <div class="flow-pills">
+            <span class="pill">本体增量</span>
+            <span class="pill">业务模式</span>
+            <span class="pill">Worker 配方增量</span>
+            <span class="pill">事件类型</span>
+            <span class="pill">工具卡点</span>
+            <span class="pill">客户洞察</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pod Block -->
+    <div class="pod-block">
+      <div class="org-block-head">
+        <span class="block-tag">业务集团</span>
+        <h3>前线 Pod · 落地团队</h3>
+        <span class="block-tail">直接对客户负责 · 用 COE 工具梳理业务、构建本体、生成 Agent · 把场景沉淀回平台</span>
+      </div>
+
+      <!-- 雅砻江 Spotlight -->
+      <div class="pod-spotlight">
+        <div class="pod-head">
+          <span class="star-badge">★ P0 · 当前焦点</span>
+          <h4>雅砻江 Pod</h4>
+          <span class="pod-meta">12 人 · DS 2 + 业务/本体 3 + App FDE 4 + 场景 FDE 3 · V0.1 6/26 · 7 月签约</span>
+        </div>
+        <div class="pod-roles four-cols">
+
+          <div class="role role-ds">
+            <h5>DS <span class="role-count">2 人</span></h5>
+            <div class="role-full">Deployment Strategist · 交付策略主导</div>
+            <div class="role-tagline">选对场景是命门 —— 选错则 AI 的价值、按价值收费的模式将破灭</div>
+            <ul>
+              <li><strong>客户核心业务</strong> · 调度 / 应急 / 检修 / 风光 全景</li>
+              <li><strong>有价值的痛点挖掘</strong> · 不做简单但无价值的场景</li>
+              <li><strong>客户引导</strong> · 与客户共定场景优先级</li>
+              <li><strong>客户决策层关系</strong> · 雅砻江 + 华为 + 监管</li>
+              <li><strong>价值故事 + 计费</strong> · 对赌合约 + 效益分成</li>
+              <li><strong>路线图 / Scope</strong> · V0.1 / V0.5 / V1.0 边界</li>
+            </ul>
+          </div>
+
+          <div class="role role-ont">
+            <h5>业务 / 本体 <span class="role-count">3 人</span></h5>
+            <div class="role-full">业务梳理专家 + Ontology Builder</div>
+            <div class="role-tagline">与客户梳理业务 · 数据 · 规则 · 把世界翻译成图引擎里的语义</div>
+            <ul>
+              <li><strong>业务流程梳理</strong> · 分 domain：调度 / 应急 / 检修</li>
+              <li><strong>数据 + 规则梳理</strong> · 与客户业务专家共建</li>
+              <li><strong>Domain 本体</strong> · 机组 / 水库 / 气象 / 电网 / 检修 / 应急</li>
+              <li><strong>业务流程本体</strong> · 调度状态机 · 审批流 · 应急预案</li>
+              <li><strong>事件 / 规则 / 行动</strong> · 驱动 Agent 生成与运行</li>
+              <li><strong>用 COE 工具构建</strong> · 结构化 + 自然语言 双通道</li>
+            </ul>
+          </div>
+
+          <div class="role role-fde">
+            <h5>App FDE <span class="role-count">4 人</span></h5>
+            <div class="role-full">YLJAS Application Server · 端到端工程</div>
+            <div class="role-tagline">把 Ontology + Operator 跑成客户真实可用的 YLJAS</div>
+            <ul>
+              <li><strong>业务场景 Agents</strong> · 基于本体 + AgentGen 生成 / 调校</li>
+              <li><strong>系统对接</strong> · SCADA · 气象 · 电网 · 检修 · ECore</li>
+              <li><strong>数据对接</strong> · 实时时序 · 历史 · 文件 · 主数据</li>
+              <li><strong>Ontology + Operator 对接</strong> · API 集成 · 事件契约</li>
+              <li><strong>端到端集成 + 测试</strong> · 性能 / 可用性 / 安全</li>
+              <li><strong>前端门户</strong> · 调度 / 应急 / 风光协同看板</li>
+            </ul>
+          </div>
+
+          <div class="role role-domain">
+            <h5>场景 FDE <span class="role-count">3 人</span></h5>
+            <div class="role-full">Domain FDE · 分 domain · 现场作战 + 交付 DRI</div>
+            <div class="role-tagline">现场挖掘 → 设计 → Vibe Coding → 交付结果</div>
+            <ul>
+              <li><strong>场景挖掘</strong> · 与 DS 协作 · 现场看数据 / 看流程</li>
+              <li><strong>场景评估 + 确认</strong> · 价值 / 可行性双闸口</li>
+              <li><strong>Agentic 工作流设计</strong> · 多 Agent 编排方案</li>
+              <li><strong>Ontology 确认</strong> · 与业务 / 本体角色协作落地</li>
+              <li><strong>现场开发 (Vibe Coding)</strong> · 快速迭代 · 客户陪跑</li>
+              <li><strong>现场集成 + 测试 + 交付</strong> · 对最终结果负责</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<footer class="bottom">
+  <span class="brand-mark">allm<sup>2</sup>eta</span>
+  <span>OS 不是模板复用 · 我们签的是电厂运行效益的对赌合约</span>
+  <span>2026-05-22 · 投屏稿</span>
+</footer>
+
+<script>
+  // theme — set before paint via inline init
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('allmeta-prep:theme'); } catch (e) {}
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('allmeta-prep:theme', next); } catch (e) {}
+  });
+
+  // roadmap: animate progress to "today" (5/22 = first milestone) on load
+  window.addEventListener('load', function () {
+    var done = document.getElementById('trackDone');
+    if (!done) return;
+    // animate from 0 to width of first milestone center
+    setTimeout(function () {
+      done.style.transition = 'width 800ms ease';
+      done.style.width = 'calc((100% - 112px) / 6 * 0)';
+    }, 100);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1454 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>雅砻江 · 场景 × 为何AI · RAAS 同构参照 · 2026-05-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-bg: oklch(0.99 0.004 255);
+    --c-surface: #ffffff;
+    --c-panel: oklch(0.985 0.004 255);
+    --c-raised: oklch(0.975 0.004 255);
+    --c-line: oklch(0.92 0.006 255);
+    --c-line-strong: oklch(0.86 0.008 255);
+    --c-ink-1: oklch(0.22 0.015 260);
+    --c-ink-2: oklch(0.42 0.012 260);
+    --c-ink-3: oklch(0.58 0.010 260);
+    --c-ink-4: oklch(0.72 0.008 260);
+    --c-accent: oklch(0.56 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: oklch(0.96 0.03 255);
+    --c-accent-line: oklch(0.88 0.06 255);
+    --c-ok: oklch(0.62 0.13 155);
+    --c-ok-bg: oklch(0.96 0.04 155);
+    --c-warn: oklch(0.74 0.15 75);
+    --c-warn-bg: oklch(0.96 0.06 80);
+    --c-err: oklch(0.58 0.19 25);
+    --c-err-bg: oklch(0.96 0.05 25);
+    --c-info: oklch(0.60 0.10 230);
+    --c-info-bg: oklch(0.96 0.03 230);
+
+    /* 8 scenario region colors · inherited from prep deck r1-r7 + warn */
+    --c-s1: oklch(0.55 0.12 200);   /* 气象  · cyan */
+    --c-s2: oklch(0.56 0.14 255);   /* 来水  · accent blue */
+    --c-s3: oklch(0.55 0.14 150);   /* 设备  · green */
+    --c-s4: oklch(0.50 0.03 260);   /* 水电  · neutral */
+    --c-s5: oklch(0.62 0.14 50);    /* 风光  · amber */
+    --c-s6: oklch(0.55 0.18 295);   /* 总编排 · purple, the spine */
+    --c-s7: oklch(0.58 0.19 25);    /* 应急  · red */
+    --c-s8: oklch(0.60 0.13 35);    /* 复盘  · orange */
+
+    --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
+    --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
+  }
+  [data-theme="dark"] {
+    --c-bg: oklch(0.17 0.012 260);
+    --c-surface: oklch(0.20 0.014 260);
+    --c-panel: oklch(0.235 0.014 260);
+    --c-raised: oklch(0.265 0.014 260);
+    --c-line: oklch(0.30 0.014 260);
+    --c-line-strong: oklch(0.40 0.014 260);
+    --c-ink-1: oklch(0.96 0.006 260);
+    --c-ink-2: oklch(0.82 0.010 260);
+    --c-ink-3: oklch(0.66 0.012 260);
+    --c-ink-4: oklch(0.50 0.012 260);
+    --c-accent: oklch(0.74 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
+    --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
+    --c-ok: oklch(0.78 0.13 155);
+    --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
+    --c-warn: oklch(0.82 0.15 80);
+    --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
+    --c-err: oklch(0.74 0.17 25);
+    --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+    --c-info: oklch(0.78 0.10 230);
+    --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
+
+    --c-s1: oklch(0.74 0.12 200);
+    --c-s2: oklch(0.74 0.14 255);
+    --c-s3: oklch(0.72 0.14 150);
+    --c-s4: oklch(0.70 0.03 260);
+    --c-s5: oklch(0.78 0.14 50);
+    --c-s6: oklch(0.74 0.16 295);
+    --c-s7: oklch(0.74 0.17 25);
+    --c-s8: oklch(0.76 0.14 35);
+
+    --sh-1: 0 1px 0 rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.30);
+    --sh-2: 0 1px 2px rgba(0,0,0,0.35), 0 8px 20px -8px rgba(0,0,0,0.50);
+    --sh-3: 0 12px 40px -12px rgba(0,0,0,0.70);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--f-sans);
+    color: var(--c-ink-1);
+    background: var(--c-bg);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mono { font-family: var(--f-mono); }
+  .brand-mark {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--c-ink-1);
+    white-space: nowrap;
+  }
+  .brand-mark sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    line-height: 0;
+    color: var(--c-accent);
+    font-weight: 600;
+    margin: 0 0.04em 0 0.01em;
+  }
+
+  /* ─── topbar ───────────────────────────────────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 56px;
+    background: color-mix(in oklab, var(--c-surface) 92%, transparent);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--c-line);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 24px;
+  }
+  .topbar .brand { font-size: 17px; }
+  .topbar .meta {
+    color: var(--c-ink-3);
+    font-size: 12px;
+    border-left: 1px solid var(--c-line);
+    padding-left: 16px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .topbar .spacer { margin-left: auto; }
+  .topbar .tag-mini {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--c-accent);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 4px 9px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .theme-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    color: var(--c-ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .theme-btn:hover { background: var(--c-accent-bg); border-color: var(--c-accent-line); }
+  .theme-icon-light { display: inline-flex; }
+  .theme-icon-dark { display: none; }
+  [data-theme="dark"] .theme-icon-light { display: none; }
+  [data-theme="dark"] .theme-icon-dark { display: inline-flex; }
+
+  /* ─── page frame ───────────────────────────────────────────────────── */
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 14px 24px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  /* ─── ① hero · 一句话立论 ──────────────────────────────────────────── */
+  .hero {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--c-ink-1);
+    line-height: 1.25;
+  }
+  .hero h1 .accent { color: var(--c-accent); }
+  .hero .lead {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 580px;
+    text-align: right;
+  }
+  .hero .lead strong { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  /* ─── ② pillars · 为何AI 5 根支柱 ──────────────────────────────────── */
+  .pillars-wrap {
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    padding: 10px 14px 11px;
+  }
+  .pillars-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .pillars-head .label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-ink-3);
+    padding: 3px 8px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+  }
+  .pillars-head h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .pillars-head .why {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .pillars-head .why strong { color: var(--c-ink-1); font-weight: 600; }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .pillar {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-top: 3px solid var(--p-color, var(--c-accent));
+    border-radius: 7px;
+    padding: 8px 11px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pillar .p-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pillar .p-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--p-color, var(--c-accent));
+    background: color-mix(in oklab, var(--p-color, var(--c-accent)) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--p-color, var(--c-accent)) 35%, var(--c-line));
+    border-radius: 3px;
+    padding: 1px 5px;
+  }
+  .pillar h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .pillar .p-body {
+    font-size: 11px;
+    color: var(--c-ink-2);
+    line-height: 1.45;
+  }
+  .pillar .p-body strong { color: var(--c-ink-1); font-weight: 600; }
+  .pillar.p1 { --p-color: var(--c-warn); }
+  .pillar.p2 { --p-color: var(--c-accent); }
+  .pillar.p3 { --p-color: var(--c-info); }
+  .pillar.p4 { --p-color: var(--c-ok); }
+  .pillar.p5 { --p-color: var(--c-err); }
+
+  /* ─── ③ scenario matrix · 4 × 2 ────────────────────────────────────── */
+  .matrix-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 0;
+    margin-bottom: 6px;
+  }
+  .matrix-head .label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-ink-3);
+    padding: 3px 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+  }
+  .matrix-head h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+  }
+  .matrix-head .meta {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+  }
+  .matrix {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+  }
+  .card {
+    background: color-mix(in oklab, var(--card-color) 4%, var(--c-surface));
+    border: 1.5px solid color-mix(in oklab, var(--card-color) 35%, var(--c-line));
+    border-radius: 9px;
+    padding: 9px 11px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .card {
+    background: color-mix(in oklab, var(--card-color) 9%, var(--c-surface));
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--card-color);
+  }
+  .card .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding-top: 2px;
+  }
+  .card .card-num {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: var(--card-color);
+    color: white;
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  [data-theme="dark"] .card .card-num { color: var(--c-bg); }
+  .card .card-title-wrap {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .card .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+  .card .card-window {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--card-color);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .card .row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .card .row-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-4);
+    font-weight: 700;
+  }
+  .card .agents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .card .agent {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 7px;
+    background: color-mix(in oklab, var(--card-color) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--card-color) 30%, var(--c-line));
+    color: var(--c-ink-1);
+    border-radius: 4px;
+    line-height: 1.4;
+  }
+  .card .agent.human {
+    background: var(--c-warn-bg);
+    border-color: color-mix(in oklab, var(--c-warn) 35%, var(--c-line));
+    color: var(--c-warn);
+    font-weight: 600;
+  }
+  .card .agent.orch {
+    background: color-mix(in oklab, var(--card-color) 18%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--card-color) 60%, var(--c-line));
+    color: var(--card-color);
+    font-weight: 700;
+  }
+  .card .capability {
+    font-size: 11px;
+    color: var(--c-ink-2);
+    line-height: 1.45;
+  }
+  .card .capability strong { color: var(--c-ink-1); font-weight: 600; }
+  .card .gap {
+    margin-top: auto;
+    padding: 6px 8px;
+    background: color-mix(in oklab, var(--card-color) 5%, var(--c-panel));
+    border-left: 2px solid var(--card-color);
+    border-radius: 0 5px 5px 0;
+    font-size: 10.5px;
+    color: var(--c-ink-2);
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .card .gap strong { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  .card.s1 { --card-color: var(--c-s1); }
+  .card.s2 { --card-color: var(--c-s2); }
+  .card.s3 { --card-color: var(--c-s3); }
+  .card.s4 { --card-color: var(--c-s4); }
+  .card.s5 { --card-color: var(--c-s5); }
+  .card.s6 { --card-color: var(--c-s6); }
+  .card.s7 { --card-color: var(--c-s7); }
+  .card.s8 { --card-color: var(--c-s8); }
+
+  /* ─── ④ backbone · 协同骨架 ────────────────────────────────────────── */
+  .backbone-wrap {
+    background: linear-gradient(90deg, var(--c-panel) 0%, var(--c-accent-bg) 100%);
+    border: 1px dashed var(--c-accent-line);
+    border-radius: 10px;
+    padding: 9px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .backbone-wrap .label {
+    flex: none;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-accent);
+    padding: 3px 8px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+  }
+  .backbone {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .chip {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 7px;
+    padding: 6px 10px 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .chip .chip-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+  }
+  .chip .chip-name .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--chip-color, var(--c-accent));
+    flex: none;
+  }
+  .chip .chip-desc {
+    font-size: 10.5px;
+    color: var(--c-ink-3);
+    line-height: 1.45;
+    font-family: var(--f-mono);
+    letter-spacing: 0.01em;
+  }
+  .chip.c1 { --chip-color: var(--c-accent); }
+  .chip.c2 { --chip-color: var(--c-s3); }
+  .chip.c3 { --chip-color: var(--c-s8); }
+  .chip.c4 { --chip-color: var(--c-warn); }
+  .chip.c5 { --chip-color: var(--c-info); }
+
+  /* ─── footer ───────────────────────────────────────────────────────── */
+  footer.bottom {
+    padding: 8px 28px 10px;
+    color: var(--c-ink-4);
+    font-size: 10.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--f-mono);
+    border-top: 1px solid var(--c-line);
+    margin-top: 0;
+  }
+  footer.bottom a { color: var(--c-ink-3); text-decoration: none; }
+  footer.bottom a:hover { color: var(--c-accent); }
+
+  /* ─── ⑤ RAAS · same-backbone evidence ──────────────────────────────── */
+  .raas-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .raas-divider .tag {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-accent);
+    padding: 4px 9px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+  }
+  .raas-divider h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .raas-divider h2 .accent { color: var(--c-accent); }
+  .raas-divider .meta {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--c-ink-3);
+    font-style: italic;
+  }
+
+  .raas-frame {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 12px;
+    padding: 14px 14px 16px;
+    box-shadow: var(--sh-1);
+  }
+  .raas-sub-title {
+    text-align: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--c-line);
+  }
+  .raas-sub-title h3 {
+    margin: 0 0 3px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.01em;
+  }
+  .raas-sub-title h3 .accent { color: var(--c-accent); }
+  .raas-sub-title .sub {
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+
+  /* region grid · 6 columns top + 1 full-width bottom */
+  .raas-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.1fr 1fr 1.15fr 1fr 0.9fr;
+    gap: 8px;
+  }
+  .rr {
+    border: 1.5px solid color-mix(in oklab, var(--rr-color) 35%, var(--c-line));
+    border-radius: 8px;
+    background: color-mix(in oklab, var(--rr-color) 3%, var(--c-surface));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .rr {
+    background: color-mix(in oklab, var(--rr-color) 9%, var(--c-surface));
+  }
+  .rr-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 7px 9px 6px;
+    background: color-mix(in oklab, var(--rr-color) 10%, var(--c-surface));
+    border-bottom: 1px solid color-mix(in oklab, var(--rr-color) 25%, var(--c-line));
+  }
+  [data-theme="dark"] .rr-head {
+    background: color-mix(in oklab, var(--rr-color) 18%, var(--c-surface));
+  }
+  .rr-num {
+    flex: none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--rr-color);
+    color: white;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  [data-theme="dark"] .rr-num { color: var(--c-bg); }
+  .rr-title-wrap { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .rr-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .rr-title .softer {
+    font-weight: 500;
+    color: var(--c-ink-3);
+    font-size: 0.9em;
+  }
+  .rr-sub {
+    font-size: 9.5px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .rr-body {
+    padding: 7px 8px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+  .rr-body .comp {
+    font-size: 10.5px;
+    color: var(--c-ink-2);
+    line-height: 1.4;
+    padding: 3px 6px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+  }
+  [data-theme="dark"] .rr-body .comp {
+    background: color-mix(in oklab, var(--c-surface) 88%, transparent);
+  }
+  .rr-body .comp strong {
+    color: var(--c-ink-1);
+    font-weight: 600;
+  }
+  .rr-body .comp-mono {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.01em;
+  }
+  .rr-section-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rr-color);
+    font-weight: 700;
+    margin-top: 3px;
+  }
+
+  /* RAAS region colors */
+  .rr.r-users    { --rr-color: oklch(0.50 0.03 260); }
+  .rr.r-server   { --rr-color: oklch(0.56 0.14 255); }
+  .rr.r-event    { --rr-color: oklch(0.55 0.18 295); }
+  .rr.r-operator { --rr-color: oklch(0.55 0.14 150); }
+  .rr.r-ontology { --rr-color: oklch(0.62 0.14 50); }
+  .rr.r-tools    { --rr-color: oklch(0.55 0.12 200); }
+  .rr.r-data     { --rr-color: oklch(0.60 0.13 35); }
+  [data-theme="dark"] .rr.r-users    { --rr-color: oklch(0.70 0.03 260); }
+  [data-theme="dark"] .rr.r-server   { --rr-color: oklch(0.74 0.14 255); }
+  [data-theme="dark"] .rr.r-event    { --rr-color: oklch(0.74 0.16 295); }
+  [data-theme="dark"] .rr.r-operator { --rr-color: oklch(0.72 0.14 150); }
+  [data-theme="dark"] .rr.r-ontology { --rr-color: oklch(0.78 0.14 50); }
+  [data-theme="dark"] .rr.r-tools    { --rr-color: oklch(0.74 0.12 200); }
+  [data-theme="dark"] .rr.r-data     { --rr-color: oklch(0.76 0.13 35); }
+
+  /* Event chips inside region 3 */
+  .event-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 2px;
+  }
+  .event-chips span {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--rr-color);
+    background: color-mix(in oklab, var(--rr-color) 8%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--rr-color) 25%, var(--c-line));
+    border-radius: 3px;
+    padding: 1px 5px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Agent grid inside region 4 */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 2px;
+  }
+  .agent-grid .ra {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+    background: color-mix(in oklab, var(--rr-color) 9%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--rr-color) 30%, var(--c-line));
+    border-radius: 4px;
+    padding: 2px 5px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  /* Region 7: data row (full width) */
+  .raas-data-row {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+  }
+  .raas-data-row .rr-body {
+    padding: 8px 10px 10px;
+  }
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+    gap: 8px;
+  }
+  .data-col {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-left: 3px solid var(--rr-color);
+    border-radius: 5px;
+    padding: 6px 9px 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  [data-theme="dark"] .data-col {
+    background: color-mix(in oklab, var(--c-surface) 88%, transparent);
+  }
+  .data-col .dc-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .data-col .dc-desc {
+    font-size: 10px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+  }
+
+  /* Iso band · 1:1 mapping RAAS ↔ YLJAS */
+  .iso-band {
+    margin-top: 10px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    padding: 10px 14px 12px;
+  }
+  .iso-band-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .iso-band-head .label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-ink-3);
+    padding: 3px 8px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+  }
+  .iso-band-head .title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+  }
+  .iso-band-head .title strong { color: var(--c-accent); }
+  .iso-rows {
+    display: grid;
+    grid-template-columns: 110px repeat(8, 1fr);
+    gap: 4px;
+    align-items: center;
+  }
+  .iso-cell {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+    padding: 5px 6px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .iso-cell.orch {
+    background: color-mix(in oklab, var(--c-s6) 14%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--c-s6) 50%, var(--c-line));
+    color: var(--c-s6);
+    font-weight: 700;
+  }
+  .iso-cell.human {
+    background: var(--c-warn-bg);
+    border-color: color-mix(in oklab, var(--c-warn) 35%, var(--c-line));
+    color: var(--c-warn);
+    font-weight: 700;
+  }
+  .iso-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--c-ink-3);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 4px;
+    text-align: right;
+  }
+  .iso-arrow-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px 0;
+    font-size: 10.5px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.06em;
+    color: var(--c-accent);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .iso-arrow-row::before,
+  .iso-arrow-row::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--c-accent-line), transparent);
+  }
+
+  /* responsive · projection */
+  @media (max-width: 1280px) {
+    .matrix { grid-template-columns: repeat(4, 1fr); }
+    .card .card-title { font-size: 13px; }
+    .card .capability { font-size: 11px; }
+  }
+  @media (max-width: 1280px) {
+    .raas-grid { grid-template-columns: repeat(3, 1fr); }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .iso-rows { grid-template-columns: 100px repeat(8, 1fr); }
+  }
+  @media (max-width: 980px) {
+    .pillars { grid-template-columns: repeat(2, 1fr); }
+    .matrix { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); }
+    .backbone { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column; align-items: flex-start; }
+    .hero .lead { text-align: left; margin-left: 0; }
+    .raas-grid { grid-template-columns: repeat(2, 1fr); }
+    .iso-rows { grid-template-columns: 1fr; }
+  }
+
+  /* print */
+  @media print {
+    @page { size: A3 landscape; margin: 12mm; }
+    .topbar { position: static; box-shadow: none; backdrop-filter: none; }
+    .theme-btn { display: none; }
+    main { gap: 14px; padding: 14px 0; max-width: 100%; }
+    .card, .pillar, .chip { box-shadow: none; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── topbar ───────────────────────────────────────────────────────── -->
+<header class="topbar">
+  <span class="brand brand-mark">allm<sup>2</sup>eta · YLJ</span>
+  <span class="meta">YLJAS 场景 × 为何AI · RAAS 同构参照 · 2026-05-22</span>
+  <span class="spacer"></span>
+  <span class="tag-mini">附图 · 第六图</span>
+  <button class="theme-btn" id="themeBtn" aria-label="切换主题" title="切换深/浅主题">
+    <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</header>
+
+<main>
+
+  <!-- ① hero · 一句话立论 ───────────────────────────────────────────── -->
+  <section class="hero">
+    <h1>雅砻江 · <span class="accent">8 个场景</span>, 一套共同骨架 · 为何必须 AI &amp; 多智能体？</h1>
+    <p class="lead">
+      8 个场景, 一个共同骨架 = <strong>事件驱动 · 多 Agent 协同 · Human-in-loop · 可重放</strong>. <br/>
+      不是写死的工作流, 不是一个大 Agent, 不是写死的 Prompt.
+    </p>
+  </section>
+
+  <!-- ② pillars · 为何AI / 多智能体 5 根支柱 ────────────────────────── -->
+  <section class="pillars-wrap">
+    <div class="pillars-head">
+      <span class="label">为何AI · 5 根支柱</span>
+      <h2>为何必须是 AI &amp; 多智能体调度 — 老软件解不动的 5 个结构性原因</h2>
+      <span class="why">客户 &amp; Pod 内训共用口径</span>
+    </div>
+    <div class="pillars">
+      <div class="pillar p1">
+        <div class="p-head"><span class="p-num">01</span><h3>多目标冲突</h3></div>
+        <p class="p-body"><strong>发电效益 × 弃水弃风 × 电网考核 × 安全约束</strong> 无单一最优解; 调度长的经验必须被编码成约束与偏好, 不是简单的线性规划。</p>
+      </div>
+      <div class="pillar p2">
+        <div class="p-head"><span class="p-num">02</span><h3>多时间尺度</h3></div>
+        <p class="p-body">从 <strong>T-72h 中期预测</strong> 到 <strong>T-0 执行复盘</strong>, 每个窗口由专属 Agent 负责; 单一模型在所有尺度上都最差。</p>
+      </div>
+      <div class="pillar p3">
+        <div class="p-head"><span class="p-num">03</span><h3>多源异构</h3></div>
+        <p class="p-body"><strong>气象 / 水文 / 电网 / 设备 / 市场 / 政策</strong> 数据形态完全不一致; LLM 是把 PDF / 表 / 时序揉成统一语义的最便宜手段。</p>
+      </div>
+      <div class="pillar p4">
+        <div class="p-head"><span class="p-num">04</span><h3>多部门协同</h3></div>
+        <p class="p-body"><strong>调度 / 营销 / 集控 / 新能源 / 电厂一线</strong> 五条线口径不一; Agent + Ontology 才能把跨部门口径统一到同一事件链。</p>
+      </div>
+      <div class="pillar p5">
+        <div class="p-head"><span class="p-num">05</span><h3>高度不确定</h3></div>
+        <p class="p-body">来水 / 天气 / 市场全是概率分布, 不是点估计; 必须 <strong>可重放 + Human-in-loop + Reflection</strong>, 才能合规、可审计、可对赌。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ scenario matrix · 8 张卡 ─────────────────────────────────────── -->
+  <section>
+    <div class="matrix-head">
+      <span class="label">场景 × 为何AI · 矩阵</span>
+      <h2>8 个核心场景 · 每张卡固定 4 个字段: 时间窗 · Agents · LLM 能力 · 为何老软件做不到</h2>
+      <span class="meta">来自 YLJAS · 代表性 Agentic 场景</span>
+    </div>
+    <div class="matrix">
+
+      <!-- Card 1 · 气象 -->
+      <div class="card s1">
+        <div class="card-head">
+          <div class="card-num">1</div>
+          <div class="card-title-wrap">
+            <div class="card-title">短临 + 中期气象预测</div>
+            <div class="card-window">T-72h · 0–6h / 24–168h</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">气象预测 Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>盘古气象大模型 + 流域微气象订正</strong>; 集合预报给出概率带, 而非单点值。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 数值天气模式 (NWP) 对流域级微气象失真, 需 LLM 融合多模态实测做订正。
+        </div>
+      </div>
+
+      <!-- Card 2 · 来水 -->
+      <div class="card s2">
+        <div class="card-head">
+          <div class="card-num">2</div>
+          <div class="card-title-wrap">
+            <div class="card-title">来水预测 + 不确定性</div>
+            <div class="card-window">T-72h → T-48h</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">水库来水 Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>分位数 / 集合预报</strong>; 水库 / 流域多尺度建模, 输出含不确定性带的来水曲线。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 经典水文模型只给点估计, 不带概率; 调度无法做风险定价与情景对冲。
+        </div>
+      </div>
+
+      <!-- Card 3 · 设备 -->
+      <div class="card s3">
+        <div class="card-head">
+          <div class="card-num">3</div>
+          <div class="card-title-wrap">
+            <div class="card-title">设备健康 + 检修排程</div>
+            <div class="card-window">T-48h · 容量刷新</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">设备健康度 Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>机组诊断 + 检修窗口推演</strong>; 把可用容量与检修窗口耦合, 影响下游调度边界。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 现有检修系统只是台账, 不会算 "检修窗口 × 来水 × 电价" 的机会成本。
+        </div>
+      </div>
+
+      <!-- Card 4 · 水电调度候选 -->
+      <div class="card s4">
+        <div class="card-head">
+          <div class="card-num">4</div>
+          <div class="card-title-wrap">
+            <div class="card-title">水电调度候选</div>
+            <div class="card-window">T-24h · 候选窗口</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">水电调度 Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>多档发电曲线生成</strong> + 含上下游联调; 一次给出 N 套候选, 供顶层 Orchestrator 决策。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 传统软件输出单一计划解, 而业务必须看 N 种可能性才能决策。
+        </div>
+      </div>
+
+      <!-- Card 5 · 风光 -->
+      <div class="card s5">
+        <div class="card-head">
+          <div class="card-num">5</div>
+          <div class="card-title-wrap">
+            <div class="card-title">风光协同消纳</div>
+            <div class="card-window">T-24h · 候选窗口</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">风光协同 Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>出力曲线 + 弃风弃光评估</strong>; 与水电的调节容量协同, 在候选阶段已考虑消纳约束。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 风光场站 SCADA 与水电调度是孤岛, 联合优化必须靠跨域 Agent + Ontology。
+        </div>
+      </div>
+
+      <!-- Card 6 · 多目标 (orchestrator) -->
+      <div class="card s6">
+        <div class="card-head">
+          <div class="card-num">6</div>
+          <div class="card-title-wrap">
+            <div class="card-title">多目标联合调度 ⚡</div>
+            <div class="card-window">T-12h · 顶层优化</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent orch">⚡ 智慧运行总编排</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>多目标优化</strong>: 发电效益 × 弃水弃风 × 电网考核 × 安全约束; 把调度长经验编码为偏好。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 多目标冲突无单一最优, 经典 OR 也调不出含隐性偏好的方案。
+        </div>
+      </div>
+
+      <!-- Card 7 · 应急 -->
+      <div class="card s7">
+        <div class="card-head">
+          <div class="card-num">7</div>
+          <div class="card-title-wrap">
+            <div class="card-title">应急响应</div>
+            <div class="card-window">T-6h · 压力测试</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">应急响应 Agent</span>
+            <span class="agent human">⊙ 调度长 Human-in-loop</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>极端情景压力测试</strong>: 汛期 / 特枯 / 暴增 / 弃风; 调度长在关键节点强制介入与微调。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 应急预案是 PDF, 不会"被执行"; Agent 在事件触发时主动跑预案。
+        </div>
+      </div>
+
+      <!-- Card 8 · 复盘 -->
+      <div class="card s8">
+        <div class="card-head">
+          <div class="card-num">8</div>
+          <div class="card-title-wrap">
+            <div class="card-title">闭环复盘 + 校准</div>
+            <div class="card-window">T-0 → 下一轮</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Agents</div>
+          <div class="agents">
+            <span class="agent">Reflection Agent</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">LLM / AI 能力</div>
+          <div class="capability"><strong>实绩 vs 预测偏差归因</strong>; 校准每个 Agent 的 Evaluation Metric, 反馈下一轮预测。</div>
+        </div>
+        <div class="gap">
+          <strong>老软件做不到 ·</strong> 复盘报告是事后总结, 不会反馈回算法; Reflection 把复盘变成工程闭环。
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ④ backbone · 协同骨架 ────────────────────────────────────────── -->
+  <section class="backbone-wrap">
+    <span class="label">协同骨架 · 同一套</span>
+    <div class="backbone">
+      <div class="chip c1">
+        <div class="chip-name"><span class="dot"></span>事件管理器</div>
+        <div class="chip-desc">Agent 之间事件驱动 · 非函数调用栈 · 非写死工作流</div>
+      </div>
+      <div class="chip c2">
+        <div class="chip-name"><span class="dot"></span>业务本体</div>
+        <div class="chip-desc">统一业务语义口径 · AgentGen 自动派生 Agent 蓝图</div>
+      </div>
+      <div class="chip c3">
+        <div class="chip-name"><span class="dot"></span>反思校准</div>
+        <div class="chip-desc">每个 Agent 独立评估指标 · 持续校准</div>
+      </div>
+      <div class="chip c4">
+        <div class="chip-name"><span class="dot"></span>人工介入</div>
+        <div class="chip-desc">关键节点强制介入 · 调度长在 T-6h 拥有否决权</div>
+      </div>
+      <div class="chip c5">
+        <div class="chip-name"><span class="dot"></span>审计与回放</div>
+        <div class="chip-desc">全链路审计 · 任一事件可重放 · 进入对赌结算</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ RAAS · 同构参照 · 已在生产 ─────────────────────────────────── -->
+  <div class="raas-divider">
+    <span class="tag">⑤ Evidence · RAAS</span>
+    <h2>RAAS 同构参照 · 这套架构 <span class="accent">已经在跑生产</span></h2>
+    <span class="meta">Same Backbone · Different Ontology · 招聘域跑通 → 在雅砻江复刻</span>
+  </div>
+
+  <section class="raas-frame">
+    <div class="raas-sub-title">
+      <h3><span class="accent">allmeta</span> &amp; RAAS 系统架构</h3>
+      <div class="sub">智能体驱动 · 事件驱动 · 可扩展分布式招聘运营系统</div>
+    </div>
+
+    <div class="raas-grid">
+
+      <!-- ① 用户与客户端 -->
+      <div class="rr r-users">
+        <div class="rr-head">
+          <span class="rr-num">1</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">用户与客户端</div>
+            <div class="rr-sub">应聘者 · 招聘官 · 外部系统</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp">应聘者 / 候选人</div>
+          <div class="comp">招聘官 / 用人团队</div>
+          <div class="comp">客户业务系统</div>
+          <div class="comp comp-mono">HRIS · ATS · CRM · SSO</div>
+        </div>
+      </div>
+
+      <!-- ② RAAS 服务端 -->
+      <div class="rr r-server">
+        <div class="rr-head">
+          <span class="rr-num">2</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">RAAS 服务端 <span class="softer">(API + 后端)</span></div>
+            <div class="rr-sub">AI 优先 · 端到端招聘平台</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp"><strong>API 网关</strong> · REST · 鉴权 · 限流</div>
+          <div class="comp"><strong>招聘管理</strong> · CRM · 流水线 · 报表分析</div>
+          <div class="comp"><strong>核心服务</strong> · 职位 · 候选人 · 面试 · Offer · 入职 · 评估 · 通知</div>
+          <div class="comp"><strong>共享服务</strong> · 鉴权 · 租户 · 角色 · 审计 · 特性开关</div>
+        </div>
+      </div>
+
+      <!-- ③ 事件管理器 -->
+      <div class="rr r-event">
+        <div class="rr-head">
+          <span class="rr-num">3</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">事件管理器</div>
+            <div class="rr-sub">触发 · 工作流 · 激活</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp">事件接入 · 路由 · 编排</div>
+          <div class="comp">工作流管理 · 重试 / 退避 / 死信队列</div>
+          <div class="comp">事件存储 · 历史 · 可观测</div>
+          <div class="rr-section-label">事件类型 · 存在 Ontology 里</div>
+          <div class="event-chips">
+            <span>Candidate.Created</span>
+            <span>Resume.Parsed</span>
+            <span>Interview.Scheduled</span>
+            <span>Interview.Completed</span>
+            <span>Job.Posted</span>
+            <span>Candidate.Recommended</span>
+            <span>Offer.Extended</span>
+            <span>Onboard.Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ 智能体运行时 -->
+      <div class="rr r-operator">
+        <div class="rr-head">
+          <span class="rr-num">4</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">Agentic Operator <span class="softer">智能体运行时</span></div>
+            <div class="rr-sub">总编排 + 8 个专业智能体</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp"><strong>总编排</strong> · 规划 · 调度 · 升级 · 任务分解 · 记忆</div>
+          <div class="rr-section-label">智能体 · 8 个</div>
+          <div class="agent-grid">
+            <span class="ra">寻源</span>
+            <span class="ra">筛选</span>
+            <span class="ra">简历挖掘</span>
+            <span class="ra">面试协调</span>
+            <span class="ra">短名单</span>
+            <span class="ra">推荐</span>
+            <span class="ra">Offer 谈判</span>
+            <span class="ra">入职</span>
+          </div>
+          <div class="comp comp-mono">工具调用 · Ontology · 数据 · 邮件 / SMS</div>
+        </div>
+      </div>
+
+      <!-- ⑤ allmeta 本体 -->
+      <div class="rr r-ontology">
+        <div class="rr-head">
+          <span class="rr-num">5</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">allmeta Ontology <span class="softer">本体</span></div>
+            <div class="rr-sub">知识图谱与语义</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp"><strong>Ontology API</strong> · GraphQL / REST · 模型 · 事件 · 推理 · 检索</div>
+          <div class="comp"><strong>知识图谱引擎</strong> · kylin · kyligence</div>
+          <div class="rr-section-label">知识域</div>
+          <div class="comp comp-mono">组织 · 职位与角色 · 候选人</div>
+          <div class="comp comp-mono">技能 · 招聘流程 · 事件</div>
+        </div>
+      </div>
+
+      <!-- ⑥ Gohire / Robohire -->
+      <div class="rr r-tools">
+        <div class="rr-head">
+          <span class="rr-num">6</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">Gohire / Robohire</div>
+            <div class="rr-sub">专业招聘工具集</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="comp">简历解析 · 简历匹配</div>
+          <div class="comp">面试邀约 / 排程</div>
+          <div class="comp">AI 面试与评估</div>
+          <div class="comp">背景调查</div>
+          <div class="comp comp-mono">+ 其他招聘工具</div>
+        </div>
+      </div>
+
+      <!-- ⑦ 数据服务与存储 · 横跨 -->
+      <div class="rr r-data raas-data-row">
+        <div class="rr-head">
+          <span class="rr-num">7</span>
+          <div class="rr-title-wrap">
+            <div class="rr-title">数据服务与存储 <span class="softer">— 统一访问与同步的 API Fabric</span></div>
+            <div class="rr-sub">统一 API · 鉴权 · 路由 · 缓存 · 同步 · 可观测</div>
+          </div>
+        </div>
+        <div class="rr-body">
+          <div class="data-grid">
+            <div class="data-col">
+              <div class="dc-name">数据服务 (API Server)</div>
+              <div class="dc-desc">统一数据 API (REST/GraphQL) · 鉴权与访问 · 数据路由与联邦 · 缓存 · 同步与 Webhook · 审计</div>
+            </div>
+            <div class="data-col">
+              <div class="dc-name">PostgreSQL <span style="color:var(--c-ink-4);font-weight:400;">— 关系型</span></div>
+              <div class="dc-desc">用户与租户 · 候选人画像 · 流水线与职位 · 事务与日志</div>
+            </div>
+            <div class="data-col">
+              <div class="dc-name">MinIO <span style="color:var(--c-ink-4);font-weight:400;">— 对象</span></div>
+              <div class="dc-desc">简历与文档 · 附件 · 媒体文件</div>
+            </div>
+            <div class="data-col">
+              <div class="dc-name">Redis · Elasticsearch · Vector DB</div>
+              <div class="dc-desc">缓存 · 搜索 · 向量嵌入 · 跨服务共享</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 1:1 同构映射: RAAS Agent ↔ YLJ Agent · 同骨架 -->
+    <div class="iso-band">
+      <div class="iso-band-head">
+        <span class="label">同构映射</span>
+        <span class="title">8 个 <strong>RAAS 智能体</strong> ↔ 8 个 <strong>YLJ 智能体</strong> · 同一个总编排模式</span>
+      </div>
+      <div class="iso-rows">
+        <span class="iso-label">RAAS<br/>(招聘域)</span>
+        <span class="iso-cell">寻源</span>
+        <span class="iso-cell">筛选</span>
+        <span class="iso-cell">简历挖掘</span>
+        <span class="iso-cell">面试协调</span>
+        <span class="iso-cell">短名单</span>
+        <span class="iso-cell">推荐</span>
+        <span class="iso-cell">Offer 谈判</span>
+        <span class="iso-cell">入职</span>
+
+        <div class="iso-arrow-row">↕ 同骨架 · 事件管理器 · 业务本体 · 反思校准 · 人工介入 · 审计回放 ↕</div>
+
+        <span class="iso-label">YLJAS<br/>(水风光)</span>
+        <span class="iso-cell">气象预测</span>
+        <span class="iso-cell">水库来水</span>
+        <span class="iso-cell">设备健康</span>
+        <span class="iso-cell">水电调度</span>
+        <span class="iso-cell">风光协同</span>
+        <span class="iso-cell orch">⚡ 总编排</span>
+        <span class="iso-cell human">应急 (人工介入)</span>
+        <span class="iso-cell">反思校准</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bottom">
+  <span>YLJAS · 8 个 Agentic 场景 · 同骨架</span>
+  <span>同源 ECAS · RAAS · 一套架构 · 三种 Ontology</span>
+  <span>2026-05-22 · 雅砻江战略研讨 附图</span>
+</footer>
+
+<script>
+  (function () {
+    var KEY = "ylj:scenarios:theme";
+    var btn = document.getElementById("themeBtn");
+    var root = document.documentElement;
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+    } catch (e) {}
+    btn.addEventListener("click", function () {
+      var cur = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      var next = cur === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>

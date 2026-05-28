@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>雅砻江 · Agentic 发电计划 · allmeta 同构重写 · 2026-05-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-bg: oklch(0.99 0.004 255);
+    --c-surface: #ffffff;
+    --c-panel: oklch(0.985 0.004 255);
+    --c-raised: oklch(0.975 0.004 255);
+    --c-line: oklch(0.92 0.006 255);
+    --c-line-strong: oklch(0.86 0.008 255);
+    --c-ink-1: oklch(0.22 0.015 260);
+    --c-ink-2: oklch(0.42 0.012 260);
+    --c-ink-3: oklch(0.58 0.010 260);
+    --c-ink-4: oklch(0.72 0.008 260);
+    --c-accent: oklch(0.56 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: oklch(0.96 0.03 255);
+    --c-accent-line: oklch(0.88 0.06 255);
+    --c-ok: oklch(0.62 0.13 155);
+    --c-ok-bg: oklch(0.96 0.04 155);
+    --c-warn: oklch(0.74 0.15 75);
+    --c-warn-bg: oklch(0.96 0.06 80);
+    --c-err: oklch(0.58 0.19 25);
+    --c-err-bg: oklch(0.96 0.05 25);
+    --c-info: oklch(0.60 0.10 230);
+    --c-info-bg: oklch(0.96 0.03 230);
+
+    /* shared with scenarios — keep palette unified */
+    --c-s1: oklch(0.55 0.12 200);   /* cyan        */
+    --c-s2: oklch(0.56 0.14 255);   /* accent blue */
+    --c-s3: oklch(0.55 0.14 150);   /* green       */
+    --c-s4: oklch(0.50 0.03 260);   /* neutral     */
+    --c-s5: oklch(0.62 0.14 50);    /* amber       */
+    --c-s6: oklch(0.55 0.18 295);   /* purple      */
+    --c-s7: oklch(0.58 0.19 25);    /* red         */
+    --c-s8: oklch(0.60 0.13 35);    /* orange      */
+
+    /* dedicated tokens for this artifact */
+    --c-orig: oklch(0.58 0.04 260);     /* 国际中软 side · steel-grey */
+    --c-orig-bg: oklch(0.965 0.006 260);
+    --c-orig-line: oklch(0.85 0.012 260);
+    --c-iso: oklch(0.58 0.19 25);       /* isolation red bar */
+    --c-iso-bg: oklch(0.97 0.04 25);
+
+    --f-sans: "Inter", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sh-1: 0 1px 0 rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --sh-2: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 20px -8px rgba(15, 23, 42, 0.10);
+    --sh-3: 0 12px 40px -12px rgba(15, 23, 42, 0.22);
+  }
+  [data-theme="dark"] {
+    --c-bg: oklch(0.17 0.012 260);
+    --c-surface: oklch(0.20 0.014 260);
+    --c-panel: oklch(0.235 0.014 260);
+    --c-raised: oklch(0.265 0.014 260);
+    --c-line: oklch(0.30 0.014 260);
+    --c-line-strong: oklch(0.40 0.014 260);
+    --c-ink-1: oklch(0.96 0.006 260);
+    --c-ink-2: oklch(0.82 0.010 260);
+    --c-ink-3: oklch(0.66 0.012 260);
+    --c-ink-4: oklch(0.50 0.012 260);
+    --c-accent: oklch(0.74 0.14 255);
+    --c-accent-2: oklch(0.66 0.11 255);
+    --c-accent-bg: color-mix(in oklab, oklch(0.74 0.14 255) 16%, transparent);
+    --c-accent-line: color-mix(in oklab, oklch(0.74 0.14 255) 40%, transparent);
+    --c-ok: oklch(0.78 0.13 155);
+    --c-ok-bg: color-mix(in oklab, oklch(0.78 0.13 155) 14%, transparent);
+    --c-warn: oklch(0.82 0.15 80);
+    --c-warn-bg: color-mix(in oklab, oklch(0.82 0.15 80) 14%, transparent);
+    --c-err: oklch(0.74 0.17 25);
+    --c-err-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+    --c-info: oklch(0.78 0.10 230);
+    --c-info-bg: color-mix(in oklab, oklch(0.78 0.10 230) 14%, transparent);
+
+    --c-s1: oklch(0.74 0.12 200);
+    --c-s2: oklch(0.74 0.14 255);
+    --c-s3: oklch(0.72 0.14 150);
+    --c-s4: oklch(0.70 0.03 260);
+    --c-s5: oklch(0.78 0.14 50);
+    --c-s6: oklch(0.74 0.16 295);
+    --c-s7: oklch(0.74 0.17 25);
+    --c-s8: oklch(0.76 0.14 35);
+
+    --c-orig: oklch(0.74 0.03 260);
+    --c-orig-bg: color-mix(in oklab, oklch(0.74 0.03 260) 12%, transparent);
+    --c-orig-line: oklch(0.42 0.014 260);
+    --c-iso: oklch(0.74 0.17 25);
+    --c-iso-bg: color-mix(in oklab, oklch(0.74 0.17 25) 14%, transparent);
+
+    --sh-1: 0 1px 0 rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.30);
+    --sh-2: 0 1px 2px rgba(0,0,0,0.35), 0 8px 20px -8px rgba(0,0,0,0.50);
+    --sh-3: 0 12px 40px -12px rgba(0,0,0,0.70);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--f-sans);
+    color: var(--c-ink-1);
+    background: var(--c-bg);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mono { font-family: var(--f-mono); }
+  .brand-mark {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--c-ink-1);
+    white-space: nowrap;
+  }
+  .brand-mark sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    line-height: 0;
+    color: var(--c-accent);
+    font-weight: 600;
+    margin: 0 0.04em 0 0.01em;
+  }
+
+  /* ─── topbar ───────────────────────────────────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 56px;
+    background: color-mix(in oklab, var(--c-surface) 92%, transparent);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--c-line);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 24px;
+  }
+  .topbar .brand { font-size: 17px; }
+  .topbar .meta {
+    color: var(--c-ink-3);
+    font-size: 12px;
+    border-left: 1px solid var(--c-line);
+    padding-left: 16px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .topbar .spacer { margin-left: auto; }
+  .topbar .tag-mini {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--c-accent);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 4px 9px;
+    background: var(--c-accent-bg);
+    border: 1px solid var(--c-accent-line);
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .theme-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    color: var(--c-ink-2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .theme-btn:hover { background: var(--c-accent-bg); border-color: var(--c-accent-line); }
+  .theme-icon-light { display: inline-flex; }
+  .theme-icon-dark { display: none; }
+  [data-theme="dark"] .theme-icon-light { display: none; }
+  [data-theme="dark"] .theme-icon-dark { display: inline-flex; }
+
+  /* ─── page frame ───────────────────────────────────────────────────── */
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 16px 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ─── ① hero ───────────────────────────────────────────────────────── */
+  .hero {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--c-ink-1);
+    line-height: 1.25;
+    flex: 1;
+  }
+  .hero h1 .accent { color: var(--c-accent); }
+  .hero h1 .strike { color: var(--c-ink-3); text-decoration: line-through; text-decoration-color: var(--c-orig-line); }
+  .hero .lead {
+    font-size: 12px;
+    color: var(--c-ink-3);
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 520px;
+    text-align: right;
+  }
+  .hero .lead strong { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  /* ─── section header ───────────────────────────────────────────────── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 2px;
+    margin-bottom: 6px;
+  }
+  .sec-head .tag {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--c-ink-3);
+    padding: 3px 8px;
+    background: var(--c-panel);
+    border: 1px solid var(--c-line);
+    border-radius: 4px;
+  }
+  .sec-head h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .sec-head .meta {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-ink-3);
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
+  }
+  .sec-head .meta strong { color: var(--c-ink-1); font-weight: 600; }
+
+  /* ─── ② shift banner ──────────────────────────────────────────────── */
+  .shift-banner {
+    background: linear-gradient(90deg, var(--c-orig-bg) 0%, var(--c-accent-bg) 100%);
+    border: 1px dashed var(--c-accent-line);
+    border-radius: 10px;
+    padding: 11px 14px;
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .shift-side {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .shift-side .label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .shift-side.lhs .label { color: var(--c-orig); }
+  .shift-side.rhs .label { color: var(--c-accent); }
+  .shift-side .body {
+    font-size: 12.5px;
+    color: var(--c-ink-1);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .shift-side .body strong { font-weight: 700; }
+  .shift-side.lhs .body strong { color: var(--c-orig); }
+  .shift-side.rhs .body strong { color: var(--c-accent); }
+  .shift-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-accent);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  /* ─── ③ compare diagrams · two side-by-side panes ─────────────────── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .pane {
+    background: var(--c-surface);
+    border: 1.5px solid var(--pane-line);
+    border-radius: 10px;
+    padding: 11px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pane::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--pane-color);
+  }
+  .pane.lhs { --pane-color: var(--c-orig); --pane-line: color-mix(in oklab, var(--c-orig) 30%, var(--c-line)); }
+  .pane.rhs { --pane-color: var(--c-accent); --pane-line: color-mix(in oklab, var(--c-accent) 35%, var(--c-line)); }
+
+  .pane-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 2px;
+  }
+  .pane-head .pane-tag {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--pane-color);
+    padding: 2px 7px;
+    background: color-mix(in oklab, var(--pane-color) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--pane-color) 30%, var(--c-line));
+    border-radius: 3px;
+  }
+  .pane-head .pane-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .pane-head .pane-mode {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* zone-grid · III | boundary | IV */
+  .zones {
+    display: grid;
+    grid-template-columns: 1.05fr 44px 1.55fr;
+    gap: 0;
+    min-height: 320px;
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    background: var(--c-panel);
+    overflow: hidden;
+  }
+  .zone {
+    padding: 8px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    position: relative;
+  }
+  .zone.iii { background: var(--c-panel); border-right: 1px dashed var(--c-line); }
+  .zone.iv  { background: var(--c-surface); border-left: 1px dashed var(--c-line); }
+  .zone-label {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--c-ink-3);
+    text-transform: uppercase;
+  }
+  .zone-label .z-num {
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+  .pane.lhs .zone-label .z-num { color: var(--c-orig); }
+
+  /* boundary · isolation OR mirror */
+  .boundary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 0;
+    text-align: center;
+  }
+  .boundary.iso {
+    background: var(--c-iso-bg);
+    border-left: 2px solid var(--c-iso);
+    border-right: 2px solid var(--c-iso);
+  }
+  .boundary.iso .bar {
+    width: 8px;
+    flex: 1;
+    background: var(--c-iso);
+    border-radius: 4px;
+    min-height: 80px;
+  }
+  .boundary.iso .b-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-iso);
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.2em;
+    padding: 4px 0;
+  }
+  .boundary.mirror {
+    background: linear-gradient(180deg, var(--c-accent-bg) 0%, color-mix(in oklab, var(--c-s3) 8%, var(--c-accent-bg)) 100%);
+    border-left: 1px dashed var(--c-accent);
+    border-right: 1px dashed var(--c-s3);
+    position: relative;
+  }
+  .boundary.mirror .glyph {
+    color: var(--c-accent);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+  }
+  .boundary.mirror .b-label {
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    color: var(--c-accent);
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.18em;
+    padding: 4px 0;
+  }
+  .boundary.mirror .b-events {
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    color: var(--c-s3);
+    writing-mode: vertical-rl;
+    letter-spacing: 0.15em;
+    padding: 4px 0;
+    font-weight: 600;
+  }
+
+  /* boxes inside zones */
+  .box {
+    background: var(--c-surface);
+    border: 1.2px solid var(--box-line, var(--c-line));
+    border-radius: 6px;
+    padding: 5px 8px 6px;
+    font-size: 11px;
+    color: var(--c-ink-1);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    line-height: 1.3;
+  }
+  .box .b-title {
+    font-weight: 700;
+    color: var(--box-color, var(--c-ink-1));
+    font-size: 11.5px;
+    letter-spacing: -0.005em;
+  }
+  .box .b-sub {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* legacy box variants */
+  .box.gateway { --box-color: var(--c-iso); --box-line: color-mix(in oklab, var(--c-iso) 35%, var(--c-line)); background: color-mix(in oklab, var(--c-iso) 5%, var(--c-surface)); }
+  .box.plan    { --box-color: var(--c-s8);  --box-line: color-mix(in oklab, var(--c-s8) 35%, var(--c-line));  background: color-mix(in oklab, var(--c-s8) 6%, var(--c-surface)); }
+  .box.master  { --box-color: var(--c-s2);  --box-line: color-mix(in oklab, var(--c-s2) 40%, var(--c-line));  background: color-mix(in oklab, var(--c-s2) 6%, var(--c-surface)); font-weight: 700; }
+  .box.slave   { --box-color: var(--c-s2);  --box-line: color-mix(in oklab, var(--c-s2) 25%, var(--c-line));  background: color-mix(in oklab, var(--c-s2) 3%, var(--c-surface)); }
+  .box.tool    { --box-color: var(--c-s8);  --box-line: color-mix(in oklab, var(--c-s8) 28%, var(--c-line));  background: color-mix(in oklab, var(--c-s8) 4%, var(--c-surface)); }
+  .box.agent   { --box-color: var(--c-s3);  --box-line: color-mix(in oklab, var(--c-s3) 30%, var(--c-line));  background: color-mix(in oklab, var(--c-s3) 4%, var(--c-surface)); }
+  /* allmeta box variants */
+  .box.facade  { --box-color: var(--c-accent); --box-line: color-mix(in oklab, var(--c-accent) 35%, var(--c-line)); background: color-mix(in oklab, var(--c-accent) 5%, var(--c-surface)); }
+  .box.peer    { --box-color: var(--c-s2);  --box-line: color-mix(in oklab, var(--c-s2) 30%, var(--c-line));  background: color-mix(in oklab, var(--c-s2) 4%, var(--c-surface)); }
+  .box.ontent  { --box-color: var(--c-s5);  --box-line: color-mix(in oklab, var(--c-s5) 32%, var(--c-line));  background: color-mix(in oklab, var(--c-s5) 5%, var(--c-surface)); }
+  .box.bus     { --box-color: var(--c-s6);  --box-line: color-mix(in oklab, var(--c-s6) 35%, var(--c-line));  background: color-mix(in oklab, var(--c-s6) 5%, var(--c-surface)); }
+  .box.cap     { --box-color: var(--c-s3);  --box-line: color-mix(in oklab, var(--c-s3) 32%, var(--c-line));  background: color-mix(in oklab, var(--c-s3) 5%, var(--c-surface)); }
+
+  /* IV-zone hub container · 智能体集成中枢 */
+  .hub {
+    border: 1.5px dashed color-mix(in oklab, var(--c-s2) 50%, var(--c-line));
+    border-radius: 7px;
+    padding: 7px 7px 8px;
+    background: color-mix(in oklab, var(--c-s2) 3%, var(--c-surface));
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .hub-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-s2);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hub .slaves {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .periph {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .periph .ovl {
+    font-size: 10px;
+    color: var(--c-ink-1);
+    padding: 3px 7px;
+    border-radius: 11px;
+    text-align: center;
+    line-height: 1.25;
+    border: 1px solid;
+  }
+  .periph .ovl.tool {
+    background: color-mix(in oklab, var(--c-s8) 8%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--c-s8) 30%, var(--c-line));
+    color: var(--c-s8);
+    font-weight: 600;
+  }
+  .periph .ovl.agent {
+    background: color-mix(in oklab, var(--c-s3) 8%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--c-s3) 32%, var(--c-line));
+    color: var(--c-s3);
+    font-weight: 600;
+  }
+  .periph .ovl-label {
+    grid-column: 1 / -1;
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    color: var(--c-ink-4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  /* allmeta IV-zone mesh */
+  .mesh {
+    border: 1.5px dashed color-mix(in oklab, var(--c-accent) 45%, var(--c-line));
+    border-radius: 7px;
+    padding: 7px 7px 8px;
+    background: color-mix(in oklab, var(--c-accent) 3%, var(--c-surface));
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mesh-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mesh .bus-line {
+    background: color-mix(in oklab, var(--c-s6) 8%, var(--c-surface));
+    border: 1px dashed color-mix(in oklab, var(--c-s6) 40%, var(--c-line));
+    border-radius: 5px;
+    padding: 4px 7px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mesh .bus-line .bus-name {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--c-s6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex: none;
+  }
+  .mesh .bus-line .bus-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    flex: 1;
+  }
+  .mesh .bus-line .bus-chips span {
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    color: var(--c-s6);
+    background: var(--c-surface);
+    border: 1px solid color-mix(in oklab, var(--c-s6) 28%, var(--c-line));
+    border-radius: 3px;
+    padding: 0 4px;
+    line-height: 1.6;
+  }
+  .mesh .peers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+  }
+  .mesh .plan-entity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px 6px;
+    border-radius: 6px;
+    background: color-mix(in oklab, var(--c-s5) 6%, var(--c-surface));
+    border: 1.2px solid color-mix(in oklab, var(--c-s5) 32%, var(--c-line));
+    gap: 8px;
+  }
+  .mesh .plan-entity .pe-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--c-s5);
+  }
+  .mesh .plan-entity .pe-tag {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* pane verdict at bottom */
+  .verdict {
+    margin-top: auto;
+    padding: 7px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--c-ink-2);
+    background: color-mix(in oklab, var(--pane-color) 5%, var(--c-panel));
+    border-left: 3px solid var(--pane-color);
+  }
+  .verdict strong { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  /* numbered flow row for legacy diagram */
+  .flow-row {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2px 0;
+  }
+  .flow-step {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    color: var(--c-ink-2);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    letter-spacing: 0.02em;
+  }
+  .flow-step .n {
+    font-weight: 700;
+    color: var(--c-orig);
+    margin-right: 3px;
+  }
+
+  /* ─── ④ 1:1 mapping table ─────────────────────────────────────────── */
+  .map-table {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+  .map-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1.4fr 1.9fr;
+    gap: 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .map-row:last-child { border-bottom: none; }
+  .map-row.head {
+    background: var(--c-panel);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--c-ink-3);
+  }
+  .map-row > div {
+    padding: 7px 11px;
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    line-height: 1.45;
+    border-right: 1px solid var(--c-line);
+  }
+  .map-row > div:last-child { border-right: none; }
+  .map-row .col-orig {
+    color: var(--c-orig);
+    font-weight: 600;
+    background: color-mix(in oklab, var(--c-orig) 3%, var(--c-surface));
+  }
+  .map-row .col-am {
+    color: var(--c-ink-1);
+    font-weight: 700;
+    background: color-mix(in oklab, var(--c-accent) 3%, var(--c-surface));
+  }
+  .map-row .col-am .accent { color: var(--c-accent); }
+  .map-row .col-note { font-style: italic; color: var(--c-ink-2); }
+  .map-row .col-note strong { color: var(--c-ink-1); font-style: normal; font-weight: 600; }
+
+  /* ─── ⑤ 8-step flow re-cast ───────────────────────────────────────── */
+  .flow-frame {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    padding: 10px 12px 12px;
+  }
+  .flow-lanes {
+    display: grid;
+    grid-template-columns: 110px repeat(8, 1fr);
+    gap: 4px;
+    align-items: stretch;
+  }
+  .lane-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 5px 6px;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: right;
+  }
+  .lane-label.lhs { color: var(--c-orig); }
+  .lane-label.rhs { color: var(--c-accent); }
+  .lane-label .ll-sub {
+    font-size: 8.5px;
+    color: var(--c-ink-4);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    margin-top: 2px;
+  }
+  .step {
+    border-radius: 5px;
+    padding: 5px 6px 6px;
+    font-size: 10px;
+    line-height: 1.32;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 50px;
+  }
+  .step.legacy {
+    background: var(--c-orig-bg);
+    border-color: var(--c-orig-line);
+    color: var(--c-ink-2);
+  }
+  .step.allmeta {
+    background: color-mix(in oklab, var(--c-accent) 5%, var(--c-surface));
+    border-color: color-mix(in oklab, var(--c-accent) 30%, var(--c-line));
+    color: var(--c-ink-1);
+  }
+  .step .s-num {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .step.legacy  .s-num { color: var(--c-orig); }
+  .step.allmeta .s-num { color: var(--c-accent); }
+  .step .s-name {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .step.legacy .s-name { color: var(--c-orig); font-weight: 600; }
+  .step .s-event {
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    color: var(--c-accent);
+    letter-spacing: 0.02em;
+    font-weight: 600;
+  }
+  .step .s-tag {
+    font-family: var(--f-mono);
+    font-size: 8px;
+    color: var(--c-ink-4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+  .flow-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 4px 0;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+  .flow-divider::before,
+  .flow-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--c-accent-line), transparent);
+  }
+  .flow-note {
+    margin-top: 8px;
+    padding: 7px 10px;
+    background: var(--c-accent-bg);
+    border-left: 3px solid var(--c-accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 11.5px;
+    color: var(--c-ink-2);
+    line-height: 1.5;
+  }
+  .flow-note strong { color: var(--c-ink-1); font-weight: 600; }
+  .flow-note .key { color: var(--c-accent); font-weight: 600; }
+
+  /* ─── ⑥ ontology nodes · 4 columns ────────────────────────────────── */
+  .onto-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+  }
+  .onto-col {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-top: 3px solid var(--oc-color, var(--c-accent));
+    border-radius: 8px;
+    padding: 8px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .onto-col.e1 { --oc-color: var(--c-s5); }   /* Entities · amber */
+  .onto-col.e2 { --oc-color: var(--c-s2); }   /* Relations · blue */
+  .onto-col.e3 { --oc-color: var(--c-s6); }   /* Events · purple */
+  .onto-col.e4 { --oc-color: var(--c-s3); }   /* Capabilities · green */
+  .onto-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--c-line);
+    margin-bottom: 2px;
+  }
+  .onto-num {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--oc-color);
+    background: color-mix(in oklab, var(--oc-color) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--oc-color) 30%, var(--c-line));
+    border-radius: 3px;
+    padding: 1px 5px;
+    letter-spacing: 0.04em;
+  }
+  .onto-col h3 {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .onto-col .sub {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    color: var(--c-ink-3);
+    letter-spacing: 0.04em;
+    margin-top: -2px;
+  }
+  .onto-item {
+    font-size: 10.5px;
+    color: var(--c-ink-1);
+    padding: 3px 7px;
+    background: color-mix(in oklab, var(--oc-color) 5%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--oc-color) 22%, var(--c-line));
+    border-radius: 4px;
+    font-family: var(--f-mono);
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+  .onto-item.head {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    padding: 1px 0;
+    color: var(--c-ink-3);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 3px;
+  }
+  .onto-item strong { color: var(--oc-color); font-weight: 700; }
+
+  /* ─── ⑦ 4 upgrades · pillar-style cards ───────────────────────────── */
+  .upgrades {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .upgrade {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-top: 3px solid var(--u-color, var(--c-accent));
+    border-radius: 8px;
+    padding: 9px 11px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .upgrade.u1 { --u-color: var(--c-s6); }   /* peer mesh   · purple */
+  .upgrade.u2 { --u-color: var(--c-s3); }   /* sem mirror  · green  */
+  .upgrade.u3 { --u-color: var(--c-s5); }   /* per-agent   · amber  */
+  .upgrade.u4 { --u-color: var(--c-warn); } /* replayable  · warn   */
+  .upgrade .u-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .upgrade .u-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--u-color);
+    background: color-mix(in oklab, var(--u-color) 10%, var(--c-surface));
+    border: 1px solid color-mix(in oklab, var(--u-color) 35%, var(--c-line));
+    border-radius: 3px;
+    padding: 1px 5px;
+    letter-spacing: 0.04em;
+  }
+  .upgrade h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--c-ink-1);
+    letter-spacing: -0.005em;
+  }
+  .upgrade .u-body {
+    font-size: 11px;
+    color: var(--c-ink-2);
+    line-height: 1.5;
+  }
+  .upgrade .u-body strong { color: var(--c-ink-1); font-weight: 600; }
+  .upgrade .u-vs {
+    margin-top: auto;
+    padding: 5px 7px;
+    font-size: 10px;
+    border-radius: 5px;
+    background: var(--c-orig-bg);
+    border-left: 2px solid var(--c-orig);
+    color: var(--c-ink-2);
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .upgrade .u-vs strong { color: var(--c-orig); font-weight: 700; font-style: normal; }
+
+  /* ─── footer ───────────────────────────────────────────────────────── */
+  footer.bottom {
+    padding: 10px 28px 12px;
+    color: var(--c-ink-4);
+    font-size: 10.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--f-mono);
+    border-top: 1px solid var(--c-line);
+    margin-top: 4px;
+  }
+  footer.bottom a { color: var(--c-ink-3); text-decoration: none; }
+  footer.bottom a:hover { color: var(--c-accent); }
+
+  /* responsive · projection */
+  @media (max-width: 1280px) {
+    .compare { grid-template-columns: 1fr; }
+    .onto-grid { grid-template-columns: repeat(2, 1fr); }
+    .upgrades { grid-template-columns: repeat(2, 1fr); }
+    .flow-lanes { grid-template-columns: 96px repeat(4, 1fr); }
+    .flow-lanes .step:nth-child(n+6).legacy,
+    .flow-lanes .step:nth-child(n+6).allmeta { display: none; }
+  }
+  @media (max-width: 900px) {
+    .map-row { grid-template-columns: 1fr; }
+    .shift-banner { grid-template-columns: 1fr; }
+    .shift-arrow { transform: rotate(90deg); }
+  }
+  @media print {
+    @page { size: A3 landscape; margin: 12mm; }
+    .topbar { position: static; box-shadow: none; backdrop-filter: none; }
+    .theme-btn { display: none; }
+    main { gap: 14px; padding: 14px 0; max-width: 100%; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── topbar ───────────────────────────────────────────────────────── -->
+<header class="topbar">
+  <span class="brand brand-mark">allm<sup>2</sup>eta · YLJ</span>
+  <span class="meta">Agentic 发电计划 · allmeta 同构重写 · 2026-05-22</span>
+  <span class="spacer"></span>
+  <span class="tag-mini">vs 国际中软原图</span>
+  <button class="theme-btn" id="themeBtn" aria-label="切换主题" title="切换深/浅主题">
+    <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</header>
+
+<main>
+
+  <!-- ① hero ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <h1>
+      把「智能体集成中枢」从 <span class="strike">Master/Slave RPC 树</span>,
+      拍平成 <span class="accent">Ontology 驱动的事件网</span>
+    </h1>
+    <div class="lead">
+      <strong>客户图 = SOA × Agent 重画</strong>:
+      代理网关转发请求, Master 拆任务, Slave 调技能.<br/>
+      <strong>allmeta 同构 =</strong> 同一份业务 Ontology · 同一条事件总线 ·
+      <strong>无 Master/Slave 层级</strong> · 跨区在<strong>语义层</strong>隔离.
+    </div>
+  </section>
+
+  <!-- ② shift banner · one-line core transformation ───────────────────── -->
+  <div class="shift-banner">
+    <div class="shift-side lhs">
+      <span class="label">国际中软原图</span>
+      <span class="body">
+        <strong>Master/Slave RPC 树</strong> · 函数调用栈 · 跨区 = <strong>网络黑盒</strong> · 4 个 Slave 硬编码 · 8 个技能 8 个 SDK
+      </span>
+    </div>
+    <div class="shift-arrow">⇒</div>
+    <div class="shift-side rhs">
+      <span class="label">allmeta 同构重写</span>
+      <span class="body">
+        <strong>Ontology + Event Mesh</strong> · 事件订阅 · 跨区 = <strong>Ontology 镜像 + 事件队列</strong> · Agent 由 capability 注册自动发现 · 计划本身是 Entity
+      </span>
+    </div>
+  </div>
+
+  <!-- ③ side-by-side diagram comparison ──────────────────────────────── -->
+  <div class="sec-head">
+    <span class="tag">① Diagram vs Diagram</span>
+    <h2>同构对比图 · 客户图 与 allmeta 重写</h2>
+    <span class="meta">左 = <strong>RPC 树</strong> · 右 = <strong>事件网</strong></span>
+  </div>
+
+  <div class="compare">
+
+    <!-- LEFT · 国际中软原图 schematic -->
+    <div class="pane lhs">
+      <div class="pane-head">
+        <span class="pane-tag">国际中软</span>
+        <span class="pane-title">智能体集成中枢 · 发电计划生成逻辑</span>
+        <span class="pane-mode">mode · RPC tree</span>
+      </div>
+      <div class="zones">
+
+        <!-- Zone III · 代理网关 -->
+        <div class="zone iii">
+          <div class="zone-label"><span class="z-num">Ⅲ</span> 区 · 业务侧</div>
+          <div class="box plan">
+            <span class="b-title">日前/日内发电计划 Agent</span>
+            <span class="b-sub">提交需求清单 (Schema)</span>
+          </div>
+          <div class="box gateway">
+            <span class="b-title">代理网关</span>
+            <span class="b-sub">RPC · 请求转发 · 结果解析</span>
+          </div>
+        </div>
+
+        <!-- 安全隔离设备 -->
+        <div class="boundary iso">
+          <div class="bar"></div>
+          <span class="b-label">安全隔离设备</span>
+          <div class="bar"></div>
+        </div>
+
+        <!-- Zone IV · 智能体集成中枢 -->
+        <div class="zone iv">
+          <div class="zone-label"><span class="z-num">Ⅳ</span> 区 · 中枢侧</div>
+          <div class="hub">
+            <span class="hub-label">智能体集成中枢</span>
+            <div class="box master">
+              <span class="b-title">Master Agent</span>
+              <span class="b-sub">生成任务分解</span>
+            </div>
+            <div class="slaves">
+              <div class="box slave"><span class="b-title" style="font-size:10.5px">Slave 1</span><span class="b-sub">检修任务</span></div>
+              <div class="box slave"><span class="b-title" style="font-size:10.5px">Slave 2</span><span class="b-sub">设备状态</span></div>
+              <div class="box slave"><span class="b-title" style="font-size:10.5px">Slave 3</span><span class="b-sub">营销决策</span></div>
+              <div class="box slave"><span class="b-title" style="font-size:10.5px">Slave 4</span><span class="b-sub">功率预测</span></div>
+            </div>
+          </div>
+          <div class="periph">
+            <span class="ovl-label">技能 / 智能体 · 11 个 (橙=工具, 绿=Agent)</span>
+            <span class="ovl tool">检修管理</span>
+            <span class="ovl tool">设备状态</span>
+            <span class="ovl tool">电站 AGC</span>
+            <span class="ovl tool">出清服务</span>
+            <span class="ovl agent">径流预测</span>
+            <span class="ovl agent">功率预测</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <span class="flow-step"><span class="n">1</span>数据请求</span>
+        <span class="flow-step"><span class="n">2</span>请求转发</span>
+        <span class="flow-step"><span class="n">3</span>指令下发</span>
+        <span class="flow-step"><span class="n">4</span>任务分解</span>
+        <span class="flow-step"><span class="n">5</span>调度指令</span>
+        <span class="flow-step"><span class="n">6</span>汇总子任务</span>
+        <span class="flow-step"><span class="n">7</span>结果解析</span>
+        <span class="flow-step"><span class="n">8</span>返回结果</span>
+      </div>
+
+      <div class="verdict">
+        <strong>调用栈思维:</strong> 父 Agent 阻塞等子 Agent 返回. 隔离设备 = 网络层 ACL, 业务语义不可见.
+        4 个 Slave 是<strong>硬编码层级</strong>; 加一种任务就要加一个 Slave 类型 + 改 Master 路由.
+      </div>
+    </div>
+
+    <!-- RIGHT · allmeta 同构重写 schematic -->
+    <div class="pane rhs">
+      <div class="pane-head">
+        <span class="pane-tag">allmeta</span>
+        <span class="pane-title">Ontology + Agentic Operator · 事件网</span>
+        <span class="pane-mode">mode · event mesh</span>
+      </div>
+      <div class="zones">
+
+        <!-- Zone III · Ontology 门面 -->
+        <div class="zone iii">
+          <div class="zone-label"><span class="z-num">Ⅲ</span> 区 · 业务侧</div>
+          <div class="box plan">
+            <span class="b-title">PlanCompose Agent</span>
+            <span class="b-sub">订阅 Plan 事件 · 写出 v_N</span>
+          </div>
+          <div class="box facade">
+            <span class="b-title">Ontology 门面</span>
+            <span class="b-sub">GraphQL/REST · schema-first</span>
+          </div>
+          <div class="box ontent" style="font-size:10.5px">
+            <span class="b-title" style="font-size:11px">Plan Entity</span>
+            <span class="b-sub">PlanVersion v_N · 血缘 · 署名</span>
+          </div>
+        </div>
+
+        <!-- Ontology Mirror · 语义边界 -->
+        <div class="boundary mirror">
+          <span class="glyph">⇋</span>
+          <span class="b-label">Ontology 镜像</span>
+          <span class="b-events">事件队列 · 可审计</span>
+        </div>
+
+        <!-- Zone IV · Event Mesh -->
+        <div class="zone iv">
+          <div class="zone-label"><span class="z-num">Ⅳ</span> 区 · 运行时</div>
+          <div class="mesh">
+            <span class="mesh-label">Agentic Operator · Peer Agents Mesh</span>
+            <div class="bus-line">
+              <span class="bus-name">Event Bus</span>
+              <div class="bus-chips">
+                <span>*.Required</span>
+                <span>*.Produced</span>
+                <span>*.Published</span>
+              </div>
+            </div>
+            <div class="peers">
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">径流预测</span><span class="b-sub">forecast.runoff</span></div>
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">功率预测</span><span class="b-sub">forecast.power</span></div>
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">出清竞价</span><span class="b-sub">clearing.bid</span></div>
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">检修排程</span><span class="b-sub">maintenance.sched</span></div>
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">电价预测</span><span class="b-sub">forecast.price</span></div>
+              <div class="box peer"><span class="b-title" style="font-size:10.5px">复盘归因</span><span class="b-sub">review.attribution</span></div>
+            </div>
+            <div class="box cap">
+              <span class="b-title">Capability Registry</span>
+              <span class="b-sub">Agent ↔ Ontology Action 注册 · 自动派生, 不硬编码</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <span class="flow-step" style="background:color-mix(in oklab,var(--c-accent) 7%,var(--c-surface));border-color:var(--c-accent-line);color:var(--c-accent)"><span class="n" style="color:var(--c-accent)">①</span>事件: PlanRequest.Submitted</span>
+        <span class="flow-step" style="background:color-mix(in oklab,var(--c-s6) 7%,var(--c-surface));border-color:color-mix(in oklab,var(--c-s6) 30%,var(--c-line));color:var(--c-s6)"><span class="n" style="color:var(--c-s6)">⑦</span>事件: Plan.Published</span>
+      </div>
+
+      <div class="verdict">
+        <strong>订阅思维:</strong> 没有 caller 等 callee. 跨区 = 镜像 + 事件队列, <strong>语义层可审计</strong>.
+        新任务只需注册新 capability, 现有 Agent 自动发现; <strong>无层级硬编码</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 1:1 component mapping ────────────────────────────────────────── -->
+  <div class="sec-head">
+    <span class="tag">② Components Map</span>
+    <h2>1:1 组件映射 · 客户原件 → allmeta 实现</h2>
+    <span class="meta">同骨架 · 不同实现质感</span>
+  </div>
+
+  <div class="map-table">
+    <div class="map-row head">
+      <div>国际中软原件</div>
+      <div>allmeta 实现</div>
+      <div>关键差异 (为何不是简单换名)</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">代理网关 (RPC 转发)</div>
+      <div class="col-am"><span class="accent">Ontology API 门面</span> · GraphQL/REST</div>
+      <div class="col-note">客户「提交需求清单」<strong>= 一次 Ontology 查询</strong>, 不是 8 个 RPC 拼成一次调用; schema 即契约, 不需要前后端约定 JSON 格式.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">安全隔离设备 (网络层红色防火墙)</div>
+      <div class="col-am"><span class="accent">Ontology 镜像 + 事件队列</span></div>
+      <div class="col-note">III 区只见 IV 区的<strong>只读语义投影</strong>, 写入显式排队; 跨区动作有<strong>语义级审计日志</strong>, 不是抓包级别.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">Master Agent (任务分解)</div>
+      <div class="col-am"><span class="accent">Plan Conductor Agent</span> · Agentic Operator 内一个角色</div>
+      <div class="col-note">它<strong>不是「主」</strong>, 只承担「日前计划编排」角色; 应急 / 复盘 / 现货可挂不同 Conductor, 同骨架可换.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">Slave Agent 1-4 (硬编码 4 个)</div>
+      <div class="col-am"><span class="accent">Capability 注册 + AgentGen 派生</span></div>
+      <div class="col-note">哪个 Agent 处理 <code>maintenance.schedule</code> 由 Ontology 注册决定, 不是 Master 内 switch-case; 加任务<strong>不改 Conductor</strong>.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">8 个技能工具 (8 个 SDK)</div>
+      <div class="col-am"><span class="accent">Ontology Capability + Tool Adapter</span></div>
+      <div class="col-note">8 个工具变成 8 个统一 <code>Action</code> 类型, 一份 Adapter 接口; <strong>不是 8 套客户端代码</strong>.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">智能体 · 径流 / 功率 / 交易决策</div>
+      <div class="col-am"><span class="accent">Specialist Agents · Conductor 的 peer</span></div>
+      <div class="col-note">它们<strong>不是 child</strong>, 是 peer; 任何一个都能编排其他, 取决于事件, 不取决于图层级.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">日前/日内发电计划 Agent (JSON payload)</div>
+      <div class="col-am"><span class="accent">PlanCompose Agent + PlanVersion Entity</span></div>
+      <div class="col-note">计划本身是 <strong>Ontology Entity</strong>, 有版本 / 血缘 / 署名; 上游 ForecastRun 改了, Plan 自动标 stale, 可重算.</div>
+    </div>
+    <div class="map-row">
+      <div class="col-orig">流程编号 1-8 (RPC 时序)</div>
+      <div class="col-am"><span class="accent">8 类事件 (* .Required / .Produced / .Published)</span></div>
+      <div class="col-note">每一步<strong>可重放</strong> · 可人在回路审批 · 失败有 retry / DLQ; 这是合规审计能接受的唯一形态.</div>
+    </div>
+  </div>
+
+  <!-- ⑤ 8-step flow re-cast ──────────────────────────────────────────── -->
+  <div class="sec-head">
+    <span class="tag">③ RPC → Event</span>
+    <h2>8 步流程在两种范式下的对照</h2>
+    <span class="meta">同样 8 步 · <strong>上 = 调用栈</strong> · <strong>下 = 事件流</strong></span>
+  </div>
+
+  <div class="flow-frame">
+    <div class="flow-lanes">
+
+      <div class="lane-label lhs">国际中软<br/><span class="ll-sub">(RPC 调用栈)</span></div>
+      <div class="step legacy">
+        <span class="s-num">STEP 1</span>
+        <span class="s-name">多源数据请求</span>
+        <span class="s-tag">Schema</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 2</span>
+        <span class="s-name">代理网关转发</span>
+        <span class="s-tag">RPC fwd</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 3</span>
+        <span class="s-name">指令穿透隔离</span>
+        <span class="s-tag">net hop</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 4</span>
+        <span class="s-name">Master 拆任务</span>
+        <span class="s-tag">switch-case</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 5</span>
+        <span class="s-name">Slave 调技能</span>
+        <span class="s-tag">SDK call</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 6</span>
+        <span class="s-name">汇总子任务</span>
+        <span class="s-tag">join wait</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 7</span>
+        <span class="s-name">网关解析结果</span>
+        <span class="s-tag">unmarshal</span>
+      </div>
+      <div class="step legacy">
+        <span class="s-num">STEP 8</span>
+        <span class="s-name">返回计划 JSON</span>
+        <span class="s-tag">return</span>
+      </div>
+
+      <div class="flow-divider">↕ 同样 8 步 · 不同范式 · 可重放 vs 不可重放 ↕</div>
+
+      <div class="lane-label rhs">allmeta<br/><span class="ll-sub">(事件总线)</span></div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 1</span>
+        <span class="s-name">需求入 Ontology</span>
+        <span class="s-event">PlanRequest.Submitted</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 2</span>
+        <span class="s-name">Conductor 拆事件</span>
+        <span class="s-event">*.Required (fan-out)</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 3</span>
+        <span class="s-name">跨区写入排队</span>
+        <span class="s-event">mirror.enqueue</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 4</span>
+        <span class="s-name">capability match</span>
+        <span class="s-event">Agent.Claimed</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 5</span>
+        <span class="s-name">Specialist 产出</span>
+        <span class="s-event">Forecast.Produced</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 6</span>
+        <span class="s-name">前置满足触发</span>
+        <span class="s-event">Plan.Ready</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 7</span>
+        <span class="s-name">写出 Plan v_N</span>
+        <span class="s-event">Plan.Published</span>
+      </div>
+      <div class="step allmeta">
+        <span class="s-num">EVENT 8</span>
+        <span class="s-name">下游 fan-in 订阅</span>
+        <span class="s-event">AGC / 营销 / 复盘</span>
+      </div>
+
+    </div>
+
+    <div class="flow-note">
+      <strong>关键: 没有「返回」.</strong>
+      原图第 7-8 步 (结果解析 + 返回) 在事件范式里<span class="key">不存在</span> — 没有 caller 等 callee.
+      任何一步可<span class="key">暂停 / 修改 / replay</span>, 上游 ForecastRun 更新时, Plan 自动标 stale 触发重算.
+      这是「政府 / 电网合规审计能接受的唯一形态」, 也是「人在回路」可以真正插入的位置.
+    </div>
+  </div>
+
+  <!-- ⑥ Ontology nodes · what must grow in the ontology ──────────────── -->
+  <div class="sec-head">
+    <span class="tag">④ Ontology Nodes</span>
+    <h2>Ontology 必须长出的节点 · 4 类</h2>
+    <span class="meta">同一套节点 <strong>复用 8 场景</strong> · same backbone</span>
+  </div>
+
+  <div class="onto-grid">
+
+    <!-- ① Entities -->
+    <div class="onto-col e1">
+      <div class="onto-head">
+        <span class="onto-num">①</span>
+        <h3>Entities</h3>
+      </div>
+      <div class="sub">业务对象 · 物理 + 逻辑实体</div>
+      <div class="onto-item"><strong>PowerStation</strong> · 电站</div>
+      <div class="onto-item"><strong>Unit</strong> · 机组</div>
+      <div class="onto-item"><strong>MaintenanceWindow</strong></div>
+      <div class="onto-item"><strong>PlanVersion</strong> v_N · 血缘</div>
+      <div class="onto-item"><strong>ClearingResult</strong></div>
+      <div class="onto-item"><strong>ForecastRun</strong> 径流 / 功率 / 电价</div>
+      <div class="onto-item"><strong>AGCSetpoint</strong></div>
+      <div class="onto-item"><strong>PolicyDoc</strong> · <strong>MarketSnapshot</strong></div>
+    </div>
+
+    <!-- ② Relations -->
+    <div class="onto-col e2">
+      <div class="onto-head">
+        <span class="onto-num">②</span>
+        <h3>Relations</h3>
+      </div>
+      <div class="sub">实体之间的依赖与影响</div>
+      <div class="onto-item">Plan <strong>derives_from</strong> ForecastRun</div>
+      <div class="onto-item">Plan <strong>respects</strong> MaintenanceWindow</div>
+      <div class="onto-item">Plan <strong>optimizes_against</strong> ClearingResult</div>
+      <div class="onto-item">Unit <strong>has_state</strong> EquipmentHealth</div>
+      <div class="onto-item">Plan <strong>supersedes</strong> Plan (v_N-1)</div>
+      <div class="onto-item">ForecastRun <strong>uses</strong> Weather / Hydro / Market</div>
+      <div class="onto-item head">血缘 + 影响域 自动推导 · 上游变, 下游标 stale</div>
+    </div>
+
+    <!-- ③ Events -->
+    <div class="onto-col e3">
+      <div class="onto-head">
+        <span class="onto-num">③</span>
+        <h3>Events</h3>
+      </div>
+      <div class="sub">总线主题 · 客户图 8 步 = 8 主题</div>
+      <div class="onto-item">PlanRequest.<strong>Submitted</strong></div>
+      <div class="onto-item">Forecast.<strong>Required</strong> / .Produced</div>
+      <div class="onto-item">Maintenance.<strong>Required</strong> / .Produced</div>
+      <div class="onto-item">Clearing.<strong>Required</strong> / .Produced</div>
+      <div class="onto-item">Plan.<strong>Ready</strong> · .Approved · .Published</div>
+      <div class="onto-item">Plan.<strong>Stale</strong> · .Replayed</div>
+      <div class="onto-item">Incident.<strong>Triggered</strong> · .Resolved</div>
+      <div class="onto-item head">每事件有 <strong>retry · DLQ · 审计</strong></div>
+    </div>
+
+    <!-- ④ Capabilities -->
+    <div class="onto-col e4">
+      <div class="onto-head">
+        <span class="onto-num">④</span>
+        <h3>Capabilities</h3>
+      </div>
+      <div class="sub">Agent 注册声明 · 替代「Slave 1-4」</div>
+      <div class="onto-item"><strong>forecast.runoff</strong> · MAE</div>
+      <div class="onto-item"><strong>forecast.power</strong> · MAE</div>
+      <div class="onto-item"><strong>forecast.price</strong> · P&amp;L</div>
+      <div class="onto-item"><strong>clearing.bid</strong> · 出清盈亏</div>
+      <div class="onto-item"><strong>maintenance.schedule</strong> · 冲突率</div>
+      <div class="onto-item"><strong>plan.compose</strong> · 目标偏离</div>
+      <div class="onto-item"><strong>review.attribution</strong></div>
+      <div class="onto-item head">每个 capability <strong>独立评估指标</strong></div>
+    </div>
+
+  </div>
+
+  <!-- ⑦ 4 upgrades · why allmeta vs the legacy diagram ────────────────── -->
+  <div class="sec-head">
+    <span class="tag">⑤ Why allmeta</span>
+    <h2>相对原图的 4 个架构升级 · 卖点话术</h2>
+    <span class="meta">每一条都有「老软件做不到」的对照</span>
+  </div>
+
+  <div class="upgrades">
+
+    <div class="upgrade u1">
+      <div class="u-head">
+        <span class="u-num">01</span>
+        <h3>不固定 Master/Slave 树形</h3>
+      </div>
+      <div class="u-body">
+        日前计划用 <strong>PlanCompose</strong>, 应急用 <strong>IncidentConductor</strong>, 复盘用 <strong>Reflection</strong>.
+        同一套骨架, <strong>不同场景挂不同 Conductor</strong>, Agent 是 peer 不是 child.
+      </div>
+      <div class="u-vs"><strong>原图:</strong> 4 个 Slave 写死, 加一种任务必须改 Master 路由 + 重新部署.</div>
+    </div>
+
+    <div class="upgrade u2">
+      <div class="u-head">
+        <span class="u-num">02</span>
+        <h3>跨区隔离 = 语义层</h3>
+      </div>
+      <div class="u-body">
+        III/IV 区共享同一份 Ontology schema; <strong>镜像 + 事件队列</strong>把写入显式化, 跨区有
+        <strong>语义级审计</strong>, 远比红色隔离设备的「丢包 / 通过」二元日志可解释.
+      </div>
+      <div class="u-vs"><strong>原图:</strong> 网络层 ACL · 黑盒 · 只能抓包审计, 业务语义看不见.</div>
+    </div>
+
+    <div class="upgrade u3">
+      <div class="u-head">
+        <span class="u-num">03</span>
+        <h3>每 Agent 独立评估指标</h3>
+      </div>
+      <div class="u-body">
+        <code>forecast.runoff</code> 看 MAE · <code>clearing.bid</code> 看 P&amp;L · <code>maintenance.schedule</code>
+        看冲突率. <strong>持续校准</strong>, 不是一锤子上线; 反思 Agent 把偏差归因写回 Ontology.
+      </div>
+      <div class="u-vs"><strong>原图:</strong> 没有评估闭环 · Slave 出错只有日志, 无法被下一轮预测吸收.</div>
+    </div>
+
+    <div class="upgrade u4">
+      <div class="u-head">
+        <span class="u-num">04</span>
+        <h3>可重放 + 人在回路</h3>
+      </div>
+      <div class="u-body">
+        8 步是事件不是函数. 任何一步可 <strong>暂停 / 改 / replay</strong>; 调度员对 Plan v_N 提反对,
+        系统回滚到 v_N-1 并改重算依据 — 是<strong>合规审计可接受的唯一形态</strong>.
+      </div>
+      <div class="u-vs"><strong>原图:</strong> 步 8 一返回流程就消失了, 没有「回到第 4 步重算」的机制.</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="bottom">
+  <span>YLJ · Agentic 发电计划 · allmeta 同构重写</span>
+  <span>客户图 = RPC 树 · allmeta = 事件网 · 同一套 Ontology 复用 8 场景</span>
+  <span>2026-05-22 · 雅砻江战略研讨 附图</span>
+</footer>
+
+<script>
+  (function () {
+    var KEY = "ylj:plan:theme";
+    var btn = document.getElementById("themeBtn");
+    var root = document.documentElement;
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+    } catch (e) {}
+    btn.addEventListener("click", function () {
+      var cur = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      var next = cur === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
