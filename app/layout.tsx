@@ -139,17 +139,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Editorial type stack:
-            · Instrument Serif — display italic (the magazine voice)
-            · Geist Sans       — body / UI (modern grotesque, not Inter)
-            · JetBrains Mono   — code, traces, technical labels
-            · Noto Sans SC     — Chinese body
-            Intentionally NOT loading Inter or Space Grotesk — they're the
-            "AI-default" tells. Geist gives us Vercel-grade UI typography
-            without being saturated, and Instrument Serif's italics carry
-            the editorial weight that the Hero needs. */}
+        {/* Type stack — deliberately just two families for a clean,
+            enterprise-grade system:
+            · Geist Sans     — all display / heading / body / UI
+            · JetBrains Mono — micro-labels, metrics, traces, code
+            · Noto Sans SC   — Chinese fallback within the Geist stack
+            Intentionally NOT loading Inter / Space Grotesk (the "AI-default"
+            tells) nor any serif — hierarchy comes from one disciplined
+            scale + weight + ink color, not from mixing typefaces. */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script

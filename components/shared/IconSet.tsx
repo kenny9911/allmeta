@@ -143,6 +143,20 @@ export const I = {
       <path d="m8.5 7.5 1.5 3M15.5 7.5 14 10.5M8.5 16.5l1.5-3M15.5 16.5 14 13.5" />
     </svg>
   ),
+  database: (p: P) => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <ellipse cx="12" cy="5" rx="8" ry="3" />
+      <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
+      <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+    </svg>
+  ),
+  stack: (p: P) => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+      <path d="m3 13 9 5 9-5" />
+      <path d="m3 17.5 9 5 9-5" />
+    </svg>
+  ),
 };
 
 export type IconName = keyof typeof I;

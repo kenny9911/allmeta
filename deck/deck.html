@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>allm²eta Ontology v1.0 · 华为 INSPIRE 2026</title>
+<style>
+/* ============================================================
+   PRISMATIC GLASS — design tokens (single source of truth)
+   ============================================================ */
+:root{
+  --bg-base:#F4F5F7;
+  --bg-raise:#FFFFFF;
+  --ink:#15171C;
+  --ink-2:#3A3F4A;
+  --ink-sub:#6B7280;
+  --ink-faint:#9AA1AD;
+  --blue:#2F5BFF;
+  --green:#1FB890;
+  --amber:#E9A23B;
+  --violet:#7C5CFF;
+  --line:rgba(15,23,42,0.08);
+  --line-2:rgba(15,23,42,0.06);
+  /* glass */
+  --glass-bg:rgba(255,255,255,0.60);
+  --glass-bg-2:rgba(255,255,255,0.42);
+  --glass-bd:rgba(255,255,255,0.70);
+  --glass-sh:0 8px 32px rgba(15,23,42,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+  --glass-sh-lg:0 18px 50px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.95);
+  --r-lg:24px; --r-md:18px; --r-sm:12px; --r-xs:9px;
+  --accent:var(--blue);
+  --accent-soft:rgba(47,91,255,0.10);
+  --spectral:linear-gradient(90deg,var(--blue),var(--green),var(--amber),var(--violet));
+  --font:"Inter","Helvetica Neue","Source Han Sans CN","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"SF Mono","JetBrains Mono",ui-monospace,"Source Han Sans CN",monospace;
+}
+.acc-blue  { --accent:var(--blue);   --accent-soft:rgba(47,91,255,0.10); }
+.acc-green { --accent:var(--green);  --accent-soft:rgba(31,184,144,0.12); }
+.acc-amber { --accent:var(--amber);  --accent-soft:rgba(233,162,59,0.14); }
+.acc-violet{ --accent:var(--violet); --accent-soft:rgba(124,92,255,0.12); }
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#E7E9ED;font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.deck{display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0 60px}
+
+/* ============================================================
+   SLIDE FRAME — exactly 1280x720
+   ============================================================ */
+.slide{
+  position:relative;width:1280px;height:720px;flex:none;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% -25%, #FFFFFF 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg,#F7F8FA 0%, #EEF0F4 100%);
+  color:var(--ink);border-radius:14px;
+  box-shadow:0 30px 80px rgba(15,23,42,0.16);
+  isolation:isolate;
+}
+.pad{position:absolute;inset:0;padding:62px 74px;display:flex;flex-direction:column;z-index:2}
+
+/* caustic light leak */
+.glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;mix-blend-mode:normal}
+/* faint dot grid */
+.dots{position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(21,23,28,0.05) 1px, transparent 1.4px);
+  background-size:30px 30px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+
+/* floating frosted geometry */
+.shape{position:absolute;z-index:0;pointer-events:none;
+  background:rgba(255,255,255,0.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.7);box-shadow:0 14px 40px rgba(15,23,42,0.10)}
+.shape.sq{border-radius:22px}
+.shape.ci{border-radius:50%;background:radial-gradient(circle at 32% 28%, rgba(255,255,255,0.9), rgba(255,255,255,0.32))}
+
+/* ============================================================
+   GLASS
+   ============================================================ */
+.glass{background:var(--glass-bg);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+  border:1px solid var(--glass-bd);border-radius:var(--r-lg);box-shadow:var(--glass-sh)}
+.glass-2{background:var(--glass-bg-2);backdrop-filter:blur(14px) saturate(130%);-webkit-backdrop-filter:blur(14px) saturate(130%);
+  border:1px solid rgba(255,255,255,0.6);border-radius:var(--r-md);box-shadow:0 6px 20px rgba(15,23,42,0.06), inset 0 1px 0 rgba(255,255,255,0.8)}
+.spectral-top{position:relative}
+.spectral-top::before{content:"";position:absolute;left:22px;right:22px;top:0;height:2.5px;border-radius:3px;background:var(--spectral);opacity:.9}
+
+/* ============================================================
+   TYPE / CHROME
+   ============================================================ */
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-sub)}
+.kicker .tick{width:22px;height:3px;border-radius:3px;background:var(--accent)}
+.kicker .en{color:var(--accent)}
+.s-title{font-size:42px;line-height:1.1;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.s-title .hl{color:var(--accent)}
+.s-sub{font-size:17px;line-height:1.55;color:var(--ink-sub);font-weight:400}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+
+.foot{position:absolute;left:74px;right:74px;bottom:30px;display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--ink-faint);z-index:3}
+.foot::before{content:"";position:absolute;left:0;right:0;top:-16px;height:1px;background:var(--line-2)}
+.foot .brand{font-weight:700;color:var(--ink-sub);letter-spacing:.01em}
+.foot .pg{font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:.08em}
+.foot .ev{display:flex;align-items:center;gap:8px}
+.foot .ev .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+.wordmark{font-weight:800;letter-spacing:-.025em}
+.wordmark sup{color:var(--accent);font-size:.5em;vertical-align:super;line-height:0;font-weight:700;margin:0 .02em}
+
+/* chips / pills */
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font-size:13.5px;font-weight:600;
+  background:var(--glass-bg-2);border:1px solid rgba(255,255,255,0.6);color:var(--ink-2);box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)}
+.chip .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.tag{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:8px;font-size:12.5px;font-weight:600;
+  color:var(--accent);background:var(--accent-soft)}
+
+/* icon tiles */
+.itile{display:flex;align-items:center;justify-content:center;border-radius:14px;background:var(--accent-soft);color:var(--accent);flex:none}
+.itile svg{width:60%;height:60%}
+.ico{stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* stat */
+.stat .n{font-size:46px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.stat .n .u{font-size:.5em;font-weight:700;color:var(--accent);margin-left:3px}
+.stat .l{font-size:13.5px;color:var(--ink-sub);margin-top:9px;line-height:1.4}
+
+/* layout helpers */
+.row{display:flex}.col{display:flex;flex-direction:column}.center{align-items:center;justify-content:center}
+.grow{flex:1}.between{justify-content:space-between}.aic{align-items:center}.jcc{justify-content:center}
+.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}.gap20{gap:20px}.gap24{gap:24px}.gap32{gap:32px}
+.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}.mt32{margin-top:32px}.mt40{margin-top:40px}
+
+/* connectors */
+.flow-arrow{display:flex;align-items:center;color:var(--ink-faint)}
+.flow-arrow svg{width:26px;height:26px}
+.vbar{width:2.5px;border-radius:3px;background:var(--spectral)}
+
+/* ============================================================
+   COVER (slide 1)
+   ============================================================ */
+.cover-grid{position:absolute;inset:0;z-index:0;opacity:.45;
+  background-image:linear-gradient(rgba(21,23,28,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,23,28,0.045) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 90% at 50% 40%,#000 40%,transparent 78%)}
+
+@media print{
+  html,body{background:#fff}
+  .deck{gap:0;padding:0}
+  .slide{border-radius:0;box-shadow:none;page-break-after:always;break-after:page}
+  .nav{display:none!important}
+}
+@page{size:1280px 720px;margin:0}
+
+/* nav (browsing only) */
+.nav{position:fixed;right:18px;bottom:18px;z-index:99;display:flex;gap:8px;font-family:var(--font)}
+.nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.8);
+  backdrop-filter:blur(10px);font-size:16px;cursor:pointer;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-database" viewBox="0 0 24 24"><ellipse class="ico" cx="12" cy="5" rx="8" ry="3"/><path class="ico" d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path class="ico" d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path class="ico" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path class="ico" d="M14 3v5h5"/><path class="ico" d="M9 13h6M9 17h6"/></symbol>
+<symbol id="i-erp" viewBox="0 0 24 24"><rect class="ico" x="3" y="3" width="7" height="7" rx="1.5"/><rect class="ico" x="14" y="3" width="7" height="7" rx="1.5"/><rect class="ico" x="3" y="14" width="7" height="7" rx="1.5"/><rect class="ico" x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path class="ico" d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path class="ico" d="m3 8 9 5 9-5M12 13v8"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path class="ico" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path class="ico" d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path class="ico" d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-branch" viewBox="0 0 24 24"><circle class="ico" cx="6" cy="5" r="2.4"/><circle class="ico" cx="6" cy="19" r="2.4"/><circle class="ico" cx="18" cy="8" r="2.4"/><path class="ico" d="M6 7.4v9.2M6 12h6a4 4 0 0 0 4-4"/></symbol>
+<symbol id="i-flow" viewBox="0 0 24 24"><rect class="ico" x="3" y="3" width="6" height="6" rx="1.5"/><rect class="ico" x="15" y="15" width="6" height="6" rx="1.5"/><path class="ico" d="M6 9v4a2 2 0 0 0 2 2h7"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect class="ico" x="6" y="6" width="12" height="12" rx="2"/><rect class="ico" x="9.5" y="9.5" width="5" height="5" rx="1"/><path class="ico" d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24"><path class="ico" d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8V16a3 3 0 0 0 4 2.8M12 4.5V19"/><path class="ico" d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 1 5.8V16a3 3 0 0 1-4 2.8"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect class="ico" x="4" y="8" width="16" height="11" rx="3"/><path class="ico" d="M12 8V4M8 4h8"/><circle class="ico" cx="9" cy="13" r="1.1"/><circle class="ico" cx="15" cy="13" r="1.1"/></symbol>
+<symbol id="i-net" viewBox="0 0 24 24"><circle class="ico" cx="12" cy="5" r="2.4"/><circle class="ico" cx="5" cy="19" r="2.4"/><circle class="ico" cx="19" cy="19" r="2.4"/><path class="ico" d="M12 7.4 6.5 16.8M12 7.4l5.5 9.4M7.4 19h9.2"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path class="ico" d="m12 3 9 5-9 5-9-5z"/><path class="ico" d="m3 13 9 5 9-5M3 16.5l9 5 9-5"/></symbol>
+<symbol id="i-gauge" viewBox="0 0 24 24"><path class="ico" d="M4 18a8 8 0 1 1 16 0"/><path class="ico" d="m12 14 4-4"/><circle class="ico" cx="12" cy="14" r="1.2"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path class="ico" d="M12 3v18M7 21h10M5 7l-3 6a3 3 0 0 0 6 0z"/><path class="ico" d="M19 7l-3 6a3 3 0 0 0 6 0z"/><path class="ico" d="M5 7h14"/><circle class="ico" cx="12" cy="4" r="1.2"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path class="ico" d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle class="ico" cx="12" cy="12" r="2.6"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path class="ico" d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path class="ico" d="M21 3v5h-5"/><path class="ico" d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path class="ico" d="M3 21v-5h5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path class="ico" d="m4 12 5 5L20 6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path class="ico" d="M4 12h15M13 6l6 6-6 6"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path class="ico" d="M12 4v15M6 13l6 6 6-6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path class="ico" d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15l-1.8-4.2L5.5 9l4.7-1.3z"/><path class="ico" d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle class="ico" cx="9" cy="8" r="3"/><path class="ico" d="M3 20a6 6 0 0 1 12 0"/><path class="ico" d="M16 5.5a3 3 0 0 1 0 5M17 14a6 6 0 0 1 4 6"/></symbol>
+<symbol id="i-receipt" viewBox="0 0 24 24"><path class="ico" d="M5 3v18l2-1.5L9 21l2-1.5L13 21l2-1.5L17 21l2-1.5V3l-2 1.5L15 3l-2 1.5L11 3 9 4.5 7 3z"/><path class="ico" d="M8 8h8M8 12h8M8 16h5"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path class="ico" d="M9 2v6M15 2v6"/><path class="ico" d="M7 8h10v3a5 5 0 0 1-10 0z"/><path class="ico" d="M12 16v6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle class="ico" cx="11" cy="11" r="7"/><path class="ico" d="m20 20-4-4"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle class="ico" cx="12" cy="12" r="9"/><circle class="ico" cx="12" cy="12" r="5"/><circle class="ico" cx="12" cy="12" r="1.4"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><path class="ico" d="M3 17 9 11l4 4 8-8"/><path class="ico" d="M15 7h6v6"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect class="ico" x="5" y="11" width="14" height="9" rx="2"/><path class="ico" d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-tree" viewBox="0 0 24 24"><rect class="ico" x="9" y="3" width="6" height="5" rx="1.5"/><rect class="ico" x="3" y="16" width="6" height="5" rx="1.5"/><rect class="ico" x="15" y="16" width="6" height="5" rx="1.5"/><path class="ico" d="M12 8v4M6 16v-2h12v2"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path class="ico" d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M18 18h2"/><circle class="ico" cx="16" cy="6" r="2"/><circle class="ico" cx="10" cy="12" r="2"/><circle class="ico" cx="16" cy="18" r="2"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle class="ico" cx="12" cy="12" r="9"/><path class="ico" d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-power" viewBox="0 0 24 24"><path class="ico" d="M12 3v8"/><path class="ico" d="M6.4 7.4a8 8 0 1 0 11.2 0"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path class="ico" d="M9 12h6"/><path class="ico" d="M10 7h-2a4 4 0 0 0 0 8h2"/><path class="ico" d="M14 7h2a4 4 0 0 1 0 8h-2"/></symbol>
+<symbol id="i-doc-check" viewBox="0 0 24 24"><path class="ico" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path class="ico" d="M14 3v5h5"/><path class="ico" d="m9 14 2 2 4-4"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle class="ico" cx="12" cy="12" r="9"/><path class="ico" d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></symbol>
+</defs></svg>
+
+<main class="deck">
+
+<!-- ============================ 01 · COVER ============================ -->
+<section class="slide acc-blue" id="s1">
+  <div class="cover-grid"></div>
+  <div class="glow" style="width:660px;height:660px;left:300px;top:30px;background:radial-gradient(circle,rgba(47,91,255,.30),transparent 62%);opacity:.55"></div>
+  <div class="glow" style="width:540px;height:540px;left:660px;top:210px;background:radial-gradient(circle,rgba(124,92,255,.30),transparent 62%);opacity:.5"></div>
+  <div class="glow" style="width:520px;height:520px;left:150px;top:300px;background:radial-gradient(circle,rgba(31,184,144,.22),transparent 62%);opacity:.45"></div>
+  <div class="glow" style="width:360px;height:360px;left:520px;top:120px;background:radial-gradient(circle,rgba(233,162,59,.16),transparent 62%);opacity:.4"></div>
+  <div class="shape sq" style="width:96px;height:96px;left:128px;top:150px;transform:rotate(-13deg);border-radius:24px"></div>
+  <div class="shape ci" style="width:60px;height:60px;right:172px;top:118px"></div>
+  <div class="shape sq" style="width:128px;height:128px;right:120px;bottom:118px;transform:rotate(9deg);border-radius:30px"></div>
+  <div class="shape ci" style="width:38px;height:38px;left:236px;bottom:158px"></div>
+
+  <div class="pad" style="justify-content:center;align-items:center;text-align:center">
+    <div class="eyebrow" style="font-size:14px;letter-spacing:.2em">华为 INSPIRE 2026 · 全球产品发布</div>
+    <div style="margin-top:26px;display:flex;align-items:baseline;gap:20px">
+      <span class="wordmark" style="font-size:90px;line-height:1">allm<sup>2</sup>eta</span>
+      <span style="font-size:84px;font-weight:200;color:var(--ink-2);letter-spacing:-.02em">Ontology</span>
+    </div>
+    <div style="margin-top:22px;display:inline-flex;align-items:center;gap:14px">
+      <span class="glass-2 spectral-top" style="padding:9px 20px 9px;border-radius:999px;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:.04em">v1.0 · 震撼发布</span>
+      <span style="font-size:15px;color:var(--ink-sub)">可行动的本体 · Actionable Ontology</span>
+    </div>
+    <h1 style="margin-top:40px;font-size:40px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.25">
+      让企业 AI 从「<span style="color:var(--ink-faint)">能回答</span>」走向「<span style="color:var(--accent)">能执行</span>」
+    </h1>
+    <p style="margin-top:18px;font-size:18px;color:var(--ink-sub);max-width:760px;line-height:1.6">
+      在清晰的语义、权限、流程与审计边界内，构建驱动企业智能体运行的<strong style="color:var(--ink-2);font-weight:700"> 业务大脑</strong>
+    </p>
+  </div>
+
+  <div style="position:absolute;left:74px;right:74px;bottom:40px;z-index:3">
+    <div style="height:2.5px;border-radius:3px;background:var(--spectral);opacity:.85"></div>
+    <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--ink-sub)">
+      <span style="font-weight:700;color:var(--ink-2)">allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta — 企业 AI 业务运行层</span>
+      <span style="font-variant-numeric:tabular-nums;letter-spacing:.06em">2026 · INSPIRE GLOBAL LAUNCH</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 02 · THESIS ============================ -->
+<section class="slide acc-blue" id="s2">
+  <div class="glow" style="width:560px;height:560px;right:-120px;top:-120px;background:radial-gradient(circle,rgba(47,91,255,.20),transparent 62%);opacity:.5"></div>
+  <div class="glow" style="width:420px;height:420px;left:-100px;bottom:-120px;background:radial-gradient(circle,rgba(124,92,255,.16),transparent 62%);opacity:.45"></div>
+  <div class="shape sq" style="width:110px;height:110px;right:120px;bottom:150px;transform:rotate(-10deg);border-radius:26px"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>开场 · <span class="en">THE THESIS</span></div>
+    <div class="grow" style="display:flex;flex-direction:column;justify-content:center;max-width:980px">
+      <h1 style="font-size:54px;font-weight:300;line-height:1.32;letter-spacing:-.01em;color:var(--ink-2)">
+        企业 AI 的下一阶段，<br>
+        竞争的不再是谁的模型更<span style="font-weight:300;color:var(--ink-faint)">「会回答」</span>，<br>
+        而是谁能把 AI <span style="font-weight:800;color:var(--ink)">放进真实业务系统</span>里，<br>
+        让它在<span style="font-weight:800;color:var(--accent)">清晰的边界内参与工作</span>。
+      </h1>
+      <div style="margin-top:48px;display:inline-flex;align-items:center;gap:18px">
+        <span class="chip" style="font-size:15px;padding:10px 18px"><span class="d" style="background:var(--ink-faint)"></span>模型能力 · Model Capability</span>
+        <svg style="width:30px;height:30px;color:var(--accent)"><use href="#i-arrow"/></svg>
+        <span class="chip glass" style="font-size:15px;padding:10px 18px;color:var(--ink)"><span class="d"></span>业务运行能力 · Operational Capability</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">02 / 24</span></div>
+</section>
+
+<!-- ============================ 03 · THE GAP ============================ -->
+<section class="slide acc-blue" id="s3">
+  <div class="glow" style="width:480px;height:480px;right:-140px;top:-100px;background:radial-gradient(circle,rgba(47,91,255,.16),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>行业现状 · <span class="en">THE GAP</span></div>
+    <h1 class="s-title" style="margin-top:18px">为什么很多企业 AI 项目，<span class="hl">卡在了「演示」之后？</span></h1>
+    <p class="s-sub" style="margin-top:14px;max-width:880px">大模型越来越强，但真正进入生产系统时，三道关卡几乎决定成败 —— 而它们都不在「模型能力」里。</p>
+    <div class="row gap20" style="margin-top:38px">
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:54px;height:54px"><svg><use href="#i-box"/></svg></div>
+        <div style="margin-top:20px;font-size:21px;font-weight:700;color:var(--ink)">不懂业务对象</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.04em">BUSINESS OBJECTS</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">不知道客户、订单、库存、设备、流程之间，到底是什么关系。</p>
+      </div>
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:54px;height:54px"><svg><use href="#i-lock"/></svg></div>
+        <div style="margin-top:20px;font-size:21px;font-weight:700;color:var(--ink)">没有权限边界</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.04em">PERMISSION · POLICY</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">不清楚什么数据能看、什么动作能做、什么流程需要审批。</p>
+      </div>
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:54px;height:54px"><svg><use href="#i-eye"/></svg></div>
+        <div style="margin-top:20px;font-size:21px;font-weight:700;color:var(--ink)">无法审计追踪</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.04em">AUDIT · OBSERVABILITY</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">执行过程无法记录、无法回放、无法审计，企业不敢放心使用。</p>
+      </div>
+    </div>
+    <p style="margin-top:30px;font-size:16px;color:var(--ink-2)">模型再聪明，缺了这三层，AI 也很难真正进入业务现场，更难被用于<strong style="color:var(--ink)">生产决策与业务执行</strong>。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">03 / 24</span></div>
+</section>
+
+<!-- ============================ 04 · THE INSIGHT ============================ -->
+<section class="slide acc-violet" id="s4">
+  <div class="glow" style="width:560px;height:560px;left:50%;top:-160px;transform:translateX(-50%);background:radial-gradient(circle,rgba(124,92,255,.18),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>核心洞察 · <span class="en">THE INSIGHT</span></div>
+    <h1 class="s-title" style="margin-top:18px">答案是一套业务运行层 <span class="hl">Operation Layer</span></h1>
+    <p class="s-sub" style="margin-top:14px;max-width:900px">把数据、语义、业务对象、任务流程与执行结果连接起来的运行体系 —— 先把业务世界建模，再让 AI 融入其中。</p>
+
+    <div class="row gap20 aic" style="margin-top:36px">
+      <div class="glass-2" style="flex:1;padding:28px 30px;opacity:.92">
+        <div class="row aic gap12"><div class="itile" style="width:46px;height:46px;background:rgba(21,23,28,0.05);color:var(--ink-faint)"><svg><use href="#i-spark"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink-2)">会回答的 AI</div><div style="font-size:12.5px;font-weight:600;color:var(--ink-faint);letter-spacing:.05em">GENERATIVE</div></div></div>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:9px">
+          <span class="chip" style="font-size:13px;color:var(--ink-sub)">模型能力</span>
+          <span class="chip" style="font-size:13px;color:var(--ink-sub)">问答对话</span>
+          <span class="chip" style="font-size:13px;color:var(--ink-sub)">演示效果</span>
+        </div>
+        <p style="margin-top:18px;font-size:13.5px;line-height:1.6;color:var(--ink-faint)">聪明，但停在业务系统之外。</p>
+      </div>
+
+      <div class="flow-arrow" style="flex:none"><svg style="width:38px;height:38px;color:var(--accent)"><use href="#i-arrow"/></svg></div>
+
+      <div class="glass spectral-top" style="flex:1.5;padding:28px 30px">
+        <div class="row aic gap12"><div class="itile" style="width:46px;height:46px"><svg><use href="#i-cpu"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">能执行的 AI · 运行体系</div><div style="font-size:12.5px;font-weight:600;color:var(--accent);letter-spacing:.05em">OPERATIONAL</div></div></div>
+        <div class="row gap12" style="margin-top:20px;flex-wrap:wrap">
+          <span class="tag">语义 Semantics</span><span class="tag">对象 Objects</span><span class="tag">动作 Actions</span>
+          <span class="tag">权限 Policy</span><span class="tag">流程 Workflow</span><span class="tag">审计 Audit</span>
+        </div>
+        <p style="margin-top:18px;font-size:13.5px;line-height:1.6;color:var(--ink-2)">让 AI 在真实业务系统里，参与生产决策与执行。</p>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:16px;color:var(--ink-2)">企业 AI 的真正壁垒，在<strong style="color:var(--ink)">业务对象、动作、权限与流程</strong> —— 而不在模型本身。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">04 / 24</span></div>
+</section>
+
+<!-- ============================ 05 · THE MOAT ============================ -->
+<section class="slide acc-violet" id="s5">
+  <div class="glow" style="width:520px;height:520px;right:-120px;top:-100px;background:radial-gradient(circle,rgba(124,92,255,.16),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>第一性原理 · <span class="en">FIRST PRINCIPLE</span></div>
+    <h1 class="s-title" style="margin-top:18px">先把企业业务世界<span class="hl">建模出来</span>，再让 AI 融入其中</h1>
+    <p class="s-sub" style="margin-top:14px;max-width:920px">我们做的，不是让模型画图表，而是让系统真正理解业务对象 —— 这才是企业 AI 难以复制的壁垒。</p>
+
+    <div class="row gap16 aic" style="margin-top:34px">
+      <div class="glass-2" style="flex:1;padding:26px 28px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink-sub);letter-spacing:.06em">真实业务世界 · REALITY</div>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px">
+          <span class="chip" style="font-size:14px"><span class="d"></span>客户</span><span class="chip" style="font-size:14px"><span class="d"></span>订单</span>
+          <span class="chip" style="font-size:14px"><span class="d"></span>库存</span><span class="chip" style="font-size:14px"><span class="d"></span>设备</span>
+          <span class="chip" style="font-size:14px"><span class="d"></span>流程</span>
+        </div>
+        <p style="margin-top:18px;font-size:13.5px;color:var(--ink-faint);line-height:1.6">关系散落在文档、ERP、数据库与人的经验里。</p>
+      </div>
+
+      <div class="col center" style="flex:none;width:120px">
+        <svg style="width:40px;height:40px;color:var(--accent)"><use href="#i-arrow"/></svg>
+        <span style="margin-top:8px;font-size:13px;font-weight:700;color:var(--accent)">建模 Modeling</span>
+      </div>
+
+      <div class="glass spectral-top" style="flex:1.25;padding:24px 26px 18px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.06em">可被理解的业务模型 · ONTOLOGY</div>
+        <svg viewBox="0 0 430 188" style="width:100%;height:148px;margin-top:6px" aria-hidden="true">
+          <g stroke="rgba(124,92,255,0.45)" stroke-width="1.6">
+            <line x1="62" y1="44" x2="214" y2="34"/><line x1="214" y1="34" x2="366" y2="62"/>
+            <line x1="62" y1="44" x2="78" y2="158"/><line x1="214" y1="34" x2="276" y2="158"/>
+            <line x1="366" y1="62" x2="276" y2="158"/><line x1="78" y1="158" x2="276" y2="158"/>
+          </g>
+          <g font-family="var(--font)" font-size="13" font-weight="600" text-anchor="middle">
+            <g><rect x="30" y="30" width="64" height="28" rx="14" fill="#fff" stroke="var(--violet)" stroke-width="1.4"/><text x="62" y="48" fill="var(--ink)">客户</text></g>
+            <g><rect x="182" y="20" width="64" height="28" rx="14" fill="#fff" stroke="var(--violet)" stroke-width="1.4"/><text x="214" y="38" fill="var(--ink)">订单</text></g>
+            <g><rect x="334" y="48" width="64" height="28" rx="14" fill="#fff" stroke="var(--violet)" stroke-width="1.4"/><text x="366" y="66" fill="var(--ink)">库存</text></g>
+            <g><rect x="46" y="144" width="64" height="28" rx="14" fill="#fff" stroke="var(--violet)" stroke-width="1.4"/><text x="78" y="162" fill="var(--ink)">设备</text></g>
+            <g><rect x="244" y="144" width="64" height="28" rx="14" fill="#fff" stroke="var(--violet)" stroke-width="1.4"/><text x="276" y="162" fill="var(--ink)">流程</text></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:16px;color:var(--ink-2)">真正的壁垒，在<strong style="color:var(--ink)">业务对象、动作、权限与流程</strong> —— 把它们建成系统能操作的模型。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">05 / 24</span></div>
+</section>
+
+<!-- ============================ 06 · ACTIONABLE ONTOLOGY ============================ -->
+<section class="slide acc-violet" id="s6">
+  <div class="glow" style="width:600px;height:380px;left:50%;top:-140px;transform:translateX(-50%);background:radial-gradient(circle,rgba(124,92,255,.16),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>产品理念 · <span class="en">ACTIONABLE ONTOLOGY</span></div>
+    <h1 class="s-title" style="margin-top:18px">可行动的 Ontology，<span class="hl">不只是语义层</span></h1>
+    <p class="s-sub" style="margin-top:14px;max-width:960px">它同时承载对象、动作、关系、函数与动态安全 —— 是可以直接驱动企业业务运行的大脑。</p>
+
+    <div class="row gap14" style="margin-top:40px;gap:14px">
+      <div class="glass spectral-top col" style="flex:1;padding:24px 18px;align-items:flex-start">
+        <div class="itile" style="width:50px;height:50px"><svg><use href="#i-box"/></svg></div>
+        <div style="margin-top:16px;font-size:18px;font-weight:700;color:var(--ink)">对象</div>
+        <div style="font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-top:3px">OBJECTS</div>
+        <p style="margin-top:12px;font-size:13px;line-height:1.55;color:var(--ink-sub)">业务实体与属性的统一定义。</p>
+      </div>
+      <div class="glass spectral-top col" style="flex:1;padding:24px 18px;align-items:flex-start">
+        <div class="itile" style="width:50px;height:50px"><svg><use href="#i-bolt"/></svg></div>
+        <div style="margin-top:16px;font-size:18px;font-weight:700;color:var(--ink)">动作</div>
+        <div style="font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-top:3px">ACTIONS</div>
+        <p style="margin-top:12px;font-size:13px;line-height:1.55;color:var(--ink-sub)">业务对象可被受控操作。</p>
+      </div>
+      <div class="glass spectral-top col" style="flex:1;padding:24px 18px;align-items:flex-start">
+        <div class="itile" style="width:50px;height:50px"><svg><use href="#i-link"/></svg></div>
+        <div style="margin-top:16px;font-size:18px;font-weight:700;color:var(--ink)">关系</div>
+        <div style="font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-top:3px">RELATIONS</div>
+        <p style="margin-top:12px;font-size:13px;line-height:1.55;color:var(--ink-sub)">对象之间的语义连接网络。</p>
+      </div>
+      <div class="glass spectral-top col" style="flex:1;padding:24px 18px;align-items:flex-start">
+        <div class="itile" style="width:50px;height:50px"><svg><use href="#i-branch"/></svg></div>
+        <div style="margin-top:16px;font-size:18px;font-weight:700;color:var(--ink)">函数</div>
+        <div style="font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-top:3px">FUNCTIONS</div>
+        <p style="margin-top:12px;font-size:13px;line-height:1.55;color:var(--ink-sub)">封装业务逻辑与计算规则。</p>
+      </div>
+      <div class="glass spectral-top col" style="flex:1;padding:24px 18px;align-items:flex-start">
+        <div class="itile" style="width:50px;height:50px"><svg><use href="#i-shield"/></svg></div>
+        <div style="margin-top:16px;font-size:18px;font-weight:700;color:var(--ink)">动态安全</div>
+        <div style="font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-top:3px">SECURITY</div>
+        <p style="margin-top:12px;font-size:13px;line-height:1.55;color:var(--ink-sub)">随上下文变化的权限边界。</p>
+      </div>
+    </div>
+    <p style="margin-top:30px;font-size:16px;color:var(--ink-2)">Ontology 不只是解释业务，更<strong style="color:var(--ink)">定义业务可以如何被理解、治理与操作</strong>。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">06 / 24</span></div>
+</section>
+
+<!-- ============================ 07 · PRODUCT REVEAL ============================ -->
+<section class="slide acc-blue" id="s7">
+  <div class="glow" style="width:620px;height:480px;left:50%;top:-180px;transform:translateX(-50%);background:radial-gradient(circle,rgba(47,91,255,.18),transparent 62%);opacity:.55"></div>
+  <div class="glow" style="width:360px;height:360px;right:60px;bottom:-120px;background:radial-gradient(circle,rgba(31,184,144,.14),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="row between aic">
+      <div class="kicker"><span class="tick"></span>产品总览 · <span class="en">THE PLATFORM</span></div>
+      <span class="glass-2 spectral-top" style="padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;color:var(--ink)">v1.0 · 现已发布</span>
+    </div>
+    <div style="margin-top:22px;display:flex;align-items:baseline;gap:16px">
+      <span class="wordmark" style="font-size:56px;line-height:1">allm<sup>2</sup>eta</span>
+      <span style="font-size:52px;font-weight:200;color:var(--ink-2);letter-spacing:-.02em">Ontology</span>
+    </div>
+    <p class="s-sub" style="margin-top:14px;max-width:920px;font-size:18px">企业级 · 可行动本体平台 —— 架在 ERP 与管理系统之上的<strong style="color:var(--ink-2)">业务大脑</strong>，让企业能操控与管理众多智能体运行业务。</p>
+
+    <div class="row gap20" style="margin-top:40px">
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:56px;height:56px"><svg><use href="#i-tree"/></svg></div>
+        <div style="margin-top:20px;font-size:23px;font-weight:700;color:var(--ink)">语义建模</div>
+        <div style="margin-top:5px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.05em">MODEL · 理解业务</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">把对象、关系、规则建成可行动的本体，让系统真正理解业务。</p>
+      </div>
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:56px;height:56px"><svg><use href="#i-bot"/></svg></div>
+        <div style="margin-top:20px;font-size:23px;font-weight:700;color:var(--ink)">任务执行</div>
+        <div style="margin-top:5px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.05em">EXECUTE · 驱动智能体</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">CodeGen 自动生成智能体代码，在 Operator 中受控运行业务流程。</p>
+      </div>
+      <div class="glass spectral-top" style="flex:1;padding:30px 28px">
+        <div class="itile" style="width:56px;height:56px"><svg><use href="#i-shield"/></svg></div>
+        <div style="margin-top:20px;font-size:23px;font-weight:700;color:var(--ink)">治理审计</div>
+        <div style="margin-top:5px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.05em">GOVERN · 可控可审计</div>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-sub)">权限、流程、审计内建于本体，每一步执行可记录、可回放。</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">07 / 24</span></div>
+</section>
+
+<!-- ============================ 08 · PRODUCT ARCHITECTURE ============================ -->
+<section class="slide acc-blue" id="s8">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:360px;right:-120px;top:-80px;background:radial-gradient(circle,rgba(47,91,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>产品架构 · <span class="en">PRODUCT ARCHITECTURE</span></div>
+    <h1 class="s-title" style="margin-top:14px;font-size:38px">三层架构 —— 从数据，到<span class="hl">可行动本体</span>，到智能体运行</h1>
+
+    <div class="row gap16" style="margin-top:26px;flex:1;align-items:stretch">
+      <!-- governance rail -->
+      <div class="glass spectral-top col center" style="width:118px;gap:16px;padding:18px 0">
+        <div class="itile" style="width:46px;height:46px"><svg><use href="#i-shield"/></svg></div>
+        <div style="writing-mode:vertical-rl;text-orientation:upright;font-size:19px;font-weight:700;color:var(--ink);letter-spacing:.16em">治理·权限·审计</div>
+        <div style="writing-mode:vertical-rl;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.22em">GOVERNANCE</div>
+      </div>
+
+      <!-- layer stack -->
+      <div class="col gap14" style="flex:1">
+        <div class="glass spectral-top row aic gap18" style="padding:16px 24px;flex:1">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-bot"/></svg></div>
+          <div style="width:236px"><div style="font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.08em">LAYER 3 · 运行层</div>
+            <div style="font-size:20px;font-weight:700;color:var(--ink);margin-top:2px">智能体运行操作系统</div>
+            <div style="font-size:12px;color:var(--ink-faint)">Agentic Operator</div></div>
+          <div class="row" style="flex:1;flex-wrap:wrap;gap:8px;justify-content:flex-end">
+            <span class="chip" style="font-size:12.5px"><span class="d"></span>智能体编排</span><span class="chip" style="font-size:12.5px"><span class="d"></span>工作流</span>
+            <span class="chip" style="font-size:12.5px"><span class="d"></span>工具/动作调用</span><span class="chip" style="font-size:12.5px"><span class="d"></span>监控与介入</span></div>
+        </div>
+
+        <div class="glass row aic gap18" style="padding:16px 24px;flex:1;border:1.6px solid var(--accent);background:linear-gradient(0deg,var(--accent-soft),var(--glass-bg))">
+          <div class="itile" style="width:50px;height:50px;background:var(--accent);color:#fff"><svg><use href="#i-brain"/></svg></div>
+          <div style="width:236px"><div style="font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.08em">LAYER 2 · 本体层 · 业务大脑</div>
+            <div style="font-size:20px;font-weight:800;color:var(--ink);margin-top:2px">可行动的 Ontology</div>
+            <div style="font-size:12px;color:var(--ink-faint)">Actionable Ontology</div></div>
+          <div class="row" style="flex:1;flex-wrap:wrap;gap:8px;justify-content:flex-end">
+            <span class="tag">对象</span><span class="tag">动作</span><span class="tag">规则</span><span class="tag">事件</span><span class="tag">关系</span><span class="tag">评估</span></div>
+        </div>
+
+        <div class="glass spectral-top row aic gap18" style="padding:16px 24px;flex:1">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-database"/></svg></div>
+          <div style="width:236px"><div style="font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:.08em">LAYER 1 · 数据层</div>
+            <div style="font-size:20px;font-weight:700;color:var(--ink);margin-top:2px">数据与管理系统</div>
+            <div style="font-size:12px;color:var(--ink-faint)">ERP · Data · Documents</div></div>
+          <div class="row" style="flex:1;flex-wrap:wrap;gap:8px;justify-content:flex-end">
+            <span class="chip" style="font-size:12.5px"><span class="d"></span>ERP / 管理系统</span><span class="chip" style="font-size:12.5px"><span class="d"></span>数据库</span>
+            <span class="chip" style="font-size:12.5px"><span class="d"></span>非结构化文档</span><span class="chip" style="font-size:12.5px"><span class="d"></span>业务系统</span></div>
+        </div>
+      </div>
+
+      <!-- direction rail -->
+      <div class="col between" style="width:150px;gap:14px">
+        <div class="glass-2 col center" style="flex:1;padding:14px 10px;text-align:center;gap:6px">
+          <svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-down"/></svg>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">Operator</div>
+          <div style="font-size:11.5px;color:var(--ink-sub);line-height:1.4">自上而下<br>操控运行</div>
+        </div>
+        <div class="glass-2 col center" style="flex:1;padding:14px 10px;text-align:center;gap:6px">
+          <svg style="width:26px;height:26px;color:var(--green);transform:rotate(180deg)"><use href="#i-down"/></svg>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">Generator</div>
+          <div style="font-size:11.5px;color:var(--ink-sub);line-height:1.4">由下而上<br>自动构建</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">08 / 24</span></div>
+</section>
+
+<!-- ============================ 09 · TECHNOLOGY ARCHITECTURE ============================ -->
+<section class="slide acc-green" id="s9">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:360px;left:-120px;top:-60px;background:radial-gradient(circle,rgba(31,184,144,.12),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>技术架构 · <span class="en">TECHNOLOGY ARCHITECTURE</span></div>
+    <h1 class="s-title" style="margin-top:14px;font-size:38px">基于 <span class="hl">LLM 多智能体</span> 的端到端运行栈</h1>
+
+    <!-- top pipeline -->
+    <div class="row aic" style="margin-top:26px;gap:6px">
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 10px;text-align:center;gap:8px">
+        <div class="itile" style="width:44px;height:44px"><svg><use href="#i-plug"/></svg></div>
+        <div style="font-size:14.5px;font-weight:700;color:var(--ink)">数据接入</div>
+        <div style="font-size:11px;color:var(--ink-faint);line-height:1.4">文档 · ERP · DB<br>Connectors</div>
+      </div>
+      <svg style="width:22px;height:22px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 10px;text-align:center;gap:8px">
+        <div class="itile" style="width:44px;height:44px"><svg><use href="#i-brain"/></svg></div>
+        <div style="font-size:14.5px;font-weight:700;color:var(--ink)">Ontology Generator</div>
+        <div style="font-size:11px;color:var(--ink-faint);line-height:1.4">LLM 多智能体<br>自动构建</div>
+      </div>
+      <svg style="width:22px;height:22px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 10px;text-align:center;gap:8px">
+        <div class="itile" style="width:44px;height:44px"><svg><use href="#i-sliders"/></svg></div>
+        <div style="font-size:14.5px;font-weight:700;color:var(--ink)">Ontology Studio</div>
+        <div style="font-size:11px;color:var(--ink-faint);line-height:1.4">六大 Builder<br>人工校验</div>
+      </div>
+      <svg style="width:22px;height:22px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass col center" style="flex:1.05;padding:16px 10px;text-align:center;gap:8px;border:1.5px solid var(--accent);background:linear-gradient(0deg,var(--accent-soft),var(--glass-bg))">
+        <div class="itile" style="width:44px;height:44px;background:var(--accent);color:#fff"><svg><use href="#i-layers"/></svg></div>
+        <div style="font-size:14.5px;font-weight:800;color:var(--ink)">可行动本体存储</div>
+        <div style="font-size:11px;color:var(--ink-faint);line-height:1.4">对象·动作·规则<br>事件·关系·评估</div>
+      </div>
+      <svg style="width:22px;height:22px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 10px;text-align:center;gap:8px">
+        <div class="itile" style="width:44px;height:44px"><svg><use href="#i-branch"/></svg></div>
+        <div style="font-size:14.5px;font-weight:700;color:var(--ink)">CodeGen</div>
+        <div style="font-size:11px;color:var(--ink-faint);line-height:1.4">智能体代码<br>自动生成</div>
+      </div>
+    </div>
+
+    <div class="col center" style="margin-top:10px"><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-down"/></svg></div>
+
+    <!-- runtime band -->
+    <div class="glass" style="margin-top:8px;padding:18px 24px;border:1.5px solid var(--accent)">
+      <div class="row aic between">
+        <div class="row aic gap12"><div class="itile" style="width:46px;height:46px;background:var(--accent);color:#fff"><svg><use href="#i-cpu"/></svg></div>
+          <div><div style="font-size:19px;font-weight:800;color:var(--ink)">Agentic Operator Runtime</div><div style="font-size:12px;color:var(--ink-faint)">智能体操作系统 · 受控运行时</div></div></div>
+        <div class="row gap10" style="flex-wrap:wrap;justify-content:flex-end;max-width:760px">
+          <span class="chip" style="font-size:12.5px"><span class="d"></span>智能体调度</span><span class="chip" style="font-size:12.5px"><span class="d"></span>动作执行 Tools</span>
+          <span class="chip" style="font-size:12.5px"><span class="d"></span>策略与 RBAC</span><span class="chip" style="font-size:12.5px"><span class="d"></span>审计日志</span>
+          <span class="chip" style="font-size:12.5px"><span class="d"></span>可观测性</span><span class="chip" style="font-size:12.5px"><span class="d"></span>人工介入</span></div>
+      </div>
+    </div>
+
+    <!-- cross-cutting -->
+    <div class="row gap12" style="margin-top:14px">
+      <div class="glass-2 row aic gap10 center" style="flex:1;padding:12px"><svg style="width:18px;height:18px;color:var(--accent)"><use href="#i-lock"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--ink-2)">安全与治理 Security</span></div>
+      <div class="glass-2 row aic gap10 center" style="flex:1;padding:12px"><svg style="width:18px;height:18px;color:var(--accent)"><use href="#i-users"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--ink-2)">Human-in-the-loop</span></div>
+      <div class="glass-2 row aic gap10 center" style="flex:1;padding:12px"><svg style="width:18px;height:18px;color:var(--accent)"><use href="#i-eye"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--ink-2)">全链路可观测 Observability</span></div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">09 / 24</span></div>
+</section>
+
+<!-- ============================ 10 · SIX BUILDERS ============================ -->
+<section class="slide acc-violet" id="s10">
+  <div class="glow" style="width:560px;height:360px;right:-120px;top:-80px;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>产品能力 · <span class="en">ONTOLOGY STUDIO</span></div>
+    <h1 class="s-title" style="margin-top:14px">六大 Builder，组成 <span class="hl">allm<sup style="font-size:.6em;vertical-align:super;color:var(--accent)">2</sup>eta Ontology Studio</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:940px">业务流程与规则快速变化时，敏捷地构建与调整业务模型，让智能体跟着业务一起进化。</p>
+
+    <div class="col gap14" style="margin-top:26px;flex:1">
+      <div class="row gap14" style="flex:1">
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-box"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Objects Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">对象构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义业务实体、属性与类型。</p></div>
+        </div>
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-bolt"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Actions Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">动作构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义可执行的受控动作。</p></div>
+        </div>
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-scale"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Rules Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">规则构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义业务规则与约束。</p></div>
+        </div>
+      </div>
+      <div class="row gap14" style="flex:1">
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-bolt"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Events Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">事件构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义触发条件与响应。</p></div>
+        </div>
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-link"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Links Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">关系构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义对象之间的关联网络。</p></div>
+        </div>
+        <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 20px">
+          <div class="itile" style="width:50px;height:50px"><svg><use href="#i-gauge"/></svg></div>
+          <div><div style="font-size:18px;font-weight:700;color:var(--ink)">Evaluation Builder</div><div style="font-size:12.5px;color:var(--accent);font-weight:600">评估构建器</div><p style="margin-top:7px;font-size:13px;color:var(--ink-sub);line-height:1.5">定义指标与质量评估。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">10 / 24</span></div>
+</section>
+
+<!-- ============================ 11 · ONTOLOGY GENERATOR ============================ -->
+<section class="slide acc-green" id="s11">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:340px;left:50%;top:-130px;transform:translateX(-50%);background:radial-gradient(circle,rgba(31,184,144,.13),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>核心引擎 · <span class="en">ONTOLOGY GENERATOR</span></div>
+    <h1 class="s-title" style="margin-top:14px;font-size:38px">从文档、ERP、数据库，<span class="hl">自动构建</span>企业本体</h1>
+
+    <div class="row aic gap14" style="margin-top:24px;flex:1">
+      <!-- sources -->
+      <div class="col gap12" style="width:212px">
+        <div class="glass-2 row aic gap12" style="padding:13px 15px"><div class="itile" style="width:40px;height:40px"><svg><use href="#i-file"/></svg></div><div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">非结构化文档</div><div style="font-size:11.5px;color:var(--ink-faint)">制度 · 手册 · 合同</div></div></div>
+        <div class="glass-2 row aic gap12" style="padding:13px 15px"><div class="itile" style="width:40px;height:40px"><svg><use href="#i-erp"/></svg></div><div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">ERP 数据</div><div style="font-size:11.5px;color:var(--ink-faint)">主数据 · 单据 · 流程</div></div></div>
+        <div class="glass-2 row aic gap12" style="padding:13px 15px"><div class="itile" style="width:40px;height:40px"><svg><use href="#i-database"/></svg></div><div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">数据库</div><div style="font-size:11.5px;color:var(--ink-faint)">表结构 · 业务数据</div></div></div>
+      </div>
+
+      <svg style="width:24px;height:24px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+
+      <!-- engine -->
+      <div class="glass spectral-top" style="flex:1;padding:20px 22px;align-self:stretch;border:1.5px solid var(--accent)">
+        <div class="row aic gap10"><div class="itile" style="width:44px;height:44px;background:var(--accent);color:#fff"><svg><use href="#i-brain"/></svg></div>
+          <div><div style="font-size:18px;font-weight:800;color:var(--ink)">Ontology Generator</div><div style="font-size:12px;color:var(--ink-faint)">LLM 多智能体引擎</div></div></div>
+        <div class="row gap8 aic" style="margin-top:18px">
+          <div class="glass-2 col center" style="flex:1;padding:12px 6px;text-align:center;gap:4px"><svg style="width:20px;height:20px;color:var(--accent)"><use href="#i-search"/></svg><div style="font-size:13px;font-weight:700;color:var(--ink)">抽取</div><div style="font-size:10.5px;color:var(--ink-faint)">Extract</div></div>
+          <svg style="width:16px;height:16px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+          <div class="glass-2 col center" style="flex:1;padding:12px 6px;text-align:center;gap:4px"><svg style="width:20px;height:20px;color:var(--accent)"><use href="#i-link"/></svg><div style="font-size:13px;font-weight:700;color:var(--ink)">对齐</div><div style="font-size:10.5px;color:var(--ink-faint)">Align</div></div>
+          <svg style="width:16px;height:16px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+          <div class="glass-2 col center" style="flex:1;padding:12px 6px;text-align:center;gap:4px"><svg style="width:20px;height:20px;color:var(--accent)"><use href="#i-tree"/></svg><div style="font-size:13px;font-weight:700;color:var(--ink)">归纳</div><div style="font-size:10.5px;color:var(--ink-faint)">Induce</div></div>
+          <svg style="width:16px;height:16px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+          <div class="glass-2 col center" style="flex:1;padding:12px 6px;text-align:center;gap:4px"><svg style="width:20px;height:20px;color:var(--accent)"><use href="#i-check"/></svg><div style="font-size:13px;font-weight:700;color:var(--ink)">校验</div><div style="font-size:10.5px;color:var(--ink-faint)">Validate</div></div>
+        </div>
+      </div>
+
+      <svg style="width:24px;height:24px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+
+      <!-- output -->
+      <div class="glass" style="width:248px;padding:18px 18px;align-self:stretch;border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft),var(--glass-bg))">
+        <div style="font-size:15px;font-weight:800;color:var(--ink)">可行动 Ontology</div>
+        <svg viewBox="0 0 220 110" style="width:100%;height:92px;margin-top:4px">
+          <g stroke="rgba(31,184,144,0.5)" stroke-width="1.4"><line x1="40" y1="34" x2="110" y2="20"/><line x1="110" y1="20" x2="178" y2="40"/><line x1="40" y1="34" x2="70" y2="86"/><line x1="110" y1="20" x2="150" y2="86"/><line x1="70" y1="86" x2="150" y2="86"/></g>
+          <g><circle cx="40" cy="34" r="7" fill="var(--green)"/><circle cx="110" cy="20" r="7" fill="var(--green)"/><circle cx="178" cy="40" r="7" fill="var(--green)"/><circle cx="70" cy="86" r="7" fill="var(--green)"/><circle cx="150" cy="86" r="7" fill="var(--green)"/></g>
+        </svg>
+        <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:4px"><span class="tag" style="font-size:11px;padding:3px 8px">对象</span><span class="tag" style="font-size:11px;padding:3px 8px">动作</span><span class="tag" style="font-size:11px;padding:3px 8px">规则</span><span class="tag" style="font-size:11px;padding:3px 8px">关系</span></div>
+      </div>
+    </div>
+
+    <!-- time compression ribbon -->
+    <div class="glass spectral-top row aic" style="margin-top:18px;padding:14px 28px;justify-content:center;gap:30px">
+      <div class="row aic gap10"><svg style="width:22px;height:22px;color:var(--ink-faint)"><use href="#i-clock"/></svg><span style="font-size:15px;color:var(--ink-sub)">传统人工建模</span><span style="font-size:26px;font-weight:800;color:var(--ink-2)">数十<span style="font-size:15px;font-weight:700">人月</span></span></div>
+      <svg style="width:30px;height:30px;color:var(--accent)"><use href="#i-arrow"/></svg>
+      <div class="row aic gap10"><span style="font-size:15px;color:var(--ink-sub)">allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta Generator</span><span style="font-size:30px;font-weight:800;color:var(--accent)">半小时<span style="font-size:15px;font-weight:700;color:var(--ink-2)"> 内完成</span></span></div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">11 / 24</span></div>
+</section>
+
+<!-- ============================ 12 · HYPER-AUTOMATION PIPELINE ============================ -->
+<section class="slide acc-blue" id="s12">
+  <div class="dots"></div>
+  <div class="glow" style="width:560px;height:320px;right:-140px;top:-80px;background:radial-gradient(circle,rgba(47,91,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>超级自动化 · <span class="en">HYPER-AUTOMATION PIPELINE</span></div>
+    <h1 class="s-title" style="margin-top:14px;font-size:38px">AI + Ontology 驱动的<span class="hl">端到端自动化闭环</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:940px">业务对象与语义贯穿全流程，让智能体在受控边界内，从理解一路执行到审计与优化。</p>
+
+    <div class="row aic" style="margin-top:34px;gap:5px">
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">01</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-database"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">数据</div><div style="font-size:10.5px;color:var(--ink-faint)">Data</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">02</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-globe"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">语义</div><div style="font-size:10.5px;color:var(--ink-faint)">Semantics</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">03</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-box"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">对象</div><div style="font-size:10.5px;color:var(--ink-faint)">Objects</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">04</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-bolt"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">动作</div><div style="font-size:10.5px;color:var(--ink-faint)">Actions</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative;border:1.5px solid var(--accent);background:linear-gradient(0deg,var(--accent-soft),var(--glass-bg))"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">05</span><div class="itile" style="width:42px;height:42px;background:var(--accent);color:#fff"><svg><use href="#i-bot"/></svg></div><div style="font-size:14.5px;font-weight:800;color:var(--ink)">智能体</div><div style="font-size:10.5px;color:var(--ink-faint)">Agents</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">06</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-flow"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">执行</div><div style="font-size:10.5px;color:var(--ink-faint)">Execution</div></div>
+      <svg style="width:18px;height:18px;color:var(--ink-faint);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:16px 6px;text-align:center;gap:7px;position:relative"><span style="position:absolute;top:8px;left:11px;font-size:11px;font-weight:800;color:var(--accent)">07</span><div class="itile" style="width:42px;height:42px"><svg><use href="#i-eye"/></svg></div><div style="font-size:14.5px;font-weight:700;color:var(--ink)">审计</div><div style="font-size:10.5px;color:var(--ink-faint)">Audit</div></div>
+    </div>
+
+    <!-- feedback loop -->
+    <div style="position:relative;margin-top:6px;height:84px">
+      <svg viewBox="0 0 1130 84" preserveAspectRatio="none" style="width:100%;height:100%" aria-hidden="true">
+        <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M1 1 L7 4.5 L1 8" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <path d="M1075 2 C1075 52, 1075 64, 1010 64 L150 64 C70 64, 70 52, 70 8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 6" marker-end="url(#ah)" opacity="0.85"/>
+      </svg>
+      <div class="chip glass" style="position:absolute;left:50%;top:44px;transform:translateX(-50%);font-size:13.5px;color:var(--ink);padding:8px 16px"><svg style="width:16px;height:16px;color:var(--accent)"><use href="#i-refresh"/></svg> 闭环反馈 · 持续优化 Continuous Optimization</div>
+    </div>
+    <p style="margin-top:6px;font-size:15.5px;color:var(--ink-2);text-align:center">每一步都<strong style="color:var(--ink)">可追踪、可观测、可优化</strong> —— 企业要的不是黑盒自动化，而是可回放、可审计的 AI 流程。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">12 / 24</span></div>
+</section>
+
+<!-- ============================ 13 · CODEGEN → OPERATOR ============================ -->
+<section class="slide acc-violet" id="s13">
+  <div class="glow" style="width:540px;height:340px;left:-120px;top:-70px;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>从本体到执行 · <span class="en">CODEGEN → OPERATOR</span></div>
+    <h1 class="s-title" style="margin-top:14px">可行动本体，自动生成<span class="hl">可执行智能体</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:960px">CodeGen 将企业可行动本体编译为智能体代码，部署到 Agentic Operator，在可控、可审计、可介入的环境中运行。</p>
+
+    <div class="row aic" style="margin-top:36px;gap:10px">
+      <div class="glass spectral-top col center" style="flex:1;padding:20px 12px;text-align:center;gap:9px"><div class="itile" style="width:50px;height:50px"><svg><use href="#i-layers"/></svg></div><div style="font-size:16px;font-weight:700;color:var(--ink)">可行动 Ontology</div><div style="font-size:11.5px;color:var(--ink-faint)">业务对象 · 动作 · 规则</div></div>
+      <svg style="width:24px;height:24px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass col center" style="flex:1;padding:20px 12px;text-align:center;gap:9px;border:1.5px solid var(--accent);background:linear-gradient(0deg,var(--accent-soft),var(--glass-bg))"><div class="itile" style="width:50px;height:50px;background:var(--accent);color:#fff"><svg><use href="#i-branch"/></svg></div><div style="font-size:16px;font-weight:800;color:var(--ink)">CodeGen</div><div style="font-size:11.5px;color:var(--ink-faint)">本体编译引擎</div></div>
+      <svg style="width:24px;height:24px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:20px 12px;text-align:center;gap:9px"><div class="itile" style="width:50px;height:50px"><svg><use href="#i-bot"/></svg></div><div style="font-size:16px;font-weight:700;color:var(--ink)">智能体代码</div><div style="font-size:11.5px;color:var(--ink-faint)">Agent Code · Workflow</div></div>
+      <svg style="width:24px;height:24px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1;padding:20px 12px;text-align:center;gap:9px"><div class="itile" style="width:50px;height:50px"><svg><use href="#i-cpu"/></svg></div><div style="font-size:16px;font-weight:700;color:var(--ink)">Agentic Operator</div><div style="font-size:11.5px;color:var(--ink-faint)">受控运行时</div></div>
+    </div>
+
+    <div class="glass spectral-top" style="margin-top:24px;padding:22px 26px">
+      <div style="font-size:14px;font-weight:700;color:var(--ink);letter-spacing:.04em">受监控环境中的自主能力 · RUNTIME GUARANTEES</div>
+      <div class="row gap16" style="margin-top:18px">
+        <div class="row aic gap12" style="flex:1"><div class="itile" style="width:46px;height:46px"><svg><use href="#i-sliders"/></svg></div><div><div style="font-size:17px;font-weight:700;color:var(--ink)">可控 Controlled</div><p style="margin-top:4px;font-size:13px;color:var(--ink-sub);line-height:1.5">权限、策略与边界内运行。</p></div></div>
+        <div class="row aic gap12" style="flex:1"><div class="itile" style="width:46px;height:46px"><svg><use href="#i-eye"/></svg></div><div><div style="font-size:17px;font-weight:700;color:var(--ink)">可审计 Auditable</div><p style="margin-top:4px;font-size:13px;color:var(--ink-sub);line-height:1.5">每一步执行可记录、可回放。</p></div></div>
+        <div class="row aic gap12" style="flex:1"><div class="itile" style="width:46px;height:46px"><svg><use href="#i-users"/></svg></div><div><div style="font-size:17px;font-weight:700;color:var(--ink)">可介入 Interventionable</div><p style="margin-top:4px;font-size:13px;color:var(--ink-sub);line-height:1.5">关键节点人工审批与接管。</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">13 / 24</span></div>
+</section>
+
+<!-- ============================ 14 · ACTION LAYER ============================ -->
+<section class="slide acc-amber" id="s14">
+  <div class="glow" style="width:540px;height:340px;right:-120px;top:-70px;background:radial-gradient(circle,rgba(233,162,59,.16),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>关键一跃 · <span class="en">THE ACTION LAYER</span></div>
+    <h1 class="s-title" style="margin-top:14px">从分析走向执行，中间必须有<span class="hl">动作层</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:940px">让业务对象可被受控操作。有了 Action，AI 就不只有建议；有了受控的动作权，AI 才能真正参与执行。</p>
+
+    <div class="row aic gap14" style="margin-top:38px">
+      <div class="glass-2 col center" style="flex:1;padding:24px 14px;text-align:center;gap:10px"><div class="itile" style="width:50px;height:50px;background:rgba(21,23,28,0.05);color:var(--ink-sub)"><svg><use href="#i-search"/></svg></div><div style="font-size:18px;font-weight:700;color:var(--ink-2)">分析 · 建议</div><div style="font-size:12px;color:var(--ink-faint)">Analysis · Insight</div></div>
+      <svg style="width:30px;height:30px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass col center" style="flex:1.4;padding:26px 16px;text-align:center;gap:9px;border:1.8px solid var(--accent);background:linear-gradient(0deg,var(--accent-soft),var(--glass-bg))"><div class="itile" style="width:56px;height:56px;background:var(--accent);color:#fff"><svg><use href="#i-bolt"/></svg></div><div style="font-size:22px;font-weight:800;color:var(--ink)">动作层 · Action Layer</div><div style="font-size:12.5px;color:var(--ink-2)">受控操作业务对象 · Controlled Operations</div></div>
+      <svg style="width:30px;height:30px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass-2 col center" style="flex:1;padding:24px 14px;text-align:center;gap:10px"><div class="itile" style="width:50px;height:50px"><svg><use href="#i-flow"/></svg></div><div style="font-size:18px;font-weight:700;color:var(--ink-2)">执行 · 结果</div><div style="font-size:12px;color:var(--ink-faint)">Execution · Outcome</div></div>
+    </div>
+
+    <div class="row gap16" style="margin-top:32px">
+      <div class="glass-2 row aic gap14" style="flex:1;padding:18px 22px">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(21,23,28,0.06);color:var(--ink-faint);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex:none">✕</div>
+        <div><div style="font-size:16px;font-weight:700;color:var(--ink-2)">没有动作层</div><p style="margin-top:3px;font-size:13.5px;color:var(--ink-sub);line-height:1.5">AI 停在「建议」，再聪明也无法落地执行。</p></div>
+      </div>
+      <div class="glass spectral-top row aic gap14" style="flex:1;padding:18px 22px">
+        <div class="itile" style="width:38px;height:38px;flex:none"><svg><use href="#i-check"/></svg></div>
+        <div><div style="font-size:16px;font-weight:700;color:var(--ink)">有了受控动作权</div><p style="margin-top:3px;font-size:13.5px;color:var(--ink-sub);line-height:1.5">AI 真正参与执行，让业务闭环跑起来。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">14 / 24</span></div>
+</section>
+
+<!-- ============================ 15 · GOVERNANCE & OBSERVABILITY ============================ -->
+<section class="slide acc-green" id="s15">
+  <div class="glow" style="width:540px;height:340px;left:50%;top:-130px;transform:translateX(-50%);background:radial-gradient(circle,rgba(31,184,144,.13),transparent 62%);opacity:.55"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>生产级保障 · <span class="en">GOVERNANCE & OBSERVABILITY</span></div>
+    <h1 class="s-title" style="margin-top:14px">生产级的 AI，必须<span class="hl">可追踪、可观测</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:940px">企业要的不是黑盒自动化，而是可回放、可审计、可优化的 AI 流程。</p>
+
+    <div class="row gap16" style="margin-top:36px">
+      <div class="glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start"><div class="itile" style="width:52px;height:52px"><svg><use href="#i-net"/></svg></div><div style="margin-top:16px;font-size:19px;font-weight:700;color:var(--ink)">可追踪</div><div style="font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.04em">TRACEABLE</div><p style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.55">每个动作的来源与链路清晰可溯。</p></div>
+      <div class="glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start"><div class="itile" style="width:52px;height:52px"><svg><use href="#i-eye"/></svg></div><div style="margin-top:16px;font-size:19px;font-weight:700;color:var(--ink)">可观测</div><div style="font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.04em">OBSERVABLE</div><p style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.55">智能体运行状态实时可见可监控。</p></div>
+      <div class="glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start"><div class="itile" style="width:52px;height:52px"><svg><use href="#i-refresh"/></svg></div><div style="margin-top:16px;font-size:19px;font-weight:700;color:var(--ink)">可回放</div><div style="font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.04em">REPLAYABLE</div><p style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.55">完整过程可重现，便于复盘归因。</p></div>
+      <div class="glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start"><div class="itile" style="width:52px;height:52px"><svg><use href="#i-doc-check"/></svg></div><div style="margin-top:16px;font-size:19px;font-weight:700;color:var(--ink)">可审计</div><div style="font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.04em">AUDITABLE</div><p style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.55">合规留痕，满足审计与监管要求。</p></div>
+    </div>
+
+    <div class="glass-2 row aic gap14" style="margin-top:26px;padding:18px 24px">
+      <div class="itile" style="width:44px;height:44px;flex:none"><svg><use href="#i-brain"/></svg></div>
+      <p style="font-size:15.5px;color:var(--ink-2);line-height:1.5">让智能体既具备 <strong style="color:var(--ink)">LLM 的推理能力</strong>，又承载 <strong style="color:var(--ink)">企业沉淀的业务运行逻辑</strong> —— 这正是 Ontology 作为「业务大脑」的价值。</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">15 / 24</span></div>
+</section>
+
+<!-- ============================ 16 · CASE 01 · POWER ============================ -->
+<section class="slide acc-amber" id="s16">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:340px;right:-130px;top:-70px;background:radial-gradient(circle,rgba(233,162,59,.15),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="row between aic">
+      <div class="kicker"><span class="tick"></span>行业案例 01 · <span class="en">POWER GRID</span></div>
+      <span class="chip glass" style="font-size:13px;color:var(--ink)"><svg style="width:16px;height:16px;color:var(--accent)"><use href="#i-power"/></svg> 电力 · 电网调度</span>
+    </div>
+    <h1 class="s-title" style="margin-top:12px">电网调度 —— <span class="hl">自动决策与智能化调度</span></h1>
+    <p class="s-sub" style="margin-top:10px;max-width:920px">负荷、设备、电网约束建成可行动本体，智能体在安全边界内自动给出调度决策，并保留完整审计。</p>
+
+    <div class="row gap18" style="margin-top:22px;flex:1">
+      <div class="glass spectral-top" style="flex:1.3;padding:22px 26px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.05em">场景流程 · WORKFLOW</div>
+        <div style="position:relative;padding-left:50px;margin-top:16px">
+          <div style="position:absolute;left:16px;top:10px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-soft))"></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">1</div><div style="font-size:16px;font-weight:700;color:var(--ink)">实时数据采集</div><div style="font-size:12.5px;color:var(--ink-sub)">负荷 · 设备状态 · 气象</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">2</div><div style="font-size:16px;font-weight:700;color:var(--ink)">本体语义对齐</div><div style="font-size:12.5px;color:var(--ink-sub)">统一对象 · 约束 · 关系</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">3</div><div style="font-size:16px;font-weight:700;color:var(--ink)">智能体预测与优化</div><div style="font-size:12.5px;color:var(--ink-sub)">负荷预测 · 调度寻优</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">4</div><div style="font-size:16px;font-weight:700;color:var(--ink)">调度决策生成</div><div style="font-size:12.5px;color:var(--ink-sub)">安全边界内自动决策</div></div>
+          <div style="position:relative"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">5</div><div style="font-size:16px;font-weight:700;color:var(--ink)">受控执行 + 审计</div><div style="font-size:12.5px;color:var(--ink-sub)">下发执行 · 全程留痕</div></div>
+        </div>
+      </div>
+      <div class="col gap12" style="flex:1">
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">数十秒</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">调度决策 · 原需数百小时</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-clock"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">7×24</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">秒级实时自治调度</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-power"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">↑ 消纳</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">提升设备利用与新能源消纳</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-trend"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">16 / 24</span></div>
+</section>
+
+<!-- ============================ 17 · CASE 02 · RECRUITING ============================ -->
+<section class="slide acc-blue" id="s17">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:340px;left:-130px;top:-70px;background:radial-gradient(circle,rgba(47,91,255,.13),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="row between aic">
+      <div class="kicker"><span class="tick"></span>行业案例 02 · <span class="en">RECRUITING</span></div>
+      <span class="chip glass" style="font-size:13px;color:var(--ink)"><svg style="width:16px;height:16px;color:var(--accent)"><use href="#i-users"/></svg> 人力资源 · 招聘</span>
+    </div>
+    <h1 class="s-title" style="margin-top:12px">企业招聘 —— <span class="hl">全流程自动化</span></h1>
+    <p class="s-sub" style="margin-top:10px;max-width:920px">候选人、岗位、技能与流程建成本体，智能体串起从 JD 到 Offer 的全流程，每个决策可追溯。</p>
+
+    <div class="row gap18" style="margin-top:22px;flex:1">
+      <div class="glass spectral-top" style="flex:1.3;padding:22px 26px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.05em">场景流程 · WORKFLOW</div>
+        <div style="position:relative;padding-left:50px;margin-top:16px">
+          <div style="position:absolute;left:16px;top:10px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-soft))"></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">1</div><div style="font-size:16px;font-weight:700;color:var(--ink)">JD 与简历解析</div><div style="font-size:12.5px;color:var(--ink-sub)">岗位要求 · 技能抽取</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">2</div><div style="font-size:16px;font-weight:700;color:var(--ink)">智能匹配与初筛</div><div style="font-size:12.5px;color:var(--ink-sub)">人岗匹配 · 自动排序</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">3</div><div style="font-size:16px;font-weight:700;color:var(--ink)">面试安排</div><div style="font-size:12.5px;color:var(--ink-sub)">自动排期 · 协同通知</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">4</div><div style="font-size:16px;font-weight:700;color:var(--ink)">评估与反馈</div><div style="font-size:12.5px;color:var(--ink-sub)">结构化评分 · 汇总</div></div>
+          <div style="position:relative"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">5</div><div style="font-size:16px;font-weight:700;color:var(--ink)">Offer 发放</div><div style="font-size:12.5px;color:var(--ink-sub)">审批留痕 · 入职衔接</div></div>
+        </div>
+      </div>
+      <div class="col gap12" style="flex:1">
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">↓ 70%</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">招聘周期大幅缩短</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-clock"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">10×</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">简历初筛效率提升</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-gauge"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">↑ 匹配</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">人岗匹配质量提升</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-target"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">17 / 24</span></div>
+</section>
+
+<!-- ============================ 18 · CASE 03 · EXPENSE ============================ -->
+<section class="slide acc-green" id="s18">
+  <div class="dots"></div>
+  <div class="glow" style="width:520px;height:340px;right:-130px;top:-70px;background:radial-gradient(circle,rgba(31,184,144,.14),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="row between aic">
+      <div class="kicker"><span class="tick"></span>行业案例 03 · <span class="en">EXPENSE & FINANCE</span></div>
+      <span class="chip glass" style="font-size:13px;color:var(--ink)"><svg style="width:16px;height:16px;color:var(--accent)"><use href="#i-receipt"/></svg> 财务 · 费控报销</span>
+    </div>
+    <h1 class="s-title" style="margin-top:12px">费控与报销 —— <span class="hl">全流程自动化</span></h1>
+    <p class="s-sub" style="margin-top:10px;max-width:920px">政策、预算、单据与审批规则建成本体，智能体自动校验与风控，超阈值转人工审批，全程留痕。</p>
+
+    <div class="row gap18" style="margin-top:22px;flex:1">
+      <div class="glass spectral-top" style="flex:1.3;padding:22px 26px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.05em">场景流程 · WORKFLOW</div>
+        <div style="position:relative;padding-left:50px;margin-top:16px">
+          <div style="position:absolute;left:16px;top:10px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-soft))"></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">1</div><div style="font-size:16px;font-weight:700;color:var(--ink)">单据采集</div><div style="font-size:12.5px;color:var(--ink-sub)">OCR 识别 · 自动归集</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">2</div><div style="font-size:16px;font-weight:700;color:var(--ink)">政策与规则校验</div><div style="font-size:12.5px;color:var(--ink-sub)">合规 · 预算 · 标准</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">3</div><div style="font-size:16px;font-weight:700;color:var(--ink)">风控异常检测</div><div style="font-size:12.5px;color:var(--ink-sub)">重复 · 超标 · 异常</div></div>
+          <div style="position:relative;margin-bottom:14px"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--bg-raise);border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">4</div><div style="font-size:16px;font-weight:700;color:var(--ink)">多级审批 · 人工介入</div><div style="font-size:12.5px;color:var(--ink-sub)">超阈值转人工 Human-in-loop</div></div>
+          <div style="position:relative"><div style="position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px">5</div><div style="font-size:16px;font-weight:700;color:var(--ink)">入账与审计留痕</div><div style="font-size:12.5px;color:var(--ink-sub)">自动入账 · 全程可审计</div></div>
+        </div>
+      </div>
+      <div class="col gap12" style="flex:1">
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">分钟级</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">处理时长 · 原需数天</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-clock"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">↓ 80%</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">人工审核工作量下降</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-scale"/></svg></div>
+        <div class="glass-2 row between aic" style="padding:15px 20px"><div><div style="font-size:30px;font-weight:800;color:var(--ink);line-height:1">100%</div><div style="font-size:12.5px;color:var(--ink-sub);margin-top:4px">合规留痕 · 可审计</div></div><svg style="width:26px;height:26px;color:var(--accent)"><use href="#i-doc-check"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">18 / 24</span></div>
+</section>
+
+<!-- ============================ 19 · IMPACT / BY THE NUMBERS ============================ -->
+<section class="slide acc-blue" id="s19">
+  <div class="glow" style="width:600px;height:340px;left:50%;top:-140px;transform:translateX(-50%);background:radial-gradient(circle,rgba(47,91,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>量化价值 · <span class="en">BY THE NUMBERS</span></div>
+    <h1 class="s-title" style="margin-top:14px">把「能回答」变成「能执行」，<span class="hl">改变了什么</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:920px">从建模、决策到治理，allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta Ontology 在真实业务场景中带来量级跃迁。</p>
+
+    <div class="row gap16" style="margin-top:40px">
+      <div class="acc-blue glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start">
+        <div style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.05em">本体构建</div>
+        <div style="margin-top:14px;font-size:44px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em">半小时</div>
+        <div style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.5">自动构建企业本体<br>原需 <strong style="color:var(--ink-2)">数十人月</strong></div>
+      </div>
+      <div class="acc-green glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start">
+        <div style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.05em">复杂决策</div>
+        <div style="margin-top:14px;font-size:44px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em">数十秒</div>
+        <div style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.5">完成场景决策<br>原需 <strong style="color:var(--ink-2)">数百小时</strong></div>
+      </div>
+      <div class="acc-amber glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start">
+        <div style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.05em">运行治理</div>
+        <div style="margin-top:14px;font-size:44px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em">全留痕</div>
+        <div style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.5">每一步动作<br><strong style="color:var(--ink-2)">可审计 · 可回放</strong></div>
+      </div>
+      <div class="acc-violet glass spectral-top col" style="flex:1;padding:26px 22px;align-items:flex-start">
+        <div style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.05em">业务敏捷</div>
+        <div style="margin-top:14px;font-size:44px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em">随需调整</div>
+        <div style="margin-top:10px;font-size:13px;color:var(--ink-sub);line-height:1.5">业务变化时<br>智能体<strong style="color:var(--ink-2)">快速上线</strong></div>
+      </div>
+    </div>
+    <p style="margin-top:34px;font-size:16px;color:var(--ink-2);text-align:center">有了业务大脑，企业就能在 ERP 之上，<strong style="color:var(--ink)">有效操控与管理众多智能体</strong>运行业务。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">19 / 24</span></div>
+</section>
+
+<!-- ============================ 20 · THE NEXT ERP ============================ -->
+<section class="slide acc-amber" id="s20">
+  <div class="glow" style="width:520px;height:340px;right:-130px;top:-70px;background:radial-gradient(circle,rgba(233,162,59,.15),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>趋势 · <span class="en">THE NEXT ERP</span></div>
+    <h1 class="s-title" style="margin-top:14px">未来每家公司，都会运行<span class="hl">自己的 Agent</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:940px">就像今天每家公司都运行 ERP 一样 —— 企业 AI 的趋势，是规模化的智能体。</p>
+
+    <div class="row aic gap16" style="margin-top:30px">
+      <div class="glass-2 col center" style="flex:1;padding:24px;text-align:center;gap:10px"><div class="itile" style="width:50px;height:50px;background:rgba(21,23,28,0.05);color:var(--ink-sub)"><svg><use href="#i-erp"/></svg></div><div style="font-size:18px;font-weight:700;color:var(--ink-2)">今天</div><div style="font-size:13.5px;color:var(--ink-sub)">每家公司运行 ERP</div></div>
+      <svg style="width:34px;height:34px;color:var(--accent);flex:none"><use href="#i-arrow"/></svg>
+      <div class="glass spectral-top col center" style="flex:1.5;padding:22px;text-align:center;gap:12px">
+        <div class="row gap10 center">
+          <div class="itile" style="width:42px;height:42px"><svg><use href="#i-bot"/></svg></div><div class="itile" style="width:42px;height:42px"><svg><use href="#i-bot"/></svg></div><div class="itile" style="width:42px;height:42px"><svg><use href="#i-bot"/></svg></div><div class="itile" style="width:42px;height:42px"><svg><use href="#i-bot"/></svg></div>
+        </div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">未来</div><div style="font-size:13.5px;color:var(--ink-sub)">每家公司运行成群的智能体</div>
+      </div>
+    </div>
+
+    <div class="row gap16" style="margin-top:26px">
+      <div class="glass-2 row aic gap14" style="flex:1;padding:18px 22px"><div style="font-size:30px;font-weight:800;color:var(--accent);flex:none">10×</div><div><div style="font-size:16px;font-weight:700;color:var(--ink)">比软件更难管控</div><p style="margin-top:3px;font-size:13px;color:var(--ink-sub);line-height:1.5">智能体越多，管理复杂度越高。</p></div></div>
+      <div class="glass-2 row aic gap14" style="flex:1;padding:18px 22px"><div class="itile" style="width:42px;height:42px;flex:none"><svg><use href="#i-shield"/></svg></div><div><div style="font-size:16px;font-weight:700;color:var(--ink)">更会出错</div><p style="margin-top:3px;font-size:13px;color:var(--ink-sub);line-height:1.5">没有业务知识标准化，智能体比软件更易犯错。</p></div></div>
+    </div>
+    <p style="margin-top:24px;font-size:16px;color:var(--ink-2)"><strong style="color:var(--ink)">答案：</strong>用可行动 Ontology 把业务知识标准化，成为驱动、管理与治理智能体的统一大脑。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">20 / 24</span></div>
+</section>
+
+<!-- ============================ 21 · THE TRAJECTORY ============================ -->
+<section class="slide acc-violet" id="s21">
+  <div class="dots"></div>
+  <div class="glow" style="width:560px;height:340px;left:50%;top:-140px;transform:translateX(-50%);background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>未来趋势 · <span class="en">THE TRAJECTORY</span></div>
+    <h1 class="s-title" style="margin-top:14px">从「能问答」到「能执行」，再到<span class="hl">「能自治」</span></h1>
+
+    <div style="flex:1;position:relative;margin-top:6px">
+      <svg viewBox="0 0 1130 380" style="width:100%;height:100%;font-family:var(--font)" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="curveg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2F5BFF"/><stop offset="0.36" stop-color="#1FB890"/><stop offset="0.68" stop-color="#E9A23B"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient>
+          <linearGradient id="fillg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(124,92,255,0.16)"/><stop offset="1" stop-color="rgba(124,92,255,0)"/></linearGradient>
+        </defs>
+        <!-- axes -->
+        <line x1="60" y1="330" x2="1090" y2="330" stroke="var(--line)" stroke-width="1.5"/>
+        <line x1="60" y1="40" x2="60" y2="330" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="1086" y="356" text-anchor="end" font-size="13" font-weight="600" fill="var(--ink-faint)">业务运行能力 →</text>
+        <text x="44" y="48" text-anchor="end" font-size="13" font-weight="600" fill="var(--ink-faint)" transform="rotate(-90 44 48)" style="transform-box:view-box">价值 · 自主度 ↑</text>
+        <!-- area + curve -->
+        <path d="M80 300 C300 296 430 232 560 196 C720 152 880 96 1050 64 L1050 330 L80 330 Z" fill="url(#fillg)"/>
+        <path d="M80 300 C300 296 430 232 560 196 C720 152 880 96 1050 64" fill="none" stroke="url(#curveg)" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- stage markers -->
+        <g>
+          <circle cx="150" cy="293" r="8" fill="#fff" stroke="#2F5BFF" stroke-width="3"/>
+          <text x="150" y="262" text-anchor="middle" font-size="19" font-weight="800" fill="var(--ink)">能问答</text>
+          <text x="150" y="282" text-anchor="middle" font-size="12" font-weight="600" fill="#2F5BFF">Generative</text>
+        </g>
+        <g>
+          <circle cx="470" cy="214" r="8" fill="#fff" stroke="#1FB890" stroke-width="3"/>
+          <text x="470" y="183" text-anchor="middle" font-size="19" font-weight="800" fill="var(--ink)">能理解</text>
+          <text x="470" y="203" text-anchor="middle" font-size="12" font-weight="600" fill="#1FB890">+ Ontology</text>
+        </g>
+        <g>
+          <circle cx="760" cy="138" r="8" fill="#fff" stroke="#E9A23B" stroke-width="3"/>
+          <text x="760" y="107" text-anchor="middle" font-size="19" font-weight="800" fill="var(--ink)">能执行</text>
+          <text x="760" y="127" text-anchor="middle" font-size="12" font-weight="600" fill="#E9A23B">Agentic</text>
+        </g>
+        <g>
+          <circle cx="1050" cy="64" r="11" fill="#7C5CFF"/><circle cx="1050" cy="64" r="18" fill="none" stroke="#7C5CFF" stroke-width="2" opacity="0.4"/>
+          <text x="1050" y="33" text-anchor="middle" font-size="20" font-weight="800" fill="var(--ink)">能自治</text>
+          <text x="1050" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#7C5CFF">Autonomous Ops</text>
+        </g>
+        <!-- allmeta position band -->
+        <text x="905" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--violet)">▲ allm²eta 所在区间</text>
+      </svg>
+    </div>
+    <p style="margin-top:4px;font-size:16px;color:var(--ink-2);text-align:center">企业 AI 的竞争，正从<strong style="color:var(--ink)">模型能力</strong>，走向<strong style="color:var(--accent)">业务运行能力</strong>。</p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">21 / 24</span></div>
+</section>
+
+<!-- ============================ 22 · PLATFORM FAMILY ============================ -->
+<section class="slide acc-blue" id="s22">
+  <div class="glow" style="width:600px;height:340px;left:50%;top:-150px;transform:translateX(-50%);background:radial-gradient(circle,rgba(47,91,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="glow" style="width:360px;height:300px;right:40px;bottom:-110px;background:radial-gradient(circle,rgba(124,92,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="pad">
+    <div class="kicker"><span class="tick"></span>一体化平台 · <span class="en">THE PLATFORM FAMILY</span></div>
+    <h1 class="s-title" style="margin-top:14px">一个本体，<span class="hl">驱动全栈智能体</span></h1>
+    <p class="s-sub" style="margin-top:12px;max-width:920px">从理解业务到运行智能体，allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta 提供一体化的业务运行层。</p>
+
+    <div class="row aic gap14" style="margin-top:28px">
+      <div class="glass spectral-top" style="flex:1;padding:24px 26px">
+        <div class="row aic gap12"><div class="itile" style="width:52px;height:52px"><svg><use href="#i-brain"/></svg></div>
+          <div><div style="font-size:21px;font-weight:800;color:var(--ink)">allm<sup style="color:var(--accent);font-size:.55em;vertical-align:super">2</sup>eta Ontology</div><div style="font-size:12.5px;color:var(--accent);font-weight:600;letter-spacing:.04em">业务大脑 · THE BRAIN</div></div></div>
+        <div class="col gap9" style="margin-top:18px">
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--accent)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">Ontology Generator</strong> · 自动构建本体</span></div>
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--accent)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">Ontology Studio</strong> · 六大 Builder</span></div>
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--accent)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">CodeGen</strong> · 生成智能体代码</span></div>
+        </div>
+      </div>
+
+      <div class="col center" style="flex:none;width:64px;gap:6px"><div style="width:2.5px;height:40px;border-radius:3px;background:var(--spectral)"></div><svg style="width:24px;height:24px;color:var(--accent)"><use href="#i-link"/></svg><div style="width:2.5px;height:40px;border-radius:3px;background:var(--spectral)"></div></div>
+
+      <div class="glass spectral-top" style="flex:1;padding:24px 26px">
+        <div class="row aic gap12"><div class="itile acc-violet" style="width:52px;height:52px"><svg><use href="#i-cpu"/></svg></div>
+          <div><div style="font-size:21px;font-weight:800;color:var(--ink)">allm<sup style="color:var(--violet);font-size:.55em;vertical-align:super">2</sup>eta Agentic Operator</div><div style="font-size:12.5px;color:var(--violet);font-weight:600;letter-spacing:.04em">智能体操作系统 · RUNTIME</div></div></div>
+        <div class="col gap9" style="margin-top:18px">
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--violet)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">智能体运行时</strong> · 调度与执行</span></div>
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--violet)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">编排与工作流</strong> · 多智能体协同</span></div>
+          <div class="row aic gap10"><svg style="width:17px;height:17px;color:var(--violet)"><use href="#i-check"/></svg><span style="font-size:14px;color:var(--ink-2)"><strong style="color:var(--ink)">治理 · 审计 · 可观测</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-2 row aic gap12 center" style="margin-top:16px;padding:14px 22px">
+      <svg style="width:20px;height:20px;color:var(--ink-sub)"><use href="#i-database"/></svg>
+      <span style="font-size:14.5px;font-weight:600;color:var(--ink-2)">底层基座 · ERP · 数据库 · 业务系统 —— 业务大脑架于其上，敏捷操控智能体运行企业业务</span>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">22 / 24</span></div>
+</section>
+
+<!-- ============================ 23 · VISION ============================ -->
+<section class="slide acc-violet" id="s23">
+  <div class="glow" style="width:620px;height:480px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(124,92,255,.16),transparent 62%);opacity:.55"></div>
+  <div class="glow" style="width:420px;height:420px;left:160px;top:120px;background:radial-gradient(circle,rgba(47,91,255,.12),transparent 62%);opacity:.5"></div>
+  <div class="shape sq" style="width:84px;height:84px;left:150px;bottom:130px;transform:rotate(-12deg);border-radius:22px"></div>
+  <div class="shape ci" style="width:54px;height:54px;right:180px;top:130px"></div>
+  <div class="pad" style="justify-content:center;align-items:center;text-align:center">
+    <div class="kicker" style="justify-content:center"><span class="tick"></span>愿景 · <span class="en">THE VISION</span></div>
+    <h1 style="margin-top:30px;font-size:46px;font-weight:300;line-height:1.4;letter-spacing:-.01em;color:var(--ink-2);max-width:1000px">
+      企业 AI 的竞争，<br>正在从「<span style="font-weight:300;color:var(--ink-faint)">模型能力</span>」，走向「<span style="font-weight:800;color:var(--accent)">业务运行能力</span>」。
+    </h1>
+    <div style="margin-top:34px;width:120px;height:3px;border-radius:3px;background:var(--spectral)"></div>
+    <p style="margin-top:30px;font-size:19px;color:var(--ink-sub);max-width:820px;line-height:1.6">
+      让企业 AI 从「能回答」走向「能执行」 —— 这是 allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta Ontology 持续探索的方向。
+    </p>
+  </div>
+  <div class="foot"><span class="brand">allm<sup style="color:var(--accent)">2</sup>eta Ontology</span><span class="ev"><span class="dot"></span>华为 INSPIRE 2026</span><span class="pg">23 / 24</span></div>
+</section>
+
+<!-- ============================ 24 · THANK YOU ============================ -->
+<section class="slide acc-blue" id="s24">
+  <div class="cover-grid"></div>
+  <div class="glow" style="width:660px;height:520px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(47,91,255,.22),transparent 62%);opacity:.5"></div>
+  <div class="glow" style="width:460px;height:460px;right:120px;bottom:-120px;background:radial-gradient(circle,rgba(124,92,255,.20),transparent 62%);opacity:.5"></div>
+  <div class="glow" style="width:400px;height:400px;left:120px;top:-100px;background:radial-gradient(circle,rgba(31,184,144,.16),transparent 62%);opacity:.45"></div>
+  <div class="shape sq" style="width:104px;height:104px;right:150px;top:110px;transform:rotate(11deg);border-radius:26px"></div>
+  <div class="shape ci" style="width:48px;height:48px;left:200px;bottom:150px"></div>
+  <div class="pad" style="justify-content:center;align-items:center;text-align:center">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <span class="wordmark" style="font-size:46px;line-height:1">allm<sup>2</sup>eta</span>
+      <span style="font-size:42px;font-weight:200;color:var(--ink-2);letter-spacing:-.02em">Ontology</span>
+    </div>
+    <h1 style="margin-top:28px;font-size:88px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1">谢谢<span style="color:var(--accent)">.</span></h1>
+    <p style="margin-top:18px;font-size:22px;font-weight:600;color:var(--ink-2)">Thank You</p>
+    <p style="margin-top:22px;font-size:18px;color:var(--ink-sub);max-width:760px;line-height:1.6">让企业 AI 从「能回答」走向「能执行」</p>
+    <div style="margin-top:30px;display:inline-flex;align-items:center;gap:12px">
+      <span class="glass spectral-top" style="padding:11px 22px;border-radius:999px;font-size:15px;font-weight:700;color:var(--ink)">预约 Demo · 了解更多</span>
+    </div>
+  </div>
+  <div style="position:absolute;left:74px;right:74px;bottom:40px;z-index:3">
+    <div style="height:2.5px;border-radius:3px;background:var(--spectral);opacity:.85"></div>
+    <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--ink-sub)">
+      <span style="font-weight:700;color:var(--ink-2)">allm<sup style="color:var(--accent);font-size:.6em;vertical-align:super">2</sup>eta — 企业 AI 业务运行层</span>
+      <span style="font-variant-numeric:tabular-nums;letter-spacing:.06em">华为 INSPIRE 2026 · GLOBAL LAUNCH</span>
+    </div>
+  </div>
+</section>
+
+<!--SLIDES-->
+
+</main>
+
+<div class="nav"><button onclick="mv(-1)">‹</button><button onclick="mv(1)">›</button></div>
+<script>
+const S=[...document.querySelectorAll('.slide')];let ci=0;
+function mv(d){ci=Math.max(0,Math.min(S.length-1,ci+d));S[ci].scrollIntoView({behavior:'smooth',block:'center'});}
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();mv(1);}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();mv(-1);}});
+</script>
+</body>
+</html>

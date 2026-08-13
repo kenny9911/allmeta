@@ -1,109 +1,89 @@
 "use client";
 import React from "react";
 import { useApp } from "@/lib/i18n";
-import Container from "@/components/shared/Container";
-import SectionLabel from "@/components/shared/SectionLabel";
+import { Eyebrow, Reveal, Em } from "@/components/editorial/parts";
 
 export default function FirstPrinciple() {
   const { t } = useApp();
   return (
-    <section style={{ paddingTop: 80, paddingBottom: 60 }}>
-      <Container>
-        <SectionLabel tone="amber">{t("onto_principle_label")}</SectionLabel>
+    <section style={{ paddingTop: 100, paddingBottom: 90 }}>
+      <div className="edito-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="lg:col-span-5">
+            <Reveal><Eyebrow>{t("onto_principle_label")}</Eyebrow></Reveal>
+            <Reveal delay={1}>
+              <h2 className="t-h2 mt-6">
+                Semantics ={" "}
+                <span style={{ color: "var(--c-info)" }}>Subject</span> +{" "}
+                <span style={{ color: "var(--c-lime)" }}>Verb</span> +{" "}
+                <span style={{ color: "var(--c-coral)" }}>Object</span>.
+              </h2>
+            </Reveal>
+            <Reveal delay={2}>
+              <p className="mt-6" style={{ fontSize: 15, color: "var(--c-ink-3)", lineHeight: 1.65, maxWidth: 440 }}>
+                Everything else is decoration. <Em>Foreign keys are obsolete</Em> in
+                the LLM era — agents don't need joins, they need semantic context.
+              </p>
+            </Reveal>
+          </div>
 
-        <div className="mt-8 mb-4">
-          <h2 className="h-chunky h-display-md">{t("onto_principle_title_zh")}</h2>
+          <div className="lg:col-span-7">
+            <Reveal delay={1}>
+              <SvoDiagram t={t} />
+            </Reveal>
+          </div>
         </div>
-        <p className="italic-en mb-14" style={{ fontSize: "clamp(17px, 1.8vw, 22px)", color: "var(--c-ink-3)", fontStyle: "italic" }}>
-          {t("onto_principle_sub")}
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
-          <SvoBox
-            tone="info"
-            label={t("onto_principle_s_label")}
-            value={t("onto_principle_s_val")}
-            caption={t("onto_principle_s_cap")}
-          />
-          <Arrow />
-          <SvoBox
-            tone="lime"
-            label={t("onto_principle_v_label")}
-            value={t("onto_principle_v_val")}
-            caption={t("onto_principle_v_cap")}
-            verb
-          />
-          <Arrow />
-          <SvoBox
-            tone="coral"
-            label={t("onto_principle_o_label")}
-            value={t("onto_principle_o_val")}
-            caption={t("onto_principle_o_cap")}
-          />
-        </div>
-
-        <p className="mt-12 text-center f-mono italic" style={{ fontSize: 13, color: "var(--c-ink-3)", letterSpacing: "0.04em" }}>
-          {t("onto_principle_footer")}
-        </p>
-      </Container>
+      </div>
     </section>
   );
 }
 
-function Arrow() {
+function SvoDiagram({ t }: { t: (k: string) => string }) {
   return (
-    <div className="hidden md:flex items-center justify-center" style={{ minWidth: 36 }}>
-      <span style={{ color: "var(--c-ink-4)", fontSize: 28 }}>→</span>
-    </div>
-  );
-}
+    <svg viewBox="0 0 640 300" className="w-full h-auto" style={{ filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.4))" }} role="img" aria-label="Subject applies-to Object">
+      <defs>
+        <linearGradient id="svo-conn" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="oklch(0.78 0.14 240)" stopOpacity="0.7" />
+          <stop offset="0.5" stopColor="oklch(0.92 0.22 130)" stopOpacity="0.95" />
+          <stop offset="1" stopColor="oklch(0.72 0.20 25)" stopOpacity="0.7" />
+        </linearGradient>
+        <filter id="svo-glow"><feGaussianBlur stdDeviation="5" /></filter>
+      </defs>
 
-function SvoBox({
-  tone,
-  label,
-  value,
-  caption,
-  verb,
-}: {
-  tone: "info" | "lime" | "coral";
-  label: string;
-  value: string;
-  caption: string;
-  verb?: boolean;
-}) {
-  const c: Record<string, string> = { info: "var(--c-info)", lime: "var(--c-lime)", coral: "var(--c-coral)" };
-  return (
-    <div
-      className="panel relative flex flex-col items-center text-center"
-      style={{
-        padding: "26px 22px",
-        minHeight: 180,
-        borderStyle: verb ? "dashed" : "solid",
-        borderColor: verb ? c[tone] : "var(--c-line)",
-        boxShadow: `inset 0 3px 0 0 ${c[tone]}`,
-      }}
-    >
-      <div className="f-mono mb-3" style={{ fontSize: 11, color: c[tone], letterSpacing: "0.14em", textTransform: "uppercase" }}>
-        {label}
-      </div>
-      <div
-        className={verb ? "italic-en" : ""}
-        style={{
-          fontFamily: "var(--f-display)",
-          fontWeight: 700,
-          fontSize: 32,
-          color: verb ? c[tone] : "var(--c-ink-1)",
-          letterSpacing: "-0.02em",
-          fontStyle: verb ? "italic" : "normal",
-          lineHeight: 1.0,
-          marginBottom: 14,
-        }}
-      >
-        {value}
-      </div>
-      <div className="f-mono" style={{ fontSize: 11, color: "var(--c-ink-3)", letterSpacing: "0.04em" }}>
-        {caption}
-      </div>
-    </div>
+      <line x1="150" y1="150" x2="490" y2="150" stroke="url(#svo-conn)" strokeWidth="1.5" />
+
+      {/* verb chip */}
+      <g transform="translate(320 150)">
+        <rect x="-52" y="-15" width="104" height="30" rx="15" fill="oklch(0.16 0.018 260)" stroke="var(--c-lime)" strokeWidth="1" />
+        <text x="0" y="5" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="13" fill="var(--c-lime)" letterSpacing="0.02em">applies-to</text>
+      </g>
+
+      {/* subject */}
+      <g transform="translate(60 110)">
+        <rect width="120" height="80" rx="12" fill="oklch(0.18 0.018 260)" stroke="var(--c-info)" strokeWidth="1.2" />
+        <text x="16" y="28" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-info)" letterSpacing="0.14em">SUBJECT</text>
+        <text x="16" y="50" fontFamily="var(--f-sans)" fontSize="17" fontWeight="600" fill="var(--c-ink-1)" letterSpacing="-0.01em">Candidate</text>
+        <text x="16" y="68" fontFamily="var(--f-mono)" fontSize="9.5" fill="var(--c-ink-4)">noun · object</text>
+        <circle cx="110" cy="11" r="3" fill="var(--c-info)">
+          <animate attributeName="opacity" values="1;0.4;1" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+      {/* object */}
+      <g transform="translate(460 110)">
+        <rect width="130" height="80" rx="12" fill="oklch(0.18 0.018 260)" stroke="var(--c-coral)" strokeWidth="1.2" />
+        <text x="16" y="28" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-coral)" letterSpacing="0.14em">OBJECT</text>
+        <text x="16" y="50" fontFamily="var(--f-sans)" fontSize="17" fontWeight="600" fill="var(--c-ink-1)" letterSpacing="-0.01em">Requirement</text>
+        <text x="16" y="68" fontFamily="var(--f-mono)" fontSize="9.5" fill="var(--c-ink-4)">noun · object</text>
+      </g>
+
+      {/* verb label */}
+      <text x="320" y="118" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="9.5" fill="var(--c-ink-4)" letterSpacing="0.14em">VERB · ACTION</text>
+
+      <circle r="4" fill="var(--c-lime)" filter="url(#svo-glow)">
+        <animateMotion dur="3.6s" repeatCount="indefinite" path="M 180 150 L 460 150" />
+        <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" repeatCount="indefinite" />
+      </circle>
+    </svg>
   );
 }

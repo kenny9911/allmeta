@@ -1,58 +1,41 @@
 "use client";
 import React from "react";
+import { useApp } from "@/lib/i18n";
+import { Rich } from "@/components/editorial/parts";
 import LiveOpsMock from "./mocks/LiveOpsMock";
 import Reveal from "./Reveal";
 
 export default function LiveInProdV2() {
+  const { t } = useApp();
   return (
-    <section className="relative" style={{ paddingTop: 120, paddingBottom: 100 }}>
+    <section className="section relative">
       <div className="edito-container">
         <Reveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12 items-end">
             <div className="lg:col-span-7">
-              <div className="eyebrow mb-5">Live · production traffic</div>
-              <h2 className="h-sans" style={{ fontSize: "clamp(40px, 5.4vw, 72px)", letterSpacing: "-0.045em", lineHeight: 0.98 }}>
-                <span className="h-edito" style={{ fontStyle: "italic", letterSpacing: "-0.01em" }}>Eight agents.</span>{" "}
-                One ontology.{" "}
-                <span style={{ color: "var(--c-ink-3)" }}>3.5 seconds.</span>
+              <div className="eyebrow mb-5">{t("h_live_eyebrow")}</div>
+              <h2 className="t-h2">
+                <Rich text={t("h_live_title")} />
               </h2>
             </div>
-            <p className="lg:col-span-5" style={{ fontSize: 14.5, color: "var(--c-ink-3)", lineHeight: 1.6, maxWidth: 460 }}>
-              A real resume in. Eight specialized agents on the same shared
-              Ontology. No mock data, no slide tricks — end-to-end auto-pilot
-              under production traffic at ChinaSoft RAAS.
+            <p className="t-body lg:col-span-5" style={{ maxWidth: 460 }}>
+              {t("h_live_sub")}
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={1} className="relative">
           <LiveOpsMock />
-
-          {/* Pull-out annotations (desktop only) */}
-          <Annotation
-            top="42%" leftSide
-            offsetLeft={-30}
-            label="One ontology — every agent reads/writes the same surface"
-          />
-          <Annotation
-            top="14%" leftSide={false}
-            offsetRight={-30}
-            label="92.0 match · 5 / 5 rules · auto-invite — no human breakpoint"
-          />
+          <Annotation top="42%" leftSide offsetLeft={-30} label={t("h_live_anno1")} />
+          <Annotation top="14%" leftSide={false} offsetRight={-30} label={t("h_live_anno2")} />
         </Reveal>
 
         <Reveal delay={2}>
           <p
-            className="mt-10 mx-auto h-edito text-center"
-            style={{
-              fontSize: "clamp(20px, 2vw, 26px)",
-              fontStyle: "italic",
-              color: "var(--c-ink-2)",
-              maxWidth: 720,
-              lineHeight: 1.3,
-            }}
+            className="t-h3 mt-10 mx-auto text-center"
+            style={{ color: "var(--c-ink-2)", maxWidth: 720 }}
           >
-            “Not mock data. Not a slide. <span style={{ color: "var(--c-ink-1)" }}>Real agents.</span>”
+            <Rich text={t("h_live_punch")} />
           </p>
         </Reveal>
       </div>
@@ -61,11 +44,7 @@ export default function LiveInProdV2() {
 }
 
 function Annotation({
-  top,
-  leftSide,
-  offsetLeft,
-  offsetRight,
-  label,
+  top, leftSide, offsetLeft, offsetRight, label,
 }: {
   top: string;
   leftSide: boolean;
@@ -86,24 +65,8 @@ function Annotation({
       }}
     >
       <span className="annotation-dot" />
-      <div
-        style={{
-          height: 1,
-          width: 70,
-          background:
-            "linear-gradient(90deg, var(--c-lime), color-mix(in oklab, var(--c-lime) 0%, transparent))",
-        }}
-      />
-      <p
-        className="f-mono"
-        style={{
-          fontSize: 11,
-          color: "var(--c-ink-2)",
-          letterSpacing: "0.02em",
-          lineHeight: 1.5,
-          textAlign: leftSide ? "left" : "right",
-        }}
-      >
+      <div style={{ height: 1, width: 70, background: "linear-gradient(90deg, var(--c-lime), color-mix(in oklab, var(--c-lime) 0%, transparent))" }} />
+      <p className="f-mono" style={{ fontSize: 11, color: "var(--c-ink-2)", letterSpacing: "0.02em", lineHeight: 1.5, textAlign: leftSide ? "left" : "right" }}>
         {label}
       </p>
     </div>

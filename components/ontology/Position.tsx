@@ -1,65 +1,62 @@
 "use client";
 import React from "react";
 import { useApp } from "@/lib/i18n";
-import Container from "@/components/shared/Container";
-import SectionLabel from "@/components/shared/SectionLabel";
-import { I } from "@/components/shared/IconSet";
+import { Eyebrow, HairCard, Reveal, Em } from "@/components/editorial/parts";
 
 export default function Position() {
   const { t } = useApp();
   return (
-    <section style={{ paddingTop: 80, paddingBottom: 60 }}>
-      <Container>
-        <SectionLabel tone="coral">{t("onto_position_label")}</SectionLabel>
+    <section className="section">
+      <div className="edito-container">
+        <Reveal>
+          <div className="max-w-4xl">
+            <Eyebrow>{t("onto_position_label")}</Eyebrow>
+            <h2 className="t-h2 mt-6">
+              Ontology is a tool to <span style={{ color: "var(--c-coral)" }}>control hallucination</span> —
+              <span style={{ color: "var(--c-ink-3)" }}> not to replace the model.</span>
+            </h2>
+          </div>
+        </Reveal>
 
-        <div className="mt-8 mb-12">
-          <h2 className="h-chunky h-display-sm">
-            <span style={{ color: "var(--c-ink-1)" }}>{t("onto_position_title")}</span>
-          </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+          <Reveal delay={1}>
+            <HairCard accent="coral">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="f-mono" style={{ width: 18, height: 18, borderRadius: 5, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "color-mix(in oklab, var(--c-coral) 16%, transparent)", color: "var(--c-coral)", fontSize: 12 }}>✕</span>
+                <span className="f-mono" style={{ fontSize: 12, color: "var(--c-coral)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  {t("onto_position_bad1_title")}
+                </span>
+              </div>
+              <p className="t-body">{t("onto_position_bad1_caption")}</p>
+            </HairCard>
+          </Reveal>
+          <Reveal delay={2}>
+            <HairCard accent="coral">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="f-mono" style={{ width: 18, height: 18, borderRadius: 5, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "color-mix(in oklab, var(--c-coral) 16%, transparent)", color: "var(--c-coral)", fontSize: 12 }}>✕</span>
+                <span className="f-mono" style={{ fontSize: 12, color: "var(--c-coral)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  {t("onto_position_bad2_title")}
+                </span>
+              </div>
+              <p className="t-body">{t("onto_position_bad2_caption")}</p>
+            </HairCard>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <BadCard title={t("onto_position_bad1_title")} caption={t("onto_position_bad1_caption")} />
-          <BadCard title={t("onto_position_bad2_title")} caption={t("onto_position_bad2_caption")} />
-        </div>
-
-        <div
-          className="panel mt-6"
-          style={{
-            padding: "24px 28px",
-            boxShadow: "inset 0 3px 0 0 var(--c-lime), 0 0 0 1px var(--c-lime-line), 0 0 50px -8px color-mix(in oklab, var(--c-lime) 30%, transparent)",
-          }}
-        >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="f-display" style={{ fontSize: "clamp(17px, 1.8vw, 21px)", fontWeight: 600, color: "var(--c-ink-1)", letterSpacing: "-0.01em", lineHeight: 1.45 }}>
+        <Reveal delay={2}>
+          <div
+            className="hairline glow-ring mt-4 flex flex-col md:flex-row md:items-center justify-between gap-4"
+            style={{ padding: "26px 30px" }}
+          >
+            <p className="t-h3" style={{ maxWidth: 760 }}>
               {t("onto_position_good")}
-            </div>
-            <span className="chip-lime" style={{ flexShrink: 0 }}>
-              <I.check /> THIS IS THE WAY
+            </p>
+            <span className="f-mono" style={{ fontSize: 10.5, color: "var(--c-lime)", letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+              ✓ alive
             </span>
           </div>
-        </div>
-      </Container>
+        </Reveal>
+      </div>
     </section>
-  );
-}
-
-function BadCard({ title, caption }: { title: string; caption: string }) {
-  return (
-    <div
-      className="panel"
-      style={{
-        padding: 24,
-        boxShadow: "inset 0 3px 0 0 var(--c-coral)",
-      }}
-    >
-      <div className="flex items-center gap-2 mb-3 f-mono" style={{ fontSize: 11, color: "var(--c-coral)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-        <span style={{ width: 14, height: 14, borderRadius: 4, background: "var(--c-coral-bg)", color: "var(--c-coral)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>×</span>
-        {title}
-      </div>
-      <div style={{ fontSize: 14, color: "var(--c-ink-2)", lineHeight: 1.6 }}>
-        {caption}
-      </div>
-    </div>
   );
 }

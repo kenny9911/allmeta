@@ -7,7 +7,7 @@ import GenerationLayer from "./GenerationLayer";
 import ScalingLaw from "./ScalingLaw";
 import ThreeServers from "./ThreeServers";
 import Ecosystem from "./Ecosystem";
-import Roadmap from "@/components/home/sections/Roadmap";
+import RoadmapV2 from "@/components/home/v2/RoadmapV2";
 
 export default function TechnologyContent() {
   return (
@@ -18,7 +18,7 @@ export default function TechnologyContent() {
       <ScalingLaw />
       <ThreeServers />
       <Ecosystem />
-      <Roadmap />
+      <RoadmapV2 />
     </PageShell>
   );
 }

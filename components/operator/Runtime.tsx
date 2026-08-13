@@ -1,22 +1,28 @@
 "use client";
 import React from "react";
 import { useApp } from "@/lib/i18n";
-import Container from "@/components/shared/Container";
-import SectionLabel from "@/components/shared/SectionLabel";
+import { Eyebrow, Reveal, Em } from "@/components/editorial/parts";
 
 export default function Runtime() {
   const { t } = useApp();
   return (
-    <section style={{ paddingTop: 80, paddingBottom: 40 }}>
-      <Container>
-        <SectionLabel>{t("op_runtime_label")}</SectionLabel>
-        <div className="mt-8 mb-4">
-          <h2 className="h-chunky h-display-md">{t("op_runtime_title")}</h2>
-        </div>
-        <p className="italic-en" style={{ fontSize: 15, color: "var(--c-ink-3)", lineHeight: 1.6, maxWidth: 720, fontStyle: "italic" }}>
-          {t("op_runtime_sub")}
-        </p>
-      </Container>
+    <section className="section">
+      <div className="edito-container">
+        <Reveal>
+          <div className="max-w-4xl">
+            <Eyebrow>{t("op_runtime_label")}</Eyebrow>
+            <h2 className="t-h2 mt-7">
+              Ontology is the brain.{" "}
+              <span style={{ color: "var(--c-ink-3)" }}>
+                The Operator is what <Em>makes it run.</Em>
+              </span>
+            </h2>
+            <p className="t-lead mt-7" style={{ maxWidth: 640 }}>
+              {t("op_runtime_sub")}
+            </p>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }

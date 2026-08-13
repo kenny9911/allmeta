@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prismatic Glass · 深色方言 · 样板 3 页</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   PRISMATIC GLASS — INSPIRE 2026 DARK DIALECT  (refined)
+   候选升级版设计系统 · 样板
+   ============================================================ */
+:root{
+  /* canvas — UNCHANGED dark */
+  --bg-base:#1A1D22; --bg-deep:#0F1116;
+  /* ink */
+  --ink:#FFFFFF; --ink-sub:#AEB0C4; --ink-dim:#8D8EA0; --ink-muted:#7E828E;
+  /* spectrum + brand */
+  --gold:#F2C230; --amber:#F5B845; --brand-red:#C8312B;
+  --blue:#2F6BFF; --green:#20C997; --violet:#8B5CF6;
+  /* ↑ NEW: glass material tokens (the core upgrade) */
+  --glass:rgba(21,27,46,0.46);          /* more transparent → reads as real glass */
+  --glass-2:rgba(27,33,56,0.60);        /* second, denser layer for depth */
+  --glass-edge:rgba(255,255,255,0.10);
+  --glass-hi:rgba(255,255,255,0.16);    /* brighter top inner highlight */
+  --blur:20px;
+  --radius:20px;
+  --shadow:0 10px 40px rgba(0,0,0,0.42), inset 0 1px 0 var(--glass-hi), inset 0 0 0 0.5px rgba(255,255,255,0.05);
+  --shadow-lg:0 22px 70px rgba(0,0,0,0.52), inset 0 1px 0 rgba(255,255,255,0.18);
+  --spectral:linear-gradient(90deg,var(--blue),var(--green),var(--amber),var(--violet));
+  /* default section accent (overridden per slide by .acc-*) */
+  --acc:#2F6BFF; --acc-soft:rgba(47,107,255,0.15); --acc-line:rgba(47,107,255,0.42); --acc-ink:#8aa6ff;
+  /* fonts */
+  --cjk:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --display:"Sora","Noto Sans SC",sans-serif;
+  --mono:"JetBrains Mono","SF Mono","IBM Plex Mono",ui-monospace,monospace;
+}
+/* ↑ NEW: one-accent-per-section — set on .slide-inner, cascades to all .bx / edges */
+.acc-blue  {--acc:#2F6BFF;--acc-soft:rgba(47,107,255,0.15);--acc-line:rgba(47,107,255,0.42);--acc-ink:#8aa6ff}
+.acc-green {--acc:#20C997;--acc-soft:rgba(32,201,151,0.15);--acc-line:rgba(32,201,151,0.42);--acc-ink:#4fe0bb}
+.acc-amber {--acc:#F5B845;--acc-soft:rgba(245,184,69,0.16);--acc-line:rgba(245,184,69,0.45);--acc-ink:#ffd277}
+.acc-violet{--acc:#8B5CF6;--acc-soft:rgba(139,92,246,0.16);--acc-line:rgba(139,92,246,0.42);--acc-ink:#b69bff}
+.acc-gold  {--acc:#F2C230;--acc-soft:rgba(242,194,48,0.16);--acc-line:rgba(242,194,48,0.45);--acc-ink:#F2C230}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--cjk);background:var(--bg-base);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ambient atmosphere — dark, with a single warm + cool light-leak */
+.atmos{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  background:radial-gradient(125% 95% at 50% -12%, #20242e 0%, var(--bg-base) 44%, var(--bg-deep) 100%);}
+.atmos::after{content:"";position:absolute;inset:0;background:radial-gradient(150% 130% at 50% 50%, transparent 52%, rgba(8,9,13,0.88) 100%);}
+.bokeh{position:absolute;border-radius:50%;filter:blur(90px);}
+.bokeh.warm{width:48vw;height:48vw;right:-12vw;bottom:-16vw;background:radial-gradient(circle,rgba(242,194,48,0.085),transparent 70%);}
+.bokeh.cool{width:42vw;height:42vw;left:-13vw;top:-12vw;background:radial-gradient(circle,rgba(47,107,255,0.085),transparent 70%);}
+
+.deck{position:relative;z-index:2;height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck::-webkit-scrollbar{width:0;height:0}
+.slide{position:relative;scroll-snap-align:center;scroll-snap-stop:always;width:min(100vw,177.78vh);aspect-ratio:16/9;margin:0 auto;container-type:inline-size;display:flex}
+.slide-inner{position:relative;flex:1;display:flex;flex-direction:column;font-size:1.5cqw;padding:2.9em 3.6em 2.2em;
+  background:linear-gradient(160deg,#1b1f27 0%,#15171d 55%,#0f1116 100%);overflow:hidden}
+.slide.hero .slide-inner{background:radial-gradient(120% 100% at 70% 28%,#1d2433 0%,#14161d 55%,#0d0f14 100%)}
+.body{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.take{display:none}
+
+/* co-brand chrome */
+.chrome{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.62em;letter-spacing:0.14em;color:var(--ink-muted);padding-bottom:0.2em;flex:0 0 auto}
+.chrome-r{letter-spacing:0.06em}
+.chrome-foot{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:flex-end;flex:0 0 auto;padding-top:0.9em;margin-top:0.6em;border-top:1px solid var(--glass-edge);font-size:0.66em}
+.foot-l{color:var(--ink-dim);max-width:64%;line-height:1.4;font-weight:300}
+.foot-l em{color:var(--gold);font-style:normal;font-weight:500}
+.foot-r{display:flex;align-items:center;gap:0.7em;font-family:var(--mono);color:var(--ink-muted)}
+.seal{width:0.95em;height:0.95em;border-radius:50%;flex:0 0 auto;background:radial-gradient(circle at 35% 30%,#e6463f,var(--brand-red));box-shadow:0 0 0 0.18em rgba(200,49,43,0.18)}
+.wm{color:var(--ink);font-weight:700;font-family:var(--display)}
+.wm sup{color:var(--gold);font-size:0.62em;vertical-align:super;line-height:0}
+.pg{font-size:0.86em;color:var(--ink-muted);letter-spacing:0.1em}
+
+/* typography */
+.eyebrow{font-family:var(--mono);font-size:0.66em;letter-spacing:0.24em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:0.9em;display:flex;align-items:center;gap:0.7em}
+.eyebrow::before{content:"";width:1.6em;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+h1.t{font-family:var(--cjk);font-weight:900;font-size:2.7em;line-height:1.12;letter-spacing:-0.01em;color:var(--ink)}
+h1.t.sm{font-size:2.15em}
+h1.t.xl{font-size:3.2em}
+h1.t .g{color:var(--gold)}
+.lead{font-size:1.04em;line-height:1.6;color:var(--ink-sub);font-weight:300;max-width:38em;margin-top:0.85em}
+.lead .g{color:var(--gold);font-weight:500}
+.kicker{font-size:0.92em;color:var(--ink-dim);font-weight:300;line-height:1.55}
+.mono{font-family:var(--mono)}
+.g{color:var(--gold)} .gr{color:var(--green)} .bl{color:var(--blue)} .vi{color:var(--violet)} .rd{color:var(--brand-red)}
+.acc-ink{color:var(--acc-ink)}
+
+/* ── GLASS (refined) ─────────────────────────────────────── */
+.glass{position:relative;background:var(--glass);backdrop-filter:blur(var(--blur)) saturate(140%);-webkit-backdrop-filter:blur(var(--blur)) saturate(140%);
+  border:1px solid var(--glass-edge);border-radius:var(--radius);box-shadow:var(--shadow)}
+.glass.solid{background:var(--glass-2)}
+.pad{padding:1.25em 1.4em}
+/* top "light bar" — glass catching light (subtle) */
+.glass::after{content:"";position:absolute;left:14%;right:14%;top:0;height:1px;border-radius:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);opacity:0.6;pointer-events:none}
+/* ── PRISM EDGE: dual-tint refracted border (acc → gold). Use on KEY panels only ── */
+.prism-edge::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;
+  background:linear-gradient(140deg, var(--acc) 0%, rgba(255,255,255,0.14) 34%, rgba(255,255,255,0.04) 56%, var(--gold) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  opacity:0.55;pointer-events:none}
+
+/* spectral hairline — the prism signature, used sparingly */
+.spectral{height:1.5px;border:0;border-radius:2px;background:linear-gradient(90deg,transparent,var(--blue),var(--green),var(--amber),var(--violet),transparent);opacity:0.5}
+
+/* chips / tags */
+.tag{display:inline-flex;align-items:center;gap:0.45em;font-family:var(--mono);font-size:0.6em;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:0.42em 0.8em;background:rgba(255,255,255,0.02)}
+.tag .dot{width:0.5em;height:0.5em;border-radius:50%;background:var(--acc)}
+.chip{display:inline-flex;align-items:center;gap:0.5em;font-size:0.82em;color:var(--ink-sub);border:1px solid var(--glass-edge);border-radius:12px;padding:0.5em 0.78em;background:rgba(255,255,255,0.02)}
+
+/* icons — thinner, refined */
+.ic{width:1em;height:1em;display:inline-block;vertical-align:-0.13em;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+
+/* icon boxes — default uses SECTION ACCENT */
+.ibox{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;flex:0 0 auto}
+.bx{background:var(--acc-soft);color:var(--acc-ink);border:1px solid var(--acc-line)}
+.bx-gold{background:rgba(242,194,48,0.15);color:var(--gold);border:1px solid rgba(242,194,48,0.42)}
+.bx-red{background:rgba(200,49,43,0.16);color:#ff7a73;border:1px solid rgba(200,49,43,0.34)}
+.bx-n{background:rgba(255,255,255,0.05);color:var(--ink-dim);border:1px solid var(--glass-edge)}
+
+/* numbers */
+.num{font-family:var(--display);font-weight:800;color:var(--gold);line-height:0.95;letter-spacing:-0.02em}
+.stat .lbl{font-size:0.78em;color:var(--ink-dim);margin-top:0.3em;font-weight:300;line-height:1.4}
+
+/* layout */
+.grid{display:grid;gap:0.85em}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+.row{display:flex;gap:0.85em}.col{display:flex;flex-direction:column;gap:0.85em}
+.between{justify-content:space-between}.center{align-items:center}.wrap{flex-wrap:wrap}.fill{flex:1}
+.mt{margin-top:1.1em}.mt2{margin-top:1.7em}.mtH{margin-top:0.5em}
+
+/* diagram primitives — inherit refined glass */
+.node{position:relative;display:flex;flex-direction:column;gap:0.35em;border-radius:16px;background:var(--glass);
+  backdrop-filter:blur(var(--blur)) saturate(140%);-webkit-backdrop-filter:blur(var(--blur)) saturate(140%);
+  border:1px solid var(--glass-edge);box-shadow:var(--shadow);padding:0.85em 0.95em}
+.node .nh{display:flex;align-items:center;gap:0.55em;font-weight:700;font-size:0.92em}
+.node .nd{font-size:0.74em;color:var(--ink-dim);line-height:1.4;font-weight:300}
+.node .ibox{width:1.9em;height:1.9em;font-size:1em}
+.slab{position:relative;border-radius:18px;padding:1.05em 1.3em;border:1px solid var(--glass-edge);box-shadow:var(--shadow);
+  background:linear-gradient(100deg,var(--glass-2),rgba(17,22,42,0.34));backdrop-filter:blur(var(--blur)) saturate(140%);-webkit-backdrop-filter:blur(var(--blur)) saturate(140%)}
+/* accent-tinted slab/glass (uses section --acc) */
+.tint{border-color:var(--acc-line);box-shadow:var(--shadow),inset 0 0 34px var(--acc-soft)}
+.tint-gold{border-color:rgba(242,194,48,0.40);box-shadow:var(--shadow),inset 0 0 34px rgba(242,194,48,0.08)}
+.arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.3em;flex:0 0 auto}
+.arrow .ic{stroke-width:2}
+.down{transform:rotate(90deg)}
+
+/* lists */
+.li{display:flex;gap:0.6em;align-items:flex-start;font-size:0.86em;line-height:1.45;color:var(--ink-sub);font-weight:300}
+.li .ic{color:var(--acc-ink);margin-top:0.16em;flex:0 0 auto;width:0.95em;height:0.95em}
+.li.gold .ic{color:var(--gold)}
+.li b{color:var(--ink);font-weight:500}
+
+/* caustic light-leak (warm core, cool fringe) + refraction ray */
+.caustic{position:absolute;border-radius:50%;filter:blur(85px);opacity:0.34;pointer-events:none;z-index:1;
+  background:radial-gradient(circle at 44% 42%, rgba(245,184,69,0.95) 0%, rgba(242,194,48,0.5) 20%, rgba(47,107,255,0.34) 54%, rgba(139,92,246,0.24) 76%, transparent 100%)}
+.ray{position:absolute;height:2px;border-radius:2px;filter:blur(2px);opacity:0.5;pointer-events:none;z-index:1;
+  background:linear-gradient(90deg,transparent,var(--blue),var(--green),var(--amber),var(--violet),transparent)}
+
+/* ── FLOATING FROSTED GEOMETRY ── */
+.geo{position:absolute;pointer-events:none;z-index:1;filter:drop-shadow(0 18px 36px rgba(0,0,0,0.45))}
+
+/* ── layered-architecture left list (Image-1 style) ── */
+.lblock{position:relative}
+.lname{font-weight:700;font-size:1.08em;color:var(--ink)}
+.lline{flex:1;height:1px;background:linear-gradient(90deg,var(--c,#888),transparent);opacity:.8;margin-left:.2em}
+.ldot{width:.72em;height:.72em;border-radius:3px;background:var(--c);box-shadow:0 0 14px var(--c);flex:0 0 auto}
+.ldesc{font-size:.82em;color:var(--ink-dim);font-weight:300;margin-top:.34em;margin-left:1.5em;line-height:1.45}
+
+/* ── glass chevron pipeline (Image-3 style) ── */
+.pipe{display:flex;align-items:center;gap:.3em}
+.chev{position:relative;flex:1;height:100%;display:flex;align-items:center;justify-content:center}
+.chev .edge,.chev .face{position:absolute;inset:0;clip-path:polygon(0 0,74% 0,100% 50%,74% 100%,0 100%,26% 50%)}
+.chev .edge{inset:-1.4px;background:var(--spectral);opacity:.6;filter:saturate(1.2)}
+.chev .face{background:var(--cf);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.20)}
+.chev .inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.2em;margin-left:8%}
+.chev .ico{font-size:2.1em;color:var(--ci);filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.endcard{position:relative;flex:0.82;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em}
+
+.wordmark{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;line-height:1}
+.wordmark sup{color:var(--gold);font-size:0.5em;vertical-align:super;line-height:0}
+
+[data-rv]{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.slide.in [data-rv]{opacity:1;transform:none}
+.slide.in [data-rv="1"]{transition-delay:.05s}.slide.in [data-rv="2"]{transition-delay:.14s}.slide.in [data-rv="3"]{transition-delay:.23s}.slide.in [data-rv="4"]{transition-delay:.32s}.slide.in [data-rv="5"]{transition-delay:.41s}.slide.in [data-rv="6"]{transition-delay:.50s}.slide.in [data-rv="7"]{transition-delay:.59s}.slide.in [data-rv="8"]{transition-delay:.68s}
+
+.navbar{position:fixed;z-index:30;right:1.4vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.55em}
+.navbar button{width:8px;height:8px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,0.18);transition:.3s;padding:0}
+.navbar button.on{background:var(--gold);box-shadow:0 0 10px rgba(242,194,48,0.8);transform:scale(1.35)}
+.tagline{position:fixed;z-index:30;left:50%;bottom:1.6vh;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:0.12em;color:var(--ink-muted);opacity:.7}
+</style>
+</head>
+<body>
+<div class="atmos"><div class="bokeh warm"></div><div class="bokeh cool"></div></div>
+<nav class="navbar" id="nav"></nav>
+<div class="tagline">PRISMATIC GLASS · 深色方言 · 1–3 材质精致化 · 4–5 立体玻璃几何</div>
+
+<!-- icon sprite + shared gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="glassface" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/></linearGradient>
+<linearGradient id="specrim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F6BFF"/><stop offset="0.4" stop-color="#20C997"/><stop offset="0.7" stop-color="#F5B845"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+<symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M9 21h6M3 7h18"/><path d="M7 7l-3 7h6z"/><path d="M17 7l-3 7h6z"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+<symbol id="i-gauge" viewBox="0 0 24 24"><path d="M12 13l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24"><path d="M9.5 4a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 5 9a2.5 2.5 0 0 0 1 4.5 2.5 2.5 0 0 0 4.5 1.5V4.5A2.5 2.5 0 0 0 9.5 4Z"/><path d="M14.5 4A2.5 2.5 0 0 1 17 6.5 2.5 2.5 0 0 1 19 9a2.5 2.5 0 0 1-1 4.5 2.5 2.5 0 0 1-4.5 1.5"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M15 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H9"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+</defs></svg>
+
+<div class="deck" id="deck">
+
+<!-- ============== SAMPLE A · COVER (accent: gold/brand) ============== -->
+<section class="slide hero" data-act="00">
+  <div class="slide-inner acc-gold">
+    <div class="body" style="justify-content:center">
+      <div class="caustic" style="width:44em;height:44em;right:-4em;top:-9em"></div>
+      <div class="ray" style="width:34em;right:-2em;top:9em;transform:rotate(28deg)"></div>
+      <!-- floating frosted geometry, sparse, in negative space -->
+      <svg class="geo" viewBox="0 0 200 200" style="width:7em;left:-1.5em;bottom:1em;opacity:0.5;transform:rotate(-8deg)">
+        <polygon points="100,18 168,64 150,150 64,168 24,72" fill="url(#glassface)" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+        <polygon points="100,18 150,150 64,168" fill="rgba(255,255,255,0.035)"/>
+        <line x1="100" y1="18" x2="168" y2="64" stroke="url(#specrim)" stroke-width="1.5" opacity="0.55"/>
+      </svg>
+      <svg class="geo" viewBox="0 0 160 160" style="width:3.6em;right:30%;bottom:1.5em;opacity:0.4;transform:rotate(12deg)">
+        <polygon points="80,12 140,46 140,114 80,148 20,114 20,46" fill="url(#glassface)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        <line x1="80" y1="12" x2="140" y2="46" stroke="url(#specrim)" stroke-width="1.4" opacity="0.5"/>
+      </svg>
+      <div class="row center" style="gap:2.4em;align-items:center;position:relative;z-index:3">
+        <div style="flex:1.25">
+          <div class="eyebrow" data-rv="1">ACT 00 / KEYNOTE LAUNCH</div>
+          <div class="tag" data-rv="1" style="margin-bottom:1.1em;border-color:rgba(242,194,48,0.4)"><span class="dot"></span>PRODUCT LAUNCH · 中软国际 × 华为云</div>
+          <div class="wordmark" data-rv="2" style="font-size:3.3em;color:var(--ink)">allmeta<sup>²</sup> <span style="color:var(--gold)">Ontology</span></div>
+          <div class="mono" data-rv="2" style="font-size:0.98em;letter-spacing:0.4em;color:var(--ink-dim);margin-top:0.45em">V 1.0 　ENTERPRISE OPERATION LAYER</div>
+          <h1 class="t" data-rv="3" style="margin-top:0.7em;font-size:1.95em">让企业 AI 从<span class="g">「能回答」</span>走向<span class="g">「能执行」</span></h1>
+          <p class="lead" data-rv="4" style="margin-top:0.7em">面向中国企业真实数据环境与业务场景的 <span class="g">可行动本体（Actionable Ontology）</span> 与全栈智能体运行层 —— 把数据、语义、业务对象、任务流程与执行结果连接成一套运行体系。</p>
+          <div class="row" data-rv="5" style="margin-top:1.15em;gap:0.6em;flex-wrap:wrap">
+            <span class="chip"><svg class="ic g"><use href="#i-brain"/></svg>业务运行的大脑</span>
+            <span class="chip"><svg class="ic g"><use href="#i-layers"/></svg>三层架构</span>
+            <span class="chip"><svg class="ic g"><use href="#i-shield"/></svg>可控 · 可审计</span>
+          </div>
+        </div>
+        <!-- prism in a frosted glass plate (layered depth) -->
+        <div class="prism-wrap" data-rv="4" style="flex:1;max-width:23em;position:relative">
+          <div class="glass prism-edge" style="position:absolute;inset:8% 4%;border-radius:24px;z-index:1"></div>
+          <svg viewBox="0 0 420 360" style="width:100%;position:relative;z-index:2;filter:drop-shadow(0 10px 40px rgba(0,0,0,0.5))">
+            <defs>
+              <linearGradient id="pg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a4255"/><stop offset="1" stop-color="#11141c"/></linearGradient>
+              <linearGradient id="pg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3045"/><stop offset="1" stop-color="#0d0f15"/></linearGradient>
+              <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0.9"/></linearGradient>
+              <radialGradient id="core" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#F5B845" stop-opacity="0.95"/><stop offset="0.5" stop-color="#F2C230" stop-opacity="0.4"/><stop offset="1" stop-color="#F2C230" stop-opacity="0"/></radialGradient>
+            </defs>
+            <circle cx="210" cy="180" r="150" fill="url(#core)"/>
+            <rect x="20" y="172" width="150" height="6" rx="3" fill="url(#beam)"/>
+            <polygon points="210,55 318,250 102,250" fill="url(#pg1)" stroke="rgba(242,194,48,0.55)" stroke-width="1.5"/>
+            <polygon points="210,55 318,250 210,250" fill="url(#pg2)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+            <line x1="210" y1="55" x2="210" y2="250" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <polygon points="210,55 248,138 210,150 172,138" fill="rgba(255,255,255,0.10)"/>
+            <g stroke-width="5" stroke-linecap="round" opacity="0.92">
+              <line x1="300" y1="225" x2="412" y2="150" stroke="#2F6BFF"/>
+              <line x1="304" y1="232" x2="414" y2="178" stroke="#20C997"/>
+              <line x1="308" y1="239" x2="414" y2="206" stroke="#F2C230"/>
+              <line x1="312" y1="246" x2="412" y2="234" stroke="#8B5CF6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="take">企业 AI 的竞争，正在从 <em>模型能力</em> 走向 <em>业务运行能力</em></div>
+  </div>
+</section>
+
+<!-- ============== SAMPLE B · PRODUCT ARCHITECTURE (accent: blue) ============== -->
+<section class="slide" data-act="02">
+  <div class="slide-inner acc-blue">
+    <div class="body">
+      <svg class="geo" viewBox="0 0 160 160" style="width:4em;right:1.5em;top:30%;opacity:0.35;transform:rotate(-14deg)">
+        <polygon points="80,12 140,46 140,114 80,148 20,114 20,46" fill="url(#glassface)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        <line x1="80" y1="12" x2="140" y2="46" stroke="url(#specrim)" stroke-width="1.4" opacity="0.5"/>
+      </svg>
+      <div class="eyebrow" data-rv="1">ACT 02 / PRODUCT ARCHITECTURE　产品架构</div>
+      <h1 class="t sm" data-rv="1">allmeta Ontology <span class="g">三层架构</span></h1>
+      <p class="kicker" data-rv="2" style="margin-top:0.3em">在企业 ERP 与运营系统之上自动构建可行动本体并驱动智能体运行 —— 一个<span class="g">可追踪、可管理的企业运行平台</span>。</p>
+      <div class="row mt" style="gap:1.4em;align-items:stretch">
+        <div class="col" style="flex:2.4;gap:0.5em">
+          <!-- L3 — flagship runtime = GOLD (brand) -->
+          <div class="slab prism-edge tint-gold" data-rv="5">
+            <div class="row center between">
+              <div class="row center" style="gap:0.7em"><span class="ibox bx-gold" style="width:2.3em;height:2.3em"><svg class="ic"><use href="#i-bot"/></svg></span><div><b>全栈智能体运行操作系统</b><div class="mono" style="font-size:0.6em;color:var(--ink-muted);letter-spacing:0.1em">LAYER 3 · allmeta Agentic Operator</div></div></div>
+              <div class="row" style="gap:0.45em"><span class="chip" style="font-size:0.7em">编排</span><span class="chip" style="font-size:0.7em">监控</span><span class="chip" style="font-size:0.7em">审计</span></div>
+            </div>
+          </div>
+          <div class="arrow down" data-rv="4" style="font-size:1.05em;margin:-0.32em 0"><svg class="ic"><use href="#i-arrow"/></svg></div>
+          <!-- L2 — ontology = section accent BLUE -->
+          <div class="slab prism-edge tint" data-rv="4">
+            <div class="row center between" style="margin-bottom:0.6em">
+              <div class="row center" style="gap:0.7em"><span class="ibox bx" style="width:2.3em;height:2.3em"><svg class="ic"><use href="#i-brain"/></svg></span><div><b>可行动的 Ontology · 业务大脑</b><div class="mono" style="font-size:0.6em;color:var(--acc-ink);letter-spacing:0.1em">LAYER 2 · ACTIONABLE ONTOLOGY</div></div></div>
+            </div>
+            <div class="grid g3" style="gap:0.45em">
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-box"/></svg>Objects</span>
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-zap"/></svg>Actions</span>
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-scale"/></svg>Rules</span>
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-spark"/></svg>Events</span>
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-link"/></svg>Links</span>
+              <span class="chip" style="justify-content:center;font-size:0.74em"><svg class="ic acc-ink"><use href="#i-gauge"/></svg>Evaluation</span>
+            </div>
+          </div>
+          <div class="arrow down" data-rv="3" style="font-size:1.05em;margin:-0.32em 0"><svg class="ic"><use href="#i-arrow"/></svg></div>
+          <!-- L1 — data = neutral glass -->
+          <div class="slab" data-rv="3">
+            <div class="row center between">
+              <div class="row center" style="gap:0.7em"><span class="ibox bx-n" style="width:2.3em;height:2.3em"><svg class="ic"><use href="#i-db"/></svg></span><div><b style="color:var(--ink-sub)">企业数据与管理系统</b><div class="mono" style="font-size:0.6em;color:var(--ink-muted);letter-spacing:0.1em">LAYER 1 · DATA &amp; MANAGEMENT</div></div></div>
+              <div class="row" style="gap:0.45em"><span class="chip" style="font-size:0.7em">ERP</span><span class="chip" style="font-size:0.7em">数据库</span><span class="chip" style="font-size:0.7em">文档</span><span class="chip" style="font-size:0.7em">业务系统</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- governance rail — neutral glass, gold accents only -->
+        <div class="glass prism-edge pad" data-rv="6" style="flex:0.85;display:flex;flex-direction:column;justify-content:center;gap:0.9em">
+          <div class="row center" style="gap:0.6em"><span class="ibox bx-gold" style="width:2.2em;height:2.2em"><svg class="ic"><use href="#i-shield"/></svg></span><b>贯穿全栈的治理面</b></div>
+          <div class="li gold"><svg class="ic"><use href="#i-eye"/></svg><span>全程可追踪 · 可观测</span></div>
+          <div class="li gold"><svg class="ic"><use href="#i-refresh"/></svg><span>可回放 · 可审计</span></div>
+          <div class="li gold"><svg class="ic"><use href="#i-lock"/></svg><span>权限与动态安全边界</span></div>
+          <hr class="spectral"/>
+          <p class="kicker" style="font-size:0.78em">从底层数据，到可行动业务本体，到智能体运行 —— <span class="g">一个平台贯通</span>。</p>
+        </div>
+      </div>
+    </div>
+    <div class="take">数据管理 → <em>可行动本体</em> → 智能体运行，三层贯通</div>
+  </div>
+</section>
+
+<!-- ============== SAMPLE C · CASE · POWER (accent: amber) ============== -->
+<section class="slide" data-act="06">
+  <div class="slide-inner acc-amber">
+    <div class="body">
+      <div class="caustic" style="width:26em;height:26em;left:-7em;bottom:-9em;opacity:0.22"></div>
+      <div class="eyebrow" data-rv="1">ACT 06 / CASE 01 · ENERGY　电力行业</div>
+      <h1 class="t sm" data-rv="1">电力 · <span class="g">自动决策 · 智能调度 · 应急响应</span></h1>
+      <p class="kicker" data-rv="2" style="margin-top:0.3em">将电网设备、线路、负荷与告警建模为电力可行动本体，多智能体在受控环境中完成监测、预测、调度与应急联动。</p>
+      <div class="row center mt" style="gap:0.35em;align-items:stretch">
+        <div class="node" data-rv="3" style="flex:1"><div class="nh"><span class="ibox bx-n" style="width:1.7em;height:1.7em"><svg class="ic"><use href="#i-activity"/></svg></span>电网实时数据</div><div class="nd">SCADA · 传感 · 负荷 · 气象</div></div>
+        <div class="arrow"><svg class="ic"><use href="#i-arrow"/></svg></div>
+        <div class="node tint prism-edge" data-rv="4" style="flex:1"><div class="nh"><span class="ibox bx" style="width:1.7em;height:1.7em"><svg class="ic"><use href="#i-brain"/></svg></span>电力可行动本体</div><div class="nd">设备 · 线路 · 负荷 · 告警</div></div>
+        <div class="arrow"><svg class="ic"><use href="#i-arrow"/></svg></div>
+        <div class="node tint prism-edge" data-rv="5" style="flex:1.1"><div class="nh"><span class="ibox bx" style="width:1.7em;height:1.7em"><svg class="ic"><use href="#i-bot"/></svg></span>多智能体</div><div class="nd">监测 · 预测 · 调度 · 应急</div></div>
+        <div class="arrow"><svg class="ic"><use href="#i-arrow"/></svg></div>
+        <div class="node tint-gold prism-edge" data-rv="6" style="flex:1"><div class="nh"><span class="ibox bx-gold" style="width:1.7em;height:1.7em"><svg class="ic"><use href="#i-route"/></svg></span>决策与调度</div><div class="nd">负荷调度 · 应急联动指令</div></div>
+      </div>
+      <div class="row mt2" style="gap:0.9em;align-items:stretch">
+        <div class="grid g4" style="flex:2.2;gap:0.55em">
+          <div class="node" data-rv="7"><div class="row center" style="gap:0.45em"><svg class="ic acc-ink"><use href="#i-eye"/></svg><b style="font-size:0.85em">监测</b></div><div class="nd" style="font-size:0.72em">实时识别异常与隐患</div></div>
+          <div class="node" data-rv="7"><div class="row center" style="gap:0.45em"><svg class="ic acc-ink"><use href="#i-trend"/></svg><b style="font-size:0.85em">预测</b></div><div class="nd" style="font-size:0.72em">负荷与故障趋势预判</div></div>
+          <div class="node" data-rv="8"><div class="row center" style="gap:0.45em"><svg class="ic acc-ink"><use href="#i-route"/></svg><b style="font-size:0.85em">调度</b></div><div class="nd" style="font-size:0.72em">受控生成调度方案</div></div>
+          <div class="node" data-rv="8"><div class="row center" style="gap:0.45em"><svg class="ic rd"><use href="#i-alert"/></svg><b style="font-size:0.85em">应急</b></div><div class="nd" style="font-size:0.72em">告警自动联动响应</div></div>
+        </div>
+        <div class="glass prism-edge pad" data-rv="8" style="flex:1.1;display:flex;align-items:center;justify-content:center;gap:1em">
+          <div class="stat" style="text-align:center"><div class="num" style="font-size:1.9em">数十秒</div><div class="lbl">原需数百小时<br/>的决策</div></div>
+          <hr style="width:1px;height:2.6em;border:0;background:var(--glass-edge)"/>
+          <div class="stat" style="text-align:center"><svg class="ic g" style="width:1.6em;height:1.6em"><use href="#i-shield"/></svg><div class="lbl" style="margin-top:0.3em">高风险动作<br/>审批 + 审计</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="take">原需<em>数百小时</em>的调度决策，现在<em>数十秒</em>完成</div>
+  </div>
+</section>
+
+<!-- ============== SAMPLE D · 3D GLASS-SLAB ARCHITECTURE (Image-1 fusion, dark) ============== -->
+<section class="slide" data-act="02">
+  <div class="slide-inner">
+    <div class="body">
+      <div class="row" style="gap:1.4em;align-items:center;height:100%">
+        <!-- left: layer list -->
+        <div class="col" style="flex:1.05;justify-content:center;gap:0">
+          <div class="eyebrow" data-rv="1">ACT 02 / PRODUCT ARCHITECTURE　产品架构</div>
+          <h1 class="t" data-rv="1" style="font-size:1.72em;line-height:1.18">本体论产品架构：<span class="g">三层数字孪生</span></h1>
+          <p class="kicker" data-rv="2" style="margin-top:0.4em;margin-bottom:1.6em">超越传统知识图谱，赋予 AI <span class="g">行动与决策能力</span>。</p>
+          <div class="lblock" data-rv="5" style="--c:#F5B845"><div class="row center" style="gap:.7em"><span class="ldot"></span><span class="lname">动态层（决策智能）</span><span class="lline"></span></div><div class="ldesc">多步模拟 · 全局最优推荐 · 持续决策捕获</div></div>
+          <div class="lblock" data-rv="4" style="--c:#a78bff;margin-top:1.5em"><div class="row center" style="gap:.7em"><span class="ldot"></span><span class="lname">动力层（数字动词）</span><span class="lline"></span></div><div class="ldesc">业务操作类型 · 函数计算 · 动态安全授权</div></div>
+          <div class="lblock" data-rv="3" style="--c:#5b8cff;margin-top:1.5em"><div class="row center" style="gap:.7em"><span class="ldot"></span><span class="lname">语义层（数字名词）</span><span class="lline"></span></div><div class="ldesc">业务对象 · 核心属性 · 实体链接关系</div></div>
+        </div>
+        <!-- right: 3D translucent glass slab stack -->
+        <div data-rv="4" style="flex:1.1;display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 640 620" style="width:100%;max-width:30em">
+            <defs>
+              <linearGradient id="amberT" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="#ffe1a3" stop-opacity="0.62"/><stop offset="1" stop-color="#e9a23b" stop-opacity="0.34"/></linearGradient>
+              <linearGradient id="amberR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9a23b" stop-opacity="0.6"/><stop offset="1" stop-color="#a9701f" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="amberL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98a2c" stop-opacity="0.55"/><stop offset="1" stop-color="#7d5114" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="violT" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="#d7c3ff" stop-opacity="0.6"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0.34"/></linearGradient>
+              <linearGradient id="violR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity="0.6"/><stop offset="1" stop-color="#5b3ba8" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="violL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6f4bc4" stop-opacity="0.55"/><stop offset="1" stop-color="#3f2a78" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="blueT" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="#bcd2ff" stop-opacity="0.6"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0.34"/></linearGradient>
+              <linearGradient id="blueR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bff" stop-opacity="0.6"/><stop offset="1" stop-color="#1f4bb8" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="blueL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2451c4" stop-opacity="0.55"/><stop offset="1" stop-color="#14306f" stop-opacity="0.5"/></linearGradient>
+              <linearGradient id="caust" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2f6bff"/><stop offset="0.35" stop-color="#20c997"/><stop offset="0.7" stop-color="#f5b845"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+              <radialGradient id="sphB" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#fff"/><stop offset="0.35" stop-color="#9ec0ff"/><stop offset="1" stop-color="#2f6bff"/></radialGradient>
+              <radialGradient id="sphV" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#fff"/><stop offset="0.35" stop-color="#c9b3ff"/><stop offset="1" stop-color="#8b5cf6"/></radialGradient>
+              <radialGradient id="sphA" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#fff"/><stop offset="0.4" stop-color="#ffd98a"/><stop offset="1" stop-color="#e9a23b"/></radialGradient>
+              <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter>
+              <filter id="softer" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="20"/></filter>
+            </defs>
+            <!-- floor caustic -->
+            <ellipse cx="320" cy="592" rx="200" ry="30" fill="url(#caust)" opacity="0.4" filter="url(#softer)"/>
+            <!-- vertical light beams (data columns) -->
+            <g filter="url(#soft)" opacity="0.5"><rect x="296" y="120" width="10" height="430" fill="#cfe0ff"/><rect x="346" y="120" width="8" height="430" fill="#ffe1b0"/></g>
+            <!-- BLUE slab (语义层, bottom) -->
+            <ellipse cx="320" cy="470" rx="205" ry="86" fill="#2f6bff" opacity="0.18" filter="url(#softer)"/>
+            <polygon points="125,470 320,552 515,470 515,490 320,572 125,490" fill="url(#blueL)"/>
+            <polygon points="515,470 320,552 320,572 515,490" fill="url(#blueR)"/>
+            <polygon points="320,388 515,470 320,552 125,470" fill="url(#blueT)" stroke="rgba(190,210,255,0.5)" stroke-width="1"/>
+            <line x1="320" y1="388" x2="515" y2="470" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+            <line x1="320" y1="552" x2="515" y2="470" stroke="url(#caust)" stroke-width="1.4" opacity="0.55"/>
+            <!-- VIOLET slab (动力层, middle) -->
+            <ellipse cx="320" cy="320" rx="205" ry="86" fill="#8b5cf6" opacity="0.18" filter="url(#softer)"/>
+            <polygon points="125,320 320,402 515,320 515,340 320,422 125,340" fill="url(#violL)"/>
+            <polygon points="515,320 320,402 320,422 515,340" fill="url(#violR)"/>
+            <polygon points="320,238 515,320 320,402 125,320" fill="url(#violT)" stroke="rgba(215,195,255,0.5)" stroke-width="1"/>
+            <line x1="320" y1="238" x2="515" y2="320" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+            <line x1="320" y1="402" x2="515" y2="320" stroke="url(#caust)" stroke-width="1.4" opacity="0.55"/>
+            <!-- spheres between mid & bottom -->
+            <circle cx="225" cy="430" r="6" fill="url(#sphV)"/><circle cx="430" cy="448" r="5" fill="url(#sphB)"/>
+            <!-- AMBER slab (动态层, top) -->
+            <ellipse cx="320" cy="170" rx="205" ry="86" fill="#f5b845" opacity="0.2" filter="url(#softer)"/>
+            <polygon points="125,170 320,252 515,170 515,190 320,272 125,190" fill="url(#amberL)"/>
+            <polygon points="515,170 320,252 320,272 515,190" fill="url(#amberR)"/>
+            <polygon points="320,88 515,170 320,252 125,170" fill="url(#amberT)" stroke="rgba(255,225,163,0.55)" stroke-width="1"/>
+            <line x1="320" y1="88" x2="515" y2="170" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <line x1="320" y1="252" x2="515" y2="170" stroke="url(#caust)" stroke-width="1.4" opacity="0.6"/>
+            <line x1="320" y1="252" x2="125" y2="170" stroke="url(#caust)" stroke-width="1.2" opacity="0.4"/>
+            <!-- cascading data spheres above + on top slab -->
+            <circle cx="362" cy="34" r="7" fill="url(#sphV)"/><circle cx="398" cy="60" r="5" fill="url(#sphB)"/>
+            <circle cx="430" cy="30" r="6" fill="url(#sphA)"/><circle cx="332" cy="74" r="4.5" fill="url(#sphB)"/>
+            <circle cx="458" cy="74" r="4.5" fill="url(#sphV)"/><circle cx="300" cy="150" r="7" fill="url(#sphA)"/>
+            <circle cx="392" cy="178" r="5.5" fill="url(#sphB)"/><circle cx="240" cy="300" r="5" fill="url(#sphV)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="take">本体 = <em>语义</em>·<em>动力</em>·<em>动态</em> 三层数字孪生,可被理解、治理与操作</div>
+  </div>
+</section>
+
+<!-- ============== SAMPLE E · GLASS-CHEVRON PIPELINE (Image-3 fusion, dark) ============== -->
+<section class="slide" data-act="06">
+  <div class="slide-inner">
+    <div class="body">
+      <div class="eyebrow" data-rv="1">ACT 06 / CASE 02 · HR　智能招聘协同</div>
+      <h1 class="t sm" data-rv="1">场景二：软件企业 <span class="g">智能招聘协同</span></h1>
+      <p class="kicker" data-rv="2" style="margin-top:0.3em">多智能体无缝协作，重塑非结构化文本的<span class="g">流转效率</span>。</p>
+      <!-- glass chevron pipeline -->
+      <div class="pipe mt2" data-rv="3" style="height:8.4em">
+        <div class="endcard glass" style="flex:0.8">
+          <svg class="ic bx-n" style="width:2.2em;height:2.2em;color:var(--ink-dim);stroke-width:1.5"><use href="#i-file"/></svg>
+          <div style="font-weight:700;font-size:0.92em">输入</div>
+          <div class="nd" style="font-size:0.72em;text-align:center">海量非结构化简历<br/>(PDF / Word)</div>
+        </div>
+        <svg class="ic" style="width:1.5em;color:var(--ink-dim);flex:0 0 auto"><use href="#i-arrow"/></svg>
+        <div class="chev" style="--cf:rgba(47,107,255,0.16);--ci:#8aa6ff" data-rv="4"><div class="edge"></div><div class="face"></div><div class="inner"><svg class="ic" style="width:1em"><use href="#i-search"/></svg><div style="font-weight:700;font-size:0.9em">解析智能体</div></div></div>
+        <div class="chev" style="--cf:rgba(32,201,151,0.16);--ci:#4fe0bb" data-rv="5"><div class="edge"></div><div class="face"></div><div class="inner"><svg class="ic" style="width:1em"><use href="#i-link"/></svg><div style="font-weight:700;font-size:0.9em">匹配智能体</div></div></div>
+        <div class="chev" style="--cf:rgba(245,184,69,0.17);--ci:#ffd277" data-rv="6"><div class="edge"></div><div class="face"></div><div class="inner"><svg class="ic" style="width:1em"><use href="#i-calendar"/></svg><div style="font-weight:700;font-size:0.9em">协同智能体</div></div></div>
+        <svg class="ic" style="width:1.5em;color:var(--ink-dim);flex:0 0 auto"><use href="#i-arrow"/></svg>
+        <div class="endcard glass prism-edge" style="flex:0.8;--acc:#20C997"><div class="col" style="gap:.4em;width:80%"><div class="row center" style="gap:.4em"><svg class="ic" style="width:.9em;color:var(--ink-dim)"><use href="#i-bot"/></svg><span style="height:.5em;flex:1;background:rgba(255,255,255,.08);border-radius:3px"></span></div><div class="row center" style="gap:.4em"><svg class="ic gr" style="width:.9em"><use href="#i-calendar"/></svg><span style="height:.5em;flex:1;background:rgba(32,201,151,.2);border-radius:3px"></span></div><div class="row center" style="gap:.4em"><svg class="ic g" style="width:.9em"><use href="#i-check"/></svg><span style="height:.5em;flex:1;background:rgba(242,194,48,.2);border-radius:3px"></span></div></div><div style="font-weight:700;font-size:0.9em;margin-top:.3em">输出</div></div>
+      </div>
+      <!-- captions -->
+      <div class="pipe mt2" data-rv="7" style="gap:.3em">
+        <div style="flex:0.8;text-align:center" class="nd">海量简历入库</div>
+        <span style="width:1.5em;flex:0 0 auto"></span>
+        <div style="flex:1;text-align:center"><div class="nd">提取核心语义标签,<br/>与企业 HR 本体对齐</div></div>
+        <div style="flex:1;text-align:center"><div class="nd">候选人画像与项目需求<br/>全局最优匹配</div></div>
+        <div style="flex:1;text-align:center"><div class="nd">跨系统协调面试官与<br/>候选人日历,发通知</div></div>
+        <span style="width:1.5em;flex:0 0 auto"></span>
+        <div style="flex:0.8;text-align:center" class="nd">面试编排 · Offer</div>
+      </div>
+    </div>
+    <div class="take">多智能体<em>无缝协作</em>,重塑非结构化文本流转效率</div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];const N=slides.length;const DATE="2026.06.05";
+  slides.forEach((s,i)=>{
+    const inner=s.querySelector('.slide-inner');const body=s.querySelector('.body');
+    const head=document.createElement('div');head.className='chrome';
+    head.innerHTML='<span class="chrome-l">• 中软国际 × HUAWEI CLOUD INSPIRE 2026</span><span class="chrome-r">allmeta Ontology v1.0 · '+DATE+'</span>';
+    inner.insertBefore(head,body);
+    const take=s.querySelector('.take');
+    const foot=document.createElement('div');foot.className='chrome-foot';
+    foot.innerHTML='<span class="foot-l">'+(take?take.innerHTML:'')+'</span><span class="foot-r"><span class="seal"></span><span class="wm">allmeta<sup>²</sup></span><span class="pg">样板 '+String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0')+'</span></span>';
+    inner.appendChild(foot);
+  });
+  const nav=document.getElementById('nav');
+  slides.forEach((s,i)=>{const b=document.createElement('button');b.onclick=()=>slides[i].scrollIntoView();nav.appendChild(b);});
+  const dots=[...nav.children];
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const i=slides.indexOf(e.target);dots.forEach((d,j)=>d.classList.toggle('on',j===i));}});},{threshold:0.55});
+  slides.forEach(s=>io.observe(s));
+  function curIndex(){let best=0,bd=1e9;slides.forEach((s,i)=>{const r=Math.abs(s.getBoundingClientRect().top);if(r<bd){bd=r;best=i;}});return best;}
+  let cur=0;
+  window.addEventListener('keydown',(e)=>{cur=curIndex();
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();cur=Math.min(N-1,cur+1);slides[cur].scrollIntoView();}
+    else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();cur=Math.max(0,cur-1);slides[cur].scrollIntoView();}
+    else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useApp } from "@/lib/i18n";
+import { Rich } from "@/components/editorial/parts";
 import Reveal from "./Reveal";
 
 export default function ProductBentoV2({
@@ -10,24 +12,20 @@ export default function ProductBentoV2({
   ontologyUrl: string;
   operatorUrl: string;
 }) {
+  const { t } = useApp();
   return (
-    <section style={{ paddingTop: 100, paddingBottom: 100 }}>
+    <section className="section">
       <div className="edito-container">
         <Reveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12 items-end">
             <div className="lg:col-span-7">
-              <div className="eyebrow mb-5">The dual core</div>
-              <h2 className="h-sans" style={{ fontSize: "clamp(40px, 5.4vw, 72px)", letterSpacing: "-0.045em", lineHeight: 0.98 }}>
-                Two products.{" "}
-                <span className="h-edito" style={{ fontStyle: "italic", letterSpacing: "-0.01em" }}>
-                  One operating system.
-                </span>
+              <div className="eyebrow mb-5">{t("h_bento_eyebrow")}</div>
+              <h2 className="t-h2">
+                {t("h_bento_t1")} {t("h_bento_t2")}
               </h2>
             </div>
-            <p className="lg:col-span-5" style={{ fontSize: 14.5, color: "var(--c-ink-3)", lineHeight: 1.6, maxWidth: 460 }}>
-              One makes agents think. One makes them run. Together they form the
-              agentic core — and either one drops into the place where your
-              ERP stops being useful.
+            <p className="t-body lg:col-span-5" style={{ maxWidth: 460 }}>
+              {t("h_bento_sub")}
             </p>
           </div>
         </Reveal>
@@ -38,10 +36,10 @@ export default function ProductBentoV2({
               tone="lime"
               href="/ontology"
               launch={ontologyUrl}
-              kicker="Core · the Brain"
+              kicker={t("h_bento_onto_kicker")}
               title="allmeta Ontology"
-              tagline={<>The <em className="f-serif" style={{ fontStyle: "italic" }}>actionable</em> ontology platform.</>}
-              body="Author Objects, Actions, Rules, and Events on one semantic surface — the same surface every agent reads and writes. Live since 2026."
+              tagline={<Rich text={t("h_bento_onto_tag")} />}
+              body={t("h_bento_onto_body")}
               size="lg"
             >
               <OntologyMiniMock />
@@ -53,10 +51,10 @@ export default function ProductBentoV2({
               tone="violet"
               href="/operator"
               launch={operatorUrl}
-              kicker="Core · the Runtime"
+              kicker={t("h_bento_op_kicker")}
               title="Agentic Operator"
-              tagline={<>Ontology-driven agents, <em className="f-serif" style={{ fontStyle: "italic" }}>at scale</em>.</>}
-              body="Planner · Executor · Validator · Reflection · Approval · Domain. Event-driven, fully traced, end-to-end auto-pilot."
+              tagline={<Rich text={t("h_bento_op_tag")} />}
+              body={t("h_bento_op_body")}
               size="lg"
             >
               <OperatorMiniMock />
@@ -66,10 +64,10 @@ export default function ProductBentoV2({
 
         {/* Small capability tiles */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
-          <Reveal delay={1}><CapTile name="Inference Engine"     hint="reason on the ontology" /></Reveal>
-          <Reveal delay={2}><CapTile name="Rule Generator"        hint="policies → atomic rules" /></Reveal>
-          <Reveal delay={3}><CapTile name="CodeGen"               hint="ontology → agent code" /></Reveal>
-          <Reveal delay={4}><CapTile name="6 Builders"            hint="domain-specific kits" /></Reveal>
+          <Reveal delay={1}><CapTile name={t("h_cap_autogen")} hint={t("h_cap_autogen_h")} /></Reveal>
+          <Reveal delay={2}><CapTile name={t("h_cap_builders")} hint={t("h_cap_builders_h")} /></Reveal>
+          <Reveal delay={3}><CapTile name={t("h_cap_infer")} hint={t("h_cap_infer_h")} /></Reveal>
+          <Reveal delay={4}><CapTile name={t("h_cap_codegen")} hint={t("h_cap_codegen_h")} /></Reveal>
         </div>
       </div>
     </section>
@@ -97,6 +95,7 @@ function BentoCard({
   size: "lg" | "md";
   children?: React.ReactNode;
 }) {
+  const { t } = useApp();
   const c = tone === "lime" ? "var(--c-lime)" : "var(--c-violet)";
   return (
     <div
@@ -106,16 +105,12 @@ function BentoCard({
         boxShadow: "0 30px 60px -30px rgba(0,0,0,0.5)",
       }}
     >
-      {/* mockup section */}
       <div className="relative" style={{ height: size === "lg" ? 240 : 200, borderBottom: "1px solid color-mix(in oklab, var(--c-ink-4) 12%, transparent)", overflow: "hidden" }}>
         {children}
         <div
           aria-hidden
           className="absolute pointer-events-none"
-          style={{
-            inset: 0,
-            background: `radial-gradient(ellipse 50% 40% at 100% 0%, color-mix(in oklab, ${c} 16%, transparent), transparent 60%)`,
-          }}
+          style={{ inset: 0, background: `radial-gradient(ellipse 50% 40% at 100% 0%, color-mix(in oklab, ${c} 16%, transparent), transparent 60%)` }}
         />
       </div>
 
@@ -125,31 +120,21 @@ function BentoCard({
             {kicker}
           </span>
         </div>
-        <h3 className="h-sans" style={{ fontSize: "clamp(28px, 2.6vw, 36px)", letterSpacing: "-0.025em", lineHeight: 1.06, color: "var(--c-ink-1)", marginBottom: 8 }}>
+        <h3 className="t-h3" style={{ marginBottom: 8 }}>
           {title}
         </h3>
-        <div className="h-edito" style={{ fontSize: "clamp(18px, 1.4vw, 22px)", color: "var(--c-ink-2)", letterSpacing: "-0.005em", lineHeight: 1.3, marginBottom: 14 }}>
+        <div className="t-title" style={{ color: "var(--c-ink-2)", marginBottom: 14 }}>
           {tagline}
         </div>
-        <p style={{ fontSize: 14, color: "var(--c-ink-3)", lineHeight: 1.6, marginBottom: 24, maxWidth: 520 }}>
+        <p className="t-body" style={{ color: "var(--c-ink-3)", marginBottom: 24, maxWidth: 520 }}>
           {body}
         </p>
         <div className="mt-auto flex items-center gap-4">
           <Link href={href} className="link-edito" style={{ fontSize: 13.5 }}>
-            Read more →
+            {t("h_bento_readmore")} →
           </Link>
-          <a
-            href={launch}
-            className="f-mono"
-            style={{
-              fontSize: 11,
-              color: c,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-            }}
-          >
-            Launch ↗
+          <a href={launch} className="f-mono" style={{ fontSize: 11, color: c, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}>
+            {t("h_bento_launch")} ↗
           </a>
         </div>
       </div>
@@ -163,7 +148,7 @@ function CapTile({ name, hint }: { name: string; hint: string }) {
       <div className="f-mono" style={{ fontSize: 10.5, color: "var(--c-ink-4)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
         {hint}
       </div>
-      <div className="h-sans" style={{ fontSize: 17, fontWeight: 500, color: "var(--c-ink-1)", letterSpacing: "-0.02em" }}>
+      <div className="t-title">
         {name}
       </div>
     </div>
@@ -180,13 +165,10 @@ function OntologyMiniMock() {
           <stop offset="1" stopColor="oklch(0.92 0.22 130)" stopOpacity="0.1" />
         </linearGradient>
       </defs>
-      {/* dot grid */}
       <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
         <circle cx="1" cy="1" r="0.8" fill="oklch(0.5 0.012 260)" opacity="0.6" />
       </pattern>
       <rect width="100%" height="100%" fill="url(#dots)" />
-
-      {/* sample nodes */}
       <g>
         <rect x="60" y="60" width="120" height="44" rx="8" fill="oklch(0.18 0.018 260)" stroke="var(--c-lime)" strokeWidth="1.2" />
         <text x="76" y="80" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-ink-4)" letterSpacing="0.1em">SUBJECT</text>

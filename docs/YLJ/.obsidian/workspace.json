@@ -211,49 +211,12 @@
       "bases:Create new base": false
     }
   },
-  "floating": {
-    "id": "ea4549daea2adef4",
-    "type": "floating",
-    "children": [
-      {
-        "id": "fa598bd6dbfee3e5",
-        "type": "window",
-        "children": [
-          {
-            "id": "4226b2ee7858b36a",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "c688f15bfa700246",
-                "type": "leaf",
-                "state": {
-                  "type": "image",
-                  "state": {
-                    "file": "RAAS.png"
-                  },
-                  "icon": "lucide-image",
-                  "title": "RAAS"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 196,
-        "y": 175,
-        "width": 1381,
-        "height": 994,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
   "active": "1050321c152e1ac2",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Untitled.canvas",
-    "Untitled",
     "RAAS.png",
+    "Untitled.canvas",
+    "Untitled.md",
+    "Untitled",
     "allmeta-aos.png",
     "RAAS-cn.md",
     "RAAS2.png",

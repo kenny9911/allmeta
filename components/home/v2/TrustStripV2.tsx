@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useApp } from "@/lib/i18n";
 import Reveal from "./Reveal";
 
 const partners: Array<{ name: string; en: string }> = [
@@ -13,16 +14,17 @@ const partners: Array<{ name: string; en: string }> = [
 ];
 
 export default function TrustStripV2() {
+  const { t } = useApp();
   // duplicate to make the marquee seamless
   const loop = [...partners, ...partners];
   return (
     <section style={{ paddingTop: 18, paddingBottom: 60 }}>
       <div className="edito-container">
         <Reveal>
-          <div className="flex items-baseline justify-between mb-6">
-            <div className="eyebrow">Built with</div>
-            <div className="f-mono" style={{ fontSize: 10.5, color: "var(--c-ink-4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-              Strategic ecosystem · model · cloud · industry
+          <div className="flex items-baseline justify-between mb-6 gap-4">
+            <div className="eyebrow">{t("h_trust_eyebrow")}</div>
+            <div className="f-mono" style={{ fontSize: 10.5, color: "var(--c-ink-4)", letterSpacing: "0.14em", textTransform: "uppercase", textAlign: "right" }}>
+              {t("h_trust_note")}
             </div>
           </div>
         </Reveal>
