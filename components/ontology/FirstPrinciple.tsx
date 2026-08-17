@@ -15,7 +15,7 @@ export default function FirstPrinciple() {
               <h2 className="t-h2 mt-6">
                 Semantics ={" "}
                 <span style={{ color: "var(--c-info)" }}>Subject</span> +{" "}
-                <span style={{ color: "var(--c-lime)" }}>Verb</span> +{" "}
+                <span style={{ color: "var(--c-lime-ink)" }}>Verb</span> +{" "}
                 <span style={{ color: "var(--c-coral)" }}>Object</span>.
               </h2>
             </Reveal>
@@ -54,13 +54,15 @@ function SvoDiagram({ t }: { t: (k: string) => string }) {
 
       {/* verb chip */}
       <g transform="translate(320 150)">
-        <rect x="-52" y="-15" width="104" height="30" rx="15" fill="oklch(0.16 0.018 260)" stroke="var(--c-lime)" strokeWidth="1" />
-        <text x="0" y="5" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="13" fill="var(--c-lime)" letterSpacing="0.02em">applies-to</text>
+        {/* Plate follows the theme, so its label must use the text-safe lime.
+            The chip outline stays var(--c-lime) — it is a stroke, not type. */}
+        <rect x="-52" y="-15" width="104" height="30" rx="15" fill="var(--c-plate)" stroke="var(--c-lime)" strokeWidth="1" />
+        <text x="0" y="5" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="13" fill="var(--c-lime-ink)" letterSpacing="0.02em">applies-to</text>
       </g>
 
       {/* subject */}
       <g transform="translate(60 110)">
-        <rect width="120" height="80" rx="12" fill="oklch(0.18 0.018 260)" stroke="var(--c-info)" strokeWidth="1.2" />
+        <rect width="120" height="80" rx="12" fill="var(--c-plate)" stroke="var(--c-info)" strokeWidth="1.2" />
         <text x="16" y="28" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-info)" letterSpacing="0.14em">SUBJECT</text>
         <text x="16" y="50" fontFamily="var(--f-sans)" fontSize="17" fontWeight="600" fill="var(--c-ink-1)" letterSpacing="-0.01em">Candidate</text>
         <text x="16" y="68" fontFamily="var(--f-mono)" fontSize="9.5" fill="var(--c-ink-4)">noun · object</text>
@@ -71,7 +73,7 @@ function SvoDiagram({ t }: { t: (k: string) => string }) {
 
       {/* object */}
       <g transform="translate(460 110)">
-        <rect width="130" height="80" rx="12" fill="oklch(0.18 0.018 260)" stroke="var(--c-coral)" strokeWidth="1.2" />
+        <rect width="130" height="80" rx="12" fill="var(--c-plate)" stroke="var(--c-coral)" strokeWidth="1.2" />
         <text x="16" y="28" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-coral)" letterSpacing="0.14em">OBJECT</text>
         <text x="16" y="50" fontFamily="var(--f-sans)" fontSize="17" fontWeight="600" fill="var(--c-ink-1)" letterSpacing="-0.01em">Requirement</text>
         <text x="16" y="68" fontFamily="var(--f-mono)" fontSize="9.5" fill="var(--c-ink-4)">noun · object</text>

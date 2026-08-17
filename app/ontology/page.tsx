@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import OntologyContent from "@/components/ontology/OntologyContent";
 import StructuredData, { breadcrumbList, softwareApplication, faqPage } from "@/components/site/StructuredData";
+import { resolveLaunchUrls } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function OntologyPage() {
-  const launchUrl = process.env.allmetaOntology_URL ?? "http://localhost:3500";
+  const launch = resolveLaunchUrls(process.env);
+  const launchUrl = launch.studio;
 
   const sa = softwareApplication(
     "allm²eta Ontology",
@@ -61,7 +63,7 @@ export default function OntologyPage() {
       <StructuredData data={sa} />
       <StructuredData data={bc} />
       <StructuredData data={faq} />
-      <OntologyContent launchUrl={launchUrl} />
+      <OntologyContent launchUrl={launchUrl} launch={launch} />
     </>
   );
 }

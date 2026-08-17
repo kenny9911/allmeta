@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import OperatorContent from "@/components/operator/OperatorContent";
 import StructuredData, { breadcrumbList, softwareApplication, faqPage } from "@/components/site/StructuredData";
+import { resolveLaunchUrls } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function OperatorPage() {
-  const launchUrl = process.env.AgenticOperator_URL ?? "http://localhost:3400";
+  const launch = resolveLaunchUrls(process.env);
+  const launchUrl = launch.operator;
 
   const sa = softwareApplication(
     "Agentic Operator",
@@ -53,7 +55,7 @@ export default function OperatorPage() {
       <StructuredData data={sa} />
       <StructuredData data={bc} />
       <StructuredData data={faq} />
-      <OperatorContent launchUrl={launchUrl} />
+      <OperatorContent launchUrl={launchUrl} launch={launch} />
     </>
   );
 }

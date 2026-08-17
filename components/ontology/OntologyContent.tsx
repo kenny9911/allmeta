@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import PageShell from "@/components/site/PageShell";
+import type { LaunchMap } from "@/lib/products";
 import Hero from "./Hero";
 import WhatItIs from "./WhatItIs";
 import AutoGen from "./AutoGen";
@@ -13,9 +14,15 @@ import Position from "./Position";
 import OntologyInMotion from "./OntologyInMotion";
 import CTA from "./CTA";
 
-export default function OntologyContent({ launchUrl }: { launchUrl: string }) {
+export default function OntologyContent({
+  launchUrl,
+  launch,
+}: {
+  launchUrl: string;
+  launch?: LaunchMap;
+}) {
   return (
-    <PageShell launchUrl={launchUrl}>
+    <PageShell launchUrl={launchUrl} launch={launch}>
       <Hero launchUrl={launchUrl} />
       <WhatItIs />
       <AutoGen />

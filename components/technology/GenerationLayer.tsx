@@ -41,7 +41,7 @@ export default function GenerationLayer() {
                 {t("tech_gen_codegen_sub")}
               </div>
             </div>
-            <span className="f-mono" style={{ fontSize: 10.5, color: "var(--c-lime)", letterSpacing: "0.12em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+            <span className="f-mono" style={{ fontSize: 10.5, color: "var(--c-lime-ink)", letterSpacing: "0.12em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
               Q4 · 2026 — Builder Suite
             </span>
           </div>

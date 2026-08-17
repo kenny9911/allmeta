@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TechnologyContent from "@/components/technology/TechnologyContent";
 import StructuredData, { breadcrumbList, faqPage } from "@/components/site/StructuredData";
+import { resolveLaunchUrls } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +46,7 @@ export default function TechnologyPage() {
     <>
       <StructuredData data={bc} />
       <StructuredData data={faq} />
-      <TechnologyContent />
+      <TechnologyContent launch={resolveLaunchUrls(process.env)} />
     </>
   );
 }

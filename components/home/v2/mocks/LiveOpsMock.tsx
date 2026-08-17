@@ -121,7 +121,7 @@ export default function LiveOpsMock() {
                   </div>
                   <div className="f-mono mt-1" style={{ fontSize: 10, color: "var(--c-ink-3)", lineHeight: 1.55 }}>
                     <div><span style={{ color: "var(--c-cyan)" }}>R</span> {a.r}</div>
-                    <div><span style={{ color: "var(--c-lime)" }}>W</span> {a.w}</div>
+                    <div><span style={{ color: "var(--c-lime-ink)" }}>W</span> {a.w}</div>
                   </div>
                 </div>
               );
@@ -142,8 +142,8 @@ export default function LiveOpsMock() {
           </div>
 
           <div className="space-y-3 mb-6">
-            <Row label="Match score" value={<span style={{ color: "var(--c-lime)", fontWeight: 600, fontFamily: "var(--f-mono)" }}>92.0</span>} />
-            <Row label="Rule check" value={<span style={{ color: "var(--c-lime)", fontFamily: "var(--f-mono)", fontSize: 11.5 }}>✓ 5 / 5</span>} />
+            <Row label="Match score" value={<span style={{ color: "var(--c-lime-ink)", fontWeight: 600, fontFamily: "var(--f-mono)" }}>92.0</span>} />
+            <Row label="Rule check" value={<span style={{ color: "var(--c-lime-ink)", fontFamily: "var(--f-mono)", fontSize: 11.5 }}>✓ 5 / 5</span>} />
             <Row label="Skill overlap" value={<span style={{ color: "var(--c-ink-1)", fontFamily: "var(--f-mono)", fontSize: 11 }}>Go · Kafka · K8s</span>} />
             <Row label="Next action" value={<span style={{ color: "var(--c-amber)", fontFamily: "var(--f-mono)", fontWeight: 600, fontSize: 11.5 }}>auto-invite</span>} />
           </div>
@@ -157,7 +157,7 @@ export default function LiveOpsMock() {
                 <div key={i} className="grid grid-cols-[68px_1fr_auto] gap-2" style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, lineHeight: 1.55 }}>
                   <span style={{ color: "var(--c-ink-4)" }}>{t.ts}</span>
                   <span style={{ color: "var(--c-ink-1)" }}>{t.line}</span>
-                  <span style={{ color: "var(--c-lime)" }}>{t.d}</span>
+                  <span style={{ color: "var(--c-lime-ink)" }}>{t.d}</span>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function LiveOpsMock() {
       {/* corner glow */}
       <div
         aria-hidden
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none mock-glow"
         style={{
           inset: 0,
           background:

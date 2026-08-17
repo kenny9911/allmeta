@@ -30,8 +30,10 @@ export default function Capabilities() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {order.map((o, i) => {
+            // Text-only map — the tone here drives a `color:` and nothing else,
+            // so lime is the text-safe variant rather than the fill lime.
             const c: Record<string, string> = {
-              lime: "var(--c-lime)", violet: "var(--c-violet)", amber: "var(--c-amber)",
+              lime: "var(--c-lime-ink)", violet: "var(--c-violet)", amber: "var(--c-amber)",
               cyan: "var(--c-cyan)", coral: "var(--c-coral)", info: "var(--c-info)",
             };
             return (

@@ -34,6 +34,9 @@ export default function Builders() {
               info: "var(--c-info)", lime: "var(--c-lime)", amber: "var(--c-amber)",
               violet: "var(--c-violet)", cyan: "var(--c-cyan)", coral: "var(--c-coral)",
             };
+            // Same tones for `color:`; only lime differs — the fill lime is
+            // too pale to read as type on white.
+            const cText: Record<string, string> = { ...c, lime: "var(--c-lime-ink)" };
             return (
               <Reveal key={b.n} delay={(Math.min(3, (i % 3) + 1)) as 1 | 2 | 3}>
                 <HairCard style={{ minHeight: 196 }}>
@@ -49,7 +52,7 @@ export default function Builders() {
                     >
                       {b.icon}
                     </span>
-                    <span className="f-mono" style={{ fontSize: 10.5, color: c[b.tone], letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    <span className="f-mono" style={{ fontSize: 10.5, color: cText[b.tone], letterSpacing: "0.1em", textTransform: "uppercase" }}>
                       {t(`onto_builder_${b.n}_tag`)}
                     </span>
                   </div>

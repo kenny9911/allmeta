@@ -21,7 +21,9 @@ export default function Ecosystem() {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {partners.map((p, i) => {
-            const c: Record<string, string> = { coral: "var(--c-coral)", info: "var(--c-info)", lime: "var(--c-lime)", amber: "var(--c-amber)" };
+            // Text-only map — its single consumer is the `color:` below, so
+            // lime takes the deeper ink variant rather than the fill lime.
+            const c: Record<string, string> = { coral: "var(--c-coral)", info: "var(--c-info)", lime: "var(--c-lime-ink)", amber: "var(--c-amber)" };
             return (
               <Reveal key={p.zh} delay={(Math.min(4, i + 1)) as 1 | 2 | 3 | 4}>
                 <HairCard style={{ minHeight: 200 }}>

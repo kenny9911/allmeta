@@ -107,15 +107,15 @@ export default function OntologyStudioMock() {
 
             {/* Verb label */}
             <g transform="translate(168 158)">
-              <rect x="-30" y="-9" width="60" height="18" rx="9" fill="oklch(0.155 0.018 260)" stroke="var(--c-lime)" strokeWidth="0.8" />
-              <text x="0" y="3.5" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-lime)" letterSpacing="0.06em">
+              <rect x="-30" y="-9" width="60" height="18" rx="9" fill="var(--c-plate)" stroke="var(--c-lime)" strokeWidth="0.8" />
+              <text x="0" y="3.5" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="9" fill="var(--c-lime-ink)" letterSpacing="0.06em">
                 applies-to
               </text>
             </g>
 
             {/* Node — Candidate (active) */}
             <g transform="translate(60 110)">
-              <rect width="80" height="40" rx="8" fill="oklch(0.155 0.018 260)" stroke="var(--c-lime)" strokeWidth="1.2" />
+              <rect width="80" height="40" rx="8" fill="var(--c-plate)" stroke="var(--c-lime)" strokeWidth="1.2" />
               <text x="12" y="16" fontFamily="var(--f-mono)" fontSize="8" fill="var(--c-ink-4)" letterSpacing="0.06em">SUBJECT</text>
               <text x="12" y="30" fontFamily="var(--f-sans)" fontWeight="600" fontSize="13" fill="var(--c-ink-1)" letterSpacing="-0.01em">
                 Candidate
@@ -127,7 +127,7 @@ export default function OntologyStudioMock() {
 
             {/* Node — Requirement */}
             <g transform="translate(220 180)">
-              <rect width="92" height="40" rx="8" fill="oklch(0.155 0.018 260)" stroke="var(--c-violet)" strokeWidth="1.2" />
+              <rect width="92" height="40" rx="8" fill="var(--c-plate)" stroke="var(--c-violet)" strokeWidth="1.2" />
               <text x="12" y="16" fontFamily="var(--f-mono)" fontSize="8" fill="var(--c-ink-4)" letterSpacing="0.06em">OBJECT</text>
               <text x="12" y="30" fontFamily="var(--f-sans)" fontWeight="600" fontSize="13" fill="var(--c-ink-1)" letterSpacing="-0.01em">
                 Requirement
@@ -136,7 +136,7 @@ export default function OntologyStudioMock() {
 
             {/* Node — Application (smaller) */}
             <g transform="translate(160 260)">
-              <rect width="80" height="34" rx="7" fill="oklch(0.155 0.018 260)" stroke="color-mix(in oklab, var(--c-ink-4) 60%, transparent)" strokeWidth="1" />
+              <rect width="80" height="34" rx="7" fill="var(--c-plate)" stroke="var(--c-line-graph-strong)" strokeWidth="1" />
               <text x="40" y="20" textAnchor="middle" fontFamily="var(--f-mono)" fontSize="10" fill="var(--c-ink-3)" letterSpacing="0.04em">
                 Application
               </text>
@@ -178,7 +178,7 @@ export default function OntologyStudioMock() {
               <div className="f-mono" style={{ fontSize: 9, color: "var(--c-ink-4)", letterSpacing: "0.12em" }}>
                 ACTION
               </div>
-              <div style={{ color: "var(--c-lime)", fontFamily: "var(--f-mono)", fontWeight: 500 }}>
+              <div style={{ color: "var(--c-lime-ink)", fontFamily: "var(--f-mono)", fontWeight: 500 }}>
                 applies-to
               </div>
             </div>
@@ -226,7 +226,7 @@ export default function OntologyStudioMock() {
       {/* Lime side glow */}
       <div
         aria-hidden
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none mock-glow"
         style={{
           top: 0,
           right: -120,

@@ -61,6 +61,9 @@ function LayerStrip({
   // Calm, single-accent system: the focus layer (Ontology) is lime;
   // every other layer is neutral ink. No rainbow.
   const accent = "var(--c-lime)";
+  // Same accent, text role: the fill lime is too light to read as type on
+  // light theme, so the two `color:` sites below use the ink variant.
+  const accentInk = "var(--c-lime-ink)";
   return (
     <div
       className="hairline grid grid-cols-[72px_1fr_auto] items-center"
@@ -71,7 +74,7 @@ function LayerStrip({
         boxShadow: emphasize ? `0 0 0 1px ${accent}, 0 10px 40px -12px color-mix(in oklab, ${accent} 28%, transparent)` : undefined,
       }}
     >
-      <div className="f-mono tabular-nums" style={{ fontSize: 22, fontWeight: 500, color: emphasize ? accent : "var(--c-ink-4)", letterSpacing: "0.02em", lineHeight: 1 }}>
+      <div className="f-mono tabular-nums" style={{ fontSize: 22, fontWeight: 500, color: emphasize ? accentInk : "var(--c-ink-4)", letterSpacing: "0.02em", lineHeight: 1 }}>
         {String(n).padStart(2, "0")}
       </div>
       <div>
@@ -80,7 +83,7 @@ function LayerStrip({
           {sub}
         </div>
       </div>
-      <span className="f-mono" style={{ fontSize: 10.5, color: emphasize ? accent : "var(--c-ink-4)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+      <span className="f-mono" style={{ fontSize: 10.5, color: emphasize ? accentInk : "var(--c-ink-4)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
         {emphasize ? t("h_arch_focus") : `${t("h_arch_layer_pre")}${n}${t("h_arch_layer_suf")}`}
       </span>
     </div>

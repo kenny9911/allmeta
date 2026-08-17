@@ -217,8 +217,10 @@ export function EditoHero({
               <div className="flex flex-wrap items-center gap-4 mt-9">{actions}</div>
             </Reveal>
           </div>
-          <div className="lg:col-span-6">
-            <Reveal delay={2} className="relative">
+          {/* Same min-width:auto grid trap as HeroV2 — product-page mocks
+              have fixed-width panes and would otherwise widen the page. */}
+          <div className="lg:col-span-6 min-w-0">
+            <Reveal delay={2} className="relative overflow-x-auto">
               {mock}
               {mockLabel && (
                 <div

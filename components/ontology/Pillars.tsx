@@ -27,10 +27,13 @@ export default function Pillars() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {pillars.map((p, i) => {
             const c: Record<string, string> = { info: "var(--c-info)", amber: "var(--c-amber)", lime: "var(--c-lime)" };
+            // Same tones for `color:`; only lime differs — the fill lime is
+            // too pale to read as type on white. The bullet dots keep `c`.
+            const cText: Record<string, string> = { ...c, lime: "var(--c-lime-ink)" };
             return (
               <Reveal key={p.tk} delay={(i + 1) as 1 | 2 | 3}>
                 <HairCard accent={p.tone} style={{ minHeight: 320 }}>
-                  <div className="f-mono mb-5" style={{ fontSize: 10.5, color: c[p.tone], letterSpacing: "0.18em" }}>
+                  <div className="f-mono mb-5" style={{ fontSize: 10.5, color: cText[p.tone], letterSpacing: "0.18em" }}>
                     {p.kw}
                   </div>
                   <h3 className="t-h3">

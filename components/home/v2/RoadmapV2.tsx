@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import clsx from "clsx";
 import { useApp } from "@/lib/i18n";
 import { Rich } from "@/components/editorial/parts";
 import Reveal from "./Reveal";
@@ -30,17 +31,21 @@ export default function RoadmapV2() {
           </div>
         </Reveal>
 
+        {/* Five fixed 1fr tracks overflowed phones — a 1fr track won't shrink
+            below its min-content width. Wrap to 2 / 3 / 5 columns instead. */}
         <div
-          className="relative grid gap-0"
-          style={{ gridTemplateColumns: `repeat(${milestones.length}, 1fr)`, borderTop: "1px solid color-mix(in oklab, var(--c-ink-4) 20%, transparent)" }}
+          className="relative grid gap-0 grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+          style={{ borderTop: "1px solid color-mix(in oklab, var(--c-ink-4) 20%, transparent)" }}
         >
           {milestones.map((m, i) => (
             <Reveal key={m.title} delay={Math.min(4, i) as 0 | 1 | 2 | 3 | 4}>
               <div
-                className="relative"
+                // Column dividers only once the row is unbroken, otherwise a
+                // wrapped row leaves a stray hairline on its outer edge.
+                className={clsx("relative", i < milestones.length - 1 && "lg:border-r")}
                 style={{
                   padding: "26px 18px",
-                  borderRight: i < milestones.length - 1 ? "1px solid color-mix(in oklab, var(--c-ink-4) 14%, transparent)" : "none",
+                  borderRightColor: "color-mix(in oklab, var(--c-ink-4) 14%, transparent)",
                   minHeight: 180,
                 }}
               >
@@ -53,7 +58,7 @@ export default function RoadmapV2() {
                     boxShadow: m.live ? "0 0 14px var(--c-lime)" : "none",
                   }}
                 />
-                <div className="f-mono mb-3" style={{ fontSize: 10.5, color: m.live ? "var(--c-lime)" : "var(--c-ink-4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                <div className="f-mono mb-3" style={{ fontSize: 10.5, color: m.live ? "var(--c-lime-ink)" : "var(--c-ink-4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
                   {m.when}
                   {m.live && <span style={{ marginLeft: 6 }}>· {t("h_road_live")}</span>}
                 </div>

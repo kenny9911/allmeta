@@ -25,7 +25,7 @@ export default function ThreeServers() {
             className="hairline glow-ring mb-4 relative overflow-hidden"
             style={{ padding: "22px 28px", background: "linear-gradient(90deg, color-mix(in oklab, var(--c-lime) 9%, var(--c-surface)), var(--c-surface) 75%)" }}
           >
-            <div className="f-mono mb-2" style={{ fontSize: 10.5, color: "var(--c-lime)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+            <div className="f-mono mb-2" style={{ fontSize: 10.5, color: "var(--c-lime-ink)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
               Platform Generic Layer
             </div>
             <div className="h-sans" style={{ fontSize: 22, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--c-ink-1)", marginBottom: 5 }}>

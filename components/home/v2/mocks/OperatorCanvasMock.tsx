@@ -60,12 +60,14 @@ export default function OperatorCanvasMock() {
             "M 292 268 C 270 310, 250 330, 234 348",
             "M 384 250 C 340 320, 280 340, 240 350",
           ].map((d, i) => (
-            <path key={`b${i}`} d={d} stroke="oklch(0.92 0.22 130)" strokeOpacity="0.4" strokeWidth="1.1" fill="none" />
+            // --c-lime-line is already a 45% mix in dark, so 0.9 here reproduces
+            // the previous flat 0.4 alpha while staying theme-aware.
+            <path key={`b${i}`} d={d} stroke="var(--c-lime-line)" strokeOpacity="0.9" strokeWidth="1.1" fill="none" />
           ))}
 
           {/* Planner (top) */}
           <g transform="translate(176 70)">
-            <rect width="108" height="50" rx="10" fill="oklch(0.18 0.018 260)" stroke="var(--c-violet)" strokeWidth="1.3" />
+            <rect width="108" height="50" rx="10" fill="var(--c-plate)" stroke="var(--c-violet)" strokeWidth="1.3" />
             <text x="14" y="20" fontFamily="var(--f-mono)" fontSize="8" fill="var(--c-ink-4)" letterSpacing="0.1em">ORCHESTRATOR</text>
             <text x="14" y="36" fontFamily="var(--f-sans)" fontSize="14" fontWeight="600" fill="var(--c-ink-1)">Planner</text>
             <circle cx="98" cy="9" r="3" fill="var(--c-violet)">
@@ -81,7 +83,7 @@ export default function OperatorCanvasMock() {
             { x: 340, y: 214, name: "Approval", c: "var(--c-coral)" },
           ].map((a) => (
             <g key={a.name} transform={`translate(${a.x} ${a.y})`}>
-              <rect width="92" height="40" rx="8" fill="oklch(0.18 0.018 260)" stroke="color-mix(in oklab, var(--c-ink-4) 50%, transparent)" strokeWidth="1" />
+              <rect width="92" height="40" rx="8" fill="var(--c-plate)" stroke="var(--c-line-graph-mid)" strokeWidth="1" />
               <circle cx="13" cy="20" r="3.5" fill={a.c} />
               <text x="24" y="24" fontFamily="var(--f-sans)" fontSize="11.5" fontWeight="500" fill="var(--c-ink-1)">{a.name}</text>
             </g>
@@ -89,8 +91,8 @@ export default function OperatorCanvasMock() {
 
           {/* Ontology (bottom, emphasized) */}
           <g transform="translate(168 348)">
-            <rect width="124" height="46" rx="10" fill="oklch(0.18 0.018 260)" stroke="var(--c-lime)" strokeWidth="1.3" />
-            <text x="16" y="19" fontFamily="var(--f-mono)" fontSize="8" fill="var(--c-lime)" letterSpacing="0.14em">SHARED STATE</text>
+            <rect width="124" height="46" rx="10" fill="var(--c-plate)" stroke="var(--c-lime)" strokeWidth="1.3" />
+            <text x="16" y="19" fontFamily="var(--f-mono)" fontSize="8" fill="var(--c-lime-ink)" letterSpacing="0.14em">SHARED STATE</text>
             <text x="16" y="34" fontFamily="var(--f-sans)" fontSize="13" fontWeight="600" fill="var(--c-ink-1)">Ontology</text>
           </g>
 
@@ -110,7 +112,7 @@ export default function OperatorCanvasMock() {
           className="absolute flex items-center gap-3"
           style={{ left: 16, bottom: 12, fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--c-ink-3)" }}
         >
-          <span style={{ color: "var(--c-lime)" }}>● 8 agents</span>
+          <span style={{ color: "var(--c-lime-ink)" }}>● 8 agents</span>
           <span style={{ color: "var(--c-violet)" }}>● 1.2k ops/min</span>
           <span style={{ color: "var(--c-ink-4)" }}>p50 1.2s</span>
         </div>
@@ -118,7 +120,7 @@ export default function OperatorCanvasMock() {
 
       <div
         aria-hidden
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none mock-glow"
         style={{ top: 0, right: -120, width: 280, height: "100%", background: "radial-gradient(ellipse 50% 50% at 30% 50%, color-mix(in oklab, var(--c-violet) 26%, transparent), transparent 70%)", filter: "blur(36px)" }}
       />
     </div>

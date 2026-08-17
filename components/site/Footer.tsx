@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useApp } from "@/lib/i18n";
 import BrandText from "@/components/shared/BrandText";
 import Orb from "@/components/shared/Orb";
+import { PRODUCTS } from "@/lib/products";
 
 export default function Footer() {
   const { t } = useApp();
@@ -27,11 +28,13 @@ export default function Footer() {
           <FooterCol
             title={t("footer_links_product")}
             links={[
-              { label: t("nav_ontology"), href: "/ontology" },
-              { label: t("nav_operator"), href: "/operator" },
+              // The whole suite, in pipeline order. Products without their
+              // own page deep-link to their card on /suite.
+              ...PRODUCTS.map((p) => ({
+                label: p.name,
+                href: p.href ?? `/suite#p-${p.id}`,
+              })),
               { label: t("nav_technology"), href: "/technology" },
-              { label: t("footer_docs"), href: "#" },
-              { label: t("footer_changelog"), href: "#" },
             ]}
           />
           <FooterCol

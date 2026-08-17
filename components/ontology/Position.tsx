@@ -51,7 +51,7 @@ export default function Position() {
             <p className="t-h3" style={{ maxWidth: 760 }}>
               {t("onto_position_good")}
             </p>
-            <span className="f-mono" style={{ fontSize: 10.5, color: "var(--c-lime)", letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+            <span className="f-mono" style={{ fontSize: 10.5, color: "var(--c-lime-ink)", letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
               ✓ alive
             </span>
           </div>

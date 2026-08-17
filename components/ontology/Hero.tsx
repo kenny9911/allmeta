@@ -23,7 +23,7 @@ export default function OntologyHero({ launchUrl }: { launchUrl: string }) {
       }
       sub={t("onto_hero_sub")}
       kicker={
-        <span style={{ fontWeight: 500, fontSize: 15, color: "var(--c-lime)" }}>
+        <span style={{ fontWeight: 500, fontSize: 15, color: "var(--c-lime-ink)" }}>
           From Copilot, to Operator.
         </span>
       }

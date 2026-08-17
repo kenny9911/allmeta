@@ -10,7 +10,7 @@ export default function CTA({ launchUrl }: { launchUrl: string }) {
       title={
         <>
           Turn your business into an{" "}
-          <Em color="var(--c-lime)">agent-callable surface.</Em>
+          <Em color="var(--c-lime-ink)">agent-callable surface.</Em>
         </>
       }
       sub={t("onto_cta_title_en")}

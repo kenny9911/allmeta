@@ -65,7 +65,7 @@ export default function WhatItIs() {
                 boxShadow: "0 0 60px -16px color-mix(in oklab, var(--c-lime) 45%, transparent)",
               }}
             >
-              <div className="f-mono mb-4" style={{ fontSize: 11, color: "var(--c-lime)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+              <div className="f-mono mb-4" style={{ fontSize: 11, color: "var(--c-lime-ink)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
                 {t("onto_whatis_actionable_label")}
               </div>
               <p className="t-body" style={{ color: "var(--c-ink-1)" }}>
@@ -89,7 +89,7 @@ export default function WhatItIs() {
             {t("onto_whatis_dual_lead")}{" "}
             <span style={{ color: "var(--c-violet)" }}>{t("onto_whatis_dual_a")}</span>{" "}
             {t("onto_whatis_dual_mid")}{" "}
-            <span style={{ color: "var(--c-lime)" }}>{t("onto_whatis_dual_b")}</span>{" "}
+            <span style={{ color: "var(--c-lime-ink)" }}>{t("onto_whatis_dual_b")}</span>{" "}
             {t("onto_whatis_dual_end")}
           </p>
         </Reveal>

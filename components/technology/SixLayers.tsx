@@ -66,6 +66,9 @@ function LayerStrip({
     lime: "var(--c-lime)", violet: "var(--c-violet)", amber: "var(--c-amber)",
     cyan: "var(--c-cyan)", coral: "var(--c-coral)", info: "var(--c-info)",
   };
+  /** Same tones as `c`, but for glyphs. Only lime differs — the fill lime
+   *  doesn't clear 4.5:1 as text on the light surface. */
+  const cText: Record<string, string> = { ...c, lime: "var(--c-lime-ink)" };
   return (
     <div
       className="hairline grid grid-cols-1 md:grid-cols-[72px_minmax(220px,1fr)_1.4fr] items-center gap-y-3"
@@ -78,7 +81,7 @@ function LayerStrip({
         boxShadow: emphasized ? `0 0 0 1px ${c[tone]}, 0 12px 44px -12px color-mix(in oklab, ${c[tone]} 35%, transparent)` : undefined,
       }}
     >
-      <div className="f-display tabular-nums" style={{ fontSize: 30, fontWeight: 500, color: emphasized ? c[tone] : "var(--c-ink-3)", letterSpacing: "-0.03em", lineHeight: 1 }}>
+      <div className="f-display tabular-nums" style={{ fontSize: 30, fontWeight: 500, color: emphasized ? cText[tone] : "var(--c-ink-3)", letterSpacing: "-0.03em", lineHeight: 1 }}>
         {String(n).padStart(2, "0")}
       </div>
       <div>
@@ -99,7 +102,7 @@ function LayerStrip({
               padding: "5px 10px",
               background: `color-mix(in oklab, ${c[tone]} 7%, transparent)`,
               border: `1px solid color-mix(in oklab, ${c[tone]} 26%, transparent)`,
-              color: emphasized ? c[tone] : "var(--c-ink-2)",
+              color: emphasized ? cText[tone] : "var(--c-ink-2)",
               borderRadius: 6,
               letterSpacing: "0.02em",
             }}

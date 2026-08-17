@@ -13,6 +13,7 @@ export const I18N: Record<Lang, Record<string, string>> = {
 
     // ===== Nav =====
     nav_home: "首页",
+    nav_products: "产品",
     nav_ontology: "Ontology",
     nav_operator: "Operator",
     nav_technology: "技术",
@@ -38,67 +39,172 @@ export const I18N: Record<Lang, Record<string, string>> = {
     footer_made_with: "在上海西岸 · 北京 · 深圳手工打磨",
 
     // ===== Home v2 (editorial) =====
-    h_hero_eyebrow_a: "v0.5 · 已上线",
-    h_hero_eyebrow_b: "上海西岸 · 华为云 Inspire",
-    h_hero_t1: "超越 ERP。",
-    h_hero_t2: "让企业成为",
-    h_hero_em: "AI-Native.",
-    h_hero_sub: "allm²eta 是可行动本体平台 —— 衔接「会理解的大模型」与「会执行的智能体」的中间层。我们把业务对象、规则与动作,变成智能体可原生调用的 *企业操作界面*。",
-    h_hero_cta1: "进入平台",
+    h_hero_t1: "自主可控的 AI 系统。",
+    h_hero_t2: "属于每一家企业。",
+    h_hero_mech: "*可行动本体*，驱动决策与自动化。",
+    h_hero_sub: "allmeta Ontology 是智能体的大脑 —— 语义层 + 动能层 + 动态层。我们把业务对象、规则、行动与安全，变成智能体可原生调用的 *企业操作系统*。",
+    h_hero_cta1: "浏览产品套件",
     h_hero_cta2: "阅读技术架构",
-    h_hero_m1: "并行智能体",
-    h_hero_m2: "端到端",
-    h_hero_m3: "零人工断点",
-    h_hero_m_live: "实况 · 中软国际 RAAS",
+    h_hero_mock_label: "电力采购 · 实时运行",
 
-    h_trust_eyebrow: "共建生态",
-    h_trust_note: "战略生态 · 模型 · 云 · 行业",
 
-    h_pos_eyebrow: "核心论点",
-    h_pos_q_lead: "大模型负责理解。智能体负责执行。",
-    h_pos_q_main: "allmeta 是 *中间这一层* —— 业务语义在这里变得可被调用。",
-    h_pos_sub: "不是静态的知识图谱 —— 而是 *可行动本体*:企业操作系统的大脑,驱动智能体、操控大模型,同时受业务规则治理。大模型的推理,加上企业流程的可控。",
-    h_pos_d_onto: "本体",
-    h_pos_d_translates: "转译",
-    h_pos_d_oar: "对象 · 动作 · 规则",
-    h_pos_d_llm: "大模型",
-    h_pos_d_understands: "理解",
-    h_pos_d_agent: "智能体",
-    h_pos_d_executes: "执行",
-    h_pos_d_input: "输入",
-    h_pos_d_meaning: "语义",
-    h_pos_d_output: "输出",
-    h_pos_d_sub1: "自由幻觉",
-    h_pos_d_sub2: "受约束的语义",
-    h_pos_d_sub3: "安全执行",
+    h_dual_eyebrow: "能力与判断",
+    h_dual_q_lead: "能力可以外购，",
+    h_dual_q_main: "判断不能外包。",
+    h_dual_sub: "模型可以换，它提供的是推理与语言。不能外流的是你的判断依据 —— 定价口径、供应商准入、审批权限。allmeta 把这套依据留在你自己的边界之内：*能力进得来，判断出不去*。",
+    h_dual_note: "不受约束的能力不是资产，是敞口。",
+    h_dual_d_outside: "外部",
+    h_dual_d_inside: "你的边界之内",
+    h_dual_d_model_k: "外部能力",
+    h_dual_d_model: "通用大模型",
+    h_dual_d_onto_k: "唯一入口",
+    h_dual_d_onto1: "可行动",
+    h_dual_d_onto2: "本体",
+    h_dual_d_in: "推理与语言",
+    h_dual_d_out1: "对象 · 规则 · 权属",
+    h_dual_d_out2: "不出这道边界",
+    h_dual_d_obj: "业务对象",
+    h_dual_d_rules: "规则与阈值",
+    h_dual_d_rights: "数据权属",
+    h_dual_d_act: "智能体在这道边界内执行",
 
-    h_bento_eyebrow: "双核",
-    h_bento_t1: "两个产品。",
-    h_bento_t2: "一套操作系统。",
-    h_bento_sub: "一个让智能体思考,一个让它们运转。二者合为智能体内核 —— 任意一个,都能嵌入 ERP 失效之处。",
-    h_bento_onto_kicker: "内核 · 大脑",
-    h_bento_onto_tag: "*可行动*本体平台。",
-    h_bento_onto_body: "AI 原生的本体 Builder 与推理 runtime —— 不是静态知识图谱。把数据交给它,用六个 AI 辅助的 Builder 精修,每个智能体读写同一个活的本体面。",
-    h_bento_op_kicker: "内核 · 运行时",
-    h_bento_op_tag: "本体驱动的智能体,*规模化运行*。",
-    h_bento_op_body: "Planner · Executor · Validator · Reflection · Approval · Domain。事件驱动、全程可追溯、端到端自动驾驶。",
-    h_bento_readmore: "了解更多",
-    h_bento_launch: "启动",
-    h_cap_autogen: "自动生成",
-    h_cap_autogen_h: "数据 + 文档 → 本体",
-    h_cap_builders: "六大 Builder",
-    h_cap_builders_h: "对象 · 规则 · 动作 · 事件 · 关系 · 评测",
-    h_cap_infer: "推理引擎",
-    h_cap_infer_h: "在本体上推理",
-    h_cap_codegen: "代码生成",
-    h_cap_codegen_h: "本体 → 智能体代码",
+    // ===== Product suite — section copy =====
+    suite_flow_eyebrow: "产品套件",
+    suite_flow_t1: "六个产品。",
+    suite_flow_t2: "一条流水线。",
+    suite_flow_sub: "从客户丢过来的一堆乱材料,到一个自己会跑的企业。每一段都有专门的产品 —— 而每一段的产出,正是下一段的输入。",
+    suite_flow_start: "客户原始材料",
+    suite_flow_end: "自主运营的企业",
 
-    h_live_eyebrow: "实况 · 生产流量",
-    h_live_title: "*八个智能体。* 一个本体。3.5 秒。",
-    h_live_sub: "一份真实简历进来。八个专职智能体跑在同一个本体上。没有 Mock 数据、没有幻灯片戏法 —— 在中软国际 RAAS 的生产流量上端到端自动驾驶。",
-    h_live_anno1: "一个本体 —— 每个智能体读写同一个面",
-    h_live_anno2: "匹配 92.0 · 规则 5/5 · 自动邀约 —— 零人工断点",
-    h_live_punch: "「不是 Mock 数据。不是幻灯片。*是真的智能体在跑*。」",
+    suite_grid_eyebrow: "全部产品",
+    suite_grid_t1: "整套产品,",
+    suite_grid_t2: "现在就能进。",
+    suite_grid_sub: "每个产品都能独立启动,也可以按顺序走完全程。两个内核 —— Ontology Studio 与 Agentic Operator —— 已在生产环境运行。",
+
+    // ===== Product suite — shared labels =====
+    suite_launch: "启动",
+    suite_readmore: "了解更多",
+    suite_core: "内核",
+    suite_in: "输入",
+    suite_out: "产出",
+    suite_stage: "阶段",
+    suite_modules: "内置模块",
+    suite_view_all: "查看全部产品",
+    suite_pipeline: "流水线",
+
+    // ===== /suite 页面 =====
+    suite_page_eyebrow: "allm²eta 产品套件",
+    suite_page_t1: "一个套件,",
+    suite_page_t2: "六段旅程。",
+    suite_page_sub: "从客户材料到自主运营的企业 —— 每个产品负责一段,每一段都能独立启动。",
+    suite_hand_eyebrow: "交接契约",
+    suite_hand_t: "每一段的产出,就是下一段的输入。",
+    suite_hand_sub: "这是套件能拼成一条流水线的原因:产品之间交接的不是一份文档,而是一份明确的数据契约。",
+    suite_cta_t: "从任意一段切进去。",
+    suite_cta_sub: "两个内核已在生产环境运行。挑最痛的那一段先接入,其余按流水线顺序补齐。",
+
+    // ===== Ontology Studio 内置模块 =====
+    m_generator: "本体生成器",
+    m_object: "数据对象 Builder",
+    m_rule: "规则 Builder",
+    m_action: "动作 Builder",
+    m_event: "事件 Builder",
+    m_links: "关系生成器",
+    m_workflow: "工作流 Builder",
+
+    // ===== 01 · OntoCopilot =====
+    p_copilot_role: "梳理",
+    p_copilot_tag: "给 FDE 工程师配的 *本体副驾*。",
+    p_copilot_body: "客户材料再乱都行 —— Excel、Word、扫描件丢进来,它自动读完、理出业务的关键内容,整理成规范的本体包。以对话的方式陪工程师走完业务流程梳理:AI 干整理的苦活,工程师专心做判断。",
+    p_copilot_c1: "多模态材料解析",
+    p_copilot_c2: "业务流程梳理",
+    p_copilot_c3: "对话式协同分析",
+    p_copilot_in: "客户原始材料",
+    p_copilot_out: "结构化业务发现",
+
+    // ===== 02 · OntoXForm =====
+    p_xform_role: "规范",
+    p_xform_tag: "任意数据 → *范式格式*,超自动化完成。",
+    p_xform_body: "本体前置的转换自动机。用户不必理解复杂的本体术语,也不必手工建模 —— OntoXForm 把业务数据映射成规范数据格式(Canonical Data Format),直接喂给本体生成器。",
+    p_xform_c1: "范式格式映射",
+    p_xform_c2: "超自动化转换",
+    p_xform_c3: "零本体术语门槛",
+    p_xform_in: "结构化业务发现",
+    p_xform_out: "规范数据格式",
+
+    // ===== 03 · Ontology Studio =====
+    p_studio_role: "建模 · 治理",
+    p_studio_tag: "*可行动*本体平台。",
+    p_studio_body: "把企业的业务对象、规则、权限、流程、事件与动作,变成 AI Agent 可理解 · 可调用 · 可执行 · 可审计 · 可治理 · 可进化的企业操作界面。本体生成器接收 OntoXForm 的输出,直接产出可部署的本体模型。",
+    p_studio_c1: "本体生成器",
+    p_studio_c2: "六大模型 Builder",
+    p_studio_c3: "可审计 · 可治理",
+    p_studio_in: "规范数据格式",
+    p_studio_out: "可行动本体",
+
+    // ===== 04 · OntoFlow =====
+    p_flow_role: "编排",
+    p_flow_tag: "把成熟 Harness 封装成 *可复用的数字员工*。",
+    p_flow_body: "本体工作流工作室。调用成熟的 AI Harness,把工具使用、推理执行与上下文管理封装为可复用的数字员工,再用可视化工作流分配任务、传递成果、组织协作。无需重复建设 Agent 底层能力,像安排真实团队一样编排业务流程 —— 可拆分、可调度、可追踪、可治理。",
+    p_flow_c1: "数字员工封装",
+    p_flow_c2: "可视化工作流编排",
+    p_flow_c3: "智能体代码生成",
+    p_flow_in: "可行动本体",
+    p_flow_out: "智能体工作流",
+
+    // ===== 05 · Agentic Operator =====
+    p_operator_role: "运行",
+    p_operator_tag: "本体驱动的智能体,*规模化运行*。",
+    p_operator_body: "智能体操作系统:智能体运行时、全链路安全 Harness 工程、自主智能体框架、自动部署、监控与安全。可视化编排、实时追踪,通过事件总线统一治理智能体舰队,端到端 Auto-Pilot。",
+    p_operator_c1: "Harness 工程",
+    p_operator_c2: "事件总线治理",
+    p_operator_c3: "实时追踪 · 自动部署",
+    p_operator_in: "智能体工作流",
+    p_operator_out: "运行中的智能体舰队",
+
+    // ===== 06 · OntoWork =====
+    p_work_role: "运营",
+    p_work_tag: "由自主智能体驱动的 *Agentic ERP*。",
+    p_work_body: "业务用户真正干活的操作台。基于 OntoWork 的自主智能体与大模型能力运行 Agentic ERP,搭载最先进的 Harness 工程,把可规模化、高能力的智能体系统直接交到业务手里。",
+    p_work_c1: "Agentic ERP 操作台",
+    p_work_c2: "自主智能体",
+    p_work_c3: "SOTA Harness 工程",
+    p_work_in: "运行中的智能体舰队",
+    p_work_out: "被运营的企业",
+
+    h_harn_eyebrow: "决策中枢",
+    h_harn_q_lead: "人和智能体，",
+    h_harn_q_main: "在同一张决策面上。",
+    h_harn_sub: "中枢只做一件事：每一个决策，由谁来做。授权、分派、规则校验、留痕 —— 人和智能体走同一条通道，受同一套规则约束。*该由人拍板的，系统会停下来等人*。",
+    h_harn_proof: "每一次决策都能回放：谁决定的、依据哪一条规则、动了哪些对象。",
+    h_harn_r1a: "自动执行",
+    h_harn_r1b: "智能体可决",
+    h_harn_r2a: "人工复核",
+    h_harn_r2b: "责任人可决",
+    h_harn_r3a: "集体决策",
+    h_harn_r3b: "会议决定（三重一大）",
+    h_harn_punch: "它不只决定谁去做，它决定*谁有权决定*。",
+    h_harn_d_people: "人 · 三种决策权",
+    h_harn_d_agents: "智能体 · 无人值守执行",
+    h_harn_d_human_k: "人",
+    h_harn_d_h1: "业务责任人",
+    h_harn_d_h2: "集体决策会议",
+    h_harn_d_h3: "风控与合规",
+    h_harn_d_band_k: "统一决策面",
+    h_harn_d_band: "决策中枢",
+    h_harn_d_c1: "授权",
+    h_harn_d_c2: "规则校验",
+    h_harn_d_c3: "分派",
+    h_harn_d_c4: "留痕",
+    h_harn_d_agent_k: "智能体",
+    h_harn_d_a1: "取数与核对",
+    h_harn_d_a2: "比价与测算",
+    h_harn_d_a3: "拟稿与预检",
+    h_harn_d_a4: "执行与回写",
+    h_harn_d_gov: "R-GOV-301 · 三重一大",
+    h_harn_d_dec_k: "结果",
+    h_harn_d_dec1: "可回放的",
+    h_harn_d_dec2: "决策",
 
     h_arch_eyebrow: "技术栈",
     h_arch_t1: "六层,",
@@ -718,6 +824,7 @@ export const I18N: Record<Lang, Record<string, string>> = {
     brand_motto_en: "Cogito ergo sum — Modeled, therefore I am.",
 
     nav_home: "Home",
+    nav_products: "Products",
     nav_ontology: "Ontology",
     nav_operator: "Operator",
     nav_technology: "Technology",
@@ -742,67 +849,172 @@ export const I18N: Record<Lang, Record<string, string>> = {
     footer_made_with: "Hand-crafted in Shanghai · Beijing · Shenzhen.",
 
     // ===== Home v2 (editorial) =====
-    h_hero_eyebrow_a: "v0.5 · Live",
-    h_hero_eyebrow_b: "Shanghai West Bund · Huawei Cloud Inspire",
-    h_hero_t1: "Beyond ERP.",
-    h_hero_t2: "Make Enterprise",
-    h_hero_em: "AI-Native.",
-    h_hero_sub: "allm²eta is the Actionable Ontology platform — the layer between LLMs that understand and agents that execute. We turn business objects, rules and actions into an *Enterprise Operation Surface* that agents can natively call.",
-    h_hero_cta1: "Explore the platform",
+    h_hero_t1: "Sovereign AI Systems",
+    h_hero_t2: "for Every Enterprise.",
+    h_hero_mech: "*Actionable Ontology* drives decision-making and automation.",
+    h_hero_sub: "allmeta Ontology is the brain of your agents — a semantic layer, a kinetic layer and a dynamic layer. We turn business objects, rules, actions and security into an *enterprise operating system* that agents call natively.",
+    h_hero_cta1: "Explore the suite",
     h_hero_cta2: "Read the architecture",
-    h_hero_m1: "agents in parallel",
-    h_hero_m2: "end-to-end",
-    h_hero_m3: "human breaks",
-    h_hero_m_live: "Live · ChinaSoft RAAS",
+    h_hero_mock_label: "Grid procurement · live run",
 
-    h_trust_eyebrow: "Built with",
-    h_trust_note: "Strategic ecosystem · model · cloud · industry",
 
-    h_pos_eyebrow: "The thesis",
-    h_pos_q_lead: "LLMs understand. Agents execute. ",
-    h_pos_q_main: "allmeta is the *layer between them* — the place where business semantics become callable.",
-    h_pos_sub: "Not a static knowledge graph — an *actionable ontology*: the brain of the enterprise OS that drives the agents and operates the model, while staying governed by your rules. The reasoning of a large model, with the control of enterprise process.",
-    h_pos_d_onto: "ONTOLOGY",
-    h_pos_d_translates: "translates",
-    h_pos_d_oar: "Object · Action · Rule",
-    h_pos_d_llm: "LLM",
-    h_pos_d_understands: "understands",
-    h_pos_d_agent: "AGENT",
-    h_pos_d_executes: "executes",
-    h_pos_d_input: "INPUT",
-    h_pos_d_meaning: "MEANING",
-    h_pos_d_output: "OUTPUT",
-    h_pos_d_sub1: "free hallucination",
-    h_pos_d_sub2: "constrained semantics",
-    h_pos_d_sub3: "safe execution",
+    h_dual_eyebrow: "Capability and judgement",
+    h_dual_q_lead: "Capability can be bought in. ",
+    h_dual_q_main: "Judgement cannot be outsourced.",
+    h_dual_sub: "The model is replaceable; what it supplies is reasoning and language. What cannot leave is the basis on which you judge — your pricing rules, your supplier standards, your approval limits. allmeta keeps that basis inside your own perimeter: *capability comes in, judgement does not go out*.",
+    h_dual_note: "Capability without constraint is not an asset. It is exposure.",
+    h_dual_d_outside: "OUTSIDE",
+    h_dual_d_inside: "INSIDE YOUR PERIMETER",
+    h_dual_d_model_k: "CAPABILITY",
+    h_dual_d_model: "Frontier model",
+    h_dual_d_onto_k: "ONLY WAY IN",
+    h_dual_d_onto1: "Actionable",
+    h_dual_d_onto2: "ontology",
+    h_dual_d_in: "reasoning & language",
+    h_dual_d_out1: "objects · rules · rights",
+    h_dual_d_out2: "never leave the perimeter",
+    h_dual_d_obj: "Business objects",
+    h_dual_d_rules: "Rules & thresholds",
+    h_dual_d_rights: "Data rights",
+    h_dual_d_act: "Agents act only inside this line",
 
-    h_bento_eyebrow: "The dual core",
-    h_bento_t1: "Two products.",
-    h_bento_t2: "One operating system.",
-    h_bento_sub: "One makes agents think. One makes them run. Together they form the agentic core — and either one drops into the place where your ERP stops being useful.",
-    h_bento_onto_kicker: "Core · the Brain",
-    h_bento_onto_tag: "The *actionable* ontology platform.",
-    h_bento_onto_body: "An AI-native ontology builder and reasoning runtime — not a static knowledge graph. Point it at your data, refine with six AI-assisted builders, and every agent reads and writes the same living surface.",
-    h_bento_op_kicker: "Core · the Runtime",
-    h_bento_op_tag: "Ontology-driven agents, *at scale*.",
-    h_bento_op_body: "Planner · Executor · Validator · Reflection · Approval · Domain. Event-driven, fully traced, end-to-end auto-pilot.",
-    h_bento_readmore: "Read more",
-    h_bento_launch: "Launch",
-    h_cap_autogen: "Auto-Generate",
-    h_cap_autogen_h: "data + docs → ontology",
-    h_cap_builders: "6 Builders",
-    h_cap_builders_h: "object · rules · actions · events · links · eval",
-    h_cap_infer: "Inference Engine",
-    h_cap_infer_h: "reason on the ontology",
-    h_cap_codegen: "CodeGen",
-    h_cap_codegen_h: "ontology → agent code",
+    // ===== Product suite — section copy =====
+    suite_flow_eyebrow: "The suite",
+    suite_flow_t1: "Six products.",
+    suite_flow_t2: "One pipeline.",
+    suite_flow_sub: "From the pile of messy material a client hands you, to an enterprise that runs itself. Every stage has a product — and every stage's output is the next stage's input.",
+    suite_flow_start: "Raw client material",
+    suite_flow_end: "A self-operating enterprise",
 
-    h_live_eyebrow: "Live · production traffic",
-    h_live_title: "*Eight agents.* One ontology. 3.5 seconds.",
-    h_live_sub: "A real resume in. Eight specialized agents on the same shared Ontology. No mock data, no slide tricks — end-to-end auto-pilot under production traffic at ChinaSoft RAAS.",
-    h_live_anno1: "One ontology — every agent reads/writes the same surface",
-    h_live_anno2: "92.0 match · 5 / 5 rules · auto-invite — no human breakpoint",
-    h_live_punch: "“Not mock data. Not a slide. *Real agents.*”",
+    suite_grid_eyebrow: "All products",
+    suite_grid_t1: "The whole suite,",
+    suite_grid_t2: "one click away.",
+    suite_grid_sub: "Launch any product on its own, or walk the whole chain in order. The two cores — Ontology Studio and Agentic Operator — are already running in production.",
+
+    // ===== Product suite — shared labels =====
+    suite_launch: "Launch",
+    suite_readmore: "Learn more",
+    suite_core: "Core",
+    suite_in: "In",
+    suite_out: "Out",
+    suite_stage: "Stage",
+    suite_modules: "Modules",
+    suite_view_all: "View all products",
+    suite_pipeline: "Pipeline",
+
+    // ===== /suite page =====
+    suite_page_eyebrow: "The allm²eta product suite",
+    suite_page_t1: "One suite,",
+    suite_page_t2: "six stages.",
+    suite_page_sub: "From client material to a self-operating enterprise — one product per stage, each launchable on its own.",
+    suite_hand_eyebrow: "The handoffs",
+    suite_hand_t: "Every stage's output is the next stage's input.",
+    suite_hand_sub: "This is why the suite composes into a pipeline: what passes between products is a defined data contract, not a document.",
+    suite_cta_t: "Start anywhere in the chain.",
+    suite_cta_sub: "Both cores are already running in production. Cut in at whichever stage hurts most, then connect the rest in pipeline order.",
+
+    // ===== Ontology Studio modules =====
+    m_generator: "Ontology Generator",
+    m_object: "Data Object Builder",
+    m_rule: "Rule Builder",
+    m_action: "Action Builder",
+    m_event: "Event Builder",
+    m_links: "Links Generator",
+    m_workflow: "Workflow Builder",
+
+    // ===== 01 · OntoCopilot =====
+    p_copilot_role: "Understand",
+    p_copilot_tag: "The *ontology copilot* for FDE engineers.",
+    p_copilot_body: "Hand it the mess — Excel, Word, scanned documents. It reads everything, pulls out what actually matters to the business, and organizes it into a clean ontology package. A conversational partner for walking the process end to end: AI does the grunt work of organizing, the engineer does the judging.",
+    p_copilot_c1: "Multi-modal ingestion",
+    p_copilot_c2: "Business process discovery",
+    p_copilot_c3: "Conversational co-analysis",
+    p_copilot_in: "Raw client materials",
+    p_copilot_out: "Structured business findings",
+
+    // ===== 02 · OntoXForm =====
+    p_xform_role: "Canonicalize",
+    p_xform_tag: "Any data → *canonical format*, hyper-automated.",
+    p_xform_body: "The transformation automator that sits in front of the ontology. Users never touch ontology jargon and never hand-build a model — OntoXForm maps business data into the Canonical Data Format that feeds the Ontology Generator directly.",
+    p_xform_c1: "Canonical format mapping",
+    p_xform_c2: "Hyper-automation",
+    p_xform_c3: "No ontology jargon required",
+    p_xform_in: "Structured business findings",
+    p_xform_out: "Canonical data format",
+
+    // ===== 03 · Ontology Studio =====
+    p_studio_role: "Model & Govern",
+    p_studio_tag: "The *actionable* ontology platform.",
+    p_studio_body: "Turns business objects, rules, permissions, processes, events and actions into an Enterprise Operation Surface that AI agents can understand, invoke, execute, audit, govern and evolve. The Ontology Generator takes OntoXForm's output and emits deployable ontology models.",
+    p_studio_c1: "Ontology Generator",
+    p_studio_c2: "Six model builders",
+    p_studio_c3: "Auditable · governable",
+    p_studio_in: "Canonical data format",
+    p_studio_out: "Actionable ontology",
+
+    // ===== 04 · OntoFlow =====
+    p_flow_role: "Orchestrate",
+    p_flow_tag: "Mature harnesses, packaged as *reusable digital workers*.",
+    p_flow_body: "The ontology workflow studio. It wraps a proven AI harness — tool use, reasoning execution, context management — into reusable digital workers, then orchestrates them visually: assign tasks, pass results, organize collaboration. Staff a business process the way you'd staff a real team — splittable, schedulable, traceable, governable.",
+    p_flow_c1: "Digital-worker packaging",
+    p_flow_c2: "Visual workflow orchestration",
+    p_flow_c3: "Agent code generation",
+    p_flow_in: "Actionable ontology",
+    p_flow_out: "Agentic workflows",
+
+    // ===== 05 · Agentic Operator =====
+    p_operator_role: "Run",
+    p_operator_tag: "Ontology-driven agents, *at scale*.",
+    p_operator_body: "The agent operating system: agentic runtime, full secured harness engineering, an autonomous agent framework, automated deployment, monitoring and security. Visual orchestration, live tracing, and one event bus governing the whole fleet — end-to-end auto-pilot.",
+    p_operator_c1: "Harness engineering",
+    p_operator_c2: "Event-bus governance",
+    p_operator_c3: "Live tracing · auto-deploy",
+    p_operator_in: "Agentic workflows",
+    p_operator_out: "A running agent fleet",
+
+    // ===== 06 · OntoWork =====
+    p_work_role: "Operate",
+    p_work_tag: "*Agentic ERP*, driven by autonomous agents.",
+    p_work_body: "The console where the business actually works. Operate an agentic ERP on OntoWork's autonomous agents and LLM capability, equipped with state-of-the-art harness engineering — a scalable, powerful agentic system placed directly in business hands.",
+    p_work_c1: "Agentic ERP console",
+    p_work_c2: "Autonomous agents",
+    p_work_c3: "SOTA harness engineering",
+    p_work_in: "A running agent fleet",
+    p_work_out: "An operated enterprise",
+
+    h_harn_eyebrow: "The harness",
+    h_harn_q_lead: "Humans and agents, ",
+    h_harn_q_main: "on one decision surface.",
+    h_harn_sub: "The harness settles one question: who is entitled to make this call. Authority, routing, rule checks and an audit trail reach people and agents through the same channel, under the same rulebook. *When the call is legally a person's, the run stops and waits.*",
+    h_harn_proof: "Every decision replays: who decided, under which rule, over which objects.",
+    h_harn_r1a: "Auto-execute",
+    h_harn_r1b: "the agent decides",
+    h_harn_r2a: "Review",
+    h_harn_r2b: "the named owner decides",
+    h_harn_r3a: "Collective decision",
+    h_harn_r3b: "the board decides",
+    h_harn_punch: "It doesn't just decide who does the work. It decides *who is allowed to decide*.",
+    h_harn_d_people: "PEOPLE · THREE DECISION RIGHTS",
+    h_harn_d_agents: "AGENTS · UNATTENDED EXECUTION",
+    h_harn_d_human_k: "HUMAN",
+    h_harn_d_h1: "Accountable owner",
+    h_harn_d_h2: "Collective decision",
+    h_harn_d_h3: "Risk & compliance",
+    h_harn_d_band_k: "ONE SURFACE",
+    h_harn_d_band: "The harness",
+    h_harn_d_c1: "Authority",
+    h_harn_d_c2: "Rule check",
+    h_harn_d_c3: "Routing",
+    h_harn_d_c4: "Audit trail",
+    h_harn_d_agent_k: "AGENT",
+    h_harn_d_a1: "Retrieve & verify",
+    h_harn_d_a2: "Price & compute",
+    h_harn_d_a3: "Draft & pre-check",
+    h_harn_d_a4: "Execute & write back",
+    h_harn_d_gov: "R-GOV-301 · collective decision",
+    h_harn_d_dec_k: "OUTCOME",
+    h_harn_d_dec1: "One auditable",
+    h_harn_d_dec2: "decision",
 
     h_arch_eyebrow: "The stack",
     h_arch_t1: "Six layers,",
@@ -1413,6 +1625,10 @@ function readThemeFromDOM(): "light" | "dark" {
   return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
 }
 
+function persistLang(next: Lang) {
+  try { localStorage.setItem("allmeta:lang", next); } catch {}
+}
+
 function applyTheme(next: "light" | "dark") {
   if (typeof document === "undefined") return;
   document.documentElement.setAttribute("data-theme", next);
@@ -1432,9 +1648,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  React.useEffect(() => {
-    if (typeof window !== "undefined") localStorage.setItem("allmeta:lang", lang);
-  }, [lang]);
+  // NOTE: language is persisted on write (below), never mirrored from state
+  // via an effect. A mirror effect writes the initial "zh" default before the
+  // stored value has been applied, and under reactStrictMode the re-run of the
+  // mount effect then reads that default back — silently discarding the user's
+  // saved choice on every load. Theme uses the same write-through approach.
 
   React.useEffect(() => {
     if (typeof window === "undefined") return;
@@ -1455,17 +1673,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [lang]
   );
 
-  const setLang = React.useCallback((l: Lang) => setLangState(l), []);
+  const setLang = React.useCallback((l: Lang) => {
+    persistLang(l);
+    setLangState(l);
+  }, []);
 
   const setTheme = React.useCallback((tt: "light" | "dark") => {
     applyTheme(tt);
     setThemeState(tt);
   }, []);
 
-  const toggleLang = React.useCallback(
-    () => setLangState((prev) => (prev === "zh" ? "en" : "zh")),
-    []
-  );
+  const toggleLang = React.useCallback(() => {
+    const next: Lang = lang === "zh" ? "en" : "zh";
+    persistLang(next);
+    setLangState(next);
+  }, [lang]);
   const toggleTheme = React.useCallback(() => {
     const current = readThemeFromDOM();
     const next: "light" | "dark" = current === "light" ? "dark" : "light";

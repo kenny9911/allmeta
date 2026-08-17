@@ -45,6 +45,9 @@ function ScaleCard({
   emphasized?: boolean;
 }) {
   const c: Record<string, string> = { info: "var(--c-info)", coral: "var(--c-coral)", lime: "var(--c-lime)" };
+  /** Text-role twin of `c`. Only lime differs — the glow below stays on the
+   *  fill lime, the verdict line reads as words and needs the deeper ink. */
+  const cText: Record<string, string> = { ...c, lime: "var(--c-lime-ink)" };
   return (
     <div
       className={emphasized ? "hairline glow-ring" : "hairline"}
@@ -65,7 +68,7 @@ function ScaleCard({
       <p className="t-small" style={{ color: "var(--c-ink-2)", marginBottom: "auto" }}>
         {desc}
       </p>
-      <div className="f-mono mt-6 pt-5" style={{ fontSize: 11, color: c[tone], letterSpacing: "0.08em", textTransform: "uppercase", borderTop: "1px solid color-mix(in oklab, var(--c-ink-4) 16%, transparent)" }}>
+      <div className="f-mono mt-6 pt-5" style={{ fontSize: 11, color: cText[tone], letterSpacing: "0.08em", textTransform: "uppercase", borderTop: "1px solid color-mix(in oklab, var(--c-ink-4) 16%, transparent)" }}>
         {verdict}
       </div>
     </div>

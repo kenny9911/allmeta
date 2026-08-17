@@ -9,6 +9,10 @@ const TONE: Record<string, string> = {
   violet: "var(--c-violet)", cyan: "var(--c-cyan)", coral: "var(--c-coral)",
 };
 
+/** Same tones, for when the value drives a `color:` rather than a fill.
+ *  Only lime differs — the fill lime is too pale to read as type on white. */
+const TONE_TEXT: Record<string, string> = { ...TONE, lime: "var(--c-lime-ink)" };
+
 /** Mono zone label with a glowing dot — used on the pipeline panels. */
 function ZoneTag({ children, color }: { children: React.ReactNode; color: string }) {
   return (
@@ -24,7 +28,7 @@ function ZoneTag({ children, color }: { children: React.ReactNode; color: string
 
 /** Directional flow connector — horizontal on desktop, vertical on mobile. */
 function Flow() {
-  const line = "linear-gradient(VAR, color-mix(in oklab, var(--c-ink-4) 55%, transparent), color-mix(in oklab, var(--c-lime) 65%, transparent))";
+  const line = "linear-gradient(VAR, var(--c-line-graph-mid), color-mix(in oklab, var(--c-lime) 65%, transparent))";
   return (
     <div className="flex items-center justify-center shrink-0 self-center" aria-hidden>
       <div className="hidden lg:flex items-center" style={{ width: 36 }}>
@@ -59,7 +63,7 @@ function OntologyMotif() {
     <svg viewBox="0 0 320 150" role="img" aria-hidden style={{ display: "block", width: "100%", height: "auto", marginTop: 16 }}>
       {sat.map((s, i) => (
         <line key={`l${i}`} x1={cx} y1={cy} x2={s.x} y2={s.y}
-          stroke="color-mix(in oklab, var(--c-ink-4) 55%, transparent)" strokeWidth={1} />
+          stroke="var(--c-line-graph-mid)" strokeWidth={1} />
       ))}
       {sat.map((s, i) => (
         <g key={`n${i}`}>
@@ -206,7 +210,7 @@ export default function OntologyGenerator() {
                   >
                     {cp.icon}
                   </span>
-                  <span className="f-mono" style={{ fontSize: 10, color: TONE[cp.tone], letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  <span className="f-mono" style={{ fontSize: 10, color: TONE_TEXT[cp.tone], letterSpacing: "0.1em", textTransform: "uppercase" }}>
                     {cp.tag}
                   </span>
                 </div>

@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
 
-const layers = [
+// `c` is the fill role (border, glow, dot, gradient stop). `cText` is the
+// same tone as type — only lime needs a separate one; every other tone here
+// already reads on a light panel.
+const layers: Array<{ n: string; name: string; c: string; cText?: string; focus?: boolean }> = [
   { n: "06", name: "Application",        c: "var(--c-violet)" },
   { n: "05", name: "Agentic Operator",   c: "var(--c-info)" },
   { n: "04", name: "Generation",         c: "var(--c-amber)" },
-  { n: "03", name: "Ontology",           c: "var(--c-lime)", focus: true },
+  { n: "03", name: "Ontology",           c: "var(--c-lime)", cText: "var(--c-lime-ink)", focus: true },
   { n: "02", name: "Data & Integration", c: "var(--c-cyan)" },
   { n: "01", name: "Enterprise Core",    c: "var(--c-coral)" },
 ];
@@ -49,21 +52,21 @@ export default function ArchStackMock() {
               padding: "12px 16px",
               borderRadius: 9,
               background: l.focus
-                ? `linear-gradient(90deg, color-mix(in oklab, ${l.c} 16%, oklch(0.18 0.018 260)), oklch(0.18 0.018 260) 70%)`
+                ? `linear-gradient(90deg, color-mix(in oklab, ${l.c} 16%, var(--c-plate)), var(--c-plate) 70%)`
                 : "color-mix(in oklab, var(--c-surface) 60%, transparent)",
               border: `1px solid ${l.focus ? l.c : "color-mix(in oklab, var(--c-ink-4) 16%, transparent)"}`,
               boxShadow: l.focus ? `0 0 30px -8px color-mix(in oklab, ${l.c} 60%, transparent)` : undefined,
               transform: `translateX(${(2 - Math.abs(i - 2.5)) * 4}px)`,
             }}
           >
-            <span className="f-mono tabular-nums" style={{ fontSize: 11, color: l.focus ? l.c : "var(--c-ink-4)", letterSpacing: "0.08em" }}>
+            <span className="f-mono tabular-nums" style={{ fontSize: 11, color: l.focus ? (l.cText ?? l.c) : "var(--c-ink-4)", letterSpacing: "0.08em" }}>
               {l.n}
             </span>
             <span className="f-display" style={{ fontSize: 14, fontWeight: 500, color: "var(--c-ink-1)", letterSpacing: "-0.01em" }}>
               {l.name}
             </span>
             {l.focus && (
-              <span className="ml-auto f-mono" style={{ fontSize: 9.5, color: l.c, letterSpacing: "0.12em" }}>
+              <span className="ml-auto f-mono" style={{ fontSize: 9.5, color: l.cText ?? l.c, letterSpacing: "0.12em" }}>
                 FOCUS
               </span>
             )}
@@ -76,7 +79,7 @@ export default function ArchStackMock() {
 
       <div
         aria-hidden
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none mock-glow"
         style={{ inset: 0, background: "radial-gradient(ellipse 40% 30% at 100% 50%, color-mix(in oklab, var(--c-lime) 14%, transparent), transparent 60%)" }}
       />
     </div>

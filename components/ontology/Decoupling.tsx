@@ -13,7 +13,7 @@ export default function Decoupling() {
           title={
             <>
               <span style={{ color: "var(--c-info)" }}>Logic</span> and{" "}
-              <span style={{ color: "var(--c-lime)" }}>Rule</span>{" "}
+              <span style={{ color: "var(--c-lime-ink)" }}>Rule</span>{" "}
               <Em color="var(--c-ink-2)">must decouple.</Em>
             </>
           }
@@ -42,7 +42,7 @@ export default function Decoupling() {
 
           <Reveal delay={2}>
             <HairCard accent="lime" style={{ minHeight: 280 }}>
-              <div className="f-mono mb-4" style={{ fontSize: 11, color: "var(--c-lime)", letterSpacing: "0.18em" }}>
+              <div className="f-mono mb-4" style={{ fontSize: 11, color: "var(--c-lime-ink)", letterSpacing: "0.18em" }}>
                 {t("onto_decouple_rule_label")}
               </div>
               <h3 className="h-sans" style={{ fontSize: 26, fontWeight: 500, letterSpacing: "-0.025em", color: "var(--c-ink-1)", marginBottom: 18 }}>
