@@ -3,23 +3,23 @@ import React from "react";
 import PageShell from "@/components/site/PageShell";
 import type { LaunchMap } from "@/lib/products";
 import Hero from "./Hero";
-import SixLayers from "./SixLayers";
-import GenerationLayer from "./GenerationLayer";
-import ScalingLaw from "./ScalingLaw";
-import ThreeServers from "./ThreeServers";
-import Ecosystem from "./Ecosystem";
-import RoadmapV2 from "@/components/home/v2/RoadmapV2";
+import ArchitectureV2 from "./ArchitectureV2";
+import CognitionV2 from "./CognitionV2";
+import ProductTech from "./ProductTech";
+import BoundaryV2 from "./BoundaryV2";
 
+/** Technology, in the order an engineer needs it: the claim (hero), the
+ *  shape of the system (architecture), what an agent actually is inside it
+ *  (cognition), what each product contributes (products), and where all of
+ *  it physically runs and what crosses out (boundary). */
 export default function TechnologyContent({ launch }: { launch?: LaunchMap }) {
   return (
     <PageShell launch={launch}>
       <Hero />
-      <SixLayers />
-      <GenerationLayer />
-      <ScalingLaw />
-      <ThreeServers />
-      <Ecosystem />
-      <RoadmapV2 />
+      <ArchitectureV2 />
+      <CognitionV2 />
+      <ProductTech />
+      <BoundaryV2 />
     </PageShell>
   );
 }

@@ -18,7 +18,7 @@ export default function Footer() {
               <BrandText size="md" />
             </div>
             <p className="mt-4" style={{ fontSize: 13, lineHeight: 1.6, color: "var(--c-ink-3)", maxWidth: 380 }}>
-              {t("brand_tag_en")}
+              {t("footer_tagline")}
             </p>
             <p className="mt-2 f-mono" style={{ fontSize: 11, color: "var(--c-ink-4)", letterSpacing: "0.08em" }}>
               {t("brand_motto")} · {t("brand_motto_en")}

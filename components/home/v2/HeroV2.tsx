@@ -25,8 +25,9 @@ export default function HeroV2() {
           <div className="lg:col-span-7">
             <Reveal>
               <h1 className="t-display-hero">
-                {t("h_hero_t1")}<br />
-                {t("h_hero_t2")}
+                <span>{t("h_hero_t1")}</span>
+                <span>{t("h_hero_t2")}</span>
+                <span>{t("h_hero_t3")}</span>
               </h1>
             </Reveal>
 

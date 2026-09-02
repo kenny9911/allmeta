@@ -6,17 +6,17 @@ import { resolveLaunchUrls } from "@/lib/products";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Technology — 6 Layer Agentic Architecture",
+  title: "Technology — Five-Layer Agentic Architecture",
   description:
-    "allmeta's six-layer ontology-driven agentic architecture: Enterprise Core → Data & Integration → Ontology → Generation → Agentic Operator → Application. Copy the architecture, not the product.",
+    "allmeta's five-layer architecture: enterprise core systems → data & integration → actionable ontology → Agent OS (harness · runtime · generation) → applications. Data reads up, actions write back; the loop closes at the ontology.",
   alternates: {
     canonical: "/technology",
     languages: { "zh-CN": "/technology", "en-US": "/technology", "x-default": "/technology" },
   },
   openGraph: {
-    title: "Technology — 6 Layer Agentic Architecture · allmeta",
+    title: "Technology — Five-Layer Agentic Architecture · allmeta",
     description:
-      "Six layers, one semantic surface. From enterprise systems to ontology-driven AI agents.",
+      "Three layers you already own; allmeta supplies the two in the middle. Agent = ontology + model + harness.",
     type: "website",
     url: "https://allmeta.ai/technology",
   },
@@ -29,16 +29,16 @@ export default function TechnologyPage() {
   ]);
   const faq = faqPage([
     {
-      q: "What are the 6 layers of the allmeta architecture?",
-      a: "1) Enterprise Core Systems (ECore, ERP, HR, Finance, Procurement, SCADA, Data Platform, Legacy). 2) Data & Integration. 3) allmeta Ontology Layer (Objects · Relations · Rules · Events · Actions · States · Permissions · Metrics). 4) Generation Layer (Prompt Engine + Agent Harness + CodeGen). 5) Agentic Operator. 6) Application Layer.",
+      q: "What are the five layers of the allmeta architecture?",
+      a: "01 Enterprise core systems (ERP, HR, Finance, Procurement, SCADA, legacy). 02 Data & integration. 03 allmeta Actionable Ontology (objects · relations · rules · events · actions · states · permissions · metrics). 04 Agent OS — harness, runtime and generation in one layer. 05 Application layer. Data reads up from the systems of record and actions write back down; both terminate at the ontology.",
     },
     {
-      q: "What is the scaling law for allmeta?",
-      a: "Copy the architecture, not the product. Standardized products don't fit SOE business diversity; pure custom projects don't scale. The answer: one generic architecture (allmeta platform layer) plus N independent customer Ontologies running on it.",
+      q: "What is an agent in the allmeta architecture?",
+      a: "Agent = ontology + model + harness. The model supplies reasoning and language; the ontology supplies the enterprise's objects, rules, actions and permissions; the harness buckles them together — context assembly, tool contracts, preconditions, permission scope, post-verification and trace. The harness is compiled from the ontology rather than hand-written per agent.",
     },
     {
-      q: "What is the platform's generic layer?",
-      a: "ECore + Inference Engine + Rule Generator + Code Generator + 6 Builders. This is the shared substrate; each customer's business Ontology lives in its own container and never enters the allmeta platform.",
+      q: "Which product implements which layer?",
+      a: "OntoCopilot and OntoXForm implement data & integration (layer 02). Ontology Studio implements the actionable ontology (layer 03). OntoFlow and Agentic Operator implement the Agent OS (layer 04). OntoWork implements the application layer (layer 05). Layer 01 is the customer's own systems of record.",
     },
   ]);
 

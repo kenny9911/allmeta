@@ -35,17 +35,12 @@
             "id": "1050321c152e1ac2",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "image",
               "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
+                "file": "YLJ-场景1.png"
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Untitled"
+              "icon": "lucide-image",
+              "title": "YLJ-场景1"
             }
           }
         ],
@@ -69,7 +64,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -106,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 318.5
   },
   "right": {
     "id": "1c2d5eba44f24851",
@@ -213,22 +210,23 @@
   },
   "active": "1050321c152e1ac2",
   "lastOpenFiles": [
-    "RAAS.png",
+    "RAAS3-cn.png",
+    "RAAS2.png",
+    "Pasted image 20260522105639.png",
+    "Pasted image 20260522101953.png",
+    "Pasted image 20260522100733.png",
+    "allmeta-aos.png",
     "Untitled.canvas",
+    "RAAS.png",
     "Untitled.md",
     "Untitled",
-    "allmeta-aos.png",
     "RAAS-cn.md",
-    "RAAS2.png",
     "Pasted image 20260522115504.png",
     "ECAS2.png",
     "YLJ-522.md",
     "YLJAS-2.md",
     "雅砻江-review.png",
     "YLJ-522 1.md",
-    "YLJ-场景1.png",
-    "YLJAS.png",
-    "ECAS.png",
-    "Pasted image 20260522110338.png"
+    "YLJ-场景1.png"
   ]
 }

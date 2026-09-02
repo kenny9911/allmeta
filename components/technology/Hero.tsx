@@ -9,27 +9,24 @@ export default function TechHero() {
   const { t } = useApp();
   return (
     <EditoHero
-      eyebrow="Architecture · v0.5"
-      mockLabel="6-Layer Stack"
+      eyebrow={t("tech_hero_eyebrow")}
+      mockLabel={t("tech_arch_label")}
       mock={<ArchStackMock />}
       title={
         <>
-          Ontology-driven
-          <br />
-          <span style={{ color: "var(--c-ink-3)" }}>
-            agentic architecture.
-          </span>
+          <span style={{ color: "var(--c-ink-3)" }}>{t("tech_hero_lead")}</span>
+          <span style={{ color: "var(--c-ink-1)" }}>{t("tech_hero_main")}</span>
         </>
       }
       sub={t("tech_hero_sub")}
       actions={
         <>
           <Link href="/ontology" className="btn-edito">
-            Start with the Brain
+            {t("tech_hero_cta1")}
             <Arrow />
           </Link>
           <Link href="/operator" className="link-edito" style={{ fontSize: 14 }}>
-            See the Runtime →
+            {t("tech_hero_cta2")} →
           </Link>
         </>
       }
